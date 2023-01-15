@@ -1,0 +1,143 @@
+namespace Valera.Auth.WebAuthn;
+
+table CredentialCreationOptions {
+    /// The relying party 
+    rp: RelyingParty (required);
+     /// The user.
+    user: User (required);
+    /// The one-time challenge for the credential to sign
+    challenge: [ubyte:32] (required);
+    /// The set of cryptographic types allowed by this server.
+    pubKeyCredParams: [PubKeyCredParams] (required);
+     /// The timeout for the authenticator to stop accepting the operation
+    timeout: uint32 = 60000;
+    /// The requested attestation level from the device.
+    attestation: AttestationConveyancePreference;
+    /// The list of credentials that are excluded from this operation.
+    excludeCredentials: [PublicKeyCredentialDescriptor];
+    /// The list of authenticators that are allowed for this operation.
+    authenticatorSelection: AuthenticatorSelectionCriteria;
+    /// The extensions that are allowed for this operation.
+    extensions: RequestRegistrationExtensions;
+}
+
+table RequestRegistrationExtensions {
+    /// The `credProtect` extension options
+    credProtect: CredProtect;
+    /// ⚠️  - Browsers do not support this!
+    uvm: bool;
+    /// ⚠️  - This extension result is always unsigned, and only indicates if the
+    /// browser *requests* a residentKey to be created. It has no bearing on the
+    /// true rk state of the credential.
+    credProps: bool;
+    /// CTAP2.1 Minumum pin length
+    minPinLength: bool;
+    /// ⚠️  - Browsers support the *creation* of the secret, but not the retrieval of it.
+    /// CTAP2.1 create hmac secret
+    hmacCreateSecret: bool;
+}
+
+table CredProtect {
+     /// The credential policy to enact
+    credential_protection_policy: CredentialProtectionPolicy;
+    /// Whether it is better for the authenticator to fail to create a
+    /// credential rather than ignore the protection policy
+    enforce_credential_protection_policy: bool = false;
+}
+
+enum CredentialProtectionPolicy:byte {
+    /// This reflects "FIDO_2_0" semantics. In this configuration, performing
+    /// some form of user verification is optional with or without credentialID
+    /// list. This is the default state of the credential if the extension is
+    /// not specified.
+    UserVerificationOptional = 1,
+    /// In this configuration, credential is discovered only when its
+    /// credentialID is provided by the platform or when some form of user
+    /// verification is performed.
+    UserVerificationOptionalWithCredentialIDList = 2,
+    /// This reflects that discovery and usage of the credential MUST be
+    /// preceded by some form of user verification.
+    UserVerificationRequired = 3,
+}
+
+table PublicKeyCredentialDescriptor {
+    /// The type of credential to exclude.
+    type: string (required);
+    /// The credential ID to exclude.
+    id: [ubyte] (required);
+    /// The transports that are allowed for this credential.
+    transports: [AuthenticatorTransport];
+}
+
+table AuthenticatorSelectionCriteria {
+    /// The authenticator attachment mode.
+    authenticatorAttachment: AuthenticatorAttachment;
+    /// Whether or not the authenticator must be resident.
+    requireResidentKey: bool (required);
+    /// The list of authenticator transports that are allowed.
+    userVerification: UserVerificationPolicy (required);
+}
+
+enum UserVerificationPolicy {
+    /// <https://www.w3.org/TR/webauthn/#dom-userverificationrequirement-preferred>
+    Preferred,
+    /// <https://www.w3.org/TR/webauthn/#dom-userverificationrequirement-required>
+    Required,
+    /// <https://www.w3.org/TR/webauthn/#dom-userverificationrequirement-discouraged>
+    Discouraged,
+}
+
+enum AuthenticatorAttachment {
+    /// Request a device that is part of the machine aka inseperable.
+    /// <https://www.w3.org/TR/webauthn/#attachment>
+    Platform,
+    /// Request a device that can be seperated from the machine aka an external token.
+    /// <https://www.w3.org/TR/webauthn/#attachment>
+    CrossPlatform,
+}
+
+enum AuthenticatorTransport {
+    /// <https://www.w3.org/TR/webauthn/#dom-authenticatortransport-usb>
+    Usb,
+    /// <https://www.w3.org/TR/webauthn/#dom-authenticatortransport-nfc>
+    Nfc,
+    /// <https://www.w3.org/TR/webauthn/#dom-authenticatortransport-ble>
+    Ble,
+    /// <https://www.w3.org/TR/webauthn/#dom-authenticatortransport-internal>
+    Internal,
+    /// Hybrid transport, formerly caBLE. Part of the level 3 draft specification.
+    /// <https://w3c.github.io/webauthn/#dom-authenticatortransport-hybrid>
+    Hybrid,
+    /// Test transport; used for Windows 10.
+    Test,
+}
+
+enum AttestationConveyancePreference {
+    /// Do not request attestation.
+    /// <https://www.w3.org/TR/webauthn/#dom-attestationconveyancepreference-none>
+    None,
+
+    /// Request attestation in a semi-anonymized form.
+    /// <https://www.w3.org/TR/webauthn/#dom-attestationconveyancepreference-indirect>
+    Indirect,
+
+    /// Request attestation in a direct form.
+    /// <https://www.w3.org/TR/webauthn/#dom-attestationconveyancepreference-direct>
+    Direct,
+}
+
+struct PubKeyCredParams {
+    type: string;
+    alg: int32;
+}
+
+struct RelyingParty {
+    id: string;
+    name: string;
+}
+
+struct User {
+    id: [ubyte:32];
+    name: string;
+    displayName: string;
+}

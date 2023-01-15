@@ -1,0 +1,32 @@
+namespace Valera.Auth;
+
+include "webauthn.fbs";
+
+struct RegisterNumberReq {
+    name: string;
+    number: string;
+}
+
+struct RegisterNumberRes {
+    success: bool = true;
+    multiplier: uint16;
+}
+
+struct VerifyNumberReq {
+    number: string;
+    code: uint16;
+}
+
+struct VerifyNumberRes {
+    success: bool = true;
+    options: CredentialCreationOptions;
+}
+
+struct VerifyWebAuthnReq {
+
+}
+
+struct VerifyWebAuthnRes {
+    success: bool = true;
+    token: string;
+}
