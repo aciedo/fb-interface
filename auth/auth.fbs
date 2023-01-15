@@ -23,7 +23,7 @@ struct VerifyNumberRes {
 }
 
 struct VerifyWebAuthnReq {
-
+    // { name: string, id: string, webauthnResponse: object }
 }
 
 struct VerifyWebAuthnRes {
