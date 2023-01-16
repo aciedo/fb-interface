@@ -1,14 +1,14 @@
-namespace Valera.Auth.WebAuthn;
+namespace Auth.WebAuthn;
 
 table CredentialCreationOptions {
     /// The relying party 
-    rp: RelyingParty (required);
+    rp: RelyingParty;
      /// The user.
-    user: User (required);
+    user: User;
     /// The one-time challenge for the credential to sign
-    challenge: [ubyte:32] (required);
+    challenge: [ubyte];
     /// The set of cryptographic types allowed by this server.
-    pubKeyCredParams: [PubKeyCredParams] (required);
+    pubKeyCredParams: [PubKeyCredParams];
      /// The timeout for the authenticator to stop accepting the operation
     timeout: uint32 = 60000;
     /// The requested attestation level from the device.
@@ -19,6 +19,27 @@ table CredentialCreationOptions {
     authenticatorSelection: AuthenticatorSelectionCriteria;
     /// The extensions that are allowed for this operation.
     extensions: RequestRegistrationExtensions;
+}
+
+table RegisterPublicKeyCredential  {
+    id: [ubyte];
+    rawId: [ubyte];
+    response: AuthenticatorAttestationResponse;
+    clientExtensionResults: RegistrationExtensionsClientOutputs;
+}
+
+table AuthenticatorAttestationResponse {
+    clientData: [ubyte];
+    attestationObject: [ubyte];
+    transports: [AuthenticatorTransport];
+}
+
+table RegistrationExtensionsClientOutputs {
+    appId: bool;
+    credProps: bool;
+    hmacSecret: bool;
+    credProtect: CredentialProtectionPolicy = 1;
+    minPinLength: uint32;
 }
 
 table RequestRegistrationExtensions {
@@ -39,7 +60,7 @@ table RequestRegistrationExtensions {
 
 table CredProtect {
      /// The credential policy to enact
-    credential_protection_policy: CredentialProtectionPolicy;
+    credential_protection_policy: CredentialProtectionPolicy = 1;
     /// Whether it is better for the authenticator to fail to create a
     /// credential rather than ignore the protection policy
     enforce_credential_protection_policy: bool = false;
@@ -62,9 +83,9 @@ enum CredentialProtectionPolicy:byte {
 
 table PublicKeyCredentialDescriptor {
     /// The type of credential to exclude.
-    type: string (required);
+    type: string;
     /// The credential ID to exclude.
-    id: [ubyte] (required);
+    id: [ubyte];
     /// The transports that are allowed for this credential.
     transports: [AuthenticatorTransport];
 }
@@ -73,12 +94,12 @@ table AuthenticatorSelectionCriteria {
     /// The authenticator attachment mode.
     authenticatorAttachment: AuthenticatorAttachment;
     /// Whether or not the authenticator must be resident.
-    requireResidentKey: bool (required);
+    requireResidentKey: bool;
     /// The list of authenticator transports that are allowed.
-    userVerification: UserVerificationPolicy (required);
+    userVerification: UserVerificationPolicy;
 }
 
-enum UserVerificationPolicy {
+enum UserVerificationPolicy:byte {
     /// <https://www.w3.org/TR/webauthn/#dom-userverificationrequirement-preferred>
     Preferred,
     /// <https://www.w3.org/TR/webauthn/#dom-userverificationrequirement-required>
@@ -87,7 +108,7 @@ enum UserVerificationPolicy {
     Discouraged,
 }
 
-enum AuthenticatorAttachment {
+enum AuthenticatorAttachment:byte {
     /// Request a device that is part of the machine aka inseperable.
     /// <https://www.w3.org/TR/webauthn/#attachment>
     Platform,
@@ -96,7 +117,7 @@ enum AuthenticatorAttachment {
     CrossPlatform,
 }
 
-enum AuthenticatorTransport {
+enum AuthenticatorTransport:byte {
     /// <https://www.w3.org/TR/webauthn/#dom-authenticatortransport-usb>
     Usb,
     /// <https://www.w3.org/TR/webauthn/#dom-authenticatortransport-nfc>
@@ -112,7 +133,7 @@ enum AuthenticatorTransport {
     Test,
 }
 
-enum AttestationConveyancePreference {
+enum AttestationConveyancePreference:byte {
     /// Do not request attestation.
     /// <https://www.w3.org/TR/webauthn/#dom-attestationconveyancepreference-none>
     None,
@@ -126,18 +147,18 @@ enum AttestationConveyancePreference {
     Direct,
 }
 
-struct PubKeyCredParams {
+table PubKeyCredParams {
     type: string;
     alg: int32;
 }
 
-struct RelyingParty {
+table RelyingParty {
     id: string;
     name: string;
 }
 
-struct User {
-    id: [ubyte:32];
+table User {
+    id: [ubyte];
     name: string;
     displayName: string;
 }

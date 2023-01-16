@@ -1,32 +1,35 @@
-namespace Valera.Auth;
-
 include "webauthn.fbs";
 
-struct RegisterNumberReq {
+namespace Auth;
+
+table RegisterNumberReq {
     name: string;
     number: string;
 }
 
-struct RegisterNumberRes {
+table RegisterNumberRes {
     success: bool = true;
     multiplier: uint16;
 }
 
-struct VerifyNumberReq {
+table VerifyNumberReq {
     number: string;
     code: uint16;
 }
 
-struct VerifyNumberRes {
+table VerifyNumberRes {
     success: bool = true;
-    options: CredentialCreationOptions;
+    options: Auth.WebAuthn.CredentialCreationOptions;
 }
 
-struct VerifyWebAuthnReq {
+table VerifyWebAuthnReq {
     // { name: string, id: string, webauthnResponse: object }
+    name: string;
+    id: string;
+    webauthn: Auth.WebAuthn.RegisterPublicKeyCredential;
 }
 
-struct VerifyWebAuthnRes {
+table VerifyWebAuthnRes {
     success: bool = true;
     token: string;
 }
