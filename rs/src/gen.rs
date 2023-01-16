@@ -5248,5 +5248,209 @@ mod root {
                 })
             }
         }
+
+        #[derive(
+            Clone,
+            Debug,
+            PartialEq,
+            PartialOrd,
+            Eq,
+            Ord,
+            Hash,
+            ::serde::Serialize,
+            ::serde::Deserialize,
+        )]
+        pub struct NumberRegistration {
+            pub name: ::core::option::Option<::planus::alloc::string::String>,
+            pub code: u64,
+        }
+
+        #[allow(clippy::derivable_impls)]
+        impl ::core::default::Default for NumberRegistration {
+            fn default() -> Self {
+                Self {
+                    name: ::core::default::Default::default(),
+                    code: 0,
+                }
+            }
+        }
+
+        impl NumberRegistration {
+            #[allow(clippy::too_many_arguments)]
+            pub fn create(
+                builder: &mut ::planus::Builder,
+                field_name: impl ::planus::WriteAsOptional<::planus::Offset<::core::primitive::str>>,
+                field_code: impl ::planus::WriteAsDefault<u64, u64>,
+            ) -> ::planus::Offset<Self> {
+                let prepared_name = field_name.prepare(builder);
+
+                let prepared_code = field_code.prepare(builder, &0);
+
+                let mut table_writer = ::planus::table_writer::TableWriter::<6, 12>::new(builder);
+
+                if prepared_name.is_some() {
+                    table_writer.calculate_size::<::planus::Offset<str>>(2);
+                }
+                if prepared_code.is_some() {
+                    table_writer.calculate_size::<u64>(4);
+                }
+
+                table_writer.finish_calculating();
+
+                unsafe {
+                    if let ::core::option::Option::Some(prepared_code) = prepared_code {
+                        table_writer.write::<_, _, 8>(1, &prepared_code);
+                    }
+                    if let ::core::option::Option::Some(prepared_name) = prepared_name {
+                        table_writer.write::<_, _, 4>(0, &prepared_name);
+                    }
+                }
+
+                table_writer.finish()
+            }
+        }
+
+        impl ::planus::WriteAs<::planus::Offset<NumberRegistration>> for NumberRegistration {
+            type Prepared = ::planus::Offset<Self>;
+
+            fn prepare(
+                &self,
+                builder: &mut ::planus::Builder,
+            ) -> ::planus::Offset<NumberRegistration> {
+                ::planus::WriteAsOffset::prepare(self, builder)
+            }
+        }
+
+        impl ::planus::WriteAsOptional<::planus::Offset<NumberRegistration>> for NumberRegistration {
+            type Prepared = ::planus::Offset<Self>;
+
+            fn prepare(
+                &self,
+                builder: &mut ::planus::Builder,
+            ) -> ::core::option::Option<::planus::Offset<NumberRegistration>> {
+                ::core::option::Option::Some(::planus::WriteAsOffset::prepare(self, builder))
+            }
+        }
+
+        impl ::planus::WriteAsOffset<NumberRegistration> for NumberRegistration {
+            fn prepare(
+                &self,
+                builder: &mut ::planus::Builder,
+            ) -> ::planus::Offset<NumberRegistration> {
+                NumberRegistration::create(builder, &self.name, &self.code)
+            }
+        }
+
+        #[derive(Copy, Clone)]
+        pub struct NumberRegistrationRef<'a>(::planus::table_reader::Table<'a>);
+
+        impl<'a> NumberRegistrationRef<'a> {
+            pub fn name(
+                &self,
+            ) -> ::planus::Result<::core::option::Option<&'a ::core::primitive::str>> {
+                self.0.access(0, "NumberRegistration", "name")
+            }
+
+            pub fn code(&self) -> ::planus::Result<u64> {
+                ::core::result::Result::Ok(
+                    self.0.access(1, "NumberRegistration", "code")?.unwrap_or(0),
+                )
+            }
+        }
+
+        impl<'a> ::core::fmt::Debug for NumberRegistrationRef<'a> {
+            fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+                let mut f = f.debug_struct("NumberRegistrationRef");
+                if let ::core::option::Option::Some(field_name) = self.name().transpose() {
+                    f.field("name", &field_name);
+                }
+                f.field("code", &self.code());
+                f.finish()
+            }
+        }
+
+        impl<'a> ::core::convert::TryFrom<NumberRegistrationRef<'a>> for NumberRegistration {
+            type Error = ::planus::Error;
+
+            #[allow(unreachable_code)]
+            fn try_from(value: NumberRegistrationRef<'a>) -> ::planus::Result<Self> {
+                ::core::result::Result::Ok(Self {
+                    name: if let ::core::option::Option::Some(name) = value.name()? {
+                        ::core::option::Option::Some(::core::convert::TryInto::try_into(name)?)
+                    } else {
+                        ::core::option::Option::None
+                    },
+                    code: ::core::convert::TryInto::try_into(value.code()?)?,
+                })
+            }
+        }
+
+        impl<'a> ::planus::TableRead<'a> for NumberRegistrationRef<'a> {
+            fn from_buffer(
+                buffer: ::planus::SliceWithStartOffset<'a>,
+                offset: usize,
+            ) -> ::core::result::Result<Self, ::planus::errors::ErrorKind> {
+                ::core::result::Result::Ok(Self(::planus::table_reader::Table::from_buffer(
+                    buffer, offset,
+                )?))
+            }
+        }
+
+        impl<'a> ::planus::VectorReadInner<'a> for NumberRegistrationRef<'a> {
+            type Error = ::planus::Error;
+            const STRIDE: usize = 4;
+
+            unsafe fn from_buffer(
+                buffer: ::planus::SliceWithStartOffset<'a>,
+                offset: usize,
+            ) -> ::planus::Result<Self> {
+                ::planus::TableRead::from_buffer(buffer, offset).map_err(|error_kind| {
+                    error_kind.with_error_location(
+                        "[NumberRegistrationRef]",
+                        "get",
+                        buffer.offset_from_start,
+                    )
+                })
+            }
+        }
+
+        impl ::planus::VectorWrite<::planus::Offset<NumberRegistration>> for NumberRegistration {
+            type Value = ::planus::Offset<NumberRegistration>;
+            const STRIDE: usize = 4;
+            fn prepare(&self, builder: &mut ::planus::Builder) -> Self::Value {
+                ::planus::WriteAs::prepare(self, builder)
+            }
+
+            #[inline]
+            unsafe fn write_values(
+                values: &[::planus::Offset<NumberRegistration>],
+                bytes: *mut ::core::mem::MaybeUninit<u8>,
+                buffer_position: u32,
+            ) {
+                let bytes = bytes as *mut [::core::mem::MaybeUninit<u8>; 4];
+                for (i, v) in ::core::iter::Iterator::enumerate(values.iter()) {
+                    ::planus::WriteAsPrimitive::write(
+                        v,
+                        ::planus::Cursor::new(&mut *bytes.add(i)),
+                        buffer_position - (Self::STRIDE * i) as u32,
+                    );
+                }
+            }
+        }
+
+        impl<'a> ::planus::ReadAsRoot<'a> for NumberRegistrationRef<'a> {
+            fn read_as_root(slice: &'a [u8]) -> ::planus::Result<Self> {
+                ::planus::TableRead::from_buffer(
+                    ::planus::SliceWithStartOffset {
+                        buffer: slice,
+                        offset_from_start: 0,
+                    },
+                    0,
+                )
+                .map_err(|error_kind| {
+                    error_kind.with_error_location("[NumberRegistrationRef]", "read_as_root", 0)
+                })
+            }
+        }
     }
 }

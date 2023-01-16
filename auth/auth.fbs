@@ -33,3 +33,8 @@ table VerifyWebAuthnRes {
     success: bool = true;
     token: string;
 }
+
+table NumberRegistration {
+    name: string;
+    code: uint64;
+}
