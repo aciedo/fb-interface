@@ -3981,6 +3981,160 @@ mod root {
             ::serde::Serialize,
             ::serde::Deserialize,
         )]
+        pub struct ErrorRes {
+            pub error: ::planus::alloc::string::String,
+        }
+
+        impl ErrorRes {
+            #[allow(clippy::too_many_arguments)]
+            pub fn create(
+                builder: &mut ::planus::Builder,
+                field_error: impl ::planus::WriteAs<::planus::Offset<str>>,
+            ) -> ::planus::Offset<Self> {
+                let prepared_error = field_error.prepare(builder);
+
+                let mut table_writer = ::planus::table_writer::TableWriter::<4, 4>::new(builder);
+
+                table_writer.calculate_size::<::planus::Offset<str>>(2);
+
+                table_writer.finish_calculating();
+
+                unsafe {
+                    table_writer.write::<_, _, 4>(0, &prepared_error);
+                }
+
+                table_writer.finish()
+            }
+        }
+
+        impl ::planus::WriteAs<::planus::Offset<ErrorRes>> for ErrorRes {
+            type Prepared = ::planus::Offset<Self>;
+
+            fn prepare(&self, builder: &mut ::planus::Builder) -> ::planus::Offset<ErrorRes> {
+                ::planus::WriteAsOffset::prepare(self, builder)
+            }
+        }
+
+        impl ::planus::WriteAsOptional<::planus::Offset<ErrorRes>> for ErrorRes {
+            type Prepared = ::planus::Offset<Self>;
+
+            fn prepare(
+                &self,
+                builder: &mut ::planus::Builder,
+            ) -> ::core::option::Option<::planus::Offset<ErrorRes>> {
+                ::core::option::Option::Some(::planus::WriteAsOffset::prepare(self, builder))
+            }
+        }
+
+        impl ::planus::WriteAsOffset<ErrorRes> for ErrorRes {
+            fn prepare(&self, builder: &mut ::planus::Builder) -> ::planus::Offset<ErrorRes> {
+                ErrorRes::create(builder, &self.error)
+            }
+        }
+
+        #[derive(Copy, Clone)]
+        pub struct ErrorResRef<'a>(::planus::table_reader::Table<'a>);
+
+        impl<'a> ErrorResRef<'a> {
+            pub fn error(&self) -> ::planus::Result<&'a ::core::primitive::str> {
+                self.0.access_required(0, "ErrorRes", "error")
+            }
+        }
+
+        impl<'a> ::core::fmt::Debug for ErrorResRef<'a> {
+            fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+                let mut f = f.debug_struct("ErrorResRef");
+                f.field("error", &self.error());
+                f.finish()
+            }
+        }
+
+        impl<'a> ::core::convert::TryFrom<ErrorResRef<'a>> for ErrorRes {
+            type Error = ::planus::Error;
+
+            #[allow(unreachable_code)]
+            fn try_from(value: ErrorResRef<'a>) -> ::planus::Result<Self> {
+                ::core::result::Result::Ok(Self {
+                    error: ::core::convert::TryInto::try_into(value.error()?)?,
+                })
+            }
+        }
+
+        impl<'a> ::planus::TableRead<'a> for ErrorResRef<'a> {
+            fn from_buffer(
+                buffer: ::planus::SliceWithStartOffset<'a>,
+                offset: usize,
+            ) -> ::core::result::Result<Self, ::planus::errors::ErrorKind> {
+                ::core::result::Result::Ok(Self(::planus::table_reader::Table::from_buffer(
+                    buffer, offset,
+                )?))
+            }
+        }
+
+        impl<'a> ::planus::VectorReadInner<'a> for ErrorResRef<'a> {
+            type Error = ::planus::Error;
+            const STRIDE: usize = 4;
+
+            unsafe fn from_buffer(
+                buffer: ::planus::SliceWithStartOffset<'a>,
+                offset: usize,
+            ) -> ::planus::Result<Self> {
+                ::planus::TableRead::from_buffer(buffer, offset).map_err(|error_kind| {
+                    error_kind.with_error_location("[ErrorResRef]", "get", buffer.offset_from_start)
+                })
+            }
+        }
+
+        impl ::planus::VectorWrite<::planus::Offset<ErrorRes>> for ErrorRes {
+            type Value = ::planus::Offset<ErrorRes>;
+            const STRIDE: usize = 4;
+            fn prepare(&self, builder: &mut ::planus::Builder) -> Self::Value {
+                ::planus::WriteAs::prepare(self, builder)
+            }
+
+            #[inline]
+            unsafe fn write_values(
+                values: &[::planus::Offset<ErrorRes>],
+                bytes: *mut ::core::mem::MaybeUninit<u8>,
+                buffer_position: u32,
+            ) {
+                let bytes = bytes as *mut [::core::mem::MaybeUninit<u8>; 4];
+                for (i, v) in ::core::iter::Iterator::enumerate(values.iter()) {
+                    ::planus::WriteAsPrimitive::write(
+                        v,
+                        ::planus::Cursor::new(&mut *bytes.add(i)),
+                        buffer_position - (Self::STRIDE * i) as u32,
+                    );
+                }
+            }
+        }
+
+        impl<'a> ::planus::ReadAsRoot<'a> for ErrorResRef<'a> {
+            fn read_as_root(slice: &'a [u8]) -> ::planus::Result<Self> {
+                ::planus::TableRead::from_buffer(
+                    ::planus::SliceWithStartOffset {
+                        buffer: slice,
+                        offset_from_start: 0,
+                    },
+                    0,
+                )
+                .map_err(|error_kind| {
+                    error_kind.with_error_location("[ErrorResRef]", "read_as_root", 0)
+                })
+            }
+        }
+
+        #[derive(
+            Clone,
+            Debug,
+            PartialEq,
+            PartialOrd,
+            Eq,
+            Ord,
+            Hash,
+            ::serde::Serialize,
+            ::serde::Deserialize,
+        )]
         pub struct RegisterNumberReq {
             pub name: ::core::option::Option<::planus::alloc::string::String>,
             pub number: ::core::option::Option<::planus::alloc::string::String>,
@@ -4192,17 +4346,13 @@ mod root {
             ::serde::Deserialize,
         )]
         pub struct RegisterNumberRes {
-            pub success: bool,
             pub multiplier: u16,
         }
 
         #[allow(clippy::derivable_impls)]
         impl ::core::default::Default for RegisterNumberRes {
             fn default() -> Self {
-                Self {
-                    success: true,
-                    multiplier: 0,
-                }
+                Self { multiplier: 0 }
             }
         }
 
@@ -4210,30 +4360,21 @@ mod root {
             #[allow(clippy::too_many_arguments)]
             pub fn create(
                 builder: &mut ::planus::Builder,
-                field_success: impl ::planus::WriteAsDefault<bool, bool>,
                 field_multiplier: impl ::planus::WriteAsDefault<u16, u16>,
             ) -> ::planus::Offset<Self> {
-                let prepared_success = field_success.prepare(builder, &true);
-
                 let prepared_multiplier = field_multiplier.prepare(builder, &0);
 
-                let mut table_writer = ::planus::table_writer::TableWriter::<6, 3>::new(builder);
+                let mut table_writer = ::planus::table_writer::TableWriter::<4, 2>::new(builder);
 
-                if prepared_success.is_some() {
-                    table_writer.calculate_size::<bool>(2);
-                }
                 if prepared_multiplier.is_some() {
-                    table_writer.calculate_size::<u16>(4);
+                    table_writer.calculate_size::<u16>(2);
                 }
 
                 table_writer.finish_calculating();
 
                 unsafe {
                     if let ::core::option::Option::Some(prepared_multiplier) = prepared_multiplier {
-                        table_writer.write::<_, _, 2>(1, &prepared_multiplier);
-                    }
-                    if let ::core::option::Option::Some(prepared_success) = prepared_success {
-                        table_writer.write::<_, _, 1>(0, &prepared_success);
+                        table_writer.write::<_, _, 2>(0, &prepared_multiplier);
                     }
                 }
 
@@ -4268,7 +4409,7 @@ mod root {
                 &self,
                 builder: &mut ::planus::Builder,
             ) -> ::planus::Offset<RegisterNumberRes> {
-                RegisterNumberRes::create(builder, &self.success, &self.multiplier)
+                RegisterNumberRes::create(builder, &self.multiplier)
             }
         }
 
@@ -4276,18 +4417,10 @@ mod root {
         pub struct RegisterNumberResRef<'a>(::planus::table_reader::Table<'a>);
 
         impl<'a> RegisterNumberResRef<'a> {
-            pub fn success(&self) -> ::planus::Result<bool> {
-                ::core::result::Result::Ok(
-                    self.0
-                        .access(0, "RegisterNumberRes", "success")?
-                        .unwrap_or(true),
-                )
-            }
-
             pub fn multiplier(&self) -> ::planus::Result<u16> {
                 ::core::result::Result::Ok(
                     self.0
-                        .access(1, "RegisterNumberRes", "multiplier")?
+                        .access(0, "RegisterNumberRes", "multiplier")?
                         .unwrap_or(0),
                 )
             }
@@ -4296,7 +4429,6 @@ mod root {
         impl<'a> ::core::fmt::Debug for RegisterNumberResRef<'a> {
             fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
                 let mut f = f.debug_struct("RegisterNumberResRef");
-                f.field("success", &self.success());
                 f.field("multiplier", &self.multiplier());
                 f.finish()
             }
@@ -4308,7 +4440,6 @@ mod root {
             #[allow(unreachable_code)]
             fn try_from(value: RegisterNumberResRef<'a>) -> ::planus::Result<Self> {
                 ::core::result::Result::Ok(Self {
-                    success: ::core::convert::TryInto::try_into(value.success()?)?,
                     multiplier: ::core::convert::TryInto::try_into(value.multiplier()?)?,
                 })
             }
@@ -4598,7 +4729,6 @@ mod root {
             ::serde::Deserialize,
         )]
         pub struct VerifyNumberRes {
-            pub success: bool,
             pub options: ::core::option::Option<
                 ::planus::alloc::boxed::Box<self::web_authn::CredentialCreationOptions>,
             >,
@@ -4608,7 +4738,6 @@ mod root {
         impl ::core::default::Default for VerifyNumberRes {
             fn default() -> Self {
                 Self {
-                    success: true,
                     options: ::core::default::Default::default(),
                 }
             }
@@ -4618,32 +4747,23 @@ mod root {
             #[allow(clippy::too_many_arguments)]
             pub fn create(
                 builder: &mut ::planus::Builder,
-                field_success: impl ::planus::WriteAsDefault<bool, bool>,
                 field_options: impl ::planus::WriteAsOptional<
                     ::planus::Offset<self::web_authn::CredentialCreationOptions>,
                 >,
             ) -> ::planus::Offset<Self> {
-                let prepared_success = field_success.prepare(builder, &true);
-
                 let prepared_options = field_options.prepare(builder);
 
-                let mut table_writer = ::planus::table_writer::TableWriter::<6, 5>::new(builder);
+                let mut table_writer = ::planus::table_writer::TableWriter::<4, 4>::new(builder);
 
-                if prepared_success.is_some() {
-                    table_writer.calculate_size::<bool>(2);
-                }
                 if prepared_options.is_some() {
-                    table_writer.calculate_size::<::planus::Offset<self::web_authn::CredentialCreationOptions>>(4);
+                    table_writer.calculate_size::<::planus::Offset<self::web_authn::CredentialCreationOptions>>(2);
                 }
 
                 table_writer.finish_calculating();
 
                 unsafe {
                     if let ::core::option::Option::Some(prepared_options) = prepared_options {
-                        table_writer.write::<_, _, 4>(1, &prepared_options);
-                    }
-                    if let ::core::option::Option::Some(prepared_success) = prepared_success {
-                        table_writer.write::<_, _, 1>(0, &prepared_success);
+                        table_writer.write::<_, _, 4>(0, &prepared_options);
                     }
                 }
 
@@ -4678,7 +4798,7 @@ mod root {
                 &self,
                 builder: &mut ::planus::Builder,
             ) -> ::planus::Offset<VerifyNumberRes> {
-                VerifyNumberRes::create(builder, &self.success, &self.options)
+                VerifyNumberRes::create(builder, &self.options)
             }
         }
 
@@ -4686,27 +4806,18 @@ mod root {
         pub struct VerifyNumberResRef<'a>(::planus::table_reader::Table<'a>);
 
         impl<'a> VerifyNumberResRef<'a> {
-            pub fn success(&self) -> ::planus::Result<bool> {
-                ::core::result::Result::Ok(
-                    self.0
-                        .access(0, "VerifyNumberRes", "success")?
-                        .unwrap_or(true),
-                )
-            }
-
             pub fn options(
                 &self,
             ) -> ::planus::Result<
                 ::core::option::Option<self::web_authn::CredentialCreationOptionsRef<'a>>,
             > {
-                self.0.access(1, "VerifyNumberRes", "options")
+                self.0.access(0, "VerifyNumberRes", "options")
             }
         }
 
         impl<'a> ::core::fmt::Debug for VerifyNumberResRef<'a> {
             fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
                 let mut f = f.debug_struct("VerifyNumberResRef");
-                f.field("success", &self.success());
                 if let ::core::option::Option::Some(field_options) = self.options().transpose() {
                     f.field("options", &field_options);
                 }
@@ -4720,7 +4831,6 @@ mod root {
             #[allow(unreachable_code)]
             fn try_from(value: VerifyNumberResRef<'a>) -> ::planus::Result<Self> {
                 ::core::result::Result::Ok(Self {
-                    success: ::core::convert::TryInto::try_into(value.success()?)?,
                     options: if let ::core::option::Option::Some(options) = value.options()? {
                         ::core::option::Option::Some(::planus::alloc::boxed::Box::new(
                             ::core::convert::TryInto::try_into(options)?,
@@ -5055,7 +5165,6 @@ mod root {
             ::serde::Deserialize,
         )]
         pub struct VerifyWebAuthnRes {
-            pub success: bool,
             pub token: ::core::option::Option<::planus::alloc::string::String>,
         }
 
@@ -5063,7 +5172,6 @@ mod root {
         impl ::core::default::Default for VerifyWebAuthnRes {
             fn default() -> Self {
                 Self {
-                    success: true,
                     token: ::core::default::Default::default(),
                 }
             }
@@ -5073,30 +5181,21 @@ mod root {
             #[allow(clippy::too_many_arguments)]
             pub fn create(
                 builder: &mut ::planus::Builder,
-                field_success: impl ::planus::WriteAsDefault<bool, bool>,
                 field_token: impl ::planus::WriteAsOptional<::planus::Offset<::core::primitive::str>>,
             ) -> ::planus::Offset<Self> {
-                let prepared_success = field_success.prepare(builder, &true);
-
                 let prepared_token = field_token.prepare(builder);
 
-                let mut table_writer = ::planus::table_writer::TableWriter::<6, 5>::new(builder);
+                let mut table_writer = ::planus::table_writer::TableWriter::<4, 4>::new(builder);
 
-                if prepared_success.is_some() {
-                    table_writer.calculate_size::<bool>(2);
-                }
                 if prepared_token.is_some() {
-                    table_writer.calculate_size::<::planus::Offset<str>>(4);
+                    table_writer.calculate_size::<::planus::Offset<str>>(2);
                 }
 
                 table_writer.finish_calculating();
 
                 unsafe {
                     if let ::core::option::Option::Some(prepared_token) = prepared_token {
-                        table_writer.write::<_, _, 4>(1, &prepared_token);
-                    }
-                    if let ::core::option::Option::Some(prepared_success) = prepared_success {
-                        table_writer.write::<_, _, 1>(0, &prepared_success);
+                        table_writer.write::<_, _, 4>(0, &prepared_token);
                     }
                 }
 
@@ -5131,7 +5230,7 @@ mod root {
                 &self,
                 builder: &mut ::planus::Builder,
             ) -> ::planus::Offset<VerifyWebAuthnRes> {
-                VerifyWebAuthnRes::create(builder, &self.success, &self.token)
+                VerifyWebAuthnRes::create(builder, &self.token)
             }
         }
 
@@ -5139,25 +5238,16 @@ mod root {
         pub struct VerifyWebAuthnResRef<'a>(::planus::table_reader::Table<'a>);
 
         impl<'a> VerifyWebAuthnResRef<'a> {
-            pub fn success(&self) -> ::planus::Result<bool> {
-                ::core::result::Result::Ok(
-                    self.0
-                        .access(0, "VerifyWebAuthnRes", "success")?
-                        .unwrap_or(true),
-                )
-            }
-
             pub fn token(
                 &self,
             ) -> ::planus::Result<::core::option::Option<&'a ::core::primitive::str>> {
-                self.0.access(1, "VerifyWebAuthnRes", "token")
+                self.0.access(0, "VerifyWebAuthnRes", "token")
             }
         }
 
         impl<'a> ::core::fmt::Debug for VerifyWebAuthnResRef<'a> {
             fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
                 let mut f = f.debug_struct("VerifyWebAuthnResRef");
-                f.field("success", &self.success());
                 if let ::core::option::Option::Some(field_token) = self.token().transpose() {
                     f.field("token", &field_token);
                 }
@@ -5171,7 +5261,6 @@ mod root {
             #[allow(unreachable_code)]
             fn try_from(value: VerifyWebAuthnResRef<'a>) -> ::planus::Result<Self> {
                 ::core::result::Result::Ok(Self {
-                    success: ::core::convert::TryInto::try_into(value.success()?)?,
                     token: if let ::core::option::Option::Some(token) = value.token()? {
                         ::core::option::Option::Some(::core::convert::TryInto::try_into(token)?)
                     } else {

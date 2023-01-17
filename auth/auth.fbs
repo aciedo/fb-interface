@@ -2,13 +2,16 @@ include "webauthn.fbs";
 
 namespace Auth;
 
+table ErrorRes {
+    error: string (required);
+}
+
 table RegisterNumberReq {
     name: string;
     number: string;
 }
 
 table RegisterNumberRes {
-    success: bool = true;
     multiplier: uint16;
 }
 
@@ -18,19 +21,16 @@ table VerifyNumberReq {
 }
 
 table VerifyNumberRes {
-    success: bool = true;
     options: Auth.WebAuthn.CredentialCreationOptions;
 }
 
 table VerifyWebAuthnReq {
-    // { name: string, id: string, webauthnResponse: object }
     name: string;
     id: string;
     webauthn: Auth.WebAuthn.RegisterPublicKeyCredential;
 }
 
 table VerifyWebAuthnRes {
-    success: bool = true;
     token: string;
 }
 
