@@ -3,7 +3,7 @@ include "webauthn.fbs";
 namespace Auth;
 
 table ErrorRes {
-    error: string (required);
+    error: string;
 }
 
 table RegisterNumberReq {

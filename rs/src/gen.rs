@@ -3982,25 +3982,38 @@ mod root {
             ::serde::Deserialize,
         )]
         pub struct ErrorRes {
-            pub error: ::planus::alloc::string::String,
+            pub error: ::core::option::Option<::planus::alloc::string::String>,
+        }
+
+        #[allow(clippy::derivable_impls)]
+        impl ::core::default::Default for ErrorRes {
+            fn default() -> Self {
+                Self {
+                    error: ::core::default::Default::default(),
+                }
+            }
         }
 
         impl ErrorRes {
             #[allow(clippy::too_many_arguments)]
             pub fn create(
                 builder: &mut ::planus::Builder,
-                field_error: impl ::planus::WriteAs<::planus::Offset<str>>,
+                field_error: impl ::planus::WriteAsOptional<::planus::Offset<::core::primitive::str>>,
             ) -> ::planus::Offset<Self> {
                 let prepared_error = field_error.prepare(builder);
 
                 let mut table_writer = ::planus::table_writer::TableWriter::<4, 4>::new(builder);
 
-                table_writer.calculate_size::<::planus::Offset<str>>(2);
+                if prepared_error.is_some() {
+                    table_writer.calculate_size::<::planus::Offset<str>>(2);
+                }
 
                 table_writer.finish_calculating();
 
                 unsafe {
-                    table_writer.write::<_, _, 4>(0, &prepared_error);
+                    if let ::core::option::Option::Some(prepared_error) = prepared_error {
+                        table_writer.write::<_, _, 4>(0, &prepared_error);
+                    }
                 }
 
                 table_writer.finish()
@@ -4036,15 +4049,19 @@ mod root {
         pub struct ErrorResRef<'a>(::planus::table_reader::Table<'a>);
 
         impl<'a> ErrorResRef<'a> {
-            pub fn error(&self) -> ::planus::Result<&'a ::core::primitive::str> {
-                self.0.access_required(0, "ErrorRes", "error")
+            pub fn error(
+                &self,
+            ) -> ::planus::Result<::core::option::Option<&'a ::core::primitive::str>> {
+                self.0.access(0, "ErrorRes", "error")
             }
         }
 
         impl<'a> ::core::fmt::Debug for ErrorResRef<'a> {
             fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
                 let mut f = f.debug_struct("ErrorResRef");
-                f.field("error", &self.error());
+                if let ::core::option::Option::Some(field_error) = self.error().transpose() {
+                    f.field("error", &field_error);
+                }
                 f.finish()
             }
         }
@@ -4055,7 +4072,11 @@ mod root {
             #[allow(unreachable_code)]
             fn try_from(value: ErrorResRef<'a>) -> ::planus::Result<Self> {
                 ::core::result::Result::Ok(Self {
-                    error: ::core::convert::TryInto::try_into(value.error()?)?,
+                    error: if let ::core::option::Option::Some(error) = value.error()? {
+                        ::core::option::Option::Some(::core::convert::TryInto::try_into(error)?)
+                    } else {
+                        ::core::option::Option::None
+                    },
                 })
             }
         }

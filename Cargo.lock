@@ -5,7 +5,8 @@ version = 3
 [[package]]
 name = "array-init-cursor"
 version = "0.2.0"
-source = "git+https://github.com/planus-org/planus#8d5d2c16a18f68cf053aa7ce3eef82fd570d8f02"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "bf7d0a018de4f6aa429b9d33d69edf69072b1c5b1cb8d3e4a5f7ef898fc3eb76"
 
 [[package]]
 name = "interface"
@@ -18,7 +19,8 @@ dependencies = [
 [[package]]
 name = "planus"
 version = "0.3.1"
-source = "git+https://github.com/planus-org/planus#8d5d2c16a18f68cf053aa7ce3eef82fd570d8f02"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "fc1691dd09e82f428ce8d6310bd6d5da2557c82ff17694d2a32cad7242aea89f"
 dependencies = [
  "array-init-cursor",
 ]
