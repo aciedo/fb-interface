@@ -1,2 +1,2 @@
 [workspace]
-members = ["rs"]
+members = ["rs", "RegisterNumberReq"]
