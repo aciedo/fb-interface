@@ -5,7 +5,7 @@ version = 3
 [[package]]
 name = "array-init-cursor"
 version = "0.2.0"
-source = "git+https://github.com/planus-org/planus#8d5d2c16a18f68cf053aa7ce3eef82fd570d8f02"
+source = "git+https://github.com/planus-org/planus#be40ee01b76ebd61daea155a1a78d618ba4b8588"
 
 [[package]]
 name = "autocfg"
@@ -561,7 +561,7 @@ checksum = "6ac9a59f73473f1b8d852421e59e64809f025994837ef743615c6d0c5b305160"
 [[package]]
 name = "planus"
 version = "0.3.1"
-source = "git+https://github.com/planus-org/planus#8d5d2c16a18f68cf053aa7ce3eef82fd570d8f02"
+source = "git+https://github.com/planus-org/planus#be40ee01b76ebd61daea155a1a78d618ba4b8588"
 dependencies = [
  "array-init-cursor",
 ]
