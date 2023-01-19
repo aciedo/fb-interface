@@ -325,7 +325,7 @@ mod root {
             }
 
             impl<T0, T1, T2> CredentialCreationOptionsBuilder<(T0, T1, T2)> {
-                /// Setter for the [`pubKeyCredParams` field](CredentialCreationOptions#structfield.pub_key_cred_params).
+                /// Setter for the [`pub_key_cred_params` field](CredentialCreationOptions#structfield.pub_key_cred_params).
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn pub_key_cred_params<T3>(
@@ -341,7 +341,7 @@ mod root {
                     CredentialCreationOptionsBuilder((v0, v1, v2, value))
                 }
 
-                /// Sets the [`pubKeyCredParams` field](CredentialCreationOptions#structfield.pub_key_cred_params) to null.
+                /// Sets the [`pub_key_cred_params` field](CredentialCreationOptions#structfield.pub_key_cred_params) to null.
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn pub_key_cred_params_as_null(
@@ -407,7 +407,7 @@ mod root {
             }
 
             impl<T0, T1, T2, T3, T4, T5> CredentialCreationOptionsBuilder<(T0, T1, T2, T3, T4, T5)> {
-                /// Setter for the [`excludeCredentials` field](CredentialCreationOptions#structfield.exclude_credentials).
+                /// Setter for the [`exclude_credentials` field](CredentialCreationOptions#structfield.exclude_credentials).
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn exclude_credentials<T6>(
@@ -423,7 +423,7 @@ mod root {
                     CredentialCreationOptionsBuilder((v0, v1, v2, v3, v4, v5, value))
                 }
 
-                /// Sets the [`excludeCredentials` field](CredentialCreationOptions#structfield.exclude_credentials) to null.
+                /// Sets the [`exclude_credentials` field](CredentialCreationOptions#structfield.exclude_credentials) to null.
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn exclude_credentials_as_null(
@@ -435,7 +435,7 @@ mod root {
             }
 
             impl<T0, T1, T2, T3, T4, T5, T6> CredentialCreationOptionsBuilder<(T0, T1, T2, T3, T4, T5, T6)> {
-                /// Setter for the [`authenticatorSelection` field](CredentialCreationOptions#structfield.authenticator_selection).
+                /// Setter for the [`authenticator_selection` field](CredentialCreationOptions#structfield.authenticator_selection).
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn authenticator_selection<T7>(
@@ -451,7 +451,7 @@ mod root {
                     CredentialCreationOptionsBuilder((v0, v1, v2, v3, v4, v5, v6, value))
                 }
 
-                /// Sets the [`authenticatorSelection` field](CredentialCreationOptions#structfield.authenticator_selection) to null.
+                /// Sets the [`authenticator_selection` field](CredentialCreationOptions#structfield.authenticator_selection) to null.
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn authenticator_selection_as_null(
@@ -639,7 +639,7 @@ mod root {
                     self.0.access(2, "CredentialCreationOptions", "challenge")
                 }
 
-                /// Getter for the [`pubKeyCredParams` field](CredentialCreationOptions#structfield.pub_key_cred_params).
+                /// Getter for the [`pub_key_cred_params` field](CredentialCreationOptions#structfield.pub_key_cred_params).
                 #[inline]
                 pub fn pub_key_cred_params(
                     &self,
@@ -674,7 +674,7 @@ mod root {
                     )
                 }
 
-                /// Getter for the [`excludeCredentials` field](CredentialCreationOptions#structfield.exclude_credentials).
+                /// Getter for the [`exclude_credentials` field](CredentialCreationOptions#structfield.exclude_credentials).
                 #[inline]
                 pub fn exclude_credentials(
                     &self,
@@ -690,7 +690,7 @@ mod root {
                         .access(6, "CredentialCreationOptions", "exclude_credentials")
                 }
 
-                /// Getter for the [`authenticatorSelection` field](CredentialCreationOptions#structfield.authenticator_selection).
+                /// Getter for the [`authenticator_selection` field](CredentialCreationOptions#structfield.authenticator_selection).
                 #[inline]
                 pub fn authenticator_selection(
                     &self,
@@ -908,13 +908,13 @@ mod root {
             pub struct RegisterPublicKeyCredential {
                 /// The field `id` in the table `RegisterPublicKeyCredential`
                 pub id: ::core::option::Option<::planus::alloc::vec::Vec<u8>>,
-                /// The field `rawId` in the table `RegisterPublicKeyCredential`
+                /// The field `raw_id` in the table `RegisterPublicKeyCredential`
                 pub raw_id: ::core::option::Option<::planus::alloc::vec::Vec<u8>>,
                 /// The field `response` in the table `RegisterPublicKeyCredential`
                 pub response: ::core::option::Option<
                     ::planus::alloc::boxed::Box<self::AuthenticatorAttestationResponse>,
                 >,
-                /// The field `clientExtensionResults` in the table `RegisterPublicKeyCredential`
+                /// The field `client_extension_results` in the table `RegisterPublicKeyCredential`
                 pub client_extension_results: ::core::option::Option<
                     ::planus::alloc::boxed::Box<self::RegistrationExtensionsClientOutputs>,
                 >,
@@ -1068,7 +1068,7 @@ mod root {
             }
 
             impl<T0> RegisterPublicKeyCredentialBuilder<(T0,)> {
-                /// Setter for the [`rawId` field](RegisterPublicKeyCredential#structfield.raw_id).
+                /// Setter for the [`raw_id` field](RegisterPublicKeyCredential#structfield.raw_id).
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn raw_id<T1>(self, value: T1) -> RegisterPublicKeyCredentialBuilder<(T0, T1)>
@@ -1079,7 +1079,7 @@ mod root {
                     RegisterPublicKeyCredentialBuilder((v0, value))
                 }
 
-                /// Sets the [`rawId` field](RegisterPublicKeyCredential#structfield.raw_id) to null.
+                /// Sets the [`raw_id` field](RegisterPublicKeyCredential#structfield.raw_id) to null.
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn raw_id_as_null(self) -> RegisterPublicKeyCredentialBuilder<(T0, ())> {
@@ -1113,7 +1113,7 @@ mod root {
             }
 
             impl<T0, T1, T2> RegisterPublicKeyCredentialBuilder<(T0, T1, T2)> {
-                /// Setter for the [`clientExtensionResults` field](RegisterPublicKeyCredential#structfield.client_extension_results).
+                /// Setter for the [`client_extension_results` field](RegisterPublicKeyCredential#structfield.client_extension_results).
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn client_extension_results<T3>(
@@ -1129,7 +1129,7 @@ mod root {
                     RegisterPublicKeyCredentialBuilder((v0, v1, v2, value))
                 }
 
-                /// Sets the [`clientExtensionResults` field](RegisterPublicKeyCredential#structfield.client_extension_results) to null.
+                /// Sets the [`client_extension_results` field](RegisterPublicKeyCredential#structfield.client_extension_results) to null.
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn client_extension_results_as_null(
@@ -1234,7 +1234,7 @@ mod root {
                     self.0.access(0, "RegisterPublicKeyCredential", "id")
                 }
 
-                /// Getter for the [`rawId` field](RegisterPublicKeyCredential#structfield.raw_id).
+                /// Getter for the [`raw_id` field](RegisterPublicKeyCredential#structfield.raw_id).
                 #[inline]
                 pub fn raw_id(&self) -> ::planus::Result<::core::option::Option<&'a [u8]>> {
                     self.0.access(1, "RegisterPublicKeyCredential", "raw_id")
@@ -1250,7 +1250,7 @@ mod root {
                     self.0.access(2, "RegisterPublicKeyCredential", "response")
                 }
 
-                /// Getter for the [`clientExtensionResults` field](RegisterPublicKeyCredential#structfield.client_extension_results).
+                /// Getter for the [`client_extension_results` field](RegisterPublicKeyCredential#structfield.client_extension_results).
                 #[inline]
                 pub fn client_extension_results(
                     &self,
@@ -1410,9 +1410,9 @@ mod root {
                 ::serde::Deserialize,
             )]
             pub struct AuthenticatorAttestationResponse {
-                /// The field `clientData` in the table `AuthenticatorAttestationResponse`
+                /// The field `client_data` in the table `AuthenticatorAttestationResponse`
                 pub client_data: ::core::option::Option<::planus::alloc::vec::Vec<u8>>,
-                /// The field `attestationObject` in the table `AuthenticatorAttestationResponse`
+                /// The field `attestation_object` in the table `AuthenticatorAttestationResponse`
                 pub attestation_object: ::core::option::Option<::planus::alloc::vec::Vec<u8>>,
                 /// The field `transports` in the table `AuthenticatorAttestationResponse`
                 pub transports:
@@ -1540,7 +1540,7 @@ mod root {
             pub struct AuthenticatorAttestationResponseBuilder<State>(State);
 
             impl AuthenticatorAttestationResponseBuilder<()> {
-                /// Setter for the [`clientData` field](AuthenticatorAttestationResponse#structfield.client_data).
+                /// Setter for the [`client_data` field](AuthenticatorAttestationResponse#structfield.client_data).
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn client_data<T0>(
@@ -1553,7 +1553,7 @@ mod root {
                     AuthenticatorAttestationResponseBuilder((value,))
                 }
 
-                /// Sets the [`clientData` field](AuthenticatorAttestationResponse#structfield.client_data) to null.
+                /// Sets the [`client_data` field](AuthenticatorAttestationResponse#structfield.client_data) to null.
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn client_data_as_null(self) -> AuthenticatorAttestationResponseBuilder<((),)> {
@@ -1562,7 +1562,7 @@ mod root {
             }
 
             impl<T0> AuthenticatorAttestationResponseBuilder<(T0,)> {
-                /// Setter for the [`attestationObject` field](AuthenticatorAttestationResponse#structfield.attestation_object).
+                /// Setter for the [`attestation_object` field](AuthenticatorAttestationResponse#structfield.attestation_object).
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn attestation_object<T1>(
@@ -1576,7 +1576,7 @@ mod root {
                     AuthenticatorAttestationResponseBuilder((v0, value))
                 }
 
-                /// Sets the [`attestationObject` field](AuthenticatorAttestationResponse#structfield.attestation_object) to null.
+                /// Sets the [`attestation_object` field](AuthenticatorAttestationResponse#structfield.attestation_object) to null.
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn attestation_object_as_null(
@@ -1685,14 +1685,14 @@ mod root {
             pub struct AuthenticatorAttestationResponseRef<'a>(::planus::table_reader::Table<'a>);
 
             impl<'a> AuthenticatorAttestationResponseRef<'a> {
-                /// Getter for the [`clientData` field](AuthenticatorAttestationResponse#structfield.client_data).
+                /// Getter for the [`client_data` field](AuthenticatorAttestationResponse#structfield.client_data).
                 #[inline]
                 pub fn client_data(&self) -> ::planus::Result<::core::option::Option<&'a [u8]>> {
                     self.0
                         .access(0, "AuthenticatorAttestationResponse", "client_data")
                 }
 
-                /// Getter for the [`attestationObject` field](AuthenticatorAttestationResponse#structfield.attestation_object).
+                /// Getter for the [`attestation_object` field](AuthenticatorAttestationResponse#structfield.attestation_object).
                 #[inline]
                 pub fn attestation_object(
                     &self,
@@ -1858,15 +1858,15 @@ mod root {
                 ::serde::Deserialize,
             )]
             pub struct RegistrationExtensionsClientOutputs {
-                /// The field `appId` in the table `RegistrationExtensionsClientOutputs`
+                /// The field `app_id` in the table `RegistrationExtensionsClientOutputs`
                 pub app_id: bool,
-                /// The field `credProps` in the table `RegistrationExtensionsClientOutputs`
+                /// The field `cred_props` in the table `RegistrationExtensionsClientOutputs`
                 pub cred_props: bool,
-                /// The field `hmacSecret` in the table `RegistrationExtensionsClientOutputs`
+                /// The field `hmac_secret` in the table `RegistrationExtensionsClientOutputs`
                 pub hmac_secret: bool,
-                /// The field `credProtect` in the table `RegistrationExtensionsClientOutputs`
+                /// The field `cred_protect` in the table `RegistrationExtensionsClientOutputs`
                 pub cred_protect: self::CredentialProtectionPolicy,
-                /// The field `minPinLength` in the table `RegistrationExtensionsClientOutputs`
+                /// The field `min_pin_length` in the table `RegistrationExtensionsClientOutputs`
                 pub min_pin_length: u32,
             }
 
@@ -2016,7 +2016,7 @@ mod root {
             pub struct RegistrationExtensionsClientOutputsBuilder<State>(State);
 
             impl RegistrationExtensionsClientOutputsBuilder<()> {
-                /// Setter for the [`appId` field](RegistrationExtensionsClientOutputs#structfield.app_id).
+                /// Setter for the [`app_id` field](RegistrationExtensionsClientOutputs#structfield.app_id).
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn app_id<T0>(
@@ -2029,7 +2029,7 @@ mod root {
                     RegistrationExtensionsClientOutputsBuilder((value,))
                 }
 
-                /// Sets the [`appId` field](RegistrationExtensionsClientOutputs#structfield.app_id) to the default value.
+                /// Sets the [`app_id` field](RegistrationExtensionsClientOutputs#structfield.app_id) to the default value.
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn app_id_as_default(
@@ -2041,7 +2041,7 @@ mod root {
             }
 
             impl<T0> RegistrationExtensionsClientOutputsBuilder<(T0,)> {
-                /// Setter for the [`credProps` field](RegistrationExtensionsClientOutputs#structfield.cred_props).
+                /// Setter for the [`cred_props` field](RegistrationExtensionsClientOutputs#structfield.cred_props).
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn cred_props<T1>(
@@ -2055,7 +2055,7 @@ mod root {
                     RegistrationExtensionsClientOutputsBuilder((v0, value))
                 }
 
-                /// Sets the [`credProps` field](RegistrationExtensionsClientOutputs#structfield.cred_props) to the default value.
+                /// Sets the [`cred_props` field](RegistrationExtensionsClientOutputs#structfield.cred_props) to the default value.
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn cred_props_as_default(
@@ -2067,7 +2067,7 @@ mod root {
             }
 
             impl<T0, T1> RegistrationExtensionsClientOutputsBuilder<(T0, T1)> {
-                /// Setter for the [`hmacSecret` field](RegistrationExtensionsClientOutputs#structfield.hmac_secret).
+                /// Setter for the [`hmac_secret` field](RegistrationExtensionsClientOutputs#structfield.hmac_secret).
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn hmac_secret<T2>(
@@ -2081,7 +2081,7 @@ mod root {
                     RegistrationExtensionsClientOutputsBuilder((v0, v1, value))
                 }
 
-                /// Sets the [`hmacSecret` field](RegistrationExtensionsClientOutputs#structfield.hmac_secret) to the default value.
+                /// Sets the [`hmac_secret` field](RegistrationExtensionsClientOutputs#structfield.hmac_secret) to the default value.
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn hmac_secret_as_default(
@@ -2093,7 +2093,7 @@ mod root {
             }
 
             impl<T0, T1, T2> RegistrationExtensionsClientOutputsBuilder<(T0, T1, T2)> {
-                /// Setter for the [`credProtect` field](RegistrationExtensionsClientOutputs#structfield.cred_protect).
+                /// Setter for the [`cred_protect` field](RegistrationExtensionsClientOutputs#structfield.cred_protect).
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn cred_protect<T3>(
@@ -2110,7 +2110,7 @@ mod root {
                     RegistrationExtensionsClientOutputsBuilder((v0, v1, v2, value))
                 }
 
-                /// Sets the [`credProtect` field](RegistrationExtensionsClientOutputs#structfield.cred_protect) to the default value.
+                /// Sets the [`cred_protect` field](RegistrationExtensionsClientOutputs#structfield.cred_protect) to the default value.
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn cred_protect_as_default(
@@ -2122,7 +2122,7 @@ mod root {
             }
 
             impl<T0, T1, T2, T3> RegistrationExtensionsClientOutputsBuilder<(T0, T1, T2, T3)> {
-                /// Setter for the [`minPinLength` field](RegistrationExtensionsClientOutputs#structfield.min_pin_length).
+                /// Setter for the [`min_pin_length` field](RegistrationExtensionsClientOutputs#structfield.min_pin_length).
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn min_pin_length<T4>(
@@ -2136,7 +2136,7 @@ mod root {
                     RegistrationExtensionsClientOutputsBuilder((v0, v1, v2, v3, value))
                 }
 
-                /// Sets the [`minPinLength` field](RegistrationExtensionsClientOutputs#structfield.min_pin_length) to the default value.
+                /// Sets the [`min_pin_length` field](RegistrationExtensionsClientOutputs#structfield.min_pin_length) to the default value.
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn min_pin_length_as_default(
@@ -2244,7 +2244,7 @@ mod root {
             );
 
             impl<'a> RegistrationExtensionsClientOutputsRef<'a> {
-                /// Getter for the [`appId` field](RegistrationExtensionsClientOutputs#structfield.app_id).
+                /// Getter for the [`app_id` field](RegistrationExtensionsClientOutputs#structfield.app_id).
                 #[inline]
                 pub fn app_id(&self) -> ::planus::Result<bool> {
                     ::core::result::Result::Ok(
@@ -2254,7 +2254,7 @@ mod root {
                     )
                 }
 
-                /// Getter for the [`credProps` field](RegistrationExtensionsClientOutputs#structfield.cred_props).
+                /// Getter for the [`cred_props` field](RegistrationExtensionsClientOutputs#structfield.cred_props).
                 #[inline]
                 pub fn cred_props(&self) -> ::planus::Result<bool> {
                     ::core::result::Result::Ok(
@@ -2264,7 +2264,7 @@ mod root {
                     )
                 }
 
-                /// Getter for the [`hmacSecret` field](RegistrationExtensionsClientOutputs#structfield.hmac_secret).
+                /// Getter for the [`hmac_secret` field](RegistrationExtensionsClientOutputs#structfield.hmac_secret).
                 #[inline]
                 pub fn hmac_secret(&self) -> ::planus::Result<bool> {
                     ::core::result::Result::Ok(
@@ -2274,7 +2274,7 @@ mod root {
                     )
                 }
 
-                /// Getter for the [`credProtect` field](RegistrationExtensionsClientOutputs#structfield.cred_protect).
+                /// Getter for the [`cred_protect` field](RegistrationExtensionsClientOutputs#structfield.cred_protect).
                 #[inline]
                 pub fn cred_protect(&self) -> ::planus::Result<self::CredentialProtectionPolicy> {
                     ::core::result::Result::Ok(
@@ -2284,7 +2284,7 @@ mod root {
                     )
                 }
 
-                /// Getter for the [`minPinLength` field](RegistrationExtensionsClientOutputs#structfield.min_pin_length).
+                /// Getter for the [`min_pin_length` field](RegistrationExtensionsClientOutputs#structfield.min_pin_length).
                 #[inline]
                 pub fn min_pin_length(&self) -> ::planus::Result<u32> {
                     ::core::result::Result::Ok(
@@ -2577,7 +2577,7 @@ mod root {
             pub struct RequestRegistrationExtensionsBuilder<State>(State);
 
             impl RequestRegistrationExtensionsBuilder<()> {
-                /// Setter for the [`credProtect` field](RequestRegistrationExtensions#structfield.cred_protect).
+                /// Setter for the [`cred_protect` field](RequestRegistrationExtensions#structfield.cred_protect).
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn cred_protect<T0>(
@@ -2590,7 +2590,7 @@ mod root {
                     RequestRegistrationExtensionsBuilder((value,))
                 }
 
-                /// Sets the [`credProtect` field](RequestRegistrationExtensions#structfield.cred_protect) to null.
+                /// Sets the [`cred_protect` field](RequestRegistrationExtensions#structfield.cred_protect) to null.
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn cred_protect_as_null(self) -> RequestRegistrationExtensionsBuilder<((),)> {
@@ -2622,7 +2622,7 @@ mod root {
             }
 
             impl<T0, T1> RequestRegistrationExtensionsBuilder<(T0, T1)> {
-                /// Setter for the [`credProps` field](RequestRegistrationExtensions#structfield.cred_props).
+                /// Setter for the [`cred_props` field](RequestRegistrationExtensions#structfield.cred_props).
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn cred_props<T2>(
@@ -2636,7 +2636,7 @@ mod root {
                     RequestRegistrationExtensionsBuilder((v0, v1, value))
                 }
 
-                /// Sets the [`credProps` field](RequestRegistrationExtensions#structfield.cred_props) to the default value.
+                /// Sets the [`cred_props` field](RequestRegistrationExtensions#structfield.cred_props) to the default value.
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn cred_props_as_default(
@@ -2648,7 +2648,7 @@ mod root {
             }
 
             impl<T0, T1, T2> RequestRegistrationExtensionsBuilder<(T0, T1, T2)> {
-                /// Setter for the [`minPinLength` field](RequestRegistrationExtensions#structfield.min_pin_length).
+                /// Setter for the [`min_pin_length` field](RequestRegistrationExtensions#structfield.min_pin_length).
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn min_pin_length<T3>(
@@ -2662,7 +2662,7 @@ mod root {
                     RequestRegistrationExtensionsBuilder((v0, v1, v2, value))
                 }
 
-                /// Sets the [`minPinLength` field](RequestRegistrationExtensions#structfield.min_pin_length) to the default value.
+                /// Sets the [`min_pin_length` field](RequestRegistrationExtensions#structfield.min_pin_length) to the default value.
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn min_pin_length_as_default(
@@ -2674,7 +2674,7 @@ mod root {
             }
 
             impl<T0, T1, T2, T3> RequestRegistrationExtensionsBuilder<(T0, T1, T2, T3)> {
-                /// Setter for the [`hmacCreateSecret` field](RequestRegistrationExtensions#structfield.hmac_create_secret).
+                /// Setter for the [`hmac_create_secret` field](RequestRegistrationExtensions#structfield.hmac_create_secret).
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn hmac_create_secret<T4>(
@@ -2688,7 +2688,7 @@ mod root {
                     RequestRegistrationExtensionsBuilder((v0, v1, v2, v3, value))
                 }
 
-                /// Sets the [`hmacCreateSecret` field](RequestRegistrationExtensions#structfield.hmac_create_secret) to the default value.
+                /// Sets the [`hmac_create_secret` field](RequestRegistrationExtensions#structfield.hmac_create_secret) to the default value.
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn hmac_create_secret_as_default(
@@ -2779,7 +2779,7 @@ mod root {
             pub struct RequestRegistrationExtensionsRef<'a>(::planus::table_reader::Table<'a>);
 
             impl<'a> RequestRegistrationExtensionsRef<'a> {
-                /// Getter for the [`credProtect` field](RequestRegistrationExtensions#structfield.cred_protect).
+                /// Getter for the [`cred_protect` field](RequestRegistrationExtensions#structfield.cred_protect).
                 #[inline]
                 pub fn cred_protect(
                     &self,
@@ -2799,7 +2799,7 @@ mod root {
                     )
                 }
 
-                /// Getter for the [`credProps` field](RequestRegistrationExtensions#structfield.cred_props).
+                /// Getter for the [`cred_props` field](RequestRegistrationExtensions#structfield.cred_props).
                 #[inline]
                 pub fn cred_props(&self) -> ::planus::Result<bool> {
                     ::core::result::Result::Ok(
@@ -2809,7 +2809,7 @@ mod root {
                     )
                 }
 
-                /// Getter for the [`minPinLength` field](RequestRegistrationExtensions#structfield.min_pin_length).
+                /// Getter for the [`min_pin_length` field](RequestRegistrationExtensions#structfield.min_pin_length).
                 #[inline]
                 pub fn min_pin_length(&self) -> ::planus::Result<bool> {
                     ::core::result::Result::Ok(
@@ -2819,7 +2819,7 @@ mod root {
                     )
                 }
 
-                /// Getter for the [`hmacCreateSecret` field](RequestRegistrationExtensions#structfield.hmac_create_secret).
+                /// Getter for the [`hmac_create_secret` field](RequestRegistrationExtensions#structfield.hmac_create_secret).
                 #[inline]
                 pub fn hmac_create_secret(&self) -> ::planus::Result<bool> {
                     ::core::result::Result::Ok(
@@ -3364,16 +3364,16 @@ mod root {
                 ///  some form of user verification is optional with or without credentialID
                 ///  list. This is the default state of the credential if the extension is
                 ///  not specified.
-                UserVerificationOptional = 1,
+                UserVerificationOptional = 0,
 
                 ///  In this configuration, credential is discovered only when its
                 ///  credentialID is provided by the platform or when some form of user
                 ///  verification is performed.
-                UserVerificationOptionalWithCredentialIdList = 2,
+                UserVerificationOptionalWithCredentialIdList = 1,
 
                 ///  This reflects that discovery and usage of the credential MUST be
                 ///  preceded by some form of user verification.
-                UserVerificationRequired = 3,
+                UserVerificationRequired = 2,
             }
 
             impl CredentialProtectionPolicy {
@@ -3394,9 +3394,9 @@ mod root {
                 {
                     #[allow(clippy::match_single_binding)]
                     match value {
-                        1 => ::core::result::Result::Ok(CredentialProtectionPolicy::UserVerificationOptional),
-                        2 => ::core::result::Result::Ok(CredentialProtectionPolicy::UserVerificationOptionalWithCredentialIdList),
-                        3 => ::core::result::Result::Ok(CredentialProtectionPolicy::UserVerificationRequired),
+                        0 => ::core::result::Result::Ok(CredentialProtectionPolicy::UserVerificationOptional),
+                        1 => ::core::result::Result::Ok(CredentialProtectionPolicy::UserVerificationOptionalWithCredentialIdList),
+                        2 => ::core::result::Result::Ok(CredentialProtectionPolicy::UserVerificationRequired),
 
                         _ => ::core::result::Result::Err(::planus::errors::UnknownEnumTagKind { tag: value as i128 }),
                     }
@@ -4108,7 +4108,7 @@ mod root {
             pub struct AuthenticatorSelectionCriteriaBuilder<State>(State);
 
             impl AuthenticatorSelectionCriteriaBuilder<()> {
-                /// Setter for the [`authenticatorAttachment` field](AuthenticatorSelectionCriteria#structfield.authenticator_attachment).
+                /// Setter for the [`authenticator_attachment` field](AuthenticatorSelectionCriteria#structfield.authenticator_attachment).
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn authenticator_attachment<T0>(
@@ -4124,7 +4124,7 @@ mod root {
                     AuthenticatorSelectionCriteriaBuilder((value,))
                 }
 
-                /// Sets the [`authenticatorAttachment` field](AuthenticatorSelectionCriteria#structfield.authenticator_attachment) to the default value.
+                /// Sets the [`authenticator_attachment` field](AuthenticatorSelectionCriteria#structfield.authenticator_attachment) to the default value.
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn authenticator_attachment_as_default(
@@ -4136,7 +4136,7 @@ mod root {
             }
 
             impl<T0> AuthenticatorSelectionCriteriaBuilder<(T0,)> {
-                /// Setter for the [`requireResidentKey` field](AuthenticatorSelectionCriteria#structfield.require_resident_key).
+                /// Setter for the [`require_resident_key` field](AuthenticatorSelectionCriteria#structfield.require_resident_key).
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn require_resident_key<T1>(
@@ -4150,7 +4150,7 @@ mod root {
                     AuthenticatorSelectionCriteriaBuilder((v0, value))
                 }
 
-                /// Sets the [`requireResidentKey` field](AuthenticatorSelectionCriteria#structfield.require_resident_key) to the default value.
+                /// Sets the [`require_resident_key` field](AuthenticatorSelectionCriteria#structfield.require_resident_key) to the default value.
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn require_resident_key_as_default(
@@ -4162,7 +4162,7 @@ mod root {
             }
 
             impl<T0, T1> AuthenticatorSelectionCriteriaBuilder<(T0, T1)> {
-                /// Setter for the [`userVerification` field](AuthenticatorSelectionCriteria#structfield.user_verification).
+                /// Setter for the [`user_verification` field](AuthenticatorSelectionCriteria#structfield.user_verification).
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn user_verification<T2>(
@@ -4179,7 +4179,7 @@ mod root {
                     AuthenticatorSelectionCriteriaBuilder((v0, v1, value))
                 }
 
-                /// Sets the [`userVerification` field](AuthenticatorSelectionCriteria#structfield.user_verification) to the default value.
+                /// Sets the [`user_verification` field](AuthenticatorSelectionCriteria#structfield.user_verification) to the default value.
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn user_verification_as_default(
@@ -4282,7 +4282,7 @@ mod root {
             pub struct AuthenticatorSelectionCriteriaRef<'a>(::planus::table_reader::Table<'a>);
 
             impl<'a> AuthenticatorSelectionCriteriaRef<'a> {
-                /// Getter for the [`authenticatorAttachment` field](AuthenticatorSelectionCriteria#structfield.authenticator_attachment).
+                /// Getter for the [`authenticator_attachment` field](AuthenticatorSelectionCriteria#structfield.authenticator_attachment).
                 #[inline]
                 pub fn authenticator_attachment(
                     &self,
@@ -4298,7 +4298,7 @@ mod root {
                     )
                 }
 
-                /// Getter for the [`requireResidentKey` field](AuthenticatorSelectionCriteria#structfield.require_resident_key).
+                /// Getter for the [`require_resident_key` field](AuthenticatorSelectionCriteria#structfield.require_resident_key).
                 #[inline]
                 pub fn require_resident_key(&self) -> ::planus::Result<bool> {
                     ::core::result::Result::Ok(
@@ -4308,7 +4308,7 @@ mod root {
                     )
                 }
 
-                /// Getter for the [`userVerification` field](AuthenticatorSelectionCriteria#structfield.user_verification).
+                /// Getter for the [`user_verification` field](AuthenticatorSelectionCriteria#structfield.user_verification).
                 #[inline]
                 pub fn user_verification(&self) -> ::planus::Result<self::UserVerificationPolicy> {
                     ::core::result::Result::Ok(
@@ -5863,7 +5863,7 @@ mod root {
                 pub id: ::core::option::Option<::planus::alloc::vec::Vec<u8>>,
                 /// The field `name` in the table `User`
                 pub name: ::core::option::Option<::planus::alloc::string::String>,
-                /// The field `displayName` in the table `User`
+                /// The field `display_name` in the table `User`
                 pub display_name: ::core::option::Option<::planus::alloc::string::String>,
             }
 
@@ -6004,7 +6004,7 @@ mod root {
             }
 
             impl<T0, T1> UserBuilder<(T0, T1)> {
-                /// Setter for the [`displayName` field](User#structfield.display_name).
+                /// Setter for the [`display_name` field](User#structfield.display_name).
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn display_name<T2>(self, value: T2) -> UserBuilder<(T0, T1, T2)>
@@ -6015,7 +6015,7 @@ mod root {
                     UserBuilder((v0, v1, value))
                 }
 
-                /// Sets the [`displayName` field](User#structfield.display_name) to null.
+                /// Sets the [`display_name` field](User#structfield.display_name) to null.
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn display_name_as_null(self) -> UserBuilder<(T0, T1, ())> {
@@ -6098,7 +6098,7 @@ mod root {
                     self.0.access(1, "User", "name")
                 }
 
-                /// Getter for the [`displayName` field](User#structfield.display_name).
+                /// Getter for the [`display_name` field](User#structfield.display_name).
                 #[inline]
                 pub fn display_name(
                     &self,

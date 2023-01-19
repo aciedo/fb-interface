@@ -8,59 +8,59 @@ table CredentialCreationOptions {
     /// The one-time challenge for the credential to sign
     challenge: [ubyte];
     /// The set of cryptographic types allowed by this server.
-    pubKeyCredParams: [PubKeyCredParams];
+    pub_key_cred_params: [PubKeyCredParams];
      /// The timeout for the authenticator to stop accepting the operation
     timeout: uint32 = 60000;
     /// The requested attestation level from the device.
     attestation: AttestationConveyancePreference;
     /// The list of credentials that are excluded from this operation.
-    excludeCredentials: [PublicKeyCredentialDescriptor];
+    exclude_credentials: [PublicKeyCredentialDescriptor];
     /// The list of authenticators that are allowed for this operation.
-    authenticatorSelection: AuthenticatorSelectionCriteria;
+    authenticator_selection: AuthenticatorSelectionCriteria;
     /// The extensions that are allowed for this operation.
     extensions: RequestRegistrationExtensions;
 }
 
 table RegisterPublicKeyCredential  {
     id: [ubyte];
-    rawId: [ubyte];
+    raw_id: [ubyte];
     response: AuthenticatorAttestationResponse;
-    clientExtensionResults: RegistrationExtensionsClientOutputs;
+    client_extension_results: RegistrationExtensionsClientOutputs;
 }
 
 table AuthenticatorAttestationResponse {
-    clientData: [ubyte];
-    attestationObject: [ubyte];
+    client_data: [ubyte];
+    attestation_object: [ubyte];
     transports: [AuthenticatorTransport];
 }
 
 table RegistrationExtensionsClientOutputs {
-    appId: bool;
-    credProps: bool;
-    hmacSecret: bool;
-    credProtect: CredentialProtectionPolicy = 1;
-    minPinLength: uint32;
+    app_id: bool;
+    cred_props: bool;
+    hmac_secret: bool;
+    cred_protect: CredentialProtectionPolicy;
+    min_pin_length: uint32;
 }
 
 table RequestRegistrationExtensions {
     /// The `credProtect` extension options
-    credProtect: CredProtect;
+    cred_protect: CredProtect;
     /// ⚠️  - Browsers do not support this!
     uvm: bool;
     /// ⚠️  - This extension result is always unsigned, and only indicates if the
     /// browser *requests* a residentKey to be created. It has no bearing on the
     /// true rk state of the credential.
-    credProps: bool;
+    cred_props: bool;
     /// CTAP2.1 Minumum pin length
-    minPinLength: bool;
+    min_pin_length: bool;
     /// ⚠️  - Browsers support the *creation* of the secret, but not the retrieval of it.
     /// CTAP2.1 create hmac secret
-    hmacCreateSecret: bool;
+    hmac_create_secret: bool;
 }
 
 table CredProtect {
      /// The credential policy to enact
-    credential_protection_policy: CredentialProtectionPolicy = 1;
+    credential_protection_policy: CredentialProtectionPolicy;
     /// Whether it is better for the authenticator to fail to create a
     /// credential rather than ignore the protection policy
     enforce_credential_protection_policy: bool = false;
@@ -71,14 +71,14 @@ enum CredentialProtectionPolicy:byte {
     /// some form of user verification is optional with or without credentialID
     /// list. This is the default state of the credential if the extension is
     /// not specified.
-    UserVerificationOptional = 1,
+    UserVerificationOptional = 0,
     /// In this configuration, credential is discovered only when its
     /// credentialID is provided by the platform or when some form of user
     /// verification is performed.
-    UserVerificationOptionalWithCredentialIDList = 2,
+    UserVerificationOptionalWithCredentialIDList = 1,
     /// This reflects that discovery and usage of the credential MUST be
     /// preceded by some form of user verification.
-    UserVerificationRequired = 3,
+    UserVerificationRequired = 2,
 }
 
 table PublicKeyCredentialDescriptor {
@@ -92,11 +92,11 @@ table PublicKeyCredentialDescriptor {
 
 table AuthenticatorSelectionCriteria {
     /// The authenticator attachment mode.
-    authenticatorAttachment: AuthenticatorAttachment;
+    authenticator_attachment: AuthenticatorAttachment;
     /// Whether or not the authenticator must be resident.
-    requireResidentKey: bool;
+    require_resident_key: bool;
     /// The list of authenticator transports that are allowed.
-    userVerification: UserVerificationPolicy;
+    user_verification: UserVerificationPolicy;
 }
 
 enum UserVerificationPolicy:byte {
@@ -160,5 +160,5 @@ table RelyingParty {
 table User {
     id: [ubyte];
     name: string;
-    displayName: string;
+    display_name: string;
 }
