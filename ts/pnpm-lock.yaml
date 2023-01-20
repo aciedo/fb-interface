@@ -1,0 +1,13 @@
+lockfileVersion: 5.4
+
+specifiers:
+  flatbuffers: ^23.1.4
+
+dependencies:
+  flatbuffers: 23.1.4
+
+packages:
+
+  /flatbuffers/23.1.4:
+    resolution: {integrity: sha512-iHDB7ESwi2lLEIr2KLrK+mwcWDPZb/ZB1hjspq8dIi/4S5WVnS+WOgJU9Ip8nMRmzXfDSeQccI9D1vcoxXSYEQ==}
+    dev: false

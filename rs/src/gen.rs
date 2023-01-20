@@ -18,10 +18,199 @@ mod root {
         /// Generated from these locations:
         /// * File `auth/webauthn.fbs`
         pub mod web_authn {
+            /// The enum `AttestationConveyancePreference` in the namespace `Auth.WebAuthn`
+            ///
+            /// Generated from these locations:
+            /// * Enum `AttestationConveyancePreference` in the file `auth/webauthn.fbs:3`
+            #[derive(
+                Copy,
+                Clone,
+                Debug,
+                PartialEq,
+                Eq,
+                PartialOrd,
+                Ord,
+                Hash,
+                ::serde::Serialize,
+                ::serde::Deserialize,
+            )]
+            #[repr(i8)]
+            pub enum AttestationConveyancePreference {
+                ///  Do not request attestation.
+                ///  <https://www.w3.org/TR/webauthn/#dom-attestationconveyancepreference-none>
+                None = 0,
+
+                ///  Request attestation in a semi-anonymized form.
+                ///  <https://www.w3.org/TR/webauthn/#dom-attestationconveyancepreference-indirect>
+                Indirect = 1,
+
+                ///  Request attestation in a direct form.
+                ///  <https://www.w3.org/TR/webauthn/#dom-attestationconveyancepreference-direct>
+                Direct = 2,
+            }
+
+            impl AttestationConveyancePreference {
+                /// Array containing all valid variants of AttestationConveyancePreference
+                pub const ENUM_VALUES: [Self; 3] = [Self::None, Self::Indirect, Self::Direct];
+            }
+
+            impl ::core::convert::TryFrom<i8> for AttestationConveyancePreference {
+                type Error = ::planus::errors::UnknownEnumTagKind;
+                #[inline]
+                fn try_from(
+                    value: i8,
+                ) -> ::core::result::Result<Self, ::planus::errors::UnknownEnumTagKind>
+                {
+                    #[allow(clippy::match_single_binding)]
+                    match value {
+                        0 => ::core::result::Result::Ok(AttestationConveyancePreference::None),
+                        1 => ::core::result::Result::Ok(AttestationConveyancePreference::Indirect),
+                        2 => ::core::result::Result::Ok(AttestationConveyancePreference::Direct),
+
+                        _ => ::core::result::Result::Err(::planus::errors::UnknownEnumTagKind {
+                            tag: value as i128,
+                        }),
+                    }
+                }
+            }
+
+            impl ::core::convert::From<AttestationConveyancePreference> for i8 {
+                #[inline]
+                fn from(value: AttestationConveyancePreference) -> Self {
+                    value as i8
+                }
+            }
+
+            impl ::planus::Primitive for AttestationConveyancePreference {
+                const ALIGNMENT: usize = 1;
+                const SIZE: usize = 1;
+            }
+
+            impl ::planus::WriteAsPrimitive<AttestationConveyancePreference>
+                for AttestationConveyancePreference
+            {
+                #[inline]
+                fn write<const N: usize>(
+                    &self,
+                    cursor: ::planus::Cursor<'_, N>,
+                    buffer_position: u32,
+                ) {
+                    (*self as i8).write(cursor, buffer_position);
+                }
+            }
+
+            impl ::planus::WriteAs<AttestationConveyancePreference> for AttestationConveyancePreference {
+                type Prepared = Self;
+
+                #[inline]
+                fn prepare(
+                    &self,
+                    _builder: &mut ::planus::Builder,
+                ) -> AttestationConveyancePreference {
+                    *self
+                }
+            }
+
+            impl
+                ::planus::WriteAsDefault<
+                    AttestationConveyancePreference,
+                    AttestationConveyancePreference,
+                > for AttestationConveyancePreference
+            {
+                type Prepared = Self;
+
+                #[inline]
+                fn prepare(
+                    &self,
+                    _builder: &mut ::planus::Builder,
+                    default: &AttestationConveyancePreference,
+                ) -> ::core::option::Option<AttestationConveyancePreference> {
+                    if self == default {
+                        ::core::option::Option::None
+                    } else {
+                        ::core::option::Option::Some(*self)
+                    }
+                }
+            }
+
+            impl ::planus::WriteAsOptional<AttestationConveyancePreference>
+                for AttestationConveyancePreference
+            {
+                type Prepared = Self;
+
+                #[inline]
+                fn prepare(
+                    &self,
+                    _builder: &mut ::planus::Builder,
+                ) -> ::core::option::Option<AttestationConveyancePreference> {
+                    ::core::option::Option::Some(*self)
+                }
+            }
+
+            impl<'buf> ::planus::TableRead<'buf> for AttestationConveyancePreference {
+                #[inline]
+                fn from_buffer(
+                    buffer: ::planus::SliceWithStartOffset<'buf>,
+                    offset: usize,
+                ) -> ::core::result::Result<Self, ::planus::errors::ErrorKind> {
+                    let n: i8 = ::planus::TableRead::from_buffer(buffer, offset)?;
+                    ::core::result::Result::Ok(::core::convert::TryInto::try_into(n)?)
+                }
+            }
+
+            impl<'buf> ::planus::VectorReadInner<'buf> for AttestationConveyancePreference {
+                type Error = ::planus::errors::UnknownEnumTag;
+                const STRIDE: usize = 1;
+                #[inline]
+                unsafe fn from_buffer(
+                    buffer: ::planus::SliceWithStartOffset<'buf>,
+                    offset: usize,
+                ) -> ::core::result::Result<Self, ::planus::errors::UnknownEnumTag>
+                {
+                    let value = *buffer.buffer.get_unchecked(offset) as i8;
+                    let value: ::core::result::Result<Self, _> =
+                        ::core::convert::TryInto::try_into(value);
+                    value.map_err(|error_kind| {
+                        error_kind.with_error_location(
+                            "AttestationConveyancePreference",
+                            "VectorRead::from_buffer",
+                            buffer.offset_from_start,
+                        )
+                    })
+                }
+            }
+
+            impl ::planus::VectorWrite<AttestationConveyancePreference> for AttestationConveyancePreference {
+                const STRIDE: usize = 1;
+
+                type Value = Self;
+
+                #[inline]
+                fn prepare(&self, _builder: &mut ::planus::Builder) -> Self {
+                    *self
+                }
+
+                #[inline]
+                unsafe fn write_values(
+                    values: &[Self],
+                    bytes: *mut ::core::mem::MaybeUninit<u8>,
+                    buffer_position: u32,
+                ) {
+                    let bytes = bytes as *mut [::core::mem::MaybeUninit<u8>; 1];
+                    for (i, v) in ::core::iter::Iterator::enumerate(values.iter()) {
+                        ::planus::WriteAsPrimitive::write(
+                            v,
+                            ::planus::Cursor::new(&mut *bytes.add(i)),
+                            buffer_position - i as u32,
+                        );
+                    }
+                }
+            }
+
             /// The table `CredentialCreationOptions` in the namespace `Auth.WebAuthn`
             ///
             /// Generated from these locations:
-            /// * Table `CredentialCreationOptions` in the file `auth/webauthn.fbs:3`
+            /// * Table `CredentialCreationOptions` in the file `auth/webauthn.fbs:17`
             #[derive(
                 Clone,
                 Debug,
@@ -890,514 +1079,206 @@ mod root {
                 }
             }
 
-            /// The table `RegisterPublicKeyCredential` in the namespace `Auth.WebAuthn`
+            /// The enum `AuthenticatorTransport` in the namespace `Auth.WebAuthn`
             ///
             /// Generated from these locations:
-            /// * Table `RegisterPublicKeyCredential` in the file `auth/webauthn.fbs:24`
+            /// * Enum `AuthenticatorTransport` in the file `auth/webauthn.fbs:38`
             #[derive(
+                Copy,
                 Clone,
                 Debug,
                 PartialEq,
-                PartialOrd,
                 Eq,
+                PartialOrd,
                 Ord,
                 Hash,
                 ::serde::Serialize,
                 ::serde::Deserialize,
             )]
-            pub struct RegisterPublicKeyCredential {
-                /// The field `id` in the table `RegisterPublicKeyCredential`
-                pub id: ::core::option::Option<::planus::alloc::vec::Vec<u8>>,
-                /// The field `raw_id` in the table `RegisterPublicKeyCredential`
-                pub raw_id: ::core::option::Option<::planus::alloc::vec::Vec<u8>>,
-                /// The field `response` in the table `RegisterPublicKeyCredential`
-                pub response: ::core::option::Option<
-                    ::planus::alloc::boxed::Box<self::AuthenticatorAttestationResponse>,
-                >,
-                /// The field `client_extension_results` in the table `RegisterPublicKeyCredential`
-                pub client_extension_results: ::core::option::Option<
-                    ::planus::alloc::boxed::Box<self::RegistrationExtensionsClientOutputs>,
-                >,
+            #[repr(i8)]
+            pub enum AuthenticatorTransport {
+                ///  <https://www.w3.org/TR/webauthn/#dom-authenticatortransport-usb>
+                Usb = 0,
+
+                ///  <https://www.w3.org/TR/webauthn/#dom-authenticatortransport-nfc>
+                Nfc = 1,
+
+                ///  <https://www.w3.org/TR/webauthn/#dom-authenticatortransport-ble>
+                Ble = 2,
+
+                ///  <https://www.w3.org/TR/webauthn/#dom-authenticatortransport-internal>
+                Internal = 3,
+
+                ///  Hybrid transport, formerly caBLE. Part of the level 3 draft specification.
+                ///  <https://w3c.github.io/webauthn/#dom-authenticatortransport-hybrid>
+                Hybrid = 4,
+
+                ///  Test transport; used for Windows 10.
+                Test = 5,
             }
 
-            #[allow(clippy::derivable_impls)]
-            impl ::core::default::Default for RegisterPublicKeyCredential {
-                fn default() -> Self {
-                    Self {
-                        id: ::core::default::Default::default(),
-                        raw_id: ::core::default::Default::default(),
-                        response: ::core::default::Default::default(),
-                        client_extension_results: ::core::default::Default::default(),
-                    }
-                }
+            impl AuthenticatorTransport {
+                /// Array containing all valid variants of AuthenticatorTransport
+                pub const ENUM_VALUES: [Self; 6] = [
+                    Self::Usb,
+                    Self::Nfc,
+                    Self::Ble,
+                    Self::Internal,
+                    Self::Hybrid,
+                    Self::Test,
+                ];
             }
 
-            impl RegisterPublicKeyCredential {
-                /// Creates a [RegisterPublicKeyCredentialBuilder] for serializing an instance of this table.
+            impl ::core::convert::TryFrom<i8> for AuthenticatorTransport {
+                type Error = ::planus::errors::UnknownEnumTagKind;
                 #[inline]
-                pub fn builder() -> RegisterPublicKeyCredentialBuilder<()> {
-                    RegisterPublicKeyCredentialBuilder(())
-                }
+                fn try_from(
+                    value: i8,
+                ) -> ::core::result::Result<Self, ::planus::errors::UnknownEnumTagKind>
+                {
+                    #[allow(clippy::match_single_binding)]
+                    match value {
+                        0 => ::core::result::Result::Ok(AuthenticatorTransport::Usb),
+                        1 => ::core::result::Result::Ok(AuthenticatorTransport::Nfc),
+                        2 => ::core::result::Result::Ok(AuthenticatorTransport::Ble),
+                        3 => ::core::result::Result::Ok(AuthenticatorTransport::Internal),
+                        4 => ::core::result::Result::Ok(AuthenticatorTransport::Hybrid),
+                        5 => ::core::result::Result::Ok(AuthenticatorTransport::Test),
 
-                #[allow(clippy::too_many_arguments)]
-                pub fn create(
-                    builder: &mut ::planus::Builder,
-                    field_id: impl ::planus::WriteAsOptional<::planus::Offset<[u8]>>,
-                    field_raw_id: impl ::planus::WriteAsOptional<::planus::Offset<[u8]>>,
-                    field_response: impl ::planus::WriteAsOptional<
-                        ::planus::Offset<self::AuthenticatorAttestationResponse>,
-                    >,
-                    field_client_extension_results: impl ::planus::WriteAsOptional<
-                        ::planus::Offset<self::RegistrationExtensionsClientOutputs>,
-                    >,
-                ) -> ::planus::Offset<Self> {
-                    let prepared_id = field_id.prepare(builder);
-                    let prepared_raw_id = field_raw_id.prepare(builder);
-                    let prepared_response = field_response.prepare(builder);
-                    let prepared_client_extension_results =
-                        field_client_extension_results.prepare(builder);
-
-                    let mut table_writer: ::planus::table_writer::TableWriter<12> =
-                        ::core::default::Default::default();
-                    if prepared_id.is_some() {
-                        table_writer.write_entry::<::planus::Offset<[u8]>>(0);
+                        _ => ::core::result::Result::Err(::planus::errors::UnknownEnumTagKind {
+                            tag: value as i128,
+                        }),
                     }
-                    if prepared_raw_id.is_some() {
-                        table_writer.write_entry::<::planus::Offset<[u8]>>(1);
-                    }
-                    if prepared_response.is_some() {
-                        table_writer.write_entry::<::planus::Offset<self::AuthenticatorAttestationResponse>>(2);
-                    }
-                    if prepared_client_extension_results.is_some() {
-                        table_writer.write_entry::<::planus::Offset<self::RegistrationExtensionsClientOutputs>>(3);
-                    }
-
-                    unsafe {
-                        table_writer.finish(builder, |object_writer| {
-                            if let ::core::option::Option::Some(prepared_id) = prepared_id {
-                                object_writer.write::<_, _, 4>(&prepared_id);
-                            }
-                            if let ::core::option::Option::Some(prepared_raw_id) = prepared_raw_id {
-                                object_writer.write::<_, _, 4>(&prepared_raw_id);
-                            }
-                            if let ::core::option::Option::Some(prepared_response) =
-                                prepared_response
-                            {
-                                object_writer.write::<_, _, 4>(&prepared_response);
-                            }
-                            if let ::core::option::Option::Some(prepared_client_extension_results) =
-                                prepared_client_extension_results
-                            {
-                                object_writer.write::<_, _, 4>(&prepared_client_extension_results);
-                            }
-                        });
-                    }
-                    builder.current_offset()
                 }
             }
 
-            impl ::planus::WriteAs<::planus::Offset<RegisterPublicKeyCredential>>
-                for RegisterPublicKeyCredential
+            impl ::core::convert::From<AuthenticatorTransport> for i8 {
+                #[inline]
+                fn from(value: AuthenticatorTransport) -> Self {
+                    value as i8
+                }
+            }
+
+            impl ::planus::Primitive for AuthenticatorTransport {
+                const ALIGNMENT: usize = 1;
+                const SIZE: usize = 1;
+            }
+
+            impl ::planus::WriteAsPrimitive<AuthenticatorTransport> for AuthenticatorTransport {
+                #[inline]
+                fn write<const N: usize>(
+                    &self,
+                    cursor: ::planus::Cursor<'_, N>,
+                    buffer_position: u32,
+                ) {
+                    (*self as i8).write(cursor, buffer_position);
+                }
+            }
+
+            impl ::planus::WriteAs<AuthenticatorTransport> for AuthenticatorTransport {
+                type Prepared = Self;
+
+                #[inline]
+                fn prepare(&self, _builder: &mut ::planus::Builder) -> AuthenticatorTransport {
+                    *self
+                }
+            }
+
+            impl ::planus::WriteAsDefault<AuthenticatorTransport, AuthenticatorTransport>
+                for AuthenticatorTransport
             {
-                type Prepared = ::planus::Offset<Self>;
+                type Prepared = Self;
 
                 #[inline]
                 fn prepare(
                     &self,
-                    builder: &mut ::planus::Builder,
-                ) -> ::planus::Offset<RegisterPublicKeyCredential> {
-                    ::planus::WriteAsOffset::prepare(self, builder)
-                }
-            }
-
-            impl ::planus::WriteAsOptional<::planus::Offset<RegisterPublicKeyCredential>>
-                for RegisterPublicKeyCredential
-            {
-                type Prepared = ::planus::Offset<Self>;
-
-                #[inline]
-                fn prepare(
-                    &self,
-                    builder: &mut ::planus::Builder,
-                ) -> ::core::option::Option<::planus::Offset<RegisterPublicKeyCredential>>
-                {
-                    ::core::option::Option::Some(::planus::WriteAsOffset::prepare(self, builder))
-                }
-            }
-
-            impl ::planus::WriteAsOffset<RegisterPublicKeyCredential> for RegisterPublicKeyCredential {
-                #[inline]
-                fn prepare(
-                    &self,
-                    builder: &mut ::planus::Builder,
-                ) -> ::planus::Offset<RegisterPublicKeyCredential> {
-                    RegisterPublicKeyCredential::create(
-                        builder,
-                        &self.id,
-                        &self.raw_id,
-                        &self.response,
-                        &self.client_extension_results,
-                    )
-                }
-            }
-
-            /// Builder for serializing an instance of the [RegisterPublicKeyCredential] type.
-            ///
-            /// Can be created using the [RegisterPublicKeyCredential::builder] method.
-            #[derive(Debug)]
-            #[must_use]
-            pub struct RegisterPublicKeyCredentialBuilder<State>(State);
-
-            impl RegisterPublicKeyCredentialBuilder<()> {
-                /// Setter for the [`id` field](RegisterPublicKeyCredential#structfield.id).
-                #[inline]
-                #[allow(clippy::type_complexity)]
-                pub fn id<T0>(self, value: T0) -> RegisterPublicKeyCredentialBuilder<(T0,)>
-                where
-                    T0: ::planus::WriteAsOptional<::planus::Offset<[u8]>>,
-                {
-                    RegisterPublicKeyCredentialBuilder((value,))
-                }
-
-                /// Sets the [`id` field](RegisterPublicKeyCredential#structfield.id) to null.
-                #[inline]
-                #[allow(clippy::type_complexity)]
-                pub fn id_as_null(self) -> RegisterPublicKeyCredentialBuilder<((),)> {
-                    self.id(())
-                }
-            }
-
-            impl<T0> RegisterPublicKeyCredentialBuilder<(T0,)> {
-                /// Setter for the [`raw_id` field](RegisterPublicKeyCredential#structfield.raw_id).
-                #[inline]
-                #[allow(clippy::type_complexity)]
-                pub fn raw_id<T1>(self, value: T1) -> RegisterPublicKeyCredentialBuilder<(T0, T1)>
-                where
-                    T1: ::planus::WriteAsOptional<::planus::Offset<[u8]>>,
-                {
-                    let (v0,) = self.0;
-                    RegisterPublicKeyCredentialBuilder((v0, value))
-                }
-
-                /// Sets the [`raw_id` field](RegisterPublicKeyCredential#structfield.raw_id) to null.
-                #[inline]
-                #[allow(clippy::type_complexity)]
-                pub fn raw_id_as_null(self) -> RegisterPublicKeyCredentialBuilder<(T0, ())> {
-                    self.raw_id(())
-                }
-            }
-
-            impl<T0, T1> RegisterPublicKeyCredentialBuilder<(T0, T1)> {
-                /// Setter for the [`response` field](RegisterPublicKeyCredential#structfield.response).
-                #[inline]
-                #[allow(clippy::type_complexity)]
-                pub fn response<T2>(
-                    self,
-                    value: T2,
-                ) -> RegisterPublicKeyCredentialBuilder<(T0, T1, T2)>
-                where
-                    T2: ::planus::WriteAsOptional<
-                        ::planus::Offset<self::AuthenticatorAttestationResponse>,
-                    >,
-                {
-                    let (v0, v1) = self.0;
-                    RegisterPublicKeyCredentialBuilder((v0, v1, value))
-                }
-
-                /// Sets the [`response` field](RegisterPublicKeyCredential#structfield.response) to null.
-                #[inline]
-                #[allow(clippy::type_complexity)]
-                pub fn response_as_null(self) -> RegisterPublicKeyCredentialBuilder<(T0, T1, ())> {
-                    self.response(())
-                }
-            }
-
-            impl<T0, T1, T2> RegisterPublicKeyCredentialBuilder<(T0, T1, T2)> {
-                /// Setter for the [`client_extension_results` field](RegisterPublicKeyCredential#structfield.client_extension_results).
-                #[inline]
-                #[allow(clippy::type_complexity)]
-                pub fn client_extension_results<T3>(
-                    self,
-                    value: T3,
-                ) -> RegisterPublicKeyCredentialBuilder<(T0, T1, T2, T3)>
-                where
-                    T3: ::planus::WriteAsOptional<
-                        ::planus::Offset<self::RegistrationExtensionsClientOutputs>,
-                    >,
-                {
-                    let (v0, v1, v2) = self.0;
-                    RegisterPublicKeyCredentialBuilder((v0, v1, v2, value))
-                }
-
-                /// Sets the [`client_extension_results` field](RegisterPublicKeyCredential#structfield.client_extension_results) to null.
-                #[inline]
-                #[allow(clippy::type_complexity)]
-                pub fn client_extension_results_as_null(
-                    self,
-                ) -> RegisterPublicKeyCredentialBuilder<(T0, T1, T2, ())> {
-                    self.client_extension_results(())
-                }
-            }
-
-            impl<T0, T1, T2, T3> RegisterPublicKeyCredentialBuilder<(T0, T1, T2, T3)> {
-                /// Finish writing the builder to get an [Offset](::planus::Offset) to a serialized [RegisterPublicKeyCredential].
-                #[inline]
-                pub fn finish(
-                    self,
-                    builder: &mut ::planus::Builder,
-                ) -> ::planus::Offset<RegisterPublicKeyCredential>
-                where
-                    Self: ::planus::WriteAsOffset<RegisterPublicKeyCredential>,
-                {
-                    ::planus::WriteAsOffset::prepare(&self, builder)
-                }
-            }
-
-            impl<
-                    T0: ::planus::WriteAsOptional<::planus::Offset<[u8]>>,
-                    T1: ::planus::WriteAsOptional<::planus::Offset<[u8]>>,
-                    T2: ::planus::WriteAsOptional<
-                        ::planus::Offset<self::AuthenticatorAttestationResponse>,
-                    >,
-                    T3: ::planus::WriteAsOptional<
-                        ::planus::Offset<self::RegistrationExtensionsClientOutputs>,
-                    >,
-                > ::planus::WriteAs<::planus::Offset<RegisterPublicKeyCredential>>
-                for RegisterPublicKeyCredentialBuilder<(T0, T1, T2, T3)>
-            {
-                type Prepared = ::planus::Offset<RegisterPublicKeyCredential>;
-
-                #[inline]
-                fn prepare(
-                    &self,
-                    builder: &mut ::planus::Builder,
-                ) -> ::planus::Offset<RegisterPublicKeyCredential> {
-                    ::planus::WriteAsOffset::prepare(self, builder)
-                }
-            }
-
-            impl<
-                    T0: ::planus::WriteAsOptional<::planus::Offset<[u8]>>,
-                    T1: ::planus::WriteAsOptional<::planus::Offset<[u8]>>,
-                    T2: ::planus::WriteAsOptional<
-                        ::planus::Offset<self::AuthenticatorAttestationResponse>,
-                    >,
-                    T3: ::planus::WriteAsOptional<
-                        ::planus::Offset<self::RegistrationExtensionsClientOutputs>,
-                    >,
-                >
-                ::planus::WriteAsOptional<::planus::Offset<RegisterPublicKeyCredential>>
-                for RegisterPublicKeyCredentialBuilder<(T0, T1, T2, T3)>
-            {
-                type Prepared = ::planus::Offset<RegisterPublicKeyCredential>;
-
-                #[inline]
-                fn prepare(
-                    &self,
-                    builder: &mut ::planus::Builder,
-                ) -> ::core::option::Option<::planus::Offset<RegisterPublicKeyCredential>>
-                {
-                    ::core::option::Option::Some(::planus::WriteAsOffset::prepare(self, builder))
-                }
-            }
-
-            impl<
-                    T0: ::planus::WriteAsOptional<::planus::Offset<[u8]>>,
-                    T1: ::planus::WriteAsOptional<::planus::Offset<[u8]>>,
-                    T2: ::planus::WriteAsOptional<
-                        ::planus::Offset<self::AuthenticatorAttestationResponse>,
-                    >,
-                    T3: ::planus::WriteAsOptional<
-                        ::planus::Offset<self::RegistrationExtensionsClientOutputs>,
-                    >,
-                > ::planus::WriteAsOffset<RegisterPublicKeyCredential>
-                for RegisterPublicKeyCredentialBuilder<(T0, T1, T2, T3)>
-            {
-                #[inline]
-                fn prepare(
-                    &self,
-                    builder: &mut ::planus::Builder,
-                ) -> ::planus::Offset<RegisterPublicKeyCredential> {
-                    let (v0, v1, v2, v3) = &self.0;
-                    RegisterPublicKeyCredential::create(builder, v0, v1, v2, v3)
-                }
-            }
-
-            /// Reference to a deserialized [RegisterPublicKeyCredential].
-            #[derive(Copy, Clone)]
-            pub struct RegisterPublicKeyCredentialRef<'a>(::planus::table_reader::Table<'a>);
-
-            impl<'a> RegisterPublicKeyCredentialRef<'a> {
-                /// Getter for the [`id` field](RegisterPublicKeyCredential#structfield.id).
-                #[inline]
-                pub fn id(&self) -> ::planus::Result<::core::option::Option<&'a [u8]>> {
-                    self.0.access(0, "RegisterPublicKeyCredential", "id")
-                }
-
-                /// Getter for the [`raw_id` field](RegisterPublicKeyCredential#structfield.raw_id).
-                #[inline]
-                pub fn raw_id(&self) -> ::planus::Result<::core::option::Option<&'a [u8]>> {
-                    self.0.access(1, "RegisterPublicKeyCredential", "raw_id")
-                }
-
-                /// Getter for the [`response` field](RegisterPublicKeyCredential#structfield.response).
-                #[inline]
-                pub fn response(
-                    &self,
-                ) -> ::planus::Result<
-                    ::core::option::Option<self::AuthenticatorAttestationResponseRef<'a>>,
-                > {
-                    self.0.access(2, "RegisterPublicKeyCredential", "response")
-                }
-
-                /// Getter for the [`client_extension_results` field](RegisterPublicKeyCredential#structfield.client_extension_results).
-                #[inline]
-                pub fn client_extension_results(
-                    &self,
-                ) -> ::planus::Result<
-                    ::core::option::Option<self::RegistrationExtensionsClientOutputsRef<'a>>,
-                > {
-                    self.0
-                        .access(3, "RegisterPublicKeyCredential", "client_extension_results")
-                }
-            }
-
-            impl<'a> ::core::fmt::Debug for RegisterPublicKeyCredentialRef<'a> {
-                fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
-                    let mut f = f.debug_struct("RegisterPublicKeyCredentialRef");
-                    if let ::core::option::Option::Some(field_id) = self.id().transpose() {
-                        f.field("id", &field_id);
+                    _builder: &mut ::planus::Builder,
+                    default: &AuthenticatorTransport,
+                ) -> ::core::option::Option<AuthenticatorTransport> {
+                    if self == default {
+                        ::core::option::Option::None
+                    } else {
+                        ::core::option::Option::Some(*self)
                     }
-                    if let ::core::option::Option::Some(field_raw_id) = self.raw_id().transpose() {
-                        f.field("raw_id", &field_raw_id);
-                    }
-                    if let ::core::option::Option::Some(field_response) =
-                        self.response().transpose()
-                    {
-                        f.field("response", &field_response);
-                    }
-                    if let ::core::option::Option::Some(field_client_extension_results) =
-                        self.client_extension_results().transpose()
-                    {
-                        f.field("client_extension_results", &field_client_extension_results);
-                    }
-                    f.finish()
                 }
             }
 
-            impl<'a> ::core::convert::TryFrom<RegisterPublicKeyCredentialRef<'a>>
-                for RegisterPublicKeyCredential
-            {
-                type Error = ::planus::Error;
+            impl ::planus::WriteAsOptional<AuthenticatorTransport> for AuthenticatorTransport {
+                type Prepared = Self;
 
-                #[allow(unreachable_code)]
-                fn try_from(value: RegisterPublicKeyCredentialRef<'a>) -> ::planus::Result<Self> {
-                    ::core::result::Result::Ok(Self {
-                        id: value.id()?.map(|v| v.to_vec()),
-                        raw_id: value.raw_id()?.map(|v| v.to_vec()),
-                        response: if let ::core::option::Option::Some(response) =
-                            value.response()?
-                        {
-                            ::core::option::Option::Some(::planus::alloc::boxed::Box::new(
-                                ::core::convert::TryInto::try_into(response)?,
-                            ))
-                        } else {
-                            ::core::option::Option::None
-                        },
-                        client_extension_results: if let ::core::option::Option::Some(
-                            client_extension_results,
-                        ) = value.client_extension_results()?
-                        {
-                            ::core::option::Option::Some(::planus::alloc::boxed::Box::new(
-                                ::core::convert::TryInto::try_into(client_extension_results)?,
-                            ))
-                        } else {
-                            ::core::option::Option::None
-                        },
-                    })
+                #[inline]
+                fn prepare(
+                    &self,
+                    _builder: &mut ::planus::Builder,
+                ) -> ::core::option::Option<AuthenticatorTransport> {
+                    ::core::option::Option::Some(*self)
                 }
             }
 
-            impl<'a> ::planus::TableRead<'a> for RegisterPublicKeyCredentialRef<'a> {
+            impl<'buf> ::planus::TableRead<'buf> for AuthenticatorTransport {
                 #[inline]
                 fn from_buffer(
-                    buffer: ::planus::SliceWithStartOffset<'a>,
+                    buffer: ::planus::SliceWithStartOffset<'buf>,
                     offset: usize,
                 ) -> ::core::result::Result<Self, ::planus::errors::ErrorKind> {
-                    ::core::result::Result::Ok(Self(::planus::table_reader::Table::from_buffer(
-                        buffer, offset,
-                    )?))
+                    let n: i8 = ::planus::TableRead::from_buffer(buffer, offset)?;
+                    ::core::result::Result::Ok(::core::convert::TryInto::try_into(n)?)
                 }
             }
 
-            impl<'a> ::planus::VectorReadInner<'a> for RegisterPublicKeyCredentialRef<'a> {
-                type Error = ::planus::Error;
-                const STRIDE: usize = 4;
-
+            impl<'buf> ::planus::VectorReadInner<'buf> for AuthenticatorTransport {
+                type Error = ::planus::errors::UnknownEnumTag;
+                const STRIDE: usize = 1;
+                #[inline]
                 unsafe fn from_buffer(
-                    buffer: ::planus::SliceWithStartOffset<'a>,
+                    buffer: ::planus::SliceWithStartOffset<'buf>,
                     offset: usize,
-                ) -> ::planus::Result<Self> {
-                    ::planus::TableRead::from_buffer(buffer, offset).map_err(|error_kind| {
+                ) -> ::core::result::Result<Self, ::planus::errors::UnknownEnumTag>
+                {
+                    let value = *buffer.buffer.get_unchecked(offset) as i8;
+                    let value: ::core::result::Result<Self, _> =
+                        ::core::convert::TryInto::try_into(value);
+                    value.map_err(|error_kind| {
                         error_kind.with_error_location(
-                            "[RegisterPublicKeyCredentialRef]",
-                            "get",
+                            "AuthenticatorTransport",
+                            "VectorRead::from_buffer",
                             buffer.offset_from_start,
                         )
                     })
                 }
             }
 
-            impl ::planus::VectorWrite<::planus::Offset<RegisterPublicKeyCredential>>
-                for RegisterPublicKeyCredential
-            {
-                type Value = ::planus::Offset<RegisterPublicKeyCredential>;
-                const STRIDE: usize = 4;
+            impl ::planus::VectorWrite<AuthenticatorTransport> for AuthenticatorTransport {
+                const STRIDE: usize = 1;
+
+                type Value = Self;
+
                 #[inline]
-                fn prepare(&self, builder: &mut ::planus::Builder) -> Self::Value {
-                    ::planus::WriteAs::prepare(self, builder)
+                fn prepare(&self, _builder: &mut ::planus::Builder) -> Self {
+                    *self
                 }
 
                 #[inline]
                 unsafe fn write_values(
-                    values: &[::planus::Offset<RegisterPublicKeyCredential>],
+                    values: &[Self],
                     bytes: *mut ::core::mem::MaybeUninit<u8>,
                     buffer_position: u32,
                 ) {
-                    let bytes = bytes as *mut [::core::mem::MaybeUninit<u8>; 4];
+                    let bytes = bytes as *mut [::core::mem::MaybeUninit<u8>; 1];
                     for (i, v) in ::core::iter::Iterator::enumerate(values.iter()) {
                         ::planus::WriteAsPrimitive::write(
                             v,
                             ::planus::Cursor::new(&mut *bytes.add(i)),
-                            buffer_position - (Self::STRIDE * i) as u32,
+                            buffer_position - i as u32,
                         );
                     }
-                }
-            }
-
-            impl<'a> ::planus::ReadAsRoot<'a> for RegisterPublicKeyCredentialRef<'a> {
-                fn read_as_root(slice: &'a [u8]) -> ::planus::Result<Self> {
-                    ::planus::TableRead::from_buffer(
-                        ::planus::SliceWithStartOffset {
-                            buffer: slice,
-                            offset_from_start: 0,
-                        },
-                        0,
-                    )
-                    .map_err(|error_kind| {
-                        error_kind.with_error_location(
-                            "[RegisterPublicKeyCredentialRef]",
-                            "read_as_root",
-                            0,
-                        )
-                    })
                 }
             }
 
             /// The table `AuthenticatorAttestationResponse` in the namespace `Auth.WebAuthn`
             ///
             /// Generated from these locations:
-            /// * Table `AuthenticatorAttestationResponse` in the file `auth/webauthn.fbs:31`
+            /// * Table `AuthenticatorAttestationResponse` in the file `auth/webauthn.fbs:54`
             #[derive(
                 Clone,
                 Debug,
@@ -1842,10 +1723,194 @@ mod root {
                 }
             }
 
+            /// The enum `CredentialProtectionPolicy` in the namespace `Auth.WebAuthn`
+            ///
+            /// Generated from these locations:
+            /// * Enum `CredentialProtectionPolicy` in the file `auth/webauthn.fbs:60`
+            #[derive(
+                Copy,
+                Clone,
+                Debug,
+                PartialEq,
+                Eq,
+                PartialOrd,
+                Ord,
+                Hash,
+                ::serde::Serialize,
+                ::serde::Deserialize,
+            )]
+            #[repr(i8)]
+            pub enum CredentialProtectionPolicy {
+                ///  This reflects "FIDO_2_0" semantics. In this configuration, performing
+                ///  some form of user verification is optional with or without credentialID
+                ///  list. This is the default state of the credential if the extension is
+                ///  not specified.
+                UserVerificationOptional = 0,
+
+                ///  In this configuration, credential is discovered only when its
+                ///  credentialID is provided by the platform or when some form of user
+                ///  verification is performed.
+                UserVerificationOptionalWithCredentialIdList = 1,
+
+                ///  This reflects that discovery and usage of the credential MUST be
+                ///  preceded by some form of user verification.
+                UserVerificationRequired = 2,
+            }
+
+            impl CredentialProtectionPolicy {
+                /// Array containing all valid variants of CredentialProtectionPolicy
+                pub const ENUM_VALUES: [Self; 3] = [
+                    Self::UserVerificationOptional,
+                    Self::UserVerificationOptionalWithCredentialIdList,
+                    Self::UserVerificationRequired,
+                ];
+            }
+
+            impl ::core::convert::TryFrom<i8> for CredentialProtectionPolicy {
+                type Error = ::planus::errors::UnknownEnumTagKind;
+                #[inline]
+                fn try_from(
+                    value: i8,
+                ) -> ::core::result::Result<Self, ::planus::errors::UnknownEnumTagKind>
+                {
+                    #[allow(clippy::match_single_binding)]
+                    match value {
+                        0 => ::core::result::Result::Ok(CredentialProtectionPolicy::UserVerificationOptional),
+                        1 => ::core::result::Result::Ok(CredentialProtectionPolicy::UserVerificationOptionalWithCredentialIdList),
+                        2 => ::core::result::Result::Ok(CredentialProtectionPolicy::UserVerificationRequired),
+
+                        _ => ::core::result::Result::Err(::planus::errors::UnknownEnumTagKind { tag: value as i128 }),
+                    }
+                }
+            }
+
+            impl ::core::convert::From<CredentialProtectionPolicy> for i8 {
+                #[inline]
+                fn from(value: CredentialProtectionPolicy) -> Self {
+                    value as i8
+                }
+            }
+
+            impl ::planus::Primitive for CredentialProtectionPolicy {
+                const ALIGNMENT: usize = 1;
+                const SIZE: usize = 1;
+            }
+
+            impl ::planus::WriteAsPrimitive<CredentialProtectionPolicy> for CredentialProtectionPolicy {
+                #[inline]
+                fn write<const N: usize>(
+                    &self,
+                    cursor: ::planus::Cursor<'_, N>,
+                    buffer_position: u32,
+                ) {
+                    (*self as i8).write(cursor, buffer_position);
+                }
+            }
+
+            impl ::planus::WriteAs<CredentialProtectionPolicy> for CredentialProtectionPolicy {
+                type Prepared = Self;
+
+                #[inline]
+                fn prepare(&self, _builder: &mut ::planus::Builder) -> CredentialProtectionPolicy {
+                    *self
+                }
+            }
+
+            impl ::planus::WriteAsDefault<CredentialProtectionPolicy, CredentialProtectionPolicy>
+                for CredentialProtectionPolicy
+            {
+                type Prepared = Self;
+
+                #[inline]
+                fn prepare(
+                    &self,
+                    _builder: &mut ::planus::Builder,
+                    default: &CredentialProtectionPolicy,
+                ) -> ::core::option::Option<CredentialProtectionPolicy> {
+                    if self == default {
+                        ::core::option::Option::None
+                    } else {
+                        ::core::option::Option::Some(*self)
+                    }
+                }
+            }
+
+            impl ::planus::WriteAsOptional<CredentialProtectionPolicy> for CredentialProtectionPolicy {
+                type Prepared = Self;
+
+                #[inline]
+                fn prepare(
+                    &self,
+                    _builder: &mut ::planus::Builder,
+                ) -> ::core::option::Option<CredentialProtectionPolicy> {
+                    ::core::option::Option::Some(*self)
+                }
+            }
+
+            impl<'buf> ::planus::TableRead<'buf> for CredentialProtectionPolicy {
+                #[inline]
+                fn from_buffer(
+                    buffer: ::planus::SliceWithStartOffset<'buf>,
+                    offset: usize,
+                ) -> ::core::result::Result<Self, ::planus::errors::ErrorKind> {
+                    let n: i8 = ::planus::TableRead::from_buffer(buffer, offset)?;
+                    ::core::result::Result::Ok(::core::convert::TryInto::try_into(n)?)
+                }
+            }
+
+            impl<'buf> ::planus::VectorReadInner<'buf> for CredentialProtectionPolicy {
+                type Error = ::planus::errors::UnknownEnumTag;
+                const STRIDE: usize = 1;
+                #[inline]
+                unsafe fn from_buffer(
+                    buffer: ::planus::SliceWithStartOffset<'buf>,
+                    offset: usize,
+                ) -> ::core::result::Result<Self, ::planus::errors::UnknownEnumTag>
+                {
+                    let value = *buffer.buffer.get_unchecked(offset) as i8;
+                    let value: ::core::result::Result<Self, _> =
+                        ::core::convert::TryInto::try_into(value);
+                    value.map_err(|error_kind| {
+                        error_kind.with_error_location(
+                            "CredentialProtectionPolicy",
+                            "VectorRead::from_buffer",
+                            buffer.offset_from_start,
+                        )
+                    })
+                }
+            }
+
+            impl ::planus::VectorWrite<CredentialProtectionPolicy> for CredentialProtectionPolicy {
+                const STRIDE: usize = 1;
+
+                type Value = Self;
+
+                #[inline]
+                fn prepare(&self, _builder: &mut ::planus::Builder) -> Self {
+                    *self
+                }
+
+                #[inline]
+                unsafe fn write_values(
+                    values: &[Self],
+                    bytes: *mut ::core::mem::MaybeUninit<u8>,
+                    buffer_position: u32,
+                ) {
+                    let bytes = bytes as *mut [::core::mem::MaybeUninit<u8>; 1];
+                    for (i, v) in ::core::iter::Iterator::enumerate(values.iter()) {
+                        ::planus::WriteAsPrimitive::write(
+                            v,
+                            ::planus::Cursor::new(&mut *bytes.add(i)),
+                            buffer_position - i as u32,
+                        );
+                    }
+                }
+            }
+
             /// The table `RegistrationExtensionsClientOutputs` in the namespace `Auth.WebAuthn`
             ///
             /// Generated from these locations:
-            /// * Table `RegistrationExtensionsClientOutputs` in the file `auth/webauthn.fbs:37`
+            /// * Table `RegistrationExtensionsClientOutputs` in the file `auth/webauthn.fbs:75`
             #[derive(
                 Clone,
                 Debug,
@@ -2404,10 +2469,905 @@ mod root {
                 }
             }
 
+            /// The table `RegisterPublicKeyCredential` in the namespace `Auth.WebAuthn`
+            ///
+            /// Generated from these locations:
+            /// * Table `RegisterPublicKeyCredential` in the file `auth/webauthn.fbs:83`
+            #[derive(
+                Clone,
+                Debug,
+                PartialEq,
+                PartialOrd,
+                Eq,
+                Ord,
+                Hash,
+                ::serde::Serialize,
+                ::serde::Deserialize,
+            )]
+            pub struct RegisterPublicKeyCredential {
+                /// The field `id` in the table `RegisterPublicKeyCredential`
+                pub id: ::core::option::Option<::planus::alloc::vec::Vec<u8>>,
+                /// The field `raw_id` in the table `RegisterPublicKeyCredential`
+                pub raw_id: ::core::option::Option<::planus::alloc::vec::Vec<u8>>,
+                /// The field `response` in the table `RegisterPublicKeyCredential`
+                pub response: ::core::option::Option<
+                    ::planus::alloc::boxed::Box<self::AuthenticatorAttestationResponse>,
+                >,
+                /// The field `client_extension_results` in the table `RegisterPublicKeyCredential`
+                pub client_extension_results: ::core::option::Option<
+                    ::planus::alloc::boxed::Box<self::RegistrationExtensionsClientOutputs>,
+                >,
+            }
+
+            #[allow(clippy::derivable_impls)]
+            impl ::core::default::Default for RegisterPublicKeyCredential {
+                fn default() -> Self {
+                    Self {
+                        id: ::core::default::Default::default(),
+                        raw_id: ::core::default::Default::default(),
+                        response: ::core::default::Default::default(),
+                        client_extension_results: ::core::default::Default::default(),
+                    }
+                }
+            }
+
+            impl RegisterPublicKeyCredential {
+                /// Creates a [RegisterPublicKeyCredentialBuilder] for serializing an instance of this table.
+                #[inline]
+                pub fn builder() -> RegisterPublicKeyCredentialBuilder<()> {
+                    RegisterPublicKeyCredentialBuilder(())
+                }
+
+                #[allow(clippy::too_many_arguments)]
+                pub fn create(
+                    builder: &mut ::planus::Builder,
+                    field_id: impl ::planus::WriteAsOptional<::planus::Offset<[u8]>>,
+                    field_raw_id: impl ::planus::WriteAsOptional<::planus::Offset<[u8]>>,
+                    field_response: impl ::planus::WriteAsOptional<
+                        ::planus::Offset<self::AuthenticatorAttestationResponse>,
+                    >,
+                    field_client_extension_results: impl ::planus::WriteAsOptional<
+                        ::planus::Offset<self::RegistrationExtensionsClientOutputs>,
+                    >,
+                ) -> ::planus::Offset<Self> {
+                    let prepared_id = field_id.prepare(builder);
+                    let prepared_raw_id = field_raw_id.prepare(builder);
+                    let prepared_response = field_response.prepare(builder);
+                    let prepared_client_extension_results =
+                        field_client_extension_results.prepare(builder);
+
+                    let mut table_writer: ::planus::table_writer::TableWriter<12> =
+                        ::core::default::Default::default();
+                    if prepared_id.is_some() {
+                        table_writer.write_entry::<::planus::Offset<[u8]>>(0);
+                    }
+                    if prepared_raw_id.is_some() {
+                        table_writer.write_entry::<::planus::Offset<[u8]>>(1);
+                    }
+                    if prepared_response.is_some() {
+                        table_writer.write_entry::<::planus::Offset<self::AuthenticatorAttestationResponse>>(2);
+                    }
+                    if prepared_client_extension_results.is_some() {
+                        table_writer.write_entry::<::planus::Offset<self::RegistrationExtensionsClientOutputs>>(3);
+                    }
+
+                    unsafe {
+                        table_writer.finish(builder, |object_writer| {
+                            if let ::core::option::Option::Some(prepared_id) = prepared_id {
+                                object_writer.write::<_, _, 4>(&prepared_id);
+                            }
+                            if let ::core::option::Option::Some(prepared_raw_id) = prepared_raw_id {
+                                object_writer.write::<_, _, 4>(&prepared_raw_id);
+                            }
+                            if let ::core::option::Option::Some(prepared_response) =
+                                prepared_response
+                            {
+                                object_writer.write::<_, _, 4>(&prepared_response);
+                            }
+                            if let ::core::option::Option::Some(prepared_client_extension_results) =
+                                prepared_client_extension_results
+                            {
+                                object_writer.write::<_, _, 4>(&prepared_client_extension_results);
+                            }
+                        });
+                    }
+                    builder.current_offset()
+                }
+            }
+
+            impl ::planus::WriteAs<::planus::Offset<RegisterPublicKeyCredential>>
+                for RegisterPublicKeyCredential
+            {
+                type Prepared = ::planus::Offset<Self>;
+
+                #[inline]
+                fn prepare(
+                    &self,
+                    builder: &mut ::planus::Builder,
+                ) -> ::planus::Offset<RegisterPublicKeyCredential> {
+                    ::planus::WriteAsOffset::prepare(self, builder)
+                }
+            }
+
+            impl ::planus::WriteAsOptional<::planus::Offset<RegisterPublicKeyCredential>>
+                for RegisterPublicKeyCredential
+            {
+                type Prepared = ::planus::Offset<Self>;
+
+                #[inline]
+                fn prepare(
+                    &self,
+                    builder: &mut ::planus::Builder,
+                ) -> ::core::option::Option<::planus::Offset<RegisterPublicKeyCredential>>
+                {
+                    ::core::option::Option::Some(::planus::WriteAsOffset::prepare(self, builder))
+                }
+            }
+
+            impl ::planus::WriteAsOffset<RegisterPublicKeyCredential> for RegisterPublicKeyCredential {
+                #[inline]
+                fn prepare(
+                    &self,
+                    builder: &mut ::planus::Builder,
+                ) -> ::planus::Offset<RegisterPublicKeyCredential> {
+                    RegisterPublicKeyCredential::create(
+                        builder,
+                        &self.id,
+                        &self.raw_id,
+                        &self.response,
+                        &self.client_extension_results,
+                    )
+                }
+            }
+
+            /// Builder for serializing an instance of the [RegisterPublicKeyCredential] type.
+            ///
+            /// Can be created using the [RegisterPublicKeyCredential::builder] method.
+            #[derive(Debug)]
+            #[must_use]
+            pub struct RegisterPublicKeyCredentialBuilder<State>(State);
+
+            impl RegisterPublicKeyCredentialBuilder<()> {
+                /// Setter for the [`id` field](RegisterPublicKeyCredential#structfield.id).
+                #[inline]
+                #[allow(clippy::type_complexity)]
+                pub fn id<T0>(self, value: T0) -> RegisterPublicKeyCredentialBuilder<(T0,)>
+                where
+                    T0: ::planus::WriteAsOptional<::planus::Offset<[u8]>>,
+                {
+                    RegisterPublicKeyCredentialBuilder((value,))
+                }
+
+                /// Sets the [`id` field](RegisterPublicKeyCredential#structfield.id) to null.
+                #[inline]
+                #[allow(clippy::type_complexity)]
+                pub fn id_as_null(self) -> RegisterPublicKeyCredentialBuilder<((),)> {
+                    self.id(())
+                }
+            }
+
+            impl<T0> RegisterPublicKeyCredentialBuilder<(T0,)> {
+                /// Setter for the [`raw_id` field](RegisterPublicKeyCredential#structfield.raw_id).
+                #[inline]
+                #[allow(clippy::type_complexity)]
+                pub fn raw_id<T1>(self, value: T1) -> RegisterPublicKeyCredentialBuilder<(T0, T1)>
+                where
+                    T1: ::planus::WriteAsOptional<::planus::Offset<[u8]>>,
+                {
+                    let (v0,) = self.0;
+                    RegisterPublicKeyCredentialBuilder((v0, value))
+                }
+
+                /// Sets the [`raw_id` field](RegisterPublicKeyCredential#structfield.raw_id) to null.
+                #[inline]
+                #[allow(clippy::type_complexity)]
+                pub fn raw_id_as_null(self) -> RegisterPublicKeyCredentialBuilder<(T0, ())> {
+                    self.raw_id(())
+                }
+            }
+
+            impl<T0, T1> RegisterPublicKeyCredentialBuilder<(T0, T1)> {
+                /// Setter for the [`response` field](RegisterPublicKeyCredential#structfield.response).
+                #[inline]
+                #[allow(clippy::type_complexity)]
+                pub fn response<T2>(
+                    self,
+                    value: T2,
+                ) -> RegisterPublicKeyCredentialBuilder<(T0, T1, T2)>
+                where
+                    T2: ::planus::WriteAsOptional<
+                        ::planus::Offset<self::AuthenticatorAttestationResponse>,
+                    >,
+                {
+                    let (v0, v1) = self.0;
+                    RegisterPublicKeyCredentialBuilder((v0, v1, value))
+                }
+
+                /// Sets the [`response` field](RegisterPublicKeyCredential#structfield.response) to null.
+                #[inline]
+                #[allow(clippy::type_complexity)]
+                pub fn response_as_null(self) -> RegisterPublicKeyCredentialBuilder<(T0, T1, ())> {
+                    self.response(())
+                }
+            }
+
+            impl<T0, T1, T2> RegisterPublicKeyCredentialBuilder<(T0, T1, T2)> {
+                /// Setter for the [`client_extension_results` field](RegisterPublicKeyCredential#structfield.client_extension_results).
+                #[inline]
+                #[allow(clippy::type_complexity)]
+                pub fn client_extension_results<T3>(
+                    self,
+                    value: T3,
+                ) -> RegisterPublicKeyCredentialBuilder<(T0, T1, T2, T3)>
+                where
+                    T3: ::planus::WriteAsOptional<
+                        ::planus::Offset<self::RegistrationExtensionsClientOutputs>,
+                    >,
+                {
+                    let (v0, v1, v2) = self.0;
+                    RegisterPublicKeyCredentialBuilder((v0, v1, v2, value))
+                }
+
+                /// Sets the [`client_extension_results` field](RegisterPublicKeyCredential#structfield.client_extension_results) to null.
+                #[inline]
+                #[allow(clippy::type_complexity)]
+                pub fn client_extension_results_as_null(
+                    self,
+                ) -> RegisterPublicKeyCredentialBuilder<(T0, T1, T2, ())> {
+                    self.client_extension_results(())
+                }
+            }
+
+            impl<T0, T1, T2, T3> RegisterPublicKeyCredentialBuilder<(T0, T1, T2, T3)> {
+                /// Finish writing the builder to get an [Offset](::planus::Offset) to a serialized [RegisterPublicKeyCredential].
+                #[inline]
+                pub fn finish(
+                    self,
+                    builder: &mut ::planus::Builder,
+                ) -> ::planus::Offset<RegisterPublicKeyCredential>
+                where
+                    Self: ::planus::WriteAsOffset<RegisterPublicKeyCredential>,
+                {
+                    ::planus::WriteAsOffset::prepare(&self, builder)
+                }
+            }
+
+            impl<
+                    T0: ::planus::WriteAsOptional<::planus::Offset<[u8]>>,
+                    T1: ::planus::WriteAsOptional<::planus::Offset<[u8]>>,
+                    T2: ::planus::WriteAsOptional<
+                        ::planus::Offset<self::AuthenticatorAttestationResponse>,
+                    >,
+                    T3: ::planus::WriteAsOptional<
+                        ::planus::Offset<self::RegistrationExtensionsClientOutputs>,
+                    >,
+                > ::planus::WriteAs<::planus::Offset<RegisterPublicKeyCredential>>
+                for RegisterPublicKeyCredentialBuilder<(T0, T1, T2, T3)>
+            {
+                type Prepared = ::planus::Offset<RegisterPublicKeyCredential>;
+
+                #[inline]
+                fn prepare(
+                    &self,
+                    builder: &mut ::planus::Builder,
+                ) -> ::planus::Offset<RegisterPublicKeyCredential> {
+                    ::planus::WriteAsOffset::prepare(self, builder)
+                }
+            }
+
+            impl<
+                    T0: ::planus::WriteAsOptional<::planus::Offset<[u8]>>,
+                    T1: ::planus::WriteAsOptional<::planus::Offset<[u8]>>,
+                    T2: ::planus::WriteAsOptional<
+                        ::planus::Offset<self::AuthenticatorAttestationResponse>,
+                    >,
+                    T3: ::planus::WriteAsOptional<
+                        ::planus::Offset<self::RegistrationExtensionsClientOutputs>,
+                    >,
+                >
+                ::planus::WriteAsOptional<::planus::Offset<RegisterPublicKeyCredential>>
+                for RegisterPublicKeyCredentialBuilder<(T0, T1, T2, T3)>
+            {
+                type Prepared = ::planus::Offset<RegisterPublicKeyCredential>;
+
+                #[inline]
+                fn prepare(
+                    &self,
+                    builder: &mut ::planus::Builder,
+                ) -> ::core::option::Option<::planus::Offset<RegisterPublicKeyCredential>>
+                {
+                    ::core::option::Option::Some(::planus::WriteAsOffset::prepare(self, builder))
+                }
+            }
+
+            impl<
+                    T0: ::planus::WriteAsOptional<::planus::Offset<[u8]>>,
+                    T1: ::planus::WriteAsOptional<::planus::Offset<[u8]>>,
+                    T2: ::planus::WriteAsOptional<
+                        ::planus::Offset<self::AuthenticatorAttestationResponse>,
+                    >,
+                    T3: ::planus::WriteAsOptional<
+                        ::planus::Offset<self::RegistrationExtensionsClientOutputs>,
+                    >,
+                > ::planus::WriteAsOffset<RegisterPublicKeyCredential>
+                for RegisterPublicKeyCredentialBuilder<(T0, T1, T2, T3)>
+            {
+                #[inline]
+                fn prepare(
+                    &self,
+                    builder: &mut ::planus::Builder,
+                ) -> ::planus::Offset<RegisterPublicKeyCredential> {
+                    let (v0, v1, v2, v3) = &self.0;
+                    RegisterPublicKeyCredential::create(builder, v0, v1, v2, v3)
+                }
+            }
+
+            /// Reference to a deserialized [RegisterPublicKeyCredential].
+            #[derive(Copy, Clone)]
+            pub struct RegisterPublicKeyCredentialRef<'a>(::planus::table_reader::Table<'a>);
+
+            impl<'a> RegisterPublicKeyCredentialRef<'a> {
+                /// Getter for the [`id` field](RegisterPublicKeyCredential#structfield.id).
+                #[inline]
+                pub fn id(&self) -> ::planus::Result<::core::option::Option<&'a [u8]>> {
+                    self.0.access(0, "RegisterPublicKeyCredential", "id")
+                }
+
+                /// Getter for the [`raw_id` field](RegisterPublicKeyCredential#structfield.raw_id).
+                #[inline]
+                pub fn raw_id(&self) -> ::planus::Result<::core::option::Option<&'a [u8]>> {
+                    self.0.access(1, "RegisterPublicKeyCredential", "raw_id")
+                }
+
+                /// Getter for the [`response` field](RegisterPublicKeyCredential#structfield.response).
+                #[inline]
+                pub fn response(
+                    &self,
+                ) -> ::planus::Result<
+                    ::core::option::Option<self::AuthenticatorAttestationResponseRef<'a>>,
+                > {
+                    self.0.access(2, "RegisterPublicKeyCredential", "response")
+                }
+
+                /// Getter for the [`client_extension_results` field](RegisterPublicKeyCredential#structfield.client_extension_results).
+                #[inline]
+                pub fn client_extension_results(
+                    &self,
+                ) -> ::planus::Result<
+                    ::core::option::Option<self::RegistrationExtensionsClientOutputsRef<'a>>,
+                > {
+                    self.0
+                        .access(3, "RegisterPublicKeyCredential", "client_extension_results")
+                }
+            }
+
+            impl<'a> ::core::fmt::Debug for RegisterPublicKeyCredentialRef<'a> {
+                fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+                    let mut f = f.debug_struct("RegisterPublicKeyCredentialRef");
+                    if let ::core::option::Option::Some(field_id) = self.id().transpose() {
+                        f.field("id", &field_id);
+                    }
+                    if let ::core::option::Option::Some(field_raw_id) = self.raw_id().transpose() {
+                        f.field("raw_id", &field_raw_id);
+                    }
+                    if let ::core::option::Option::Some(field_response) =
+                        self.response().transpose()
+                    {
+                        f.field("response", &field_response);
+                    }
+                    if let ::core::option::Option::Some(field_client_extension_results) =
+                        self.client_extension_results().transpose()
+                    {
+                        f.field("client_extension_results", &field_client_extension_results);
+                    }
+                    f.finish()
+                }
+            }
+
+            impl<'a> ::core::convert::TryFrom<RegisterPublicKeyCredentialRef<'a>>
+                for RegisterPublicKeyCredential
+            {
+                type Error = ::planus::Error;
+
+                #[allow(unreachable_code)]
+                fn try_from(value: RegisterPublicKeyCredentialRef<'a>) -> ::planus::Result<Self> {
+                    ::core::result::Result::Ok(Self {
+                        id: value.id()?.map(|v| v.to_vec()),
+                        raw_id: value.raw_id()?.map(|v| v.to_vec()),
+                        response: if let ::core::option::Option::Some(response) =
+                            value.response()?
+                        {
+                            ::core::option::Option::Some(::planus::alloc::boxed::Box::new(
+                                ::core::convert::TryInto::try_into(response)?,
+                            ))
+                        } else {
+                            ::core::option::Option::None
+                        },
+                        client_extension_results: if let ::core::option::Option::Some(
+                            client_extension_results,
+                        ) = value.client_extension_results()?
+                        {
+                            ::core::option::Option::Some(::planus::alloc::boxed::Box::new(
+                                ::core::convert::TryInto::try_into(client_extension_results)?,
+                            ))
+                        } else {
+                            ::core::option::Option::None
+                        },
+                    })
+                }
+            }
+
+            impl<'a> ::planus::TableRead<'a> for RegisterPublicKeyCredentialRef<'a> {
+                #[inline]
+                fn from_buffer(
+                    buffer: ::planus::SliceWithStartOffset<'a>,
+                    offset: usize,
+                ) -> ::core::result::Result<Self, ::planus::errors::ErrorKind> {
+                    ::core::result::Result::Ok(Self(::planus::table_reader::Table::from_buffer(
+                        buffer, offset,
+                    )?))
+                }
+            }
+
+            impl<'a> ::planus::VectorReadInner<'a> for RegisterPublicKeyCredentialRef<'a> {
+                type Error = ::planus::Error;
+                const STRIDE: usize = 4;
+
+                unsafe fn from_buffer(
+                    buffer: ::planus::SliceWithStartOffset<'a>,
+                    offset: usize,
+                ) -> ::planus::Result<Self> {
+                    ::planus::TableRead::from_buffer(buffer, offset).map_err(|error_kind| {
+                        error_kind.with_error_location(
+                            "[RegisterPublicKeyCredentialRef]",
+                            "get",
+                            buffer.offset_from_start,
+                        )
+                    })
+                }
+            }
+
+            impl ::planus::VectorWrite<::planus::Offset<RegisterPublicKeyCredential>>
+                for RegisterPublicKeyCredential
+            {
+                type Value = ::planus::Offset<RegisterPublicKeyCredential>;
+                const STRIDE: usize = 4;
+                #[inline]
+                fn prepare(&self, builder: &mut ::planus::Builder) -> Self::Value {
+                    ::planus::WriteAs::prepare(self, builder)
+                }
+
+                #[inline]
+                unsafe fn write_values(
+                    values: &[::planus::Offset<RegisterPublicKeyCredential>],
+                    bytes: *mut ::core::mem::MaybeUninit<u8>,
+                    buffer_position: u32,
+                ) {
+                    let bytes = bytes as *mut [::core::mem::MaybeUninit<u8>; 4];
+                    for (i, v) in ::core::iter::Iterator::enumerate(values.iter()) {
+                        ::planus::WriteAsPrimitive::write(
+                            v,
+                            ::planus::Cursor::new(&mut *bytes.add(i)),
+                            buffer_position - (Self::STRIDE * i) as u32,
+                        );
+                    }
+                }
+            }
+
+            impl<'a> ::planus::ReadAsRoot<'a> for RegisterPublicKeyCredentialRef<'a> {
+                fn read_as_root(slice: &'a [u8]) -> ::planus::Result<Self> {
+                    ::planus::TableRead::from_buffer(
+                        ::planus::SliceWithStartOffset {
+                            buffer: slice,
+                            offset_from_start: 0,
+                        },
+                        0,
+                    )
+                    .map_err(|error_kind| {
+                        error_kind.with_error_location(
+                            "[RegisterPublicKeyCredentialRef]",
+                            "read_as_root",
+                            0,
+                        )
+                    })
+                }
+            }
+
+            /// The table `CredProtect` in the namespace `Auth.WebAuthn`
+            ///
+            /// Generated from these locations:
+            /// * Table `CredProtect` in the file `auth/webauthn.fbs:90`
+            #[derive(
+                Clone,
+                Debug,
+                PartialEq,
+                PartialOrd,
+                Eq,
+                Ord,
+                Hash,
+                ::serde::Serialize,
+                ::serde::Deserialize,
+            )]
+            pub struct CredProtect {
+                ///  The credential policy to enact
+                pub credential_protection_policy: self::CredentialProtectionPolicy,
+                ///  Whether it is better for the authenticator to fail to create a
+                ///  credential rather than ignore the protection policy
+                pub enforce_credential_protection_policy: bool,
+            }
+
+            #[allow(clippy::derivable_impls)]
+            impl ::core::default::Default for CredProtect {
+                fn default() -> Self {
+                    Self {
+                        credential_protection_policy:
+                            self::CredentialProtectionPolicy::UserVerificationOptional,
+                        enforce_credential_protection_policy: false,
+                    }
+                }
+            }
+
+            impl CredProtect {
+                /// Creates a [CredProtectBuilder] for serializing an instance of this table.
+                #[inline]
+                pub fn builder() -> CredProtectBuilder<()> {
+                    CredProtectBuilder(())
+                }
+
+                #[allow(clippy::too_many_arguments)]
+                pub fn create(
+                    builder: &mut ::planus::Builder,
+                    field_credential_protection_policy: impl ::planus::WriteAsDefault<
+                        self::CredentialProtectionPolicy,
+                        self::CredentialProtectionPolicy,
+                    >,
+                    field_enforce_credential_protection_policy: impl ::planus::WriteAsDefault<
+                        bool,
+                        bool,
+                    >,
+                ) -> ::planus::Offset<Self> {
+                    let prepared_credential_protection_policy = field_credential_protection_policy
+                        .prepare(
+                            builder,
+                            &self::CredentialProtectionPolicy::UserVerificationOptional,
+                        );
+                    let prepared_enforce_credential_protection_policy =
+                        field_enforce_credential_protection_policy.prepare(builder, &false);
+
+                    let mut table_writer: ::planus::table_writer::TableWriter<8> =
+                        ::core::default::Default::default();
+                    if prepared_credential_protection_policy.is_some() {
+                        table_writer.write_entry::<self::CredentialProtectionPolicy>(0);
+                    }
+                    if prepared_enforce_credential_protection_policy.is_some() {
+                        table_writer.write_entry::<bool>(1);
+                    }
+
+                    unsafe {
+                        table_writer.finish(builder, |object_writer| {
+                            if let ::core::option::Option::Some(
+                                prepared_credential_protection_policy,
+                            ) = prepared_credential_protection_policy
+                            {
+                                object_writer
+                                    .write::<_, _, 1>(&prepared_credential_protection_policy);
+                            }
+                            if let ::core::option::Option::Some(
+                                prepared_enforce_credential_protection_policy,
+                            ) = prepared_enforce_credential_protection_policy
+                            {
+                                object_writer.write::<_, _, 1>(
+                                    &prepared_enforce_credential_protection_policy,
+                                );
+                            }
+                        });
+                    }
+                    builder.current_offset()
+                }
+            }
+
+            impl ::planus::WriteAs<::planus::Offset<CredProtect>> for CredProtect {
+                type Prepared = ::planus::Offset<Self>;
+
+                #[inline]
+                fn prepare(
+                    &self,
+                    builder: &mut ::planus::Builder,
+                ) -> ::planus::Offset<CredProtect> {
+                    ::planus::WriteAsOffset::prepare(self, builder)
+                }
+            }
+
+            impl ::planus::WriteAsOptional<::planus::Offset<CredProtect>> for CredProtect {
+                type Prepared = ::planus::Offset<Self>;
+
+                #[inline]
+                fn prepare(
+                    &self,
+                    builder: &mut ::planus::Builder,
+                ) -> ::core::option::Option<::planus::Offset<CredProtect>> {
+                    ::core::option::Option::Some(::planus::WriteAsOffset::prepare(self, builder))
+                }
+            }
+
+            impl ::planus::WriteAsOffset<CredProtect> for CredProtect {
+                #[inline]
+                fn prepare(
+                    &self,
+                    builder: &mut ::planus::Builder,
+                ) -> ::planus::Offset<CredProtect> {
+                    CredProtect::create(
+                        builder,
+                        self.credential_protection_policy,
+                        self.enforce_credential_protection_policy,
+                    )
+                }
+            }
+
+            /// Builder for serializing an instance of the [CredProtect] type.
+            ///
+            /// Can be created using the [CredProtect::builder] method.
+            #[derive(Debug)]
+            #[must_use]
+            pub struct CredProtectBuilder<State>(State);
+
+            impl CredProtectBuilder<()> {
+                /// Setter for the [`credential_protection_policy` field](CredProtect#structfield.credential_protection_policy).
+                #[inline]
+                #[allow(clippy::type_complexity)]
+                pub fn credential_protection_policy<T0>(
+                    self,
+                    value: T0,
+                ) -> CredProtectBuilder<(T0,)>
+                where
+                    T0: ::planus::WriteAsDefault<
+                        self::CredentialProtectionPolicy,
+                        self::CredentialProtectionPolicy,
+                    >,
+                {
+                    CredProtectBuilder((value,))
+                }
+
+                /// Sets the [`credential_protection_policy` field](CredProtect#structfield.credential_protection_policy) to the default value.
+                #[inline]
+                #[allow(clippy::type_complexity)]
+                pub fn credential_protection_policy_as_default(
+                    self,
+                ) -> CredProtectBuilder<(::planus::DefaultValue,)> {
+                    self.credential_protection_policy(::planus::DefaultValue)
+                }
+            }
+
+            impl<T0> CredProtectBuilder<(T0,)> {
+                /// Setter for the [`enforce_credential_protection_policy` field](CredProtect#structfield.enforce_credential_protection_policy).
+                #[inline]
+                #[allow(clippy::type_complexity)]
+                pub fn enforce_credential_protection_policy<T1>(
+                    self,
+                    value: T1,
+                ) -> CredProtectBuilder<(T0, T1)>
+                where
+                    T1: ::planus::WriteAsDefault<bool, bool>,
+                {
+                    let (v0,) = self.0;
+                    CredProtectBuilder((v0, value))
+                }
+
+                /// Sets the [`enforce_credential_protection_policy` field](CredProtect#structfield.enforce_credential_protection_policy) to the default value.
+                #[inline]
+                #[allow(clippy::type_complexity)]
+                pub fn enforce_credential_protection_policy_as_default(
+                    self,
+                ) -> CredProtectBuilder<(T0, ::planus::DefaultValue)> {
+                    self.enforce_credential_protection_policy(::planus::DefaultValue)
+                }
+            }
+
+            impl<T0, T1> CredProtectBuilder<(T0, T1)> {
+                /// Finish writing the builder to get an [Offset](::planus::Offset) to a serialized [CredProtect].
+                #[inline]
+                pub fn finish(
+                    self,
+                    builder: &mut ::planus::Builder,
+                ) -> ::planus::Offset<CredProtect>
+                where
+                    Self: ::planus::WriteAsOffset<CredProtect>,
+                {
+                    ::planus::WriteAsOffset::prepare(&self, builder)
+                }
+            }
+
+            impl<
+                    T0: ::planus::WriteAsDefault<
+                        self::CredentialProtectionPolicy,
+                        self::CredentialProtectionPolicy,
+                    >,
+                    T1: ::planus::WriteAsDefault<bool, bool>,
+                > ::planus::WriteAs<::planus::Offset<CredProtect>>
+                for CredProtectBuilder<(T0, T1)>
+            {
+                type Prepared = ::planus::Offset<CredProtect>;
+
+                #[inline]
+                fn prepare(
+                    &self,
+                    builder: &mut ::planus::Builder,
+                ) -> ::planus::Offset<CredProtect> {
+                    ::planus::WriteAsOffset::prepare(self, builder)
+                }
+            }
+
+            impl<
+                    T0: ::planus::WriteAsDefault<
+                        self::CredentialProtectionPolicy,
+                        self::CredentialProtectionPolicy,
+                    >,
+                    T1: ::planus::WriteAsDefault<bool, bool>,
+                > ::planus::WriteAsOptional<::planus::Offset<CredProtect>>
+                for CredProtectBuilder<(T0, T1)>
+            {
+                type Prepared = ::planus::Offset<CredProtect>;
+
+                #[inline]
+                fn prepare(
+                    &self,
+                    builder: &mut ::planus::Builder,
+                ) -> ::core::option::Option<::planus::Offset<CredProtect>> {
+                    ::core::option::Option::Some(::planus::WriteAsOffset::prepare(self, builder))
+                }
+            }
+
+            impl<
+                    T0: ::planus::WriteAsDefault<
+                        self::CredentialProtectionPolicy,
+                        self::CredentialProtectionPolicy,
+                    >,
+                    T1: ::planus::WriteAsDefault<bool, bool>,
+                > ::planus::WriteAsOffset<CredProtect> for CredProtectBuilder<(T0, T1)>
+            {
+                #[inline]
+                fn prepare(
+                    &self,
+                    builder: &mut ::planus::Builder,
+                ) -> ::planus::Offset<CredProtect> {
+                    let (v0, v1) = &self.0;
+                    CredProtect::create(builder, v0, v1)
+                }
+            }
+
+            /// Reference to a deserialized [CredProtect].
+            #[derive(Copy, Clone)]
+            pub struct CredProtectRef<'a>(::planus::table_reader::Table<'a>);
+
+            impl<'a> CredProtectRef<'a> {
+                /// Getter for the [`credential_protection_policy` field](CredProtect#structfield.credential_protection_policy).
+                #[inline]
+                pub fn credential_protection_policy(
+                    &self,
+                ) -> ::planus::Result<self::CredentialProtectionPolicy> {
+                    ::core::result::Result::Ok(
+                        self.0
+                            .access(0, "CredProtect", "credential_protection_policy")?
+                            .unwrap_or(self::CredentialProtectionPolicy::UserVerificationOptional),
+                    )
+                }
+
+                /// Getter for the [`enforce_credential_protection_policy` field](CredProtect#structfield.enforce_credential_protection_policy).
+                #[inline]
+                pub fn enforce_credential_protection_policy(&self) -> ::planus::Result<bool> {
+                    ::core::result::Result::Ok(
+                        self.0
+                            .access(1, "CredProtect", "enforce_credential_protection_policy")?
+                            .unwrap_or(false),
+                    )
+                }
+            }
+
+            impl<'a> ::core::fmt::Debug for CredProtectRef<'a> {
+                fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+                    let mut f = f.debug_struct("CredProtectRef");
+                    f.field(
+                        "credential_protection_policy",
+                        &self.credential_protection_policy(),
+                    );
+                    f.field(
+                        "enforce_credential_protection_policy",
+                        &self.enforce_credential_protection_policy(),
+                    );
+                    f.finish()
+                }
+            }
+
+            impl<'a> ::core::convert::TryFrom<CredProtectRef<'a>> for CredProtect {
+                type Error = ::planus::Error;
+
+                #[allow(unreachable_code)]
+                fn try_from(value: CredProtectRef<'a>) -> ::planus::Result<Self> {
+                    ::core::result::Result::Ok(Self {
+                        credential_protection_policy: ::core::convert::TryInto::try_into(
+                            value.credential_protection_policy()?,
+                        )?,
+                        enforce_credential_protection_policy: ::core::convert::TryInto::try_into(
+                            value.enforce_credential_protection_policy()?,
+                        )?,
+                    })
+                }
+            }
+
+            impl<'a> ::planus::TableRead<'a> for CredProtectRef<'a> {
+                #[inline]
+                fn from_buffer(
+                    buffer: ::planus::SliceWithStartOffset<'a>,
+                    offset: usize,
+                ) -> ::core::result::Result<Self, ::planus::errors::ErrorKind> {
+                    ::core::result::Result::Ok(Self(::planus::table_reader::Table::from_buffer(
+                        buffer, offset,
+                    )?))
+                }
+            }
+
+            impl<'a> ::planus::VectorReadInner<'a> for CredProtectRef<'a> {
+                type Error = ::planus::Error;
+                const STRIDE: usize = 4;
+
+                unsafe fn from_buffer(
+                    buffer: ::planus::SliceWithStartOffset<'a>,
+                    offset: usize,
+                ) -> ::planus::Result<Self> {
+                    ::planus::TableRead::from_buffer(buffer, offset).map_err(|error_kind| {
+                        error_kind.with_error_location(
+                            "[CredProtectRef]",
+                            "get",
+                            buffer.offset_from_start,
+                        )
+                    })
+                }
+            }
+
+            impl ::planus::VectorWrite<::planus::Offset<CredProtect>> for CredProtect {
+                type Value = ::planus::Offset<CredProtect>;
+                const STRIDE: usize = 4;
+                #[inline]
+                fn prepare(&self, builder: &mut ::planus::Builder) -> Self::Value {
+                    ::planus::WriteAs::prepare(self, builder)
+                }
+
+                #[inline]
+                unsafe fn write_values(
+                    values: &[::planus::Offset<CredProtect>],
+                    bytes: *mut ::core::mem::MaybeUninit<u8>,
+                    buffer_position: u32,
+                ) {
+                    let bytes = bytes as *mut [::core::mem::MaybeUninit<u8>; 4];
+                    for (i, v) in ::core::iter::Iterator::enumerate(values.iter()) {
+                        ::planus::WriteAsPrimitive::write(
+                            v,
+                            ::planus::Cursor::new(&mut *bytes.add(i)),
+                            buffer_position - (Self::STRIDE * i) as u32,
+                        );
+                    }
+                }
+            }
+
+            impl<'a> ::planus::ReadAsRoot<'a> for CredProtectRef<'a> {
+                fn read_as_root(slice: &'a [u8]) -> ::planus::Result<Self> {
+                    ::planus::TableRead::from_buffer(
+                        ::planus::SliceWithStartOffset {
+                            buffer: slice,
+                            offset_from_start: 0,
+                        },
+                        0,
+                    )
+                    .map_err(|error_kind| {
+                        error_kind.with_error_location("[CredProtectRef]", "read_as_root", 0)
+                    })
+                }
+            }
+
             /// The table `RequestRegistrationExtensions` in the namespace `Auth.WebAuthn`
             ///
             /// Generated from these locations:
-            /// * Table `RequestRegistrationExtensions` in the file `auth/webauthn.fbs:45`
+            /// * Table `RequestRegistrationExtensions` in the file `auth/webauthn.fbs:98`
             #[derive(
                 Clone,
                 Debug,
@@ -2951,585 +3911,10 @@ mod root {
                 }
             }
 
-            /// The table `CredProtect` in the namespace `Auth.WebAuthn`
-            ///
-            /// Generated from these locations:
-            /// * Table `CredProtect` in the file `auth/webauthn.fbs:61`
-            #[derive(
-                Clone,
-                Debug,
-                PartialEq,
-                PartialOrd,
-                Eq,
-                Ord,
-                Hash,
-                ::serde::Serialize,
-                ::serde::Deserialize,
-            )]
-            pub struct CredProtect {
-                ///  The credential policy to enact
-                pub credential_protection_policy: self::CredentialProtectionPolicy,
-                ///  Whether it is better for the authenticator to fail to create a
-                ///  credential rather than ignore the protection policy
-                pub enforce_credential_protection_policy: bool,
-            }
-
-            #[allow(clippy::derivable_impls)]
-            impl ::core::default::Default for CredProtect {
-                fn default() -> Self {
-                    Self {
-                        credential_protection_policy:
-                            self::CredentialProtectionPolicy::UserVerificationOptional,
-                        enforce_credential_protection_policy: false,
-                    }
-                }
-            }
-
-            impl CredProtect {
-                /// Creates a [CredProtectBuilder] for serializing an instance of this table.
-                #[inline]
-                pub fn builder() -> CredProtectBuilder<()> {
-                    CredProtectBuilder(())
-                }
-
-                #[allow(clippy::too_many_arguments)]
-                pub fn create(
-                    builder: &mut ::planus::Builder,
-                    field_credential_protection_policy: impl ::planus::WriteAsDefault<
-                        self::CredentialProtectionPolicy,
-                        self::CredentialProtectionPolicy,
-                    >,
-                    field_enforce_credential_protection_policy: impl ::planus::WriteAsDefault<
-                        bool,
-                        bool,
-                    >,
-                ) -> ::planus::Offset<Self> {
-                    let prepared_credential_protection_policy = field_credential_protection_policy
-                        .prepare(
-                            builder,
-                            &self::CredentialProtectionPolicy::UserVerificationOptional,
-                        );
-                    let prepared_enforce_credential_protection_policy =
-                        field_enforce_credential_protection_policy.prepare(builder, &false);
-
-                    let mut table_writer: ::planus::table_writer::TableWriter<8> =
-                        ::core::default::Default::default();
-                    if prepared_credential_protection_policy.is_some() {
-                        table_writer.write_entry::<self::CredentialProtectionPolicy>(0);
-                    }
-                    if prepared_enforce_credential_protection_policy.is_some() {
-                        table_writer.write_entry::<bool>(1);
-                    }
-
-                    unsafe {
-                        table_writer.finish(builder, |object_writer| {
-                            if let ::core::option::Option::Some(
-                                prepared_credential_protection_policy,
-                            ) = prepared_credential_protection_policy
-                            {
-                                object_writer
-                                    .write::<_, _, 1>(&prepared_credential_protection_policy);
-                            }
-                            if let ::core::option::Option::Some(
-                                prepared_enforce_credential_protection_policy,
-                            ) = prepared_enforce_credential_protection_policy
-                            {
-                                object_writer.write::<_, _, 1>(
-                                    &prepared_enforce_credential_protection_policy,
-                                );
-                            }
-                        });
-                    }
-                    builder.current_offset()
-                }
-            }
-
-            impl ::planus::WriteAs<::planus::Offset<CredProtect>> for CredProtect {
-                type Prepared = ::planus::Offset<Self>;
-
-                #[inline]
-                fn prepare(
-                    &self,
-                    builder: &mut ::planus::Builder,
-                ) -> ::planus::Offset<CredProtect> {
-                    ::planus::WriteAsOffset::prepare(self, builder)
-                }
-            }
-
-            impl ::planus::WriteAsOptional<::planus::Offset<CredProtect>> for CredProtect {
-                type Prepared = ::planus::Offset<Self>;
-
-                #[inline]
-                fn prepare(
-                    &self,
-                    builder: &mut ::planus::Builder,
-                ) -> ::core::option::Option<::planus::Offset<CredProtect>> {
-                    ::core::option::Option::Some(::planus::WriteAsOffset::prepare(self, builder))
-                }
-            }
-
-            impl ::planus::WriteAsOffset<CredProtect> for CredProtect {
-                #[inline]
-                fn prepare(
-                    &self,
-                    builder: &mut ::planus::Builder,
-                ) -> ::planus::Offset<CredProtect> {
-                    CredProtect::create(
-                        builder,
-                        self.credential_protection_policy,
-                        self.enforce_credential_protection_policy,
-                    )
-                }
-            }
-
-            /// Builder for serializing an instance of the [CredProtect] type.
-            ///
-            /// Can be created using the [CredProtect::builder] method.
-            #[derive(Debug)]
-            #[must_use]
-            pub struct CredProtectBuilder<State>(State);
-
-            impl CredProtectBuilder<()> {
-                /// Setter for the [`credential_protection_policy` field](CredProtect#structfield.credential_protection_policy).
-                #[inline]
-                #[allow(clippy::type_complexity)]
-                pub fn credential_protection_policy<T0>(
-                    self,
-                    value: T0,
-                ) -> CredProtectBuilder<(T0,)>
-                where
-                    T0: ::planus::WriteAsDefault<
-                        self::CredentialProtectionPolicy,
-                        self::CredentialProtectionPolicy,
-                    >,
-                {
-                    CredProtectBuilder((value,))
-                }
-
-                /// Sets the [`credential_protection_policy` field](CredProtect#structfield.credential_protection_policy) to the default value.
-                #[inline]
-                #[allow(clippy::type_complexity)]
-                pub fn credential_protection_policy_as_default(
-                    self,
-                ) -> CredProtectBuilder<(::planus::DefaultValue,)> {
-                    self.credential_protection_policy(::planus::DefaultValue)
-                }
-            }
-
-            impl<T0> CredProtectBuilder<(T0,)> {
-                /// Setter for the [`enforce_credential_protection_policy` field](CredProtect#structfield.enforce_credential_protection_policy).
-                #[inline]
-                #[allow(clippy::type_complexity)]
-                pub fn enforce_credential_protection_policy<T1>(
-                    self,
-                    value: T1,
-                ) -> CredProtectBuilder<(T0, T1)>
-                where
-                    T1: ::planus::WriteAsDefault<bool, bool>,
-                {
-                    let (v0,) = self.0;
-                    CredProtectBuilder((v0, value))
-                }
-
-                /// Sets the [`enforce_credential_protection_policy` field](CredProtect#structfield.enforce_credential_protection_policy) to the default value.
-                #[inline]
-                #[allow(clippy::type_complexity)]
-                pub fn enforce_credential_protection_policy_as_default(
-                    self,
-                ) -> CredProtectBuilder<(T0, ::planus::DefaultValue)> {
-                    self.enforce_credential_protection_policy(::planus::DefaultValue)
-                }
-            }
-
-            impl<T0, T1> CredProtectBuilder<(T0, T1)> {
-                /// Finish writing the builder to get an [Offset](::planus::Offset) to a serialized [CredProtect].
-                #[inline]
-                pub fn finish(
-                    self,
-                    builder: &mut ::planus::Builder,
-                ) -> ::planus::Offset<CredProtect>
-                where
-                    Self: ::planus::WriteAsOffset<CredProtect>,
-                {
-                    ::planus::WriteAsOffset::prepare(&self, builder)
-                }
-            }
-
-            impl<
-                    T0: ::planus::WriteAsDefault<
-                        self::CredentialProtectionPolicy,
-                        self::CredentialProtectionPolicy,
-                    >,
-                    T1: ::planus::WriteAsDefault<bool, bool>,
-                > ::planus::WriteAs<::planus::Offset<CredProtect>>
-                for CredProtectBuilder<(T0, T1)>
-            {
-                type Prepared = ::planus::Offset<CredProtect>;
-
-                #[inline]
-                fn prepare(
-                    &self,
-                    builder: &mut ::planus::Builder,
-                ) -> ::planus::Offset<CredProtect> {
-                    ::planus::WriteAsOffset::prepare(self, builder)
-                }
-            }
-
-            impl<
-                    T0: ::planus::WriteAsDefault<
-                        self::CredentialProtectionPolicy,
-                        self::CredentialProtectionPolicy,
-                    >,
-                    T1: ::planus::WriteAsDefault<bool, bool>,
-                > ::planus::WriteAsOptional<::planus::Offset<CredProtect>>
-                for CredProtectBuilder<(T0, T1)>
-            {
-                type Prepared = ::planus::Offset<CredProtect>;
-
-                #[inline]
-                fn prepare(
-                    &self,
-                    builder: &mut ::planus::Builder,
-                ) -> ::core::option::Option<::planus::Offset<CredProtect>> {
-                    ::core::option::Option::Some(::planus::WriteAsOffset::prepare(self, builder))
-                }
-            }
-
-            impl<
-                    T0: ::planus::WriteAsDefault<
-                        self::CredentialProtectionPolicy,
-                        self::CredentialProtectionPolicy,
-                    >,
-                    T1: ::planus::WriteAsDefault<bool, bool>,
-                > ::planus::WriteAsOffset<CredProtect> for CredProtectBuilder<(T0, T1)>
-            {
-                #[inline]
-                fn prepare(
-                    &self,
-                    builder: &mut ::planus::Builder,
-                ) -> ::planus::Offset<CredProtect> {
-                    let (v0, v1) = &self.0;
-                    CredProtect::create(builder, v0, v1)
-                }
-            }
-
-            /// Reference to a deserialized [CredProtect].
-            #[derive(Copy, Clone)]
-            pub struct CredProtectRef<'a>(::planus::table_reader::Table<'a>);
-
-            impl<'a> CredProtectRef<'a> {
-                /// Getter for the [`credential_protection_policy` field](CredProtect#structfield.credential_protection_policy).
-                #[inline]
-                pub fn credential_protection_policy(
-                    &self,
-                ) -> ::planus::Result<self::CredentialProtectionPolicy> {
-                    ::core::result::Result::Ok(
-                        self.0
-                            .access(0, "CredProtect", "credential_protection_policy")?
-                            .unwrap_or(self::CredentialProtectionPolicy::UserVerificationOptional),
-                    )
-                }
-
-                /// Getter for the [`enforce_credential_protection_policy` field](CredProtect#structfield.enforce_credential_protection_policy).
-                #[inline]
-                pub fn enforce_credential_protection_policy(&self) -> ::planus::Result<bool> {
-                    ::core::result::Result::Ok(
-                        self.0
-                            .access(1, "CredProtect", "enforce_credential_protection_policy")?
-                            .unwrap_or(false),
-                    )
-                }
-            }
-
-            impl<'a> ::core::fmt::Debug for CredProtectRef<'a> {
-                fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
-                    let mut f = f.debug_struct("CredProtectRef");
-                    f.field(
-                        "credential_protection_policy",
-                        &self.credential_protection_policy(),
-                    );
-                    f.field(
-                        "enforce_credential_protection_policy",
-                        &self.enforce_credential_protection_policy(),
-                    );
-                    f.finish()
-                }
-            }
-
-            impl<'a> ::core::convert::TryFrom<CredProtectRef<'a>> for CredProtect {
-                type Error = ::planus::Error;
-
-                #[allow(unreachable_code)]
-                fn try_from(value: CredProtectRef<'a>) -> ::planus::Result<Self> {
-                    ::core::result::Result::Ok(Self {
-                        credential_protection_policy: ::core::convert::TryInto::try_into(
-                            value.credential_protection_policy()?,
-                        )?,
-                        enforce_credential_protection_policy: ::core::convert::TryInto::try_into(
-                            value.enforce_credential_protection_policy()?,
-                        )?,
-                    })
-                }
-            }
-
-            impl<'a> ::planus::TableRead<'a> for CredProtectRef<'a> {
-                #[inline]
-                fn from_buffer(
-                    buffer: ::planus::SliceWithStartOffset<'a>,
-                    offset: usize,
-                ) -> ::core::result::Result<Self, ::planus::errors::ErrorKind> {
-                    ::core::result::Result::Ok(Self(::planus::table_reader::Table::from_buffer(
-                        buffer, offset,
-                    )?))
-                }
-            }
-
-            impl<'a> ::planus::VectorReadInner<'a> for CredProtectRef<'a> {
-                type Error = ::planus::Error;
-                const STRIDE: usize = 4;
-
-                unsafe fn from_buffer(
-                    buffer: ::planus::SliceWithStartOffset<'a>,
-                    offset: usize,
-                ) -> ::planus::Result<Self> {
-                    ::planus::TableRead::from_buffer(buffer, offset).map_err(|error_kind| {
-                        error_kind.with_error_location(
-                            "[CredProtectRef]",
-                            "get",
-                            buffer.offset_from_start,
-                        )
-                    })
-                }
-            }
-
-            impl ::planus::VectorWrite<::planus::Offset<CredProtect>> for CredProtect {
-                type Value = ::planus::Offset<CredProtect>;
-                const STRIDE: usize = 4;
-                #[inline]
-                fn prepare(&self, builder: &mut ::planus::Builder) -> Self::Value {
-                    ::planus::WriteAs::prepare(self, builder)
-                }
-
-                #[inline]
-                unsafe fn write_values(
-                    values: &[::planus::Offset<CredProtect>],
-                    bytes: *mut ::core::mem::MaybeUninit<u8>,
-                    buffer_position: u32,
-                ) {
-                    let bytes = bytes as *mut [::core::mem::MaybeUninit<u8>; 4];
-                    for (i, v) in ::core::iter::Iterator::enumerate(values.iter()) {
-                        ::planus::WriteAsPrimitive::write(
-                            v,
-                            ::planus::Cursor::new(&mut *bytes.add(i)),
-                            buffer_position - (Self::STRIDE * i) as u32,
-                        );
-                    }
-                }
-            }
-
-            impl<'a> ::planus::ReadAsRoot<'a> for CredProtectRef<'a> {
-                fn read_as_root(slice: &'a [u8]) -> ::planus::Result<Self> {
-                    ::planus::TableRead::from_buffer(
-                        ::planus::SliceWithStartOffset {
-                            buffer: slice,
-                            offset_from_start: 0,
-                        },
-                        0,
-                    )
-                    .map_err(|error_kind| {
-                        error_kind.with_error_location("[CredProtectRef]", "read_as_root", 0)
-                    })
-                }
-            }
-
-            /// The enum `CredentialProtectionPolicy` in the namespace `Auth.WebAuthn`
-            ///
-            /// Generated from these locations:
-            /// * Enum `CredentialProtectionPolicy` in the file `auth/webauthn.fbs:69`
-            #[derive(
-                Copy,
-                Clone,
-                Debug,
-                PartialEq,
-                Eq,
-                PartialOrd,
-                Ord,
-                Hash,
-                ::serde::Serialize,
-                ::serde::Deserialize,
-            )]
-            #[repr(i8)]
-            pub enum CredentialProtectionPolicy {
-                ///  This reflects "FIDO_2_0" semantics. In this configuration, performing
-                ///  some form of user verification is optional with or without credentialID
-                ///  list. This is the default state of the credential if the extension is
-                ///  not specified.
-                UserVerificationOptional = 0,
-
-                ///  In this configuration, credential is discovered only when its
-                ///  credentialID is provided by the platform or when some form of user
-                ///  verification is performed.
-                UserVerificationOptionalWithCredentialIdList = 1,
-
-                ///  This reflects that discovery and usage of the credential MUST be
-                ///  preceded by some form of user verification.
-                UserVerificationRequired = 2,
-            }
-
-            impl CredentialProtectionPolicy {
-                /// Array containing all valid variants of CredentialProtectionPolicy
-                pub const ENUM_VALUES: [Self; 3] = [
-                    Self::UserVerificationOptional,
-                    Self::UserVerificationOptionalWithCredentialIdList,
-                    Self::UserVerificationRequired,
-                ];
-            }
-
-            impl ::core::convert::TryFrom<i8> for CredentialProtectionPolicy {
-                type Error = ::planus::errors::UnknownEnumTagKind;
-                #[inline]
-                fn try_from(
-                    value: i8,
-                ) -> ::core::result::Result<Self, ::planus::errors::UnknownEnumTagKind>
-                {
-                    #[allow(clippy::match_single_binding)]
-                    match value {
-                        0 => ::core::result::Result::Ok(CredentialProtectionPolicy::UserVerificationOptional),
-                        1 => ::core::result::Result::Ok(CredentialProtectionPolicy::UserVerificationOptionalWithCredentialIdList),
-                        2 => ::core::result::Result::Ok(CredentialProtectionPolicy::UserVerificationRequired),
-
-                        _ => ::core::result::Result::Err(::planus::errors::UnknownEnumTagKind { tag: value as i128 }),
-                    }
-                }
-            }
-
-            impl ::core::convert::From<CredentialProtectionPolicy> for i8 {
-                #[inline]
-                fn from(value: CredentialProtectionPolicy) -> Self {
-                    value as i8
-                }
-            }
-
-            impl ::planus::Primitive for CredentialProtectionPolicy {
-                const ALIGNMENT: usize = 1;
-                const SIZE: usize = 1;
-            }
-
-            impl ::planus::WriteAsPrimitive<CredentialProtectionPolicy> for CredentialProtectionPolicy {
-                #[inline]
-                fn write<const N: usize>(
-                    &self,
-                    cursor: ::planus::Cursor<'_, N>,
-                    buffer_position: u32,
-                ) {
-                    (*self as i8).write(cursor, buffer_position);
-                }
-            }
-
-            impl ::planus::WriteAs<CredentialProtectionPolicy> for CredentialProtectionPolicy {
-                type Prepared = Self;
-
-                #[inline]
-                fn prepare(&self, _builder: &mut ::planus::Builder) -> CredentialProtectionPolicy {
-                    *self
-                }
-            }
-
-            impl ::planus::WriteAsDefault<CredentialProtectionPolicy, CredentialProtectionPolicy>
-                for CredentialProtectionPolicy
-            {
-                type Prepared = Self;
-
-                #[inline]
-                fn prepare(
-                    &self,
-                    _builder: &mut ::planus::Builder,
-                    default: &CredentialProtectionPolicy,
-                ) -> ::core::option::Option<CredentialProtectionPolicy> {
-                    if self == default {
-                        ::core::option::Option::None
-                    } else {
-                        ::core::option::Option::Some(*self)
-                    }
-                }
-            }
-
-            impl ::planus::WriteAsOptional<CredentialProtectionPolicy> for CredentialProtectionPolicy {
-                type Prepared = Self;
-
-                #[inline]
-                fn prepare(
-                    &self,
-                    _builder: &mut ::planus::Builder,
-                ) -> ::core::option::Option<CredentialProtectionPolicy> {
-                    ::core::option::Option::Some(*self)
-                }
-            }
-
-            impl<'buf> ::planus::TableRead<'buf> for CredentialProtectionPolicy {
-                #[inline]
-                fn from_buffer(
-                    buffer: ::planus::SliceWithStartOffset<'buf>,
-                    offset: usize,
-                ) -> ::core::result::Result<Self, ::planus::errors::ErrorKind> {
-                    let n: i8 = ::planus::TableRead::from_buffer(buffer, offset)?;
-                    ::core::result::Result::Ok(::core::convert::TryInto::try_into(n)?)
-                }
-            }
-
-            impl<'buf> ::planus::VectorReadInner<'buf> for CredentialProtectionPolicy {
-                type Error = ::planus::errors::UnknownEnumTag;
-                const STRIDE: usize = 1;
-                #[inline]
-                unsafe fn from_buffer(
-                    buffer: ::planus::SliceWithStartOffset<'buf>,
-                    offset: usize,
-                ) -> ::core::result::Result<Self, ::planus::errors::UnknownEnumTag>
-                {
-                    let value = *buffer.buffer.get_unchecked(offset) as i8;
-                    let value: ::core::result::Result<Self, _> =
-                        ::core::convert::TryInto::try_into(value);
-                    value.map_err(|error_kind| {
-                        error_kind.with_error_location(
-                            "CredentialProtectionPolicy",
-                            "VectorRead::from_buffer",
-                            buffer.offset_from_start,
-                        )
-                    })
-                }
-            }
-
-            impl ::planus::VectorWrite<CredentialProtectionPolicy> for CredentialProtectionPolicy {
-                const STRIDE: usize = 1;
-
-                type Value = Self;
-
-                #[inline]
-                fn prepare(&self, _builder: &mut ::planus::Builder) -> Self {
-                    *self
-                }
-
-                #[inline]
-                unsafe fn write_values(
-                    values: &[Self],
-                    bytes: *mut ::core::mem::MaybeUninit<u8>,
-                    buffer_position: u32,
-                ) {
-                    let bytes = bytes as *mut [::core::mem::MaybeUninit<u8>; 1];
-                    for (i, v) in ::core::iter::Iterator::enumerate(values.iter()) {
-                        ::planus::WriteAsPrimitive::write(
-                            v,
-                            ::planus::Cursor::new(&mut *bytes.add(i)),
-                            buffer_position - i as u32,
-                        );
-                    }
-                }
-            }
-
             /// The table `PublicKeyCredentialDescriptor` in the namespace `Auth.WebAuthn`
             ///
             /// Generated from these locations:
-            /// * Table `PublicKeyCredentialDescriptor` in the file `auth/webauthn.fbs:84`
+            /// * Table `PublicKeyCredentialDescriptor` in the file `auth/webauthn.fbs:114`
             #[derive(
                 Clone,
                 Debug,
@@ -3959,10 +4344,361 @@ mod root {
                 }
             }
 
+            /// The enum `AuthenticatorAttachment` in the namespace `Auth.WebAuthn`
+            ///
+            /// Generated from these locations:
+            /// * Enum `AuthenticatorAttachment` in the file `auth/webauthn.fbs:123`
+            #[derive(
+                Copy,
+                Clone,
+                Debug,
+                PartialEq,
+                Eq,
+                PartialOrd,
+                Ord,
+                Hash,
+                ::serde::Serialize,
+                ::serde::Deserialize,
+            )]
+            #[repr(i8)]
+            pub enum AuthenticatorAttachment {
+                ///  Request a device that is part of the machine aka inseperable.
+                ///  <https://www.w3.org/TR/webauthn/#attachment>
+                Platform = 0,
+
+                ///  Request a device that can be seperated from the machine aka an external token.
+                ///  <https://www.w3.org/TR/webauthn/#attachment>
+                CrossPlatform = 1,
+            }
+
+            impl AuthenticatorAttachment {
+                /// Array containing all valid variants of AuthenticatorAttachment
+                pub const ENUM_VALUES: [Self; 2] = [Self::Platform, Self::CrossPlatform];
+            }
+
+            impl ::core::convert::TryFrom<i8> for AuthenticatorAttachment {
+                type Error = ::planus::errors::UnknownEnumTagKind;
+                #[inline]
+                fn try_from(
+                    value: i8,
+                ) -> ::core::result::Result<Self, ::planus::errors::UnknownEnumTagKind>
+                {
+                    #[allow(clippy::match_single_binding)]
+                    match value {
+                        0 => ::core::result::Result::Ok(AuthenticatorAttachment::Platform),
+                        1 => ::core::result::Result::Ok(AuthenticatorAttachment::CrossPlatform),
+
+                        _ => ::core::result::Result::Err(::planus::errors::UnknownEnumTagKind {
+                            tag: value as i128,
+                        }),
+                    }
+                }
+            }
+
+            impl ::core::convert::From<AuthenticatorAttachment> for i8 {
+                #[inline]
+                fn from(value: AuthenticatorAttachment) -> Self {
+                    value as i8
+                }
+            }
+
+            impl ::planus::Primitive for AuthenticatorAttachment {
+                const ALIGNMENT: usize = 1;
+                const SIZE: usize = 1;
+            }
+
+            impl ::planus::WriteAsPrimitive<AuthenticatorAttachment> for AuthenticatorAttachment {
+                #[inline]
+                fn write<const N: usize>(
+                    &self,
+                    cursor: ::planus::Cursor<'_, N>,
+                    buffer_position: u32,
+                ) {
+                    (*self as i8).write(cursor, buffer_position);
+                }
+            }
+
+            impl ::planus::WriteAs<AuthenticatorAttachment> for AuthenticatorAttachment {
+                type Prepared = Self;
+
+                #[inline]
+                fn prepare(&self, _builder: &mut ::planus::Builder) -> AuthenticatorAttachment {
+                    *self
+                }
+            }
+
+            impl ::planus::WriteAsDefault<AuthenticatorAttachment, AuthenticatorAttachment>
+                for AuthenticatorAttachment
+            {
+                type Prepared = Self;
+
+                #[inline]
+                fn prepare(
+                    &self,
+                    _builder: &mut ::planus::Builder,
+                    default: &AuthenticatorAttachment,
+                ) -> ::core::option::Option<AuthenticatorAttachment> {
+                    if self == default {
+                        ::core::option::Option::None
+                    } else {
+                        ::core::option::Option::Some(*self)
+                    }
+                }
+            }
+
+            impl ::planus::WriteAsOptional<AuthenticatorAttachment> for AuthenticatorAttachment {
+                type Prepared = Self;
+
+                #[inline]
+                fn prepare(
+                    &self,
+                    _builder: &mut ::planus::Builder,
+                ) -> ::core::option::Option<AuthenticatorAttachment> {
+                    ::core::option::Option::Some(*self)
+                }
+            }
+
+            impl<'buf> ::planus::TableRead<'buf> for AuthenticatorAttachment {
+                #[inline]
+                fn from_buffer(
+                    buffer: ::planus::SliceWithStartOffset<'buf>,
+                    offset: usize,
+                ) -> ::core::result::Result<Self, ::planus::errors::ErrorKind> {
+                    let n: i8 = ::planus::TableRead::from_buffer(buffer, offset)?;
+                    ::core::result::Result::Ok(::core::convert::TryInto::try_into(n)?)
+                }
+            }
+
+            impl<'buf> ::planus::VectorReadInner<'buf> for AuthenticatorAttachment {
+                type Error = ::planus::errors::UnknownEnumTag;
+                const STRIDE: usize = 1;
+                #[inline]
+                unsafe fn from_buffer(
+                    buffer: ::planus::SliceWithStartOffset<'buf>,
+                    offset: usize,
+                ) -> ::core::result::Result<Self, ::planus::errors::UnknownEnumTag>
+                {
+                    let value = *buffer.buffer.get_unchecked(offset) as i8;
+                    let value: ::core::result::Result<Self, _> =
+                        ::core::convert::TryInto::try_into(value);
+                    value.map_err(|error_kind| {
+                        error_kind.with_error_location(
+                            "AuthenticatorAttachment",
+                            "VectorRead::from_buffer",
+                            buffer.offset_from_start,
+                        )
+                    })
+                }
+            }
+
+            impl ::planus::VectorWrite<AuthenticatorAttachment> for AuthenticatorAttachment {
+                const STRIDE: usize = 1;
+
+                type Value = Self;
+
+                #[inline]
+                fn prepare(&self, _builder: &mut ::planus::Builder) -> Self {
+                    *self
+                }
+
+                #[inline]
+                unsafe fn write_values(
+                    values: &[Self],
+                    bytes: *mut ::core::mem::MaybeUninit<u8>,
+                    buffer_position: u32,
+                ) {
+                    let bytes = bytes as *mut [::core::mem::MaybeUninit<u8>; 1];
+                    for (i, v) in ::core::iter::Iterator::enumerate(values.iter()) {
+                        ::planus::WriteAsPrimitive::write(
+                            v,
+                            ::planus::Cursor::new(&mut *bytes.add(i)),
+                            buffer_position - i as u32,
+                        );
+                    }
+                }
+            }
+
+            /// The enum `UserVerificationPolicy` in the namespace `Auth.WebAuthn`
+            ///
+            /// Generated from these locations:
+            /// * Enum `UserVerificationPolicy` in the file `auth/webauthn.fbs:132`
+            #[derive(
+                Copy,
+                Clone,
+                Debug,
+                PartialEq,
+                Eq,
+                PartialOrd,
+                Ord,
+                Hash,
+                ::serde::Serialize,
+                ::serde::Deserialize,
+            )]
+            #[repr(i8)]
+            pub enum UserVerificationPolicy {
+                ///  <https://www.w3.org/TR/webauthn/#dom-userverificationrequirement-preferred>
+                Preferred = 0,
+
+                ///  <https://www.w3.org/TR/webauthn/#dom-userverificationrequirement-required>
+                Required = 1,
+
+                ///  <https://www.w3.org/TR/webauthn/#dom-userverificationrequirement-discouraged>
+                Discouraged = 2,
+            }
+
+            impl UserVerificationPolicy {
+                /// Array containing all valid variants of UserVerificationPolicy
+                pub const ENUM_VALUES: [Self; 3] =
+                    [Self::Preferred, Self::Required, Self::Discouraged];
+            }
+
+            impl ::core::convert::TryFrom<i8> for UserVerificationPolicy {
+                type Error = ::planus::errors::UnknownEnumTagKind;
+                #[inline]
+                fn try_from(
+                    value: i8,
+                ) -> ::core::result::Result<Self, ::planus::errors::UnknownEnumTagKind>
+                {
+                    #[allow(clippy::match_single_binding)]
+                    match value {
+                        0 => ::core::result::Result::Ok(UserVerificationPolicy::Preferred),
+                        1 => ::core::result::Result::Ok(UserVerificationPolicy::Required),
+                        2 => ::core::result::Result::Ok(UserVerificationPolicy::Discouraged),
+
+                        _ => ::core::result::Result::Err(::planus::errors::UnknownEnumTagKind {
+                            tag: value as i128,
+                        }),
+                    }
+                }
+            }
+
+            impl ::core::convert::From<UserVerificationPolicy> for i8 {
+                #[inline]
+                fn from(value: UserVerificationPolicy) -> Self {
+                    value as i8
+                }
+            }
+
+            impl ::planus::Primitive for UserVerificationPolicy {
+                const ALIGNMENT: usize = 1;
+                const SIZE: usize = 1;
+            }
+
+            impl ::planus::WriteAsPrimitive<UserVerificationPolicy> for UserVerificationPolicy {
+                #[inline]
+                fn write<const N: usize>(
+                    &self,
+                    cursor: ::planus::Cursor<'_, N>,
+                    buffer_position: u32,
+                ) {
+                    (*self as i8).write(cursor, buffer_position);
+                }
+            }
+
+            impl ::planus::WriteAs<UserVerificationPolicy> for UserVerificationPolicy {
+                type Prepared = Self;
+
+                #[inline]
+                fn prepare(&self, _builder: &mut ::planus::Builder) -> UserVerificationPolicy {
+                    *self
+                }
+            }
+
+            impl ::planus::WriteAsDefault<UserVerificationPolicy, UserVerificationPolicy>
+                for UserVerificationPolicy
+            {
+                type Prepared = Self;
+
+                #[inline]
+                fn prepare(
+                    &self,
+                    _builder: &mut ::planus::Builder,
+                    default: &UserVerificationPolicy,
+                ) -> ::core::option::Option<UserVerificationPolicy> {
+                    if self == default {
+                        ::core::option::Option::None
+                    } else {
+                        ::core::option::Option::Some(*self)
+                    }
+                }
+            }
+
+            impl ::planus::WriteAsOptional<UserVerificationPolicy> for UserVerificationPolicy {
+                type Prepared = Self;
+
+                #[inline]
+                fn prepare(
+                    &self,
+                    _builder: &mut ::planus::Builder,
+                ) -> ::core::option::Option<UserVerificationPolicy> {
+                    ::core::option::Option::Some(*self)
+                }
+            }
+
+            impl<'buf> ::planus::TableRead<'buf> for UserVerificationPolicy {
+                #[inline]
+                fn from_buffer(
+                    buffer: ::planus::SliceWithStartOffset<'buf>,
+                    offset: usize,
+                ) -> ::core::result::Result<Self, ::planus::errors::ErrorKind> {
+                    let n: i8 = ::planus::TableRead::from_buffer(buffer, offset)?;
+                    ::core::result::Result::Ok(::core::convert::TryInto::try_into(n)?)
+                }
+            }
+
+            impl<'buf> ::planus::VectorReadInner<'buf> for UserVerificationPolicy {
+                type Error = ::planus::errors::UnknownEnumTag;
+                const STRIDE: usize = 1;
+                #[inline]
+                unsafe fn from_buffer(
+                    buffer: ::planus::SliceWithStartOffset<'buf>,
+                    offset: usize,
+                ) -> ::core::result::Result<Self, ::planus::errors::UnknownEnumTag>
+                {
+                    let value = *buffer.buffer.get_unchecked(offset) as i8;
+                    let value: ::core::result::Result<Self, _> =
+                        ::core::convert::TryInto::try_into(value);
+                    value.map_err(|error_kind| {
+                        error_kind.with_error_location(
+                            "UserVerificationPolicy",
+                            "VectorRead::from_buffer",
+                            buffer.offset_from_start,
+                        )
+                    })
+                }
+            }
+
+            impl ::planus::VectorWrite<UserVerificationPolicy> for UserVerificationPolicy {
+                const STRIDE: usize = 1;
+
+                type Value = Self;
+
+                #[inline]
+                fn prepare(&self, _builder: &mut ::planus::Builder) -> Self {
+                    *self
+                }
+
+                #[inline]
+                unsafe fn write_values(
+                    values: &[Self],
+                    bytes: *mut ::core::mem::MaybeUninit<u8>,
+                    buffer_position: u32,
+                ) {
+                    let bytes = bytes as *mut [::core::mem::MaybeUninit<u8>; 1];
+                    for (i, v) in ::core::iter::Iterator::enumerate(values.iter()) {
+                        ::planus::WriteAsPrimitive::write(
+                            v,
+                            ::planus::Cursor::new(&mut *bytes.add(i)),
+                            buffer_position - i as u32,
+                        );
+                    }
+                }
+            }
+
             /// The table `AuthenticatorSelectionCriteria` in the namespace `Auth.WebAuthn`
             ///
             /// Generated from these locations:
-            /// * Table `AuthenticatorSelectionCriteria` in the file `auth/webauthn.fbs:93`
+            /// * Table `AuthenticatorSelectionCriteria` in the file `auth/webauthn.fbs:141`
             #[derive(
                 Clone,
                 Debug,
@@ -4425,742 +5161,6 @@ mod root {
                             0,
                         )
                     })
-                }
-            }
-
-            /// The enum `UserVerificationPolicy` in the namespace `Auth.WebAuthn`
-            ///
-            /// Generated from these locations:
-            /// * Enum `UserVerificationPolicy` in the file `auth/webauthn.fbs:102`
-            #[derive(
-                Copy,
-                Clone,
-                Debug,
-                PartialEq,
-                Eq,
-                PartialOrd,
-                Ord,
-                Hash,
-                ::serde::Serialize,
-                ::serde::Deserialize,
-            )]
-            #[repr(i8)]
-            pub enum UserVerificationPolicy {
-                ///  <https://www.w3.org/TR/webauthn/#dom-userverificationrequirement-preferred>
-                Preferred = 0,
-
-                ///  <https://www.w3.org/TR/webauthn/#dom-userverificationrequirement-required>
-                Required = 1,
-
-                ///  <https://www.w3.org/TR/webauthn/#dom-userverificationrequirement-discouraged>
-                Discouraged = 2,
-            }
-
-            impl UserVerificationPolicy {
-                /// Array containing all valid variants of UserVerificationPolicy
-                pub const ENUM_VALUES: [Self; 3] =
-                    [Self::Preferred, Self::Required, Self::Discouraged];
-            }
-
-            impl ::core::convert::TryFrom<i8> for UserVerificationPolicy {
-                type Error = ::planus::errors::UnknownEnumTagKind;
-                #[inline]
-                fn try_from(
-                    value: i8,
-                ) -> ::core::result::Result<Self, ::planus::errors::UnknownEnumTagKind>
-                {
-                    #[allow(clippy::match_single_binding)]
-                    match value {
-                        0 => ::core::result::Result::Ok(UserVerificationPolicy::Preferred),
-                        1 => ::core::result::Result::Ok(UserVerificationPolicy::Required),
-                        2 => ::core::result::Result::Ok(UserVerificationPolicy::Discouraged),
-
-                        _ => ::core::result::Result::Err(::planus::errors::UnknownEnumTagKind {
-                            tag: value as i128,
-                        }),
-                    }
-                }
-            }
-
-            impl ::core::convert::From<UserVerificationPolicy> for i8 {
-                #[inline]
-                fn from(value: UserVerificationPolicy) -> Self {
-                    value as i8
-                }
-            }
-
-            impl ::planus::Primitive for UserVerificationPolicy {
-                const ALIGNMENT: usize = 1;
-                const SIZE: usize = 1;
-            }
-
-            impl ::planus::WriteAsPrimitive<UserVerificationPolicy> for UserVerificationPolicy {
-                #[inline]
-                fn write<const N: usize>(
-                    &self,
-                    cursor: ::planus::Cursor<'_, N>,
-                    buffer_position: u32,
-                ) {
-                    (*self as i8).write(cursor, buffer_position);
-                }
-            }
-
-            impl ::planus::WriteAs<UserVerificationPolicy> for UserVerificationPolicy {
-                type Prepared = Self;
-
-                #[inline]
-                fn prepare(&self, _builder: &mut ::planus::Builder) -> UserVerificationPolicy {
-                    *self
-                }
-            }
-
-            impl ::planus::WriteAsDefault<UserVerificationPolicy, UserVerificationPolicy>
-                for UserVerificationPolicy
-            {
-                type Prepared = Self;
-
-                #[inline]
-                fn prepare(
-                    &self,
-                    _builder: &mut ::planus::Builder,
-                    default: &UserVerificationPolicy,
-                ) -> ::core::option::Option<UserVerificationPolicy> {
-                    if self == default {
-                        ::core::option::Option::None
-                    } else {
-                        ::core::option::Option::Some(*self)
-                    }
-                }
-            }
-
-            impl ::planus::WriteAsOptional<UserVerificationPolicy> for UserVerificationPolicy {
-                type Prepared = Self;
-
-                #[inline]
-                fn prepare(
-                    &self,
-                    _builder: &mut ::planus::Builder,
-                ) -> ::core::option::Option<UserVerificationPolicy> {
-                    ::core::option::Option::Some(*self)
-                }
-            }
-
-            impl<'buf> ::planus::TableRead<'buf> for UserVerificationPolicy {
-                #[inline]
-                fn from_buffer(
-                    buffer: ::planus::SliceWithStartOffset<'buf>,
-                    offset: usize,
-                ) -> ::core::result::Result<Self, ::planus::errors::ErrorKind> {
-                    let n: i8 = ::planus::TableRead::from_buffer(buffer, offset)?;
-                    ::core::result::Result::Ok(::core::convert::TryInto::try_into(n)?)
-                }
-            }
-
-            impl<'buf> ::planus::VectorReadInner<'buf> for UserVerificationPolicy {
-                type Error = ::planus::errors::UnknownEnumTag;
-                const STRIDE: usize = 1;
-                #[inline]
-                unsafe fn from_buffer(
-                    buffer: ::planus::SliceWithStartOffset<'buf>,
-                    offset: usize,
-                ) -> ::core::result::Result<Self, ::planus::errors::UnknownEnumTag>
-                {
-                    let value = *buffer.buffer.get_unchecked(offset) as i8;
-                    let value: ::core::result::Result<Self, _> =
-                        ::core::convert::TryInto::try_into(value);
-                    value.map_err(|error_kind| {
-                        error_kind.with_error_location(
-                            "UserVerificationPolicy",
-                            "VectorRead::from_buffer",
-                            buffer.offset_from_start,
-                        )
-                    })
-                }
-            }
-
-            impl ::planus::VectorWrite<UserVerificationPolicy> for UserVerificationPolicy {
-                const STRIDE: usize = 1;
-
-                type Value = Self;
-
-                #[inline]
-                fn prepare(&self, _builder: &mut ::planus::Builder) -> Self {
-                    *self
-                }
-
-                #[inline]
-                unsafe fn write_values(
-                    values: &[Self],
-                    bytes: *mut ::core::mem::MaybeUninit<u8>,
-                    buffer_position: u32,
-                ) {
-                    let bytes = bytes as *mut [::core::mem::MaybeUninit<u8>; 1];
-                    for (i, v) in ::core::iter::Iterator::enumerate(values.iter()) {
-                        ::planus::WriteAsPrimitive::write(
-                            v,
-                            ::planus::Cursor::new(&mut *bytes.add(i)),
-                            buffer_position - i as u32,
-                        );
-                    }
-                }
-            }
-
-            /// The enum `AuthenticatorAttachment` in the namespace `Auth.WebAuthn`
-            ///
-            /// Generated from these locations:
-            /// * Enum `AuthenticatorAttachment` in the file `auth/webauthn.fbs:111`
-            #[derive(
-                Copy,
-                Clone,
-                Debug,
-                PartialEq,
-                Eq,
-                PartialOrd,
-                Ord,
-                Hash,
-                ::serde::Serialize,
-                ::serde::Deserialize,
-            )]
-            #[repr(i8)]
-            pub enum AuthenticatorAttachment {
-                ///  Request a device that is part of the machine aka inseperable.
-                ///  <https://www.w3.org/TR/webauthn/#attachment>
-                Platform = 0,
-
-                ///  Request a device that can be seperated from the machine aka an external token.
-                ///  <https://www.w3.org/TR/webauthn/#attachment>
-                CrossPlatform = 1,
-            }
-
-            impl AuthenticatorAttachment {
-                /// Array containing all valid variants of AuthenticatorAttachment
-                pub const ENUM_VALUES: [Self; 2] = [Self::Platform, Self::CrossPlatform];
-            }
-
-            impl ::core::convert::TryFrom<i8> for AuthenticatorAttachment {
-                type Error = ::planus::errors::UnknownEnumTagKind;
-                #[inline]
-                fn try_from(
-                    value: i8,
-                ) -> ::core::result::Result<Self, ::planus::errors::UnknownEnumTagKind>
-                {
-                    #[allow(clippy::match_single_binding)]
-                    match value {
-                        0 => ::core::result::Result::Ok(AuthenticatorAttachment::Platform),
-                        1 => ::core::result::Result::Ok(AuthenticatorAttachment::CrossPlatform),
-
-                        _ => ::core::result::Result::Err(::planus::errors::UnknownEnumTagKind {
-                            tag: value as i128,
-                        }),
-                    }
-                }
-            }
-
-            impl ::core::convert::From<AuthenticatorAttachment> for i8 {
-                #[inline]
-                fn from(value: AuthenticatorAttachment) -> Self {
-                    value as i8
-                }
-            }
-
-            impl ::planus::Primitive for AuthenticatorAttachment {
-                const ALIGNMENT: usize = 1;
-                const SIZE: usize = 1;
-            }
-
-            impl ::planus::WriteAsPrimitive<AuthenticatorAttachment> for AuthenticatorAttachment {
-                #[inline]
-                fn write<const N: usize>(
-                    &self,
-                    cursor: ::planus::Cursor<'_, N>,
-                    buffer_position: u32,
-                ) {
-                    (*self as i8).write(cursor, buffer_position);
-                }
-            }
-
-            impl ::planus::WriteAs<AuthenticatorAttachment> for AuthenticatorAttachment {
-                type Prepared = Self;
-
-                #[inline]
-                fn prepare(&self, _builder: &mut ::planus::Builder) -> AuthenticatorAttachment {
-                    *self
-                }
-            }
-
-            impl ::planus::WriteAsDefault<AuthenticatorAttachment, AuthenticatorAttachment>
-                for AuthenticatorAttachment
-            {
-                type Prepared = Self;
-
-                #[inline]
-                fn prepare(
-                    &self,
-                    _builder: &mut ::planus::Builder,
-                    default: &AuthenticatorAttachment,
-                ) -> ::core::option::Option<AuthenticatorAttachment> {
-                    if self == default {
-                        ::core::option::Option::None
-                    } else {
-                        ::core::option::Option::Some(*self)
-                    }
-                }
-            }
-
-            impl ::planus::WriteAsOptional<AuthenticatorAttachment> for AuthenticatorAttachment {
-                type Prepared = Self;
-
-                #[inline]
-                fn prepare(
-                    &self,
-                    _builder: &mut ::planus::Builder,
-                ) -> ::core::option::Option<AuthenticatorAttachment> {
-                    ::core::option::Option::Some(*self)
-                }
-            }
-
-            impl<'buf> ::planus::TableRead<'buf> for AuthenticatorAttachment {
-                #[inline]
-                fn from_buffer(
-                    buffer: ::planus::SliceWithStartOffset<'buf>,
-                    offset: usize,
-                ) -> ::core::result::Result<Self, ::planus::errors::ErrorKind> {
-                    let n: i8 = ::planus::TableRead::from_buffer(buffer, offset)?;
-                    ::core::result::Result::Ok(::core::convert::TryInto::try_into(n)?)
-                }
-            }
-
-            impl<'buf> ::planus::VectorReadInner<'buf> for AuthenticatorAttachment {
-                type Error = ::planus::errors::UnknownEnumTag;
-                const STRIDE: usize = 1;
-                #[inline]
-                unsafe fn from_buffer(
-                    buffer: ::planus::SliceWithStartOffset<'buf>,
-                    offset: usize,
-                ) -> ::core::result::Result<Self, ::planus::errors::UnknownEnumTag>
-                {
-                    let value = *buffer.buffer.get_unchecked(offset) as i8;
-                    let value: ::core::result::Result<Self, _> =
-                        ::core::convert::TryInto::try_into(value);
-                    value.map_err(|error_kind| {
-                        error_kind.with_error_location(
-                            "AuthenticatorAttachment",
-                            "VectorRead::from_buffer",
-                            buffer.offset_from_start,
-                        )
-                    })
-                }
-            }
-
-            impl ::planus::VectorWrite<AuthenticatorAttachment> for AuthenticatorAttachment {
-                const STRIDE: usize = 1;
-
-                type Value = Self;
-
-                #[inline]
-                fn prepare(&self, _builder: &mut ::planus::Builder) -> Self {
-                    *self
-                }
-
-                #[inline]
-                unsafe fn write_values(
-                    values: &[Self],
-                    bytes: *mut ::core::mem::MaybeUninit<u8>,
-                    buffer_position: u32,
-                ) {
-                    let bytes = bytes as *mut [::core::mem::MaybeUninit<u8>; 1];
-                    for (i, v) in ::core::iter::Iterator::enumerate(values.iter()) {
-                        ::planus::WriteAsPrimitive::write(
-                            v,
-                            ::planus::Cursor::new(&mut *bytes.add(i)),
-                            buffer_position - i as u32,
-                        );
-                    }
-                }
-            }
-
-            /// The enum `AuthenticatorTransport` in the namespace `Auth.WebAuthn`
-            ///
-            /// Generated from these locations:
-            /// * Enum `AuthenticatorTransport` in the file `auth/webauthn.fbs:120`
-            #[derive(
-                Copy,
-                Clone,
-                Debug,
-                PartialEq,
-                Eq,
-                PartialOrd,
-                Ord,
-                Hash,
-                ::serde::Serialize,
-                ::serde::Deserialize,
-            )]
-            #[repr(i8)]
-            pub enum AuthenticatorTransport {
-                ///  <https://www.w3.org/TR/webauthn/#dom-authenticatortransport-usb>
-                Usb = 0,
-
-                ///  <https://www.w3.org/TR/webauthn/#dom-authenticatortransport-nfc>
-                Nfc = 1,
-
-                ///  <https://www.w3.org/TR/webauthn/#dom-authenticatortransport-ble>
-                Ble = 2,
-
-                ///  <https://www.w3.org/TR/webauthn/#dom-authenticatortransport-internal>
-                Internal = 3,
-
-                ///  Hybrid transport, formerly caBLE. Part of the level 3 draft specification.
-                ///  <https://w3c.github.io/webauthn/#dom-authenticatortransport-hybrid>
-                Hybrid = 4,
-
-                ///  Test transport; used for Windows 10.
-                Test = 5,
-            }
-
-            impl AuthenticatorTransport {
-                /// Array containing all valid variants of AuthenticatorTransport
-                pub const ENUM_VALUES: [Self; 6] = [
-                    Self::Usb,
-                    Self::Nfc,
-                    Self::Ble,
-                    Self::Internal,
-                    Self::Hybrid,
-                    Self::Test,
-                ];
-            }
-
-            impl ::core::convert::TryFrom<i8> for AuthenticatorTransport {
-                type Error = ::planus::errors::UnknownEnumTagKind;
-                #[inline]
-                fn try_from(
-                    value: i8,
-                ) -> ::core::result::Result<Self, ::planus::errors::UnknownEnumTagKind>
-                {
-                    #[allow(clippy::match_single_binding)]
-                    match value {
-                        0 => ::core::result::Result::Ok(AuthenticatorTransport::Usb),
-                        1 => ::core::result::Result::Ok(AuthenticatorTransport::Nfc),
-                        2 => ::core::result::Result::Ok(AuthenticatorTransport::Ble),
-                        3 => ::core::result::Result::Ok(AuthenticatorTransport::Internal),
-                        4 => ::core::result::Result::Ok(AuthenticatorTransport::Hybrid),
-                        5 => ::core::result::Result::Ok(AuthenticatorTransport::Test),
-
-                        _ => ::core::result::Result::Err(::planus::errors::UnknownEnumTagKind {
-                            tag: value as i128,
-                        }),
-                    }
-                }
-            }
-
-            impl ::core::convert::From<AuthenticatorTransport> for i8 {
-                #[inline]
-                fn from(value: AuthenticatorTransport) -> Self {
-                    value as i8
-                }
-            }
-
-            impl ::planus::Primitive for AuthenticatorTransport {
-                const ALIGNMENT: usize = 1;
-                const SIZE: usize = 1;
-            }
-
-            impl ::planus::WriteAsPrimitive<AuthenticatorTransport> for AuthenticatorTransport {
-                #[inline]
-                fn write<const N: usize>(
-                    &self,
-                    cursor: ::planus::Cursor<'_, N>,
-                    buffer_position: u32,
-                ) {
-                    (*self as i8).write(cursor, buffer_position);
-                }
-            }
-
-            impl ::planus::WriteAs<AuthenticatorTransport> for AuthenticatorTransport {
-                type Prepared = Self;
-
-                #[inline]
-                fn prepare(&self, _builder: &mut ::planus::Builder) -> AuthenticatorTransport {
-                    *self
-                }
-            }
-
-            impl ::planus::WriteAsDefault<AuthenticatorTransport, AuthenticatorTransport>
-                for AuthenticatorTransport
-            {
-                type Prepared = Self;
-
-                #[inline]
-                fn prepare(
-                    &self,
-                    _builder: &mut ::planus::Builder,
-                    default: &AuthenticatorTransport,
-                ) -> ::core::option::Option<AuthenticatorTransport> {
-                    if self == default {
-                        ::core::option::Option::None
-                    } else {
-                        ::core::option::Option::Some(*self)
-                    }
-                }
-            }
-
-            impl ::planus::WriteAsOptional<AuthenticatorTransport> for AuthenticatorTransport {
-                type Prepared = Self;
-
-                #[inline]
-                fn prepare(
-                    &self,
-                    _builder: &mut ::planus::Builder,
-                ) -> ::core::option::Option<AuthenticatorTransport> {
-                    ::core::option::Option::Some(*self)
-                }
-            }
-
-            impl<'buf> ::planus::TableRead<'buf> for AuthenticatorTransport {
-                #[inline]
-                fn from_buffer(
-                    buffer: ::planus::SliceWithStartOffset<'buf>,
-                    offset: usize,
-                ) -> ::core::result::Result<Self, ::planus::errors::ErrorKind> {
-                    let n: i8 = ::planus::TableRead::from_buffer(buffer, offset)?;
-                    ::core::result::Result::Ok(::core::convert::TryInto::try_into(n)?)
-                }
-            }
-
-            impl<'buf> ::planus::VectorReadInner<'buf> for AuthenticatorTransport {
-                type Error = ::planus::errors::UnknownEnumTag;
-                const STRIDE: usize = 1;
-                #[inline]
-                unsafe fn from_buffer(
-                    buffer: ::planus::SliceWithStartOffset<'buf>,
-                    offset: usize,
-                ) -> ::core::result::Result<Self, ::planus::errors::UnknownEnumTag>
-                {
-                    let value = *buffer.buffer.get_unchecked(offset) as i8;
-                    let value: ::core::result::Result<Self, _> =
-                        ::core::convert::TryInto::try_into(value);
-                    value.map_err(|error_kind| {
-                        error_kind.with_error_location(
-                            "AuthenticatorTransport",
-                            "VectorRead::from_buffer",
-                            buffer.offset_from_start,
-                        )
-                    })
-                }
-            }
-
-            impl ::planus::VectorWrite<AuthenticatorTransport> for AuthenticatorTransport {
-                const STRIDE: usize = 1;
-
-                type Value = Self;
-
-                #[inline]
-                fn prepare(&self, _builder: &mut ::planus::Builder) -> Self {
-                    *self
-                }
-
-                #[inline]
-                unsafe fn write_values(
-                    values: &[Self],
-                    bytes: *mut ::core::mem::MaybeUninit<u8>,
-                    buffer_position: u32,
-                ) {
-                    let bytes = bytes as *mut [::core::mem::MaybeUninit<u8>; 1];
-                    for (i, v) in ::core::iter::Iterator::enumerate(values.iter()) {
-                        ::planus::WriteAsPrimitive::write(
-                            v,
-                            ::planus::Cursor::new(&mut *bytes.add(i)),
-                            buffer_position - i as u32,
-                        );
-                    }
-                }
-            }
-
-            /// The enum `AttestationConveyancePreference` in the namespace `Auth.WebAuthn`
-            ///
-            /// Generated from these locations:
-            /// * Enum `AttestationConveyancePreference` in the file `auth/webauthn.fbs:136`
-            #[derive(
-                Copy,
-                Clone,
-                Debug,
-                PartialEq,
-                Eq,
-                PartialOrd,
-                Ord,
-                Hash,
-                ::serde::Serialize,
-                ::serde::Deserialize,
-            )]
-            #[repr(i8)]
-            pub enum AttestationConveyancePreference {
-                ///  Do not request attestation.
-                ///  <https://www.w3.org/TR/webauthn/#dom-attestationconveyancepreference-none>
-                None = 0,
-
-                ///  Request attestation in a semi-anonymized form.
-                ///  <https://www.w3.org/TR/webauthn/#dom-attestationconveyancepreference-indirect>
-                Indirect = 1,
-
-                ///  Request attestation in a direct form.
-                ///  <https://www.w3.org/TR/webauthn/#dom-attestationconveyancepreference-direct>
-                Direct = 2,
-            }
-
-            impl AttestationConveyancePreference {
-                /// Array containing all valid variants of AttestationConveyancePreference
-                pub const ENUM_VALUES: [Self; 3] = [Self::None, Self::Indirect, Self::Direct];
-            }
-
-            impl ::core::convert::TryFrom<i8> for AttestationConveyancePreference {
-                type Error = ::planus::errors::UnknownEnumTagKind;
-                #[inline]
-                fn try_from(
-                    value: i8,
-                ) -> ::core::result::Result<Self, ::planus::errors::UnknownEnumTagKind>
-                {
-                    #[allow(clippy::match_single_binding)]
-                    match value {
-                        0 => ::core::result::Result::Ok(AttestationConveyancePreference::None),
-                        1 => ::core::result::Result::Ok(AttestationConveyancePreference::Indirect),
-                        2 => ::core::result::Result::Ok(AttestationConveyancePreference::Direct),
-
-                        _ => ::core::result::Result::Err(::planus::errors::UnknownEnumTagKind {
-                            tag: value as i128,
-                        }),
-                    }
-                }
-            }
-
-            impl ::core::convert::From<AttestationConveyancePreference> for i8 {
-                #[inline]
-                fn from(value: AttestationConveyancePreference) -> Self {
-                    value as i8
-                }
-            }
-
-            impl ::planus::Primitive for AttestationConveyancePreference {
-                const ALIGNMENT: usize = 1;
-                const SIZE: usize = 1;
-            }
-
-            impl ::planus::WriteAsPrimitive<AttestationConveyancePreference>
-                for AttestationConveyancePreference
-            {
-                #[inline]
-                fn write<const N: usize>(
-                    &self,
-                    cursor: ::planus::Cursor<'_, N>,
-                    buffer_position: u32,
-                ) {
-                    (*self as i8).write(cursor, buffer_position);
-                }
-            }
-
-            impl ::planus::WriteAs<AttestationConveyancePreference> for AttestationConveyancePreference {
-                type Prepared = Self;
-
-                #[inline]
-                fn prepare(
-                    &self,
-                    _builder: &mut ::planus::Builder,
-                ) -> AttestationConveyancePreference {
-                    *self
-                }
-            }
-
-            impl
-                ::planus::WriteAsDefault<
-                    AttestationConveyancePreference,
-                    AttestationConveyancePreference,
-                > for AttestationConveyancePreference
-            {
-                type Prepared = Self;
-
-                #[inline]
-                fn prepare(
-                    &self,
-                    _builder: &mut ::planus::Builder,
-                    default: &AttestationConveyancePreference,
-                ) -> ::core::option::Option<AttestationConveyancePreference> {
-                    if self == default {
-                        ::core::option::Option::None
-                    } else {
-                        ::core::option::Option::Some(*self)
-                    }
-                }
-            }
-
-            impl ::planus::WriteAsOptional<AttestationConveyancePreference>
-                for AttestationConveyancePreference
-            {
-                type Prepared = Self;
-
-                #[inline]
-                fn prepare(
-                    &self,
-                    _builder: &mut ::planus::Builder,
-                ) -> ::core::option::Option<AttestationConveyancePreference> {
-                    ::core::option::Option::Some(*self)
-                }
-            }
-
-            impl<'buf> ::planus::TableRead<'buf> for AttestationConveyancePreference {
-                #[inline]
-                fn from_buffer(
-                    buffer: ::planus::SliceWithStartOffset<'buf>,
-                    offset: usize,
-                ) -> ::core::result::Result<Self, ::planus::errors::ErrorKind> {
-                    let n: i8 = ::planus::TableRead::from_buffer(buffer, offset)?;
-                    ::core::result::Result::Ok(::core::convert::TryInto::try_into(n)?)
-                }
-            }
-
-            impl<'buf> ::planus::VectorReadInner<'buf> for AttestationConveyancePreference {
-                type Error = ::planus::errors::UnknownEnumTag;
-                const STRIDE: usize = 1;
-                #[inline]
-                unsafe fn from_buffer(
-                    buffer: ::planus::SliceWithStartOffset<'buf>,
-                    offset: usize,
-                ) -> ::core::result::Result<Self, ::planus::errors::UnknownEnumTag>
-                {
-                    let value = *buffer.buffer.get_unchecked(offset) as i8;
-                    let value: ::core::result::Result<Self, _> =
-                        ::core::convert::TryInto::try_into(value);
-                    value.map_err(|error_kind| {
-                        error_kind.with_error_location(
-                            "AttestationConveyancePreference",
-                            "VectorRead::from_buffer",
-                            buffer.offset_from_start,
-                        )
-                    })
-                }
-            }
-
-            impl ::planus::VectorWrite<AttestationConveyancePreference> for AttestationConveyancePreference {
-                const STRIDE: usize = 1;
-
-                type Value = Self;
-
-                #[inline]
-                fn prepare(&self, _builder: &mut ::planus::Builder) -> Self {
-                    *self
-                }
-
-                #[inline]
-                unsafe fn write_values(
-                    values: &[Self],
-                    bytes: *mut ::core::mem::MaybeUninit<u8>,
-                    buffer_position: u32,
-                ) {
-                    let bytes = bytes as *mut [::core::mem::MaybeUninit<u8>; 1];
-                    for (i, v) in ::core::iter::Iterator::enumerate(values.iter()) {
-                        ::planus::WriteAsPrimitive::write(
-                            v,
-                            ::planus::Cursor::new(&mut *bytes.add(i)),
-                            buffer_position - i as u32,
-                        );
-                    }
                 }
             }
 

@@ -1,5 +1,19 @@
 namespace Auth.WebAuthn;
 
+enum AttestationConveyancePreference:byte {
+    /// Do not request attestation.
+    /// <https://www.w3.org/TR/webauthn/#dom-attestationconveyancepreference-none>
+    None,
+
+    /// Request attestation in a semi-anonymized form.
+    /// <https://www.w3.org/TR/webauthn/#dom-attestationconveyancepreference-indirect>
+    Indirect,
+
+    /// Request attestation in a direct form.
+    /// <https://www.w3.org/TR/webauthn/#dom-attestationconveyancepreference-direct>
+    Direct,
+}
+
 table CredentialCreationOptions {
     /// The relying party 
     rp: RelyingParty;
@@ -21,11 +35,20 @@ table CredentialCreationOptions {
     extensions: RequestRegistrationExtensions;
 }
 
-table RegisterPublicKeyCredential  {
-    id: [ubyte];
-    raw_id: [ubyte];
-    response: AuthenticatorAttestationResponse;
-    client_extension_results: RegistrationExtensionsClientOutputs;
+enum AuthenticatorTransport:byte {
+    /// <https://www.w3.org/TR/webauthn/#dom-authenticatortransport-usb>
+    Usb,
+    /// <https://www.w3.org/TR/webauthn/#dom-authenticatortransport-nfc>
+    Nfc,
+    /// <https://www.w3.org/TR/webauthn/#dom-authenticatortransport-ble>
+    Ble,
+    /// <https://www.w3.org/TR/webauthn/#dom-authenticatortransport-internal>
+    Internal,
+    /// Hybrid transport, formerly caBLE. Part of the level 3 draft specification.
+    /// <https://w3c.github.io/webauthn/#dom-authenticatortransport-hybrid>
+    Hybrid,
+    /// Test transport; used for Windows 10.
+    Test,
 }
 
 table AuthenticatorAttestationResponse {
@@ -34,12 +57,42 @@ table AuthenticatorAttestationResponse {
     transports: [AuthenticatorTransport];
 }
 
+enum CredentialProtectionPolicy:byte {
+    /// This reflects "FIDO_2_0" semantics. In this configuration, performing
+    /// some form of user verification is optional with or without credentialID
+    /// list. This is the default state of the credential if the extension is
+    /// not specified.
+    UserVerificationOptional = 0,
+    /// In this configuration, credential is discovered only when its
+    /// credentialID is provided by the platform or when some form of user
+    /// verification is performed.
+    UserVerificationOptionalWithCredentialIDList = 1,
+    /// This reflects that discovery and usage of the credential MUST be
+    /// preceded by some form of user verification.
+    UserVerificationRequired = 2,
+}
+
 table RegistrationExtensionsClientOutputs {
     app_id: bool;
     cred_props: bool;
     hmac_secret: bool;
     cred_protect: CredentialProtectionPolicy;
     min_pin_length: uint32;
+}
+
+table RegisterPublicKeyCredential  {
+    id: [ubyte];
+    raw_id: [ubyte];
+    response: AuthenticatorAttestationResponse;
+    client_extension_results: RegistrationExtensionsClientOutputs;
+}
+
+table CredProtect {
+     /// The credential policy to enact
+    credential_protection_policy: CredentialProtectionPolicy;
+    /// Whether it is better for the authenticator to fail to create a
+    /// credential rather than ignore the protection policy
+    enforce_credential_protection_policy: bool = false;
 }
 
 table RequestRegistrationExtensions {
@@ -58,29 +111,6 @@ table RequestRegistrationExtensions {
     hmac_create_secret: bool;
 }
 
-table CredProtect {
-     /// The credential policy to enact
-    credential_protection_policy: CredentialProtectionPolicy;
-    /// Whether it is better for the authenticator to fail to create a
-    /// credential rather than ignore the protection policy
-    enforce_credential_protection_policy: bool = false;
-}
-
-enum CredentialProtectionPolicy:byte {
-    /// This reflects "FIDO_2_0" semantics. In this configuration, performing
-    /// some form of user verification is optional with or without credentialID
-    /// list. This is the default state of the credential if the extension is
-    /// not specified.
-    UserVerificationOptional = 0,
-    /// In this configuration, credential is discovered only when its
-    /// credentialID is provided by the platform or when some form of user
-    /// verification is performed.
-    UserVerificationOptionalWithCredentialIDList = 1,
-    /// This reflects that discovery and usage of the credential MUST be
-    /// preceded by some form of user verification.
-    UserVerificationRequired = 2,
-}
-
 table PublicKeyCredentialDescriptor {
     /// The type of credential to exclude.
     type: string;
@@ -88,24 +118,6 @@ table PublicKeyCredentialDescriptor {
     id: [ubyte];
     /// The transports that are allowed for this credential.
     transports: [AuthenticatorTransport];
-}
-
-table AuthenticatorSelectionCriteria {
-    /// The authenticator attachment mode.
-    authenticator_attachment: AuthenticatorAttachment;
-    /// Whether or not the authenticator must be resident.
-    require_resident_key: bool;
-    /// The list of authenticator transports that are allowed.
-    user_verification: UserVerificationPolicy;
-}
-
-enum UserVerificationPolicy:byte {
-    /// <https://www.w3.org/TR/webauthn/#dom-userverificationrequirement-preferred>
-    Preferred,
-    /// <https://www.w3.org/TR/webauthn/#dom-userverificationrequirement-required>
-    Required,
-    /// <https://www.w3.org/TR/webauthn/#dom-userverificationrequirement-discouraged>
-    Discouraged,
 }
 
 enum AuthenticatorAttachment:byte {
@@ -117,34 +129,22 @@ enum AuthenticatorAttachment:byte {
     CrossPlatform,
 }
 
-enum AuthenticatorTransport:byte {
-    /// <https://www.w3.org/TR/webauthn/#dom-authenticatortransport-usb>
-    Usb,
-    /// <https://www.w3.org/TR/webauthn/#dom-authenticatortransport-nfc>
-    Nfc,
-    /// <https://www.w3.org/TR/webauthn/#dom-authenticatortransport-ble>
-    Ble,
-    /// <https://www.w3.org/TR/webauthn/#dom-authenticatortransport-internal>
-    Internal,
-    /// Hybrid transport, formerly caBLE. Part of the level 3 draft specification.
-    /// <https://w3c.github.io/webauthn/#dom-authenticatortransport-hybrid>
-    Hybrid,
-    /// Test transport; used for Windows 10.
-    Test,
+enum UserVerificationPolicy:byte {
+    /// <https://www.w3.org/TR/webauthn/#dom-userverificationrequirement-preferred>
+    Preferred,
+    /// <https://www.w3.org/TR/webauthn/#dom-userverificationrequirement-required>
+    Required,
+    /// <https://www.w3.org/TR/webauthn/#dom-userverificationrequirement-discouraged>
+    Discouraged,
 }
 
-enum AttestationConveyancePreference:byte {
-    /// Do not request attestation.
-    /// <https://www.w3.org/TR/webauthn/#dom-attestationconveyancepreference-none>
-    None,
-
-    /// Request attestation in a semi-anonymized form.
-    /// <https://www.w3.org/TR/webauthn/#dom-attestationconveyancepreference-indirect>
-    Indirect,
-
-    /// Request attestation in a direct form.
-    /// <https://www.w3.org/TR/webauthn/#dom-attestationconveyancepreference-direct>
-    Direct,
+table AuthenticatorSelectionCriteria {
+    /// The authenticator attachment mode.
+    authenticator_attachment: AuthenticatorAttachment;
+    /// Whether or not the authenticator must be resident.
+    require_resident_key: bool;
+    /// The list of authenticator transports that are allowed.
+    user_verification: UserVerificationPolicy;
 }
 
 table PubKeyCredParams {

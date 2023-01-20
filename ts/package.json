@@ -1,0 +1,22 @@
+{
+  "name": "interface",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Azz <azz@valera.co>",
+  "license": "All rights reserved",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/valeralabs/interface.git"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "dependencies": {
+    "flatbuffers": "^23.1.4"
+  }
+}
