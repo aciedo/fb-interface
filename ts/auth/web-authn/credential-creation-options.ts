@@ -48,19 +48,11 @@ user(obj?:User):User|null {
 /**
  * The one-time challenge for the credential to sign
  */
-challenge(index: number):number|null {
+challenge():string|null
+challenge(optionalEncoding:flatbuffers.Encoding):string|Uint8Array|null
+challenge(optionalEncoding?:any):string|Uint8Array|null {
   const offset = this.bb!.__offset(this.bb_pos, 8);
-  return offset ? this.bb!.readUint8(this.bb!.__vector(this.bb_pos + offset) + index) : 0;
-}
-
-challengeLength():number {
-  const offset = this.bb!.__offset(this.bb_pos, 8);
-  return offset ? this.bb!.__vector_len(this.bb_pos + offset) : 0;
-}
-
-challengeArray():Uint8Array|null {
-  const offset = this.bb!.__offset(this.bb_pos, 8);
-  return offset ? new Uint8Array(this.bb!.bytes().buffer, this.bb!.bytes().byteOffset + this.bb!.__vector(this.bb_pos + offset), this.bb!.__vector_len(this.bb_pos + offset)) : null;
+  return offset ? this.bb!.__string(this.bb_pos + offset, optionalEncoding) : null;
 }
 
 /**
@@ -137,18 +129,6 @@ static addChallenge(builder:flatbuffers.Builder, challengeOffset:flatbuffers.Off
   builder.addFieldOffset(2, challengeOffset, 0);
 }
 
-static createChallengeVector(builder:flatbuffers.Builder, data:number[]|Uint8Array):flatbuffers.Offset {
-  builder.startVector(1, data.length, 1);
-  for (let i = data.length - 1; i >= 0; i--) {
-    builder.addInt8(data[i]!);
-  }
-  return builder.endVector();
-}
-
-static startChallengeVector(builder:flatbuffers.Builder, numElems:number) {
-  builder.startVector(1, numElems, 1);
-}
-
 static addPubKeyCredParams(builder:flatbuffers.Builder, pubKeyCredParamsOffset:flatbuffers.Offset) {
   builder.addFieldOffset(3, pubKeyCredParamsOffset, 0);
 }
@@ -207,7 +187,7 @@ unpack(): CredentialCreationOptionsT {
   return new CredentialCreationOptionsT(
     (this.rp() !== null ? this.rp()!.unpack() : null),
     (this.user() !== null ? this.user()!.unpack() : null),
-    this.bb!.createScalarList<number>(this.challenge.bind(this), this.challengeLength()),
+    this.challenge(),
     this.bb!.createObjList<PubKeyCredParams, PubKeyCredParamsT>(this.pubKeyCredParams.bind(this), this.pubKeyCredParamsLength()),
     this.timeout(),
     this.attestation(),
@@ -221,7 +201,7 @@ unpack(): CredentialCreationOptionsT {
 unpackTo(_o: CredentialCreationOptionsT): void {
   _o.rp = (this.rp() !== null ? this.rp()!.unpack() : null);
   _o.user = (this.user() !== null ? this.user()!.unpack() : null);
-  _o.challenge = this.bb!.createScalarList<number>(this.challenge.bind(this), this.challengeLength());
+  _o.challenge = this.challenge();
   _o.pubKeyCredParams = this.bb!.createObjList<PubKeyCredParams, PubKeyCredParamsT>(this.pubKeyCredParams.bind(this), this.pubKeyCredParamsLength());
   _o.timeout = this.timeout();
   _o.attestation = this.attestation();
@@ -235,7 +215,7 @@ export class CredentialCreationOptionsT implements flatbuffers.IGeneratedObject 
 constructor(
   public rp: RelyingPartyT|null = null,
   public user: UserT|null = null,
-  public challenge: (number)[] = [],
+  public challenge: string|Uint8Array|null = null,
   public pubKeyCredParams: (PubKeyCredParamsT)[] = [],
   public timeout: number = 60000,
   public attestation: AttestationConveyancePreference = AttestationConveyancePreference.None,
@@ -248,7 +228,7 @@ constructor(
 pack(builder:flatbuffers.Builder): flatbuffers.Offset {
   const rp = (this.rp !== null ? this.rp!.pack(builder) : 0);
   const user = (this.user !== null ? this.user!.pack(builder) : 0);
-  const challenge = CredentialCreationOptions.createChallengeVector(builder, this.challenge);
+  const challenge = (this.challenge !== null ? builder.createString(this.challenge!) : 0);
   const pubKeyCredParams = CredentialCreationOptions.createPubKeyCredParamsVector(builder, builder.createObjectOffsetList(this.pubKeyCredParams));
   const excludeCredentials = CredentialCreationOptions.createExcludeCredentialsVector(builder, builder.createObjectOffsetList(this.excludeCredentials));
   const authenticatorSelection = (this.authenticatorSelection !== null ? this.authenticatorSelection!.pack(builder) : 0);

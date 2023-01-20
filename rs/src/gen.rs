@@ -228,7 +228,7 @@ mod root {
                 ///  The user.
                 pub user: ::core::option::Option<::planus::alloc::boxed::Box<self::User>>,
                 ///  The one-time challenge for the credential to sign
-                pub challenge: ::core::option::Option<::planus::alloc::vec::Vec<u8>>,
+                pub challenge: ::core::option::Option<::planus::alloc::string::String>,
                 ///  The set of cryptographic types allowed by this server.
                 pub pub_key_cred_params:
                     ::core::option::Option<::planus::alloc::vec::Vec<self::PubKeyCredParams>>,
@@ -279,7 +279,9 @@ mod root {
                     builder: &mut ::planus::Builder,
                     field_rp: impl ::planus::WriteAsOptional<::planus::Offset<self::RelyingParty>>,
                     field_user: impl ::planus::WriteAsOptional<::planus::Offset<self::User>>,
-                    field_challenge: impl ::planus::WriteAsOptional<::planus::Offset<[u8]>>,
+                    field_challenge: impl ::planus::WriteAsOptional<
+                        ::planus::Offset<::core::primitive::str>,
+                    >,
                     field_pub_key_cred_params: impl ::planus::WriteAsOptional<
                         ::planus::Offset<[::planus::Offset<self::PubKeyCredParams>]>,
                     >,
@@ -319,7 +321,7 @@ mod root {
                         table_writer.write_entry::<::planus::Offset<self::User>>(1);
                     }
                     if prepared_challenge.is_some() {
-                        table_writer.write_entry::<::planus::Offset<[u8]>>(2);
+                        table_writer.write_entry::<::planus::Offset<str>>(2);
                     }
                     if prepared_pub_key_cred_params.is_some() {
                         table_writer.write_entry::<::planus::Offset<[::planus::Offset<self::PubKeyCredParams>]>>(3);
@@ -499,7 +501,7 @@ mod root {
                     value: T2,
                 ) -> CredentialCreationOptionsBuilder<(T0, T1, T2)>
                 where
-                    T2: ::planus::WriteAsOptional<::planus::Offset<[u8]>>,
+                    T2: ::planus::WriteAsOptional<::planus::Offset<::core::primitive::str>>,
                 {
                     let (v0, v1) = self.0;
                     CredentialCreationOptionsBuilder((v0, v1, value))
@@ -700,7 +702,7 @@ mod root {
             impl<
                     T0: ::planus::WriteAsOptional<::planus::Offset<self::RelyingParty>>,
                     T1: ::planus::WriteAsOptional<::planus::Offset<self::User>>,
-                    T2: ::planus::WriteAsOptional<::planus::Offset<[u8]>>,
+                    T2: ::planus::WriteAsOptional<::planus::Offset<::core::primitive::str>>,
                     T3: ::planus::WriteAsOptional<
                         ::planus::Offset<[::planus::Offset<self::PubKeyCredParams>]>,
                     >,
@@ -735,7 +737,7 @@ mod root {
             impl<
                     T0: ::planus::WriteAsOptional<::planus::Offset<self::RelyingParty>>,
                     T1: ::planus::WriteAsOptional<::planus::Offset<self::User>>,
-                    T2: ::planus::WriteAsOptional<::planus::Offset<[u8]>>,
+                    T2: ::planus::WriteAsOptional<::planus::Offset<::core::primitive::str>>,
                     T3: ::planus::WriteAsOptional<
                         ::planus::Offset<[::planus::Offset<self::PubKeyCredParams>]>,
                     >,
@@ -771,7 +773,7 @@ mod root {
             impl<
                     T0: ::planus::WriteAsOptional<::planus::Offset<self::RelyingParty>>,
                     T1: ::planus::WriteAsOptional<::planus::Offset<self::User>>,
-                    T2: ::planus::WriteAsOptional<::planus::Offset<[u8]>>,
+                    T2: ::planus::WriteAsOptional<::planus::Offset<::core::primitive::str>>,
                     T3: ::planus::WriteAsOptional<
                         ::planus::Offset<[::planus::Offset<self::PubKeyCredParams>]>,
                     >,
@@ -824,7 +826,10 @@ mod root {
 
                 /// Getter for the [`challenge` field](CredentialCreationOptions#structfield.challenge).
                 #[inline]
-                pub fn challenge(&self) -> ::planus::Result<::core::option::Option<&'a [u8]>> {
+                pub fn challenge(
+                    &self,
+                ) -> ::planus::Result<::core::option::Option<&'a ::core::primitive::str>>
+                {
                     self.0.access(2, "CredentialCreationOptions", "challenge")
                 }
 
@@ -961,7 +966,15 @@ mod root {
                         } else {
                             ::core::option::Option::None
                         },
-                        challenge: value.challenge()?.map(|v| v.to_vec()),
+                        challenge: if let ::core::option::Option::Some(challenge) =
+                            value.challenge()?
+                        {
+                            ::core::option::Option::Some(::core::convert::TryInto::try_into(
+                                challenge,
+                            )?)
+                        } else {
+                            ::core::option::Option::None
+                        },
                         pub_key_cred_params: if let ::core::option::Option::Some(
                             pub_key_cred_params,
                         ) = value.pub_key_cred_params()?

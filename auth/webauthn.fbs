@@ -20,7 +20,7 @@ table CredentialCreationOptions {
      /// The user.
     user: User;
     /// The one-time challenge for the credential to sign
-    challenge: [ubyte];
+    challenge: string;
     /// The set of cryptographic types allowed by this server.
     pub_key_cred_params: [PubKeyCredParams];
      /// The timeout for the authenticator to stop accepting the operation
