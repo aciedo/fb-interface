@@ -29,9 +29,9 @@ number(optionalEncoding?:any):string|Uint8Array|null {
   return offset ? this.bb!.__string(this.bb_pos + offset, optionalEncoding) : null;
 }
 
-code():number {
+code():bigint {
   const offset = this.bb!.__offset(this.bb_pos, 6);
-  return offset ? this.bb!.readUint16(this.bb_pos + offset) : 0;
+  return offset ? this.bb!.readUint64(this.bb_pos + offset) : BigInt('0');
 }
 
 static startVerifyNumberReq(builder:flatbuffers.Builder) {
@@ -42,8 +42,8 @@ static addNumber(builder:flatbuffers.Builder, numberOffset:flatbuffers.Offset) {
   builder.addFieldOffset(0, numberOffset, 0);
 }
 
-static addCode(builder:flatbuffers.Builder, code:number) {
-  builder.addFieldInt16(1, code, 0);
+static addCode(builder:flatbuffers.Builder, code:bigint) {
+  builder.addFieldInt64(1, code, BigInt('0'));
 }
 
 static endVerifyNumberReq(builder:flatbuffers.Builder):flatbuffers.Offset {
@@ -51,7 +51,7 @@ static endVerifyNumberReq(builder:flatbuffers.Builder):flatbuffers.Offset {
   return offset;
 }
 
-static createVerifyNumberReq(builder:flatbuffers.Builder, numberOffset:flatbuffers.Offset, code:number):flatbuffers.Offset {
+static createVerifyNumberReq(builder:flatbuffers.Builder, numberOffset:flatbuffers.Offset, code:bigint):flatbuffers.Offset {
   VerifyNumberReq.startVerifyNumberReq(builder);
   VerifyNumberReq.addNumber(builder, numberOffset);
   VerifyNumberReq.addCode(builder, code);
@@ -75,7 +75,7 @@ unpackTo(_o: VerifyNumberReqT): void {
 export class VerifyNumberReqT implements flatbuffers.IGeneratedObject {
 constructor(
   public number: string|Uint8Array|null = null,
-  public code: number = 0
+  public code: bigint = BigInt('0')
 ){}
 
 

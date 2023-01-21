@@ -24,7 +24,7 @@ static getSizePrefixedRootAsRegisterNumberRes(bb:flatbuffers.ByteBuffer, obj?:Re
 
 multiplier():number {
   const offset = this.bb!.__offset(this.bb_pos, 4);
-  return offset ? this.bb!.readUint16(this.bb_pos + offset) : 0;
+  return offset ? this.bb!.readUint32(this.bb_pos + offset) : 0;
 }
 
 static startRegisterNumberRes(builder:flatbuffers.Builder) {
@@ -32,7 +32,7 @@ static startRegisterNumberRes(builder:flatbuffers.Builder) {
 }
 
 static addMultiplier(builder:flatbuffers.Builder, multiplier:number) {
-  builder.addFieldInt16(0, multiplier, 0);
+  builder.addFieldInt32(0, multiplier, 0);
 }
 
 static endRegisterNumberRes(builder:flatbuffers.Builder):flatbuffers.Offset {

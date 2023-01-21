@@ -6851,7 +6851,7 @@ mod root {
         )]
         pub struct RegisterNumberRes {
             /// The field `multiplier` in the table `RegisterNumberRes`
-            pub multiplier: u16,
+            pub multiplier: u32,
         }
 
         #[allow(clippy::derivable_impls)]
@@ -6871,14 +6871,14 @@ mod root {
             #[allow(clippy::too_many_arguments)]
             pub fn create(
                 builder: &mut ::planus::Builder,
-                field_multiplier: impl ::planus::WriteAsDefault<u16, u16>,
+                field_multiplier: impl ::planus::WriteAsDefault<u32, u32>,
             ) -> ::planus::Offset<Self> {
                 let prepared_multiplier = field_multiplier.prepare(builder, &0);
 
                 let mut table_writer: ::planus::table_writer::TableWriter<6> =
                     ::core::default::Default::default();
                 if prepared_multiplier.is_some() {
-                    table_writer.write_entry::<u16>(0);
+                    table_writer.write_entry::<u32>(0);
                 }
 
                 unsafe {
@@ -6886,7 +6886,7 @@ mod root {
                         if let ::core::option::Option::Some(prepared_multiplier) =
                             prepared_multiplier
                         {
-                            object_writer.write::<_, _, 2>(&prepared_multiplier);
+                            object_writer.write::<_, _, 4>(&prepared_multiplier);
                         }
                     });
                 }
@@ -6941,7 +6941,7 @@ mod root {
             #[allow(clippy::type_complexity)]
             pub fn multiplier<T0>(self, value: T0) -> RegisterNumberResBuilder<(T0,)>
             where
-                T0: ::planus::WriteAsDefault<u16, u16>,
+                T0: ::planus::WriteAsDefault<u32, u32>,
             {
                 RegisterNumberResBuilder((value,))
             }
@@ -6970,7 +6970,7 @@ mod root {
             }
         }
 
-        impl<T0: ::planus::WriteAsDefault<u16, u16>>
+        impl<T0: ::planus::WriteAsDefault<u32, u32>>
             ::planus::WriteAs<::planus::Offset<RegisterNumberRes>>
             for RegisterNumberResBuilder<(T0,)>
         {
@@ -6985,7 +6985,7 @@ mod root {
             }
         }
 
-        impl<T0: ::planus::WriteAsDefault<u16, u16>>
+        impl<T0: ::planus::WriteAsDefault<u32, u32>>
             ::planus::WriteAsOptional<::planus::Offset<RegisterNumberRes>>
             for RegisterNumberResBuilder<(T0,)>
         {
@@ -7000,7 +7000,7 @@ mod root {
             }
         }
 
-        impl<T0: ::planus::WriteAsDefault<u16, u16>> ::planus::WriteAsOffset<RegisterNumberRes>
+        impl<T0: ::planus::WriteAsDefault<u32, u32>> ::planus::WriteAsOffset<RegisterNumberRes>
             for RegisterNumberResBuilder<(T0,)>
         {
             #[inline]
@@ -7020,7 +7020,7 @@ mod root {
         impl<'a> RegisterNumberResRef<'a> {
             /// Getter for the [`multiplier` field](RegisterNumberRes#structfield.multiplier).
             #[inline]
-            pub fn multiplier(&self) -> ::planus::Result<u16> {
+            pub fn multiplier(&self) -> ::planus::Result<u32> {
                 ::core::result::Result::Ok(
                     self.0
                         .access(0, "RegisterNumberRes", "multiplier")?
@@ -7137,7 +7137,7 @@ mod root {
             /// The field `number` in the table `VerifyNumberReq`
             pub number: ::core::option::Option<::planus::alloc::string::String>,
             /// The field `code` in the table `VerifyNumberReq`
-            pub code: u16,
+            pub code: u64,
         }
 
         #[allow(clippy::derivable_impls)]
@@ -7161,27 +7161,27 @@ mod root {
             pub fn create(
                 builder: &mut ::planus::Builder,
                 field_number: impl ::planus::WriteAsOptional<::planus::Offset<::core::primitive::str>>,
-                field_code: impl ::planus::WriteAsDefault<u16, u16>,
+                field_code: impl ::planus::WriteAsDefault<u64, u64>,
             ) -> ::planus::Offset<Self> {
                 let prepared_number = field_number.prepare(builder);
                 let prepared_code = field_code.prepare(builder, &0);
 
                 let mut table_writer: ::planus::table_writer::TableWriter<8> =
                     ::core::default::Default::default();
+                if prepared_code.is_some() {
+                    table_writer.write_entry::<u64>(1);
+                }
                 if prepared_number.is_some() {
                     table_writer.write_entry::<::planus::Offset<str>>(0);
-                }
-                if prepared_code.is_some() {
-                    table_writer.write_entry::<u16>(1);
                 }
 
                 unsafe {
                     table_writer.finish(builder, |object_writer| {
+                        if let ::core::option::Option::Some(prepared_code) = prepared_code {
+                            object_writer.write::<_, _, 8>(&prepared_code);
+                        }
                         if let ::core::option::Option::Some(prepared_number) = prepared_number {
                             object_writer.write::<_, _, 4>(&prepared_number);
-                        }
-                        if let ::core::option::Option::Some(prepared_code) = prepared_code {
-                            object_writer.write::<_, _, 2>(&prepared_code);
                         }
                     });
                 }
@@ -7255,7 +7255,7 @@ mod root {
             #[allow(clippy::type_complexity)]
             pub fn code<T1>(self, value: T1) -> VerifyNumberReqBuilder<(T0, T1)>
             where
-                T1: ::planus::WriteAsDefault<u16, u16>,
+                T1: ::planus::WriteAsDefault<u64, u64>,
             {
                 let (v0,) = self.0;
                 VerifyNumberReqBuilder((v0, value))
@@ -7285,7 +7285,7 @@ mod root {
 
         impl<
                 T0: ::planus::WriteAsOptional<::planus::Offset<::core::primitive::str>>,
-                T1: ::planus::WriteAsDefault<u16, u16>,
+                T1: ::planus::WriteAsDefault<u64, u64>,
             > ::planus::WriteAs<::planus::Offset<VerifyNumberReq>>
             for VerifyNumberReqBuilder<(T0, T1)>
         {
@@ -7302,7 +7302,7 @@ mod root {
 
         impl<
                 T0: ::planus::WriteAsOptional<::planus::Offset<::core::primitive::str>>,
-                T1: ::planus::WriteAsDefault<u16, u16>,
+                T1: ::planus::WriteAsDefault<u64, u64>,
             > ::planus::WriteAsOptional<::planus::Offset<VerifyNumberReq>>
             for VerifyNumberReqBuilder<(T0, T1)>
         {
@@ -7319,7 +7319,7 @@ mod root {
 
         impl<
                 T0: ::planus::WriteAsOptional<::planus::Offset<::core::primitive::str>>,
-                T1: ::planus::WriteAsDefault<u16, u16>,
+                T1: ::planus::WriteAsDefault<u64, u64>,
             > ::planus::WriteAsOffset<VerifyNumberReq> for VerifyNumberReqBuilder<(T0, T1)>
         {
             #[inline]
@@ -7347,7 +7347,7 @@ mod root {
 
             /// Getter for the [`code` field](VerifyNumberReq#structfield.code).
             #[inline]
-            pub fn code(&self) -> ::planus::Result<u16> {
+            pub fn code(&self) -> ::planus::Result<u64> {
                 ::core::result::Result::Ok(
                     self.0.access(1, "VerifyNumberReq", "code")?.unwrap_or(0),
                 )

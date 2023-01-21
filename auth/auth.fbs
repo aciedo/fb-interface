@@ -12,12 +12,12 @@ table RegisterNumberReq {
 }
 
 table RegisterNumberRes {
-    multiplier: uint16;
+    multiplier: uint32;
 }
 
 table VerifyNumberReq {
     number: string;
-    code: uint16;
+    code: uint64;
 }
 
 table VerifyNumberRes {
