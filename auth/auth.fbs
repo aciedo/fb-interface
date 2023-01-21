@@ -7,20 +7,26 @@ table ErrorRes {
 }
 
 table RegisterNumberReq {
+    /// The name of the user to register.
     name: string;
+    /// The phone number to register.
     number: string;
 }
 
 table RegisterNumberRes {
+    /// A value to multiply the code by for VerifyNumberReq
     multiplier: uint32;
 }
 
 table VerifyNumberReq {
+    /// The user's number.
     number: string;
+    /// The code to verify.
     code: uint64;
 }
 
 table VerifyNumberRes {
+    /// Options for registering a WebAuthn credential.
     options: Auth.WebAuthn.CredentialCreationOptions;
 }
 

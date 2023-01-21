@@ -158,7 +158,10 @@ table RelyingParty {
 }
 
 table User {
-    id: [ubyte];
+    /// The user's base58 encoded, 32 byte user ID.
+    id: string;
+    /// The user's name.
     name: string;
+    /// The user's display name. Defaults to the user's name.
     display_name: string;
 }
