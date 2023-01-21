@@ -148,7 +148,7 @@ table AuthenticatorSelectionCriteria {
 }
 
 table PubKeyCredParams {
-    type: string = "public-key";
+    type: string;
     alg: int32;
 }
 
