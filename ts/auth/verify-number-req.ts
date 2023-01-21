@@ -22,6 +22,9 @@ static getSizePrefixedRootAsVerifyNumberReq(bb:flatbuffers.ByteBuffer, obj?:Veri
   return (obj || new VerifyNumberReq()).__init(bb.readInt32(bb.position()) + bb.position(), bb);
 }
 
+/**
+ * The user's number.
+ */
 number():string|null
 number(optionalEncoding:flatbuffers.Encoding):string|Uint8Array|null
 number(optionalEncoding?:any):string|Uint8Array|null {
@@ -29,6 +32,9 @@ number(optionalEncoding?:any):string|Uint8Array|null {
   return offset ? this.bb!.__string(this.bb_pos + offset, optionalEncoding) : null;
 }
 
+/**
+ * The code to verify.
+ */
 code():bigint {
   const offset = this.bb!.__offset(this.bb_pos, 6);
   return offset ? this.bb!.readUint64(this.bb_pos + offset) : BigInt('0');

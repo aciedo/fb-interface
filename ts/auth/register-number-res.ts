@@ -22,6 +22,9 @@ static getSizePrefixedRootAsRegisterNumberRes(bb:flatbuffers.ByteBuffer, obj?:Re
   return (obj || new RegisterNumberRes()).__init(bb.readInt32(bb.position()) + bb.position(), bb);
 }
 
+/**
+ * A value to multiply the code by for VerifyNumberReq
+ */
 multiplier():number {
   const offset = this.bb!.__offset(this.bb_pos, 4);
   return offset ? this.bb!.readUint32(this.bb_pos + offset) : 0;

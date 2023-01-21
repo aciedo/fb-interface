@@ -23,6 +23,9 @@ static getSizePrefixedRootAsVerifyNumberRes(bb:flatbuffers.ByteBuffer, obj?:Veri
   return (obj || new VerifyNumberRes()).__init(bb.readInt32(bb.position()) + bb.position(), bb);
 }
 
+/**
+ * Options for registering a WebAuthn credential.
+ */
 options(obj?:CredentialCreationOptions):CredentialCreationOptions|null {
   const offset = this.bb!.__offset(this.bb_pos, 4);
   return offset ? (obj || new CredentialCreationOptions()).__init(this.bb!.__indirect(this.bb_pos + offset), this.bb!) : null;

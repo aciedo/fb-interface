@@ -5872,11 +5872,11 @@ mod root {
                 ::serde::Deserialize,
             )]
             pub struct User {
-                /// The field `id` in the table `User`
-                pub id: ::core::option::Option<::planus::alloc::vec::Vec<u8>>,
-                /// The field `name` in the table `User`
+                ///  The user's base58 encoded, 32 byte user ID.
+                pub id: ::core::option::Option<::planus::alloc::string::String>,
+                ///  The user's name.
                 pub name: ::core::option::Option<::planus::alloc::string::String>,
-                /// The field `display_name` in the table `User`
+                ///  The user's display name. Defaults to the user's name.
                 pub display_name: ::core::option::Option<::planus::alloc::string::String>,
             }
 
@@ -5901,7 +5901,7 @@ mod root {
                 #[allow(clippy::too_many_arguments)]
                 pub fn create(
                     builder: &mut ::planus::Builder,
-                    field_id: impl ::planus::WriteAsOptional<::planus::Offset<[u8]>>,
+                    field_id: impl ::planus::WriteAsOptional<::planus::Offset<::core::primitive::str>>,
                     field_name: impl ::planus::WriteAsOptional<::planus::Offset<::core::primitive::str>>,
                     field_display_name: impl ::planus::WriteAsOptional<
                         ::planus::Offset<::core::primitive::str>,
@@ -5914,7 +5914,7 @@ mod root {
                     let mut table_writer: ::planus::table_writer::TableWriter<10> =
                         ::core::default::Default::default();
                     if prepared_id.is_some() {
-                        table_writer.write_entry::<::planus::Offset<[u8]>>(0);
+                        table_writer.write_entry::<::planus::Offset<str>>(0);
                     }
                     if prepared_name.is_some() {
                         table_writer.write_entry::<::planus::Offset<str>>(1);
@@ -5983,7 +5983,7 @@ mod root {
                 #[allow(clippy::type_complexity)]
                 pub fn id<T0>(self, value: T0) -> UserBuilder<(T0,)>
                 where
-                    T0: ::planus::WriteAsOptional<::planus::Offset<[u8]>>,
+                    T0: ::planus::WriteAsOptional<::planus::Offset<::core::primitive::str>>,
                 {
                     UserBuilder((value,))
                 }
@@ -6048,7 +6048,7 @@ mod root {
             }
 
             impl<
-                    T0: ::planus::WriteAsOptional<::planus::Offset<[u8]>>,
+                    T0: ::planus::WriteAsOptional<::planus::Offset<::core::primitive::str>>,
                     T1: ::planus::WriteAsOptional<::planus::Offset<::core::primitive::str>>,
                     T2: ::planus::WriteAsOptional<::planus::Offset<::core::primitive::str>>,
                 > ::planus::WriteAs<::planus::Offset<User>> for UserBuilder<(T0, T1, T2)>
@@ -6062,7 +6062,7 @@ mod root {
             }
 
             impl<
-                    T0: ::planus::WriteAsOptional<::planus::Offset<[u8]>>,
+                    T0: ::planus::WriteAsOptional<::planus::Offset<::core::primitive::str>>,
                     T1: ::planus::WriteAsOptional<::planus::Offset<::core::primitive::str>>,
                     T2: ::planus::WriteAsOptional<::planus::Offset<::core::primitive::str>>,
                 > ::planus::WriteAsOptional<::planus::Offset<User>> for UserBuilder<(T0, T1, T2)>
@@ -6079,7 +6079,7 @@ mod root {
             }
 
             impl<
-                    T0: ::planus::WriteAsOptional<::planus::Offset<[u8]>>,
+                    T0: ::planus::WriteAsOptional<::planus::Offset<::core::primitive::str>>,
                     T1: ::planus::WriteAsOptional<::planus::Offset<::core::primitive::str>>,
                     T2: ::planus::WriteAsOptional<::planus::Offset<::core::primitive::str>>,
                 > ::planus::WriteAsOffset<User> for UserBuilder<(T0, T1, T2)>
@@ -6098,7 +6098,10 @@ mod root {
             impl<'a> UserRef<'a> {
                 /// Getter for the [`id` field](User#structfield.id).
                 #[inline]
-                pub fn id(&self) -> ::planus::Result<::core::option::Option<&'a [u8]>> {
+                pub fn id(
+                    &self,
+                ) -> ::planus::Result<::core::option::Option<&'a ::core::primitive::str>>
+                {
                     self.0.access(0, "User", "id")
                 }
 
@@ -6145,7 +6148,11 @@ mod root {
                 #[allow(unreachable_code)]
                 fn try_from(value: UserRef<'a>) -> ::planus::Result<Self> {
                     ::core::result::Result::Ok(Self {
-                        id: value.id()?.map(|v| v.to_vec()),
+                        id: if let ::core::option::Option::Some(id) = value.id()? {
+                            ::core::option::Option::Some(::core::convert::TryInto::try_into(id)?)
+                        } else {
+                            ::core::option::Option::None
+                        },
                         name: if let ::core::option::Option::Some(name) = value.name()? {
                             ::core::option::Option::Some(::core::convert::TryInto::try_into(name)?)
                         } else {
@@ -6511,9 +6518,9 @@ mod root {
             ::serde::Deserialize,
         )]
         pub struct RegisterNumberReq {
-            /// The field `name` in the table `RegisterNumberReq`
+            ///  The name of the user to register.
             pub name: ::core::option::Option<::planus::alloc::string::String>,
-            /// The field `number` in the table `RegisterNumberReq`
+            ///  The phone number to register.
             pub number: ::core::option::Option<::planus::alloc::string::String>,
         }
 
@@ -6837,7 +6844,7 @@ mod root {
         /// The table `RegisterNumberRes` in the namespace `Auth`
         ///
         /// Generated from these locations:
-        /// * Table `RegisterNumberRes` in the file `auth/auth.fbs:14`
+        /// * Table `RegisterNumberRes` in the file `auth/auth.fbs:16`
         #[derive(
             Clone,
             Debug,
@@ -6850,7 +6857,7 @@ mod root {
             ::serde::Deserialize,
         )]
         pub struct RegisterNumberRes {
-            /// The field `multiplier` in the table `RegisterNumberRes`
+            ///  A value to multiply the code by for VerifyNumberReq
             pub multiplier: u32,
         }
 
@@ -7121,7 +7128,7 @@ mod root {
         /// The table `VerifyNumberReq` in the namespace `Auth`
         ///
         /// Generated from these locations:
-        /// * Table `VerifyNumberReq` in the file `auth/auth.fbs:18`
+        /// * Table `VerifyNumberReq` in the file `auth/auth.fbs:21`
         #[derive(
             Clone,
             Debug,
@@ -7134,9 +7141,9 @@ mod root {
             ::serde::Deserialize,
         )]
         pub struct VerifyNumberReq {
-            /// The field `number` in the table `VerifyNumberReq`
+            ///  The user's number.
             pub number: ::core::option::Option<::planus::alloc::string::String>,
-            /// The field `code` in the table `VerifyNumberReq`
+            ///  The code to verify.
             pub code: u64,
         }
 
@@ -7454,7 +7461,7 @@ mod root {
         /// The table `VerifyNumberRes` in the namespace `Auth`
         ///
         /// Generated from these locations:
-        /// * Table `VerifyNumberRes` in the file `auth/auth.fbs:23`
+        /// * Table `VerifyNumberRes` in the file `auth/auth.fbs:28`
         #[derive(
             Clone,
             Debug,
@@ -7467,7 +7474,7 @@ mod root {
             ::serde::Deserialize,
         )]
         pub struct VerifyNumberRes {
-            /// The field `options` in the table `VerifyNumberRes`
+            ///  Options for registering a WebAuthn credential.
             pub options: ::core::option::Option<
                 ::planus::alloc::boxed::Box<self::web_authn::CredentialCreationOptions>,
             >,
@@ -7759,7 +7766,7 @@ mod root {
         /// The table `VerifyWebAuthnReq` in the namespace `Auth`
         ///
         /// Generated from these locations:
-        /// * Table `VerifyWebAuthnReq` in the file `auth/auth.fbs:27`
+        /// * Table `VerifyWebAuthnReq` in the file `auth/auth.fbs:33`
         #[derive(
             Clone,
             Debug,
@@ -8165,7 +8172,7 @@ mod root {
         /// The table `VerifyWebAuthnRes` in the namespace `Auth`
         ///
         /// Generated from these locations:
-        /// * Table `VerifyWebAuthnRes` in the file `auth/auth.fbs:33`
+        /// * Table `VerifyWebAuthnRes` in the file `auth/auth.fbs:39`
         #[derive(
             Clone,
             Debug,
@@ -8451,7 +8458,7 @@ mod root {
         /// The table `NumberRegistration` in the namespace `Auth`
         ///
         /// Generated from these locations:
-        /// * Table `NumberRegistration` in the file `auth/auth.fbs:37`
+        /// * Table `NumberRegistration` in the file `auth/auth.fbs:43`
         #[derive(
             Clone,
             Debug,

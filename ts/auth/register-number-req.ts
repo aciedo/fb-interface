@@ -22,6 +22,9 @@ static getSizePrefixedRootAsRegisterNumberReq(bb:flatbuffers.ByteBuffer, obj?:Re
   return (obj || new RegisterNumberReq()).__init(bb.readInt32(bb.position()) + bb.position(), bb);
 }
 
+/**
+ * The name of the user to register.
+ */
 name():string|null
 name(optionalEncoding:flatbuffers.Encoding):string|Uint8Array|null
 name(optionalEncoding?:any):string|Uint8Array|null {
@@ -29,6 +32,9 @@ name(optionalEncoding?:any):string|Uint8Array|null {
   return offset ? this.bb!.__string(this.bb_pos + offset, optionalEncoding) : null;
 }
 
+/**
+ * The phone number to register.
+ */
 number():string|null
 number(optionalEncoding:flatbuffers.Encoding):string|Uint8Array|null
 number(optionalEncoding?:any):string|Uint8Array|null {

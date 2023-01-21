@@ -22,21 +22,19 @@ static getSizePrefixedRootAsUser(bb:flatbuffers.ByteBuffer, obj?:User):User {
   return (obj || new User()).__init(bb.readInt32(bb.position()) + bb.position(), bb);
 }
 
-id(index: number):number|null {
+/**
+ * The user's base58 encoded, 32 byte user ID.
+ */
+id():string|null
+id(optionalEncoding:flatbuffers.Encoding):string|Uint8Array|null
+id(optionalEncoding?:any):string|Uint8Array|null {
   const offset = this.bb!.__offset(this.bb_pos, 4);
-  return offset ? this.bb!.readUint8(this.bb!.__vector(this.bb_pos + offset) + index) : 0;
+  return offset ? this.bb!.__string(this.bb_pos + offset, optionalEncoding) : null;
 }
 
-idLength():number {
-  const offset = this.bb!.__offset(this.bb_pos, 4);
-  return offset ? this.bb!.__vector_len(this.bb_pos + offset) : 0;
-}
-
-idArray():Uint8Array|null {
-  const offset = this.bb!.__offset(this.bb_pos, 4);
-  return offset ? new Uint8Array(this.bb!.bytes().buffer, this.bb!.bytes().byteOffset + this.bb!.__vector(this.bb_pos + offset), this.bb!.__vector_len(this.bb_pos + offset)) : null;
-}
-
+/**
+ * The user's name.
+ */
 name():string|null
 name(optionalEncoding:flatbuffers.Encoding):string|Uint8Array|null
 name(optionalEncoding?:any):string|Uint8Array|null {
@@ -44,6 +42,9 @@ name(optionalEncoding?:any):string|Uint8Array|null {
   return offset ? this.bb!.__string(this.bb_pos + offset, optionalEncoding) : null;
 }
 
+/**
+ * The user's display name. Defaults to the user's name.
+ */
 displayName():string|null
 displayName(optionalEncoding:flatbuffers.Encoding):string|Uint8Array|null
 displayName(optionalEncoding?:any):string|Uint8Array|null {
@@ -57,18 +58,6 @@ static startUser(builder:flatbuffers.Builder) {
 
 static addId(builder:flatbuffers.Builder, idOffset:flatbuffers.Offset) {
   builder.addFieldOffset(0, idOffset, 0);
-}
-
-static createIdVector(builder:flatbuffers.Builder, data:number[]|Uint8Array):flatbuffers.Offset {
-  builder.startVector(1, data.length, 1);
-  for (let i = data.length - 1; i >= 0; i--) {
-    builder.addInt8(data[i]!);
-  }
-  return builder.endVector();
-}
-
-static startIdVector(builder:flatbuffers.Builder, numElems:number) {
-  builder.startVector(1, numElems, 1);
 }
 
 static addName(builder:flatbuffers.Builder, nameOffset:flatbuffers.Offset) {
@@ -94,7 +83,7 @@ static createUser(builder:flatbuffers.Builder, idOffset:flatbuffers.Offset, name
 
 unpack(): UserT {
   return new UserT(
-    this.bb!.createScalarList<number>(this.id.bind(this), this.idLength()),
+    this.id(),
     this.name(),
     this.displayName()
   );
@@ -102,7 +91,7 @@ unpack(): UserT {
 
 
 unpackTo(_o: UserT): void {
-  _o.id = this.bb!.createScalarList<number>(this.id.bind(this), this.idLength());
+  _o.id = this.id();
   _o.name = this.name();
   _o.displayName = this.displayName();
 }
@@ -110,14 +99,14 @@ unpackTo(_o: UserT): void {
 
 export class UserT implements flatbuffers.IGeneratedObject {
 constructor(
-  public id: (number)[] = [],
+  public id: string|Uint8Array|null = null,
   public name: string|Uint8Array|null = null,
   public displayName: string|Uint8Array|null = null
 ){}
 
 
 pack(builder:flatbuffers.Builder): flatbuffers.Offset {
-  const id = User.createIdVector(builder, this.id);
+  const id = (this.id !== null ? builder.createString(this.id!) : 0);
   const name = (this.name !== null ? builder.createString(this.name!) : 0);
   const displayName = (this.displayName !== null ? builder.createString(this.displayName!) : 0);
 
