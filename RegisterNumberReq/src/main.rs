@@ -48,8 +48,8 @@ struct Client {
 impl Client {
     async fn new() -> Self {
         let client = reqwest::Client::new();
-        // make request to `/` to get a TLS connection
-        client.get(HOST).send().await.unwrap();
+        // get a TLS connection
+        client.head(HOST).send().await.unwrap();
         Self {
             client,
         }
