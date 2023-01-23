@@ -16,6 +16,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+    - name: Use nightly
+      run: rustup default nightly
     - name: Install planus
       run: cargo install --git https://github.com/planus-org/planus planus-cli
     - name: Run checks
