@@ -1,0 +1,24 @@
+namespace Auth.KV;
+
+/// Entry that is kept temporarily for verification purposes
+table NumberRegistration {
+    name: string;
+    code: uint64;
+}
+
+/// Kept permanently to look up a number. The number is hashed, peppered and 
+/// then hashed again. To lookup the number, the client hashes the number and 
+/// sends it to the server. The server peppers the hash and hashes it again.
+/// We could work out the original phone number if we really wanted to, but
+/// this is more for protecting against breaches of the database. The pepper is
+/// a secret that's encrypted and only available to the server, even in the case
+/// of a breach.
+table VerifiedNumber {
+    /// Display name of the user
+    name: string;
+    /// A link to the user's avatar image
+    avatar: string;
+    /// The account the number is registered to. 32 bytes, encoded with base58
+    /// This is used to contact the user's durable object
+    id: string;
+}

@@ -1,6 +1,6 @@
 include "webauthn.fbs";
 
-namespace Auth;
+namespace Auth.API;
 
 table ErrorRes {
     error: string;
@@ -38,9 +38,4 @@ table VerifyWebAuthnReq {
 
 table VerifyWebAuthnRes {
     token: string;
-}
-
-table NumberRegistration {
-    name: string;
-    code: uint64;
 }

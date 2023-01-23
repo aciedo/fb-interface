@@ -5,14 +5,2271 @@ const _: () = ::planus::check_version_compatibility("planus-0.3.1");
 /// The root namespace
 ///
 /// Generated from these locations:
-/// * File `auth/auth.fbs`
+/// * File `auth/api.fbs`
 #[no_implicit_prelude]
 mod root {
     /// The namespace `Auth`
     ///
     /// Generated from these locations:
-    /// * File `auth/auth.fbs`
+    /// * File `auth/api.fbs`
     pub mod auth {
+        /// The namespace `Auth.API`
+        ///
+        /// Generated from these locations:
+        /// * File `auth/api.fbs`
+        pub mod api {
+            /// The table `ErrorRes` in the namespace `Auth.API`
+            ///
+            /// Generated from these locations:
+            /// * Table `ErrorRes` in the file `auth/api.fbs:5`
+            #[derive(
+                Clone,
+                Debug,
+                PartialEq,
+                PartialOrd,
+                Eq,
+                Ord,
+                Hash,
+                ::serde::Serialize,
+                ::serde::Deserialize,
+            )]
+            pub struct ErrorRes {
+                /// The field `error` in the table `ErrorRes`
+                pub error: ::core::option::Option<::planus::alloc::string::String>,
+            }
+
+            #[allow(clippy::derivable_impls)]
+            impl ::core::default::Default for ErrorRes {
+                fn default() -> Self {
+                    Self {
+                        error: ::core::default::Default::default(),
+                    }
+                }
+            }
+
+            impl ErrorRes {
+                /// Creates a [ErrorResBuilder] for serializing an instance of this table.
+                #[inline]
+                pub fn builder() -> ErrorResBuilder<()> {
+                    ErrorResBuilder(())
+                }
+
+                #[allow(clippy::too_many_arguments)]
+                pub fn create(
+                    builder: &mut ::planus::Builder,
+                    field_error: impl ::planus::WriteAsOptional<
+                        ::planus::Offset<::core::primitive::str>,
+                    >,
+                ) -> ::planus::Offset<Self> {
+                    let prepared_error = field_error.prepare(builder);
+
+                    let mut table_writer: ::planus::table_writer::TableWriter<6> =
+                        ::core::default::Default::default();
+                    if prepared_error.is_some() {
+                        table_writer.write_entry::<::planus::Offset<str>>(0);
+                    }
+
+                    unsafe {
+                        table_writer.finish(builder, |object_writer| {
+                            if let ::core::option::Option::Some(prepared_error) = prepared_error {
+                                object_writer.write::<_, _, 4>(&prepared_error);
+                            }
+                        });
+                    }
+                    builder.current_offset()
+                }
+            }
+
+            impl ::planus::WriteAs<::planus::Offset<ErrorRes>> for ErrorRes {
+                type Prepared = ::planus::Offset<Self>;
+
+                #[inline]
+                fn prepare(&self, builder: &mut ::planus::Builder) -> ::planus::Offset<ErrorRes> {
+                    ::planus::WriteAsOffset::prepare(self, builder)
+                }
+            }
+
+            impl ::planus::WriteAsOptional<::planus::Offset<ErrorRes>> for ErrorRes {
+                type Prepared = ::planus::Offset<Self>;
+
+                #[inline]
+                fn prepare(
+                    &self,
+                    builder: &mut ::planus::Builder,
+                ) -> ::core::option::Option<::planus::Offset<ErrorRes>> {
+                    ::core::option::Option::Some(::planus::WriteAsOffset::prepare(self, builder))
+                }
+            }
+
+            impl ::planus::WriteAsOffset<ErrorRes> for ErrorRes {
+                #[inline]
+                fn prepare(&self, builder: &mut ::planus::Builder) -> ::planus::Offset<ErrorRes> {
+                    ErrorRes::create(builder, &self.error)
+                }
+            }
+
+            /// Builder for serializing an instance of the [ErrorRes] type.
+            ///
+            /// Can be created using the [ErrorRes::builder] method.
+            #[derive(Debug)]
+            #[must_use]
+            pub struct ErrorResBuilder<State>(State);
+
+            impl ErrorResBuilder<()> {
+                /// Setter for the [`error` field](ErrorRes#structfield.error).
+                #[inline]
+                #[allow(clippy::type_complexity)]
+                pub fn error<T0>(self, value: T0) -> ErrorResBuilder<(T0,)>
+                where
+                    T0: ::planus::WriteAsOptional<::planus::Offset<::core::primitive::str>>,
+                {
+                    ErrorResBuilder((value,))
+                }
+
+                /// Sets the [`error` field](ErrorRes#structfield.error) to null.
+                #[inline]
+                #[allow(clippy::type_complexity)]
+                pub fn error_as_null(self) -> ErrorResBuilder<((),)> {
+                    self.error(())
+                }
+            }
+
+            impl<T0> ErrorResBuilder<(T0,)> {
+                /// Finish writing the builder to get an [Offset](::planus::Offset) to a serialized [ErrorRes].
+                #[inline]
+                pub fn finish(self, builder: &mut ::planus::Builder) -> ::planus::Offset<ErrorRes>
+                where
+                    Self: ::planus::WriteAsOffset<ErrorRes>,
+                {
+                    ::planus::WriteAsOffset::prepare(&self, builder)
+                }
+            }
+
+            impl<T0: ::planus::WriteAsOptional<::planus::Offset<::core::primitive::str>>>
+                ::planus::WriteAs<::planus::Offset<ErrorRes>> for ErrorResBuilder<(T0,)>
+            {
+                type Prepared = ::planus::Offset<ErrorRes>;
+
+                #[inline]
+                fn prepare(&self, builder: &mut ::planus::Builder) -> ::planus::Offset<ErrorRes> {
+                    ::planus::WriteAsOffset::prepare(self, builder)
+                }
+            }
+
+            impl<T0: ::planus::WriteAsOptional<::planus::Offset<::core::primitive::str>>>
+                ::planus::WriteAsOptional<::planus::Offset<ErrorRes>> for ErrorResBuilder<(T0,)>
+            {
+                type Prepared = ::planus::Offset<ErrorRes>;
+
+                #[inline]
+                fn prepare(
+                    &self,
+                    builder: &mut ::planus::Builder,
+                ) -> ::core::option::Option<::planus::Offset<ErrorRes>> {
+                    ::core::option::Option::Some(::planus::WriteAsOffset::prepare(self, builder))
+                }
+            }
+
+            impl<T0: ::planus::WriteAsOptional<::planus::Offset<::core::primitive::str>>>
+                ::planus::WriteAsOffset<ErrorRes> for ErrorResBuilder<(T0,)>
+            {
+                #[inline]
+                fn prepare(&self, builder: &mut ::planus::Builder) -> ::planus::Offset<ErrorRes> {
+                    let (v0,) = &self.0;
+                    ErrorRes::create(builder, v0)
+                }
+            }
+
+            /// Reference to a deserialized [ErrorRes].
+            #[derive(Copy, Clone)]
+            pub struct ErrorResRef<'a>(::planus::table_reader::Table<'a>);
+
+            impl<'a> ErrorResRef<'a> {
+                /// Getter for the [`error` field](ErrorRes#structfield.error).
+                #[inline]
+                pub fn error(
+                    &self,
+                ) -> ::planus::Result<::core::option::Option<&'a ::core::primitive::str>>
+                {
+                    self.0.access(0, "ErrorRes", "error")
+                }
+            }
+
+            impl<'a> ::core::fmt::Debug for ErrorResRef<'a> {
+                fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+                    let mut f = f.debug_struct("ErrorResRef");
+                    if let ::core::option::Option::Some(field_error) = self.error().transpose() {
+                        f.field("error", &field_error);
+                    }
+                    f.finish()
+                }
+            }
+
+            impl<'a> ::core::convert::TryFrom<ErrorResRef<'a>> for ErrorRes {
+                type Error = ::planus::Error;
+
+                #[allow(unreachable_code)]
+                fn try_from(value: ErrorResRef<'a>) -> ::planus::Result<Self> {
+                    ::core::result::Result::Ok(Self {
+                        error: if let ::core::option::Option::Some(error) = value.error()? {
+                            ::core::option::Option::Some(::core::convert::TryInto::try_into(error)?)
+                        } else {
+                            ::core::option::Option::None
+                        },
+                    })
+                }
+            }
+
+            impl<'a> ::planus::TableRead<'a> for ErrorResRef<'a> {
+                #[inline]
+                fn from_buffer(
+                    buffer: ::planus::SliceWithStartOffset<'a>,
+                    offset: usize,
+                ) -> ::core::result::Result<Self, ::planus::errors::ErrorKind> {
+                    ::core::result::Result::Ok(Self(::planus::table_reader::Table::from_buffer(
+                        buffer, offset,
+                    )?))
+                }
+            }
+
+            impl<'a> ::planus::VectorReadInner<'a> for ErrorResRef<'a> {
+                type Error = ::planus::Error;
+                const STRIDE: usize = 4;
+
+                unsafe fn from_buffer(
+                    buffer: ::planus::SliceWithStartOffset<'a>,
+                    offset: usize,
+                ) -> ::planus::Result<Self> {
+                    ::planus::TableRead::from_buffer(buffer, offset).map_err(|error_kind| {
+                        error_kind.with_error_location(
+                            "[ErrorResRef]",
+                            "get",
+                            buffer.offset_from_start,
+                        )
+                    })
+                }
+            }
+
+            impl ::planus::VectorWrite<::planus::Offset<ErrorRes>> for ErrorRes {
+                type Value = ::planus::Offset<ErrorRes>;
+                const STRIDE: usize = 4;
+                #[inline]
+                fn prepare(&self, builder: &mut ::planus::Builder) -> Self::Value {
+                    ::planus::WriteAs::prepare(self, builder)
+                }
+
+                #[inline]
+                unsafe fn write_values(
+                    values: &[::planus::Offset<ErrorRes>],
+                    bytes: *mut ::core::mem::MaybeUninit<u8>,
+                    buffer_position: u32,
+                ) {
+                    let bytes = bytes as *mut [::core::mem::MaybeUninit<u8>; 4];
+                    for (i, v) in ::core::iter::Iterator::enumerate(values.iter()) {
+                        ::planus::WriteAsPrimitive::write(
+                            v,
+                            ::planus::Cursor::new(&mut *bytes.add(i)),
+                            buffer_position - (Self::STRIDE * i) as u32,
+                        );
+                    }
+                }
+            }
+
+            impl<'a> ::planus::ReadAsRoot<'a> for ErrorResRef<'a> {
+                fn read_as_root(slice: &'a [u8]) -> ::planus::Result<Self> {
+                    ::planus::TableRead::from_buffer(
+                        ::planus::SliceWithStartOffset {
+                            buffer: slice,
+                            offset_from_start: 0,
+                        },
+                        0,
+                    )
+                    .map_err(|error_kind| {
+                        error_kind.with_error_location("[ErrorResRef]", "read_as_root", 0)
+                    })
+                }
+            }
+
+            /// The table `RegisterNumberReq` in the namespace `Auth.API`
+            ///
+            /// Generated from these locations:
+            /// * Table `RegisterNumberReq` in the file `auth/api.fbs:9`
+            #[derive(
+                Clone,
+                Debug,
+                PartialEq,
+                PartialOrd,
+                Eq,
+                Ord,
+                Hash,
+                ::serde::Serialize,
+                ::serde::Deserialize,
+            )]
+            pub struct RegisterNumberReq {
+                ///  The name of the user to register.
+                pub name: ::core::option::Option<::planus::alloc::string::String>,
+                ///  The phone number to register.
+                pub number: ::core::option::Option<::planus::alloc::string::String>,
+            }
+
+            #[allow(clippy::derivable_impls)]
+            impl ::core::default::Default for RegisterNumberReq {
+                fn default() -> Self {
+                    Self {
+                        name: ::core::default::Default::default(),
+                        number: ::core::default::Default::default(),
+                    }
+                }
+            }
+
+            impl RegisterNumberReq {
+                /// Creates a [RegisterNumberReqBuilder] for serializing an instance of this table.
+                #[inline]
+                pub fn builder() -> RegisterNumberReqBuilder<()> {
+                    RegisterNumberReqBuilder(())
+                }
+
+                #[allow(clippy::too_many_arguments)]
+                pub fn create(
+                    builder: &mut ::planus::Builder,
+                    field_name: impl ::planus::WriteAsOptional<::planus::Offset<::core::primitive::str>>,
+                    field_number: impl ::planus::WriteAsOptional<
+                        ::planus::Offset<::core::primitive::str>,
+                    >,
+                ) -> ::planus::Offset<Self> {
+                    let prepared_name = field_name.prepare(builder);
+                    let prepared_number = field_number.prepare(builder);
+
+                    let mut table_writer: ::planus::table_writer::TableWriter<8> =
+                        ::core::default::Default::default();
+                    if prepared_name.is_some() {
+                        table_writer.write_entry::<::planus::Offset<str>>(0);
+                    }
+                    if prepared_number.is_some() {
+                        table_writer.write_entry::<::planus::Offset<str>>(1);
+                    }
+
+                    unsafe {
+                        table_writer.finish(builder, |object_writer| {
+                            if let ::core::option::Option::Some(prepared_name) = prepared_name {
+                                object_writer.write::<_, _, 4>(&prepared_name);
+                            }
+                            if let ::core::option::Option::Some(prepared_number) = prepared_number {
+                                object_writer.write::<_, _, 4>(&prepared_number);
+                            }
+                        });
+                    }
+                    builder.current_offset()
+                }
+            }
+
+            impl ::planus::WriteAs<::planus::Offset<RegisterNumberReq>> for RegisterNumberReq {
+                type Prepared = ::planus::Offset<Self>;
+
+                #[inline]
+                fn prepare(
+                    &self,
+                    builder: &mut ::planus::Builder,
+                ) -> ::planus::Offset<RegisterNumberReq> {
+                    ::planus::WriteAsOffset::prepare(self, builder)
+                }
+            }
+
+            impl ::planus::WriteAsOptional<::planus::Offset<RegisterNumberReq>> for RegisterNumberReq {
+                type Prepared = ::planus::Offset<Self>;
+
+                #[inline]
+                fn prepare(
+                    &self,
+                    builder: &mut ::planus::Builder,
+                ) -> ::core::option::Option<::planus::Offset<RegisterNumberReq>> {
+                    ::core::option::Option::Some(::planus::WriteAsOffset::prepare(self, builder))
+                }
+            }
+
+            impl ::planus::WriteAsOffset<RegisterNumberReq> for RegisterNumberReq {
+                #[inline]
+                fn prepare(
+                    &self,
+                    builder: &mut ::planus::Builder,
+                ) -> ::planus::Offset<RegisterNumberReq> {
+                    RegisterNumberReq::create(builder, &self.name, &self.number)
+                }
+            }
+
+            /// Builder for serializing an instance of the [RegisterNumberReq] type.
+            ///
+            /// Can be created using the [RegisterNumberReq::builder] method.
+            #[derive(Debug)]
+            #[must_use]
+            pub struct RegisterNumberReqBuilder<State>(State);
+
+            impl RegisterNumberReqBuilder<()> {
+                /// Setter for the [`name` field](RegisterNumberReq#structfield.name).
+                #[inline]
+                #[allow(clippy::type_complexity)]
+                pub fn name<T0>(self, value: T0) -> RegisterNumberReqBuilder<(T0,)>
+                where
+                    T0: ::planus::WriteAsOptional<::planus::Offset<::core::primitive::str>>,
+                {
+                    RegisterNumberReqBuilder((value,))
+                }
+
+                /// Sets the [`name` field](RegisterNumberReq#structfield.name) to null.
+                #[inline]
+                #[allow(clippy::type_complexity)]
+                pub fn name_as_null(self) -> RegisterNumberReqBuilder<((),)> {
+                    self.name(())
+                }
+            }
+
+            impl<T0> RegisterNumberReqBuilder<(T0,)> {
+                /// Setter for the [`number` field](RegisterNumberReq#structfield.number).
+                #[inline]
+                #[allow(clippy::type_complexity)]
+                pub fn number<T1>(self, value: T1) -> RegisterNumberReqBuilder<(T0, T1)>
+                where
+                    T1: ::planus::WriteAsOptional<::planus::Offset<::core::primitive::str>>,
+                {
+                    let (v0,) = self.0;
+                    RegisterNumberReqBuilder((v0, value))
+                }
+
+                /// Sets the [`number` field](RegisterNumberReq#structfield.number) to null.
+                #[inline]
+                #[allow(clippy::type_complexity)]
+                pub fn number_as_null(self) -> RegisterNumberReqBuilder<(T0, ())> {
+                    self.number(())
+                }
+            }
+
+            impl<T0, T1> RegisterNumberReqBuilder<(T0, T1)> {
+                /// Finish writing the builder to get an [Offset](::planus::Offset) to a serialized [RegisterNumberReq].
+                #[inline]
+                pub fn finish(
+                    self,
+                    builder: &mut ::planus::Builder,
+                ) -> ::planus::Offset<RegisterNumberReq>
+                where
+                    Self: ::planus::WriteAsOffset<RegisterNumberReq>,
+                {
+                    ::planus::WriteAsOffset::prepare(&self, builder)
+                }
+            }
+
+            impl<
+                    T0: ::planus::WriteAsOptional<::planus::Offset<::core::primitive::str>>,
+                    T1: ::planus::WriteAsOptional<::planus::Offset<::core::primitive::str>>,
+                > ::planus::WriteAs<::planus::Offset<RegisterNumberReq>>
+                for RegisterNumberReqBuilder<(T0, T1)>
+            {
+                type Prepared = ::planus::Offset<RegisterNumberReq>;
+
+                #[inline]
+                fn prepare(
+                    &self,
+                    builder: &mut ::planus::Builder,
+                ) -> ::planus::Offset<RegisterNumberReq> {
+                    ::planus::WriteAsOffset::prepare(self, builder)
+                }
+            }
+
+            impl<
+                    T0: ::planus::WriteAsOptional<::planus::Offset<::core::primitive::str>>,
+                    T1: ::planus::WriteAsOptional<::planus::Offset<::core::primitive::str>>,
+                > ::planus::WriteAsOptional<::planus::Offset<RegisterNumberReq>>
+                for RegisterNumberReqBuilder<(T0, T1)>
+            {
+                type Prepared = ::planus::Offset<RegisterNumberReq>;
+
+                #[inline]
+                fn prepare(
+                    &self,
+                    builder: &mut ::planus::Builder,
+                ) -> ::core::option::Option<::planus::Offset<RegisterNumberReq>> {
+                    ::core::option::Option::Some(::planus::WriteAsOffset::prepare(self, builder))
+                }
+            }
+
+            impl<
+                    T0: ::planus::WriteAsOptional<::planus::Offset<::core::primitive::str>>,
+                    T1: ::planus::WriteAsOptional<::planus::Offset<::core::primitive::str>>,
+                > ::planus::WriteAsOffset<RegisterNumberReq>
+                for RegisterNumberReqBuilder<(T0, T1)>
+            {
+                #[inline]
+                fn prepare(
+                    &self,
+                    builder: &mut ::planus::Builder,
+                ) -> ::planus::Offset<RegisterNumberReq> {
+                    let (v0, v1) = &self.0;
+                    RegisterNumberReq::create(builder, v0, v1)
+                }
+            }
+
+            /// Reference to a deserialized [RegisterNumberReq].
+            #[derive(Copy, Clone)]
+            pub struct RegisterNumberReqRef<'a>(::planus::table_reader::Table<'a>);
+
+            impl<'a> RegisterNumberReqRef<'a> {
+                /// Getter for the [`name` field](RegisterNumberReq#structfield.name).
+                #[inline]
+                pub fn name(
+                    &self,
+                ) -> ::planus::Result<::core::option::Option<&'a ::core::primitive::str>>
+                {
+                    self.0.access(0, "RegisterNumberReq", "name")
+                }
+
+                /// Getter for the [`number` field](RegisterNumberReq#structfield.number).
+                #[inline]
+                pub fn number(
+                    &self,
+                ) -> ::planus::Result<::core::option::Option<&'a ::core::primitive::str>>
+                {
+                    self.0.access(1, "RegisterNumberReq", "number")
+                }
+            }
+
+            impl<'a> ::core::fmt::Debug for RegisterNumberReqRef<'a> {
+                fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+                    let mut f = f.debug_struct("RegisterNumberReqRef");
+                    if let ::core::option::Option::Some(field_name) = self.name().transpose() {
+                        f.field("name", &field_name);
+                    }
+                    if let ::core::option::Option::Some(field_number) = self.number().transpose() {
+                        f.field("number", &field_number);
+                    }
+                    f.finish()
+                }
+            }
+
+            impl<'a> ::core::convert::TryFrom<RegisterNumberReqRef<'a>> for RegisterNumberReq {
+                type Error = ::planus::Error;
+
+                #[allow(unreachable_code)]
+                fn try_from(value: RegisterNumberReqRef<'a>) -> ::planus::Result<Self> {
+                    ::core::result::Result::Ok(Self {
+                        name: if let ::core::option::Option::Some(name) = value.name()? {
+                            ::core::option::Option::Some(::core::convert::TryInto::try_into(name)?)
+                        } else {
+                            ::core::option::Option::None
+                        },
+                        number: if let ::core::option::Option::Some(number) = value.number()? {
+                            ::core::option::Option::Some(::core::convert::TryInto::try_into(
+                                number,
+                            )?)
+                        } else {
+                            ::core::option::Option::None
+                        },
+                    })
+                }
+            }
+
+            impl<'a> ::planus::TableRead<'a> for RegisterNumberReqRef<'a> {
+                #[inline]
+                fn from_buffer(
+                    buffer: ::planus::SliceWithStartOffset<'a>,
+                    offset: usize,
+                ) -> ::core::result::Result<Self, ::planus::errors::ErrorKind> {
+                    ::core::result::Result::Ok(Self(::planus::table_reader::Table::from_buffer(
+                        buffer, offset,
+                    )?))
+                }
+            }
+
+            impl<'a> ::planus::VectorReadInner<'a> for RegisterNumberReqRef<'a> {
+                type Error = ::planus::Error;
+                const STRIDE: usize = 4;
+
+                unsafe fn from_buffer(
+                    buffer: ::planus::SliceWithStartOffset<'a>,
+                    offset: usize,
+                ) -> ::planus::Result<Self> {
+                    ::planus::TableRead::from_buffer(buffer, offset).map_err(|error_kind| {
+                        error_kind.with_error_location(
+                            "[RegisterNumberReqRef]",
+                            "get",
+                            buffer.offset_from_start,
+                        )
+                    })
+                }
+            }
+
+            impl ::planus::VectorWrite<::planus::Offset<RegisterNumberReq>> for RegisterNumberReq {
+                type Value = ::planus::Offset<RegisterNumberReq>;
+                const STRIDE: usize = 4;
+                #[inline]
+                fn prepare(&self, builder: &mut ::planus::Builder) -> Self::Value {
+                    ::planus::WriteAs::prepare(self, builder)
+                }
+
+                #[inline]
+                unsafe fn write_values(
+                    values: &[::planus::Offset<RegisterNumberReq>],
+                    bytes: *mut ::core::mem::MaybeUninit<u8>,
+                    buffer_position: u32,
+                ) {
+                    let bytes = bytes as *mut [::core::mem::MaybeUninit<u8>; 4];
+                    for (i, v) in ::core::iter::Iterator::enumerate(values.iter()) {
+                        ::planus::WriteAsPrimitive::write(
+                            v,
+                            ::planus::Cursor::new(&mut *bytes.add(i)),
+                            buffer_position - (Self::STRIDE * i) as u32,
+                        );
+                    }
+                }
+            }
+
+            impl<'a> ::planus::ReadAsRoot<'a> for RegisterNumberReqRef<'a> {
+                fn read_as_root(slice: &'a [u8]) -> ::planus::Result<Self> {
+                    ::planus::TableRead::from_buffer(
+                        ::planus::SliceWithStartOffset {
+                            buffer: slice,
+                            offset_from_start: 0,
+                        },
+                        0,
+                    )
+                    .map_err(|error_kind| {
+                        error_kind.with_error_location("[RegisterNumberReqRef]", "read_as_root", 0)
+                    })
+                }
+            }
+
+            /// The table `RegisterNumberRes` in the namespace `Auth.API`
+            ///
+            /// Generated from these locations:
+            /// * Table `RegisterNumberRes` in the file `auth/api.fbs:16`
+            #[derive(
+                Clone,
+                Debug,
+                PartialEq,
+                PartialOrd,
+                Eq,
+                Ord,
+                Hash,
+                ::serde::Serialize,
+                ::serde::Deserialize,
+            )]
+            pub struct RegisterNumberRes {
+                ///  A value to multiply the code by for VerifyNumberReq
+                pub multiplier: u32,
+            }
+
+            #[allow(clippy::derivable_impls)]
+            impl ::core::default::Default for RegisterNumberRes {
+                fn default() -> Self {
+                    Self { multiplier: 0 }
+                }
+            }
+
+            impl RegisterNumberRes {
+                /// Creates a [RegisterNumberResBuilder] for serializing an instance of this table.
+                #[inline]
+                pub fn builder() -> RegisterNumberResBuilder<()> {
+                    RegisterNumberResBuilder(())
+                }
+
+                #[allow(clippy::too_many_arguments)]
+                pub fn create(
+                    builder: &mut ::planus::Builder,
+                    field_multiplier: impl ::planus::WriteAsDefault<u32, u32>,
+                ) -> ::planus::Offset<Self> {
+                    let prepared_multiplier = field_multiplier.prepare(builder, &0);
+
+                    let mut table_writer: ::planus::table_writer::TableWriter<6> =
+                        ::core::default::Default::default();
+                    if prepared_multiplier.is_some() {
+                        table_writer.write_entry::<u32>(0);
+                    }
+
+                    unsafe {
+                        table_writer.finish(builder, |object_writer| {
+                            if let ::core::option::Option::Some(prepared_multiplier) =
+                                prepared_multiplier
+                            {
+                                object_writer.write::<_, _, 4>(&prepared_multiplier);
+                            }
+                        });
+                    }
+                    builder.current_offset()
+                }
+            }
+
+            impl ::planus::WriteAs<::planus::Offset<RegisterNumberRes>> for RegisterNumberRes {
+                type Prepared = ::planus::Offset<Self>;
+
+                #[inline]
+                fn prepare(
+                    &self,
+                    builder: &mut ::planus::Builder,
+                ) -> ::planus::Offset<RegisterNumberRes> {
+                    ::planus::WriteAsOffset::prepare(self, builder)
+                }
+            }
+
+            impl ::planus::WriteAsOptional<::planus::Offset<RegisterNumberRes>> for RegisterNumberRes {
+                type Prepared = ::planus::Offset<Self>;
+
+                #[inline]
+                fn prepare(
+                    &self,
+                    builder: &mut ::planus::Builder,
+                ) -> ::core::option::Option<::planus::Offset<RegisterNumberRes>> {
+                    ::core::option::Option::Some(::planus::WriteAsOffset::prepare(self, builder))
+                }
+            }
+
+            impl ::planus::WriteAsOffset<RegisterNumberRes> for RegisterNumberRes {
+                #[inline]
+                fn prepare(
+                    &self,
+                    builder: &mut ::planus::Builder,
+                ) -> ::planus::Offset<RegisterNumberRes> {
+                    RegisterNumberRes::create(builder, self.multiplier)
+                }
+            }
+
+            /// Builder for serializing an instance of the [RegisterNumberRes] type.
+            ///
+            /// Can be created using the [RegisterNumberRes::builder] method.
+            #[derive(Debug)]
+            #[must_use]
+            pub struct RegisterNumberResBuilder<State>(State);
+
+            impl RegisterNumberResBuilder<()> {
+                /// Setter for the [`multiplier` field](RegisterNumberRes#structfield.multiplier).
+                #[inline]
+                #[allow(clippy::type_complexity)]
+                pub fn multiplier<T0>(self, value: T0) -> RegisterNumberResBuilder<(T0,)>
+                where
+                    T0: ::planus::WriteAsDefault<u32, u32>,
+                {
+                    RegisterNumberResBuilder((value,))
+                }
+
+                /// Sets the [`multiplier` field](RegisterNumberRes#structfield.multiplier) to the default value.
+                #[inline]
+                #[allow(clippy::type_complexity)]
+                pub fn multiplier_as_default(
+                    self,
+                ) -> RegisterNumberResBuilder<(::planus::DefaultValue,)> {
+                    self.multiplier(::planus::DefaultValue)
+                }
+            }
+
+            impl<T0> RegisterNumberResBuilder<(T0,)> {
+                /// Finish writing the builder to get an [Offset](::planus::Offset) to a serialized [RegisterNumberRes].
+                #[inline]
+                pub fn finish(
+                    self,
+                    builder: &mut ::planus::Builder,
+                ) -> ::planus::Offset<RegisterNumberRes>
+                where
+                    Self: ::planus::WriteAsOffset<RegisterNumberRes>,
+                {
+                    ::planus::WriteAsOffset::prepare(&self, builder)
+                }
+            }
+
+            impl<T0: ::planus::WriteAsDefault<u32, u32>>
+                ::planus::WriteAs<::planus::Offset<RegisterNumberRes>>
+                for RegisterNumberResBuilder<(T0,)>
+            {
+                type Prepared = ::planus::Offset<RegisterNumberRes>;
+
+                #[inline]
+                fn prepare(
+                    &self,
+                    builder: &mut ::planus::Builder,
+                ) -> ::planus::Offset<RegisterNumberRes> {
+                    ::planus::WriteAsOffset::prepare(self, builder)
+                }
+            }
+
+            impl<T0: ::planus::WriteAsDefault<u32, u32>>
+                ::planus::WriteAsOptional<::planus::Offset<RegisterNumberRes>>
+                for RegisterNumberResBuilder<(T0,)>
+            {
+                type Prepared = ::planus::Offset<RegisterNumberRes>;
+
+                #[inline]
+                fn prepare(
+                    &self,
+                    builder: &mut ::planus::Builder,
+                ) -> ::core::option::Option<::planus::Offset<RegisterNumberRes>> {
+                    ::core::option::Option::Some(::planus::WriteAsOffset::prepare(self, builder))
+                }
+            }
+
+            impl<T0: ::planus::WriteAsDefault<u32, u32>> ::planus::WriteAsOffset<RegisterNumberRes>
+                for RegisterNumberResBuilder<(T0,)>
+            {
+                #[inline]
+                fn prepare(
+                    &self,
+                    builder: &mut ::planus::Builder,
+                ) -> ::planus::Offset<RegisterNumberRes> {
+                    let (v0,) = &self.0;
+                    RegisterNumberRes::create(builder, v0)
+                }
+            }
+
+            /// Reference to a deserialized [RegisterNumberRes].
+            #[derive(Copy, Clone)]
+            pub struct RegisterNumberResRef<'a>(::planus::table_reader::Table<'a>);
+
+            impl<'a> RegisterNumberResRef<'a> {
+                /// Getter for the [`multiplier` field](RegisterNumberRes#structfield.multiplier).
+                #[inline]
+                pub fn multiplier(&self) -> ::planus::Result<u32> {
+                    ::core::result::Result::Ok(
+                        self.0
+                            .access(0, "RegisterNumberRes", "multiplier")?
+                            .unwrap_or(0),
+                    )
+                }
+            }
+
+            impl<'a> ::core::fmt::Debug for RegisterNumberResRef<'a> {
+                fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+                    let mut f = f.debug_struct("RegisterNumberResRef");
+                    f.field("multiplier", &self.multiplier());
+                    f.finish()
+                }
+            }
+
+            impl<'a> ::core::convert::TryFrom<RegisterNumberResRef<'a>> for RegisterNumberRes {
+                type Error = ::planus::Error;
+
+                #[allow(unreachable_code)]
+                fn try_from(value: RegisterNumberResRef<'a>) -> ::planus::Result<Self> {
+                    ::core::result::Result::Ok(Self {
+                        multiplier: ::core::convert::TryInto::try_into(value.multiplier()?)?,
+                    })
+                }
+            }
+
+            impl<'a> ::planus::TableRead<'a> for RegisterNumberResRef<'a> {
+                #[inline]
+                fn from_buffer(
+                    buffer: ::planus::SliceWithStartOffset<'a>,
+                    offset: usize,
+                ) -> ::core::result::Result<Self, ::planus::errors::ErrorKind> {
+                    ::core::result::Result::Ok(Self(::planus::table_reader::Table::from_buffer(
+                        buffer, offset,
+                    )?))
+                }
+            }
+
+            impl<'a> ::planus::VectorReadInner<'a> for RegisterNumberResRef<'a> {
+                type Error = ::planus::Error;
+                const STRIDE: usize = 4;
+
+                unsafe fn from_buffer(
+                    buffer: ::planus::SliceWithStartOffset<'a>,
+                    offset: usize,
+                ) -> ::planus::Result<Self> {
+                    ::planus::TableRead::from_buffer(buffer, offset).map_err(|error_kind| {
+                        error_kind.with_error_location(
+                            "[RegisterNumberResRef]",
+                            "get",
+                            buffer.offset_from_start,
+                        )
+                    })
+                }
+            }
+
+            impl ::planus::VectorWrite<::planus::Offset<RegisterNumberRes>> for RegisterNumberRes {
+                type Value = ::planus::Offset<RegisterNumberRes>;
+                const STRIDE: usize = 4;
+                #[inline]
+                fn prepare(&self, builder: &mut ::planus::Builder) -> Self::Value {
+                    ::planus::WriteAs::prepare(self, builder)
+                }
+
+                #[inline]
+                unsafe fn write_values(
+                    values: &[::planus::Offset<RegisterNumberRes>],
+                    bytes: *mut ::core::mem::MaybeUninit<u8>,
+                    buffer_position: u32,
+                ) {
+                    let bytes = bytes as *mut [::core::mem::MaybeUninit<u8>; 4];
+                    for (i, v) in ::core::iter::Iterator::enumerate(values.iter()) {
+                        ::planus::WriteAsPrimitive::write(
+                            v,
+                            ::planus::Cursor::new(&mut *bytes.add(i)),
+                            buffer_position - (Self::STRIDE * i) as u32,
+                        );
+                    }
+                }
+            }
+
+            impl<'a> ::planus::ReadAsRoot<'a> for RegisterNumberResRef<'a> {
+                fn read_as_root(slice: &'a [u8]) -> ::planus::Result<Self> {
+                    ::planus::TableRead::from_buffer(
+                        ::planus::SliceWithStartOffset {
+                            buffer: slice,
+                            offset_from_start: 0,
+                        },
+                        0,
+                    )
+                    .map_err(|error_kind| {
+                        error_kind.with_error_location("[RegisterNumberResRef]", "read_as_root", 0)
+                    })
+                }
+            }
+
+            /// The table `VerifyNumberReq` in the namespace `Auth.API`
+            ///
+            /// Generated from these locations:
+            /// * Table `VerifyNumberReq` in the file `auth/api.fbs:21`
+            #[derive(
+                Clone,
+                Debug,
+                PartialEq,
+                PartialOrd,
+                Eq,
+                Ord,
+                Hash,
+                ::serde::Serialize,
+                ::serde::Deserialize,
+            )]
+            pub struct VerifyNumberReq {
+                ///  The user's number.
+                pub number: ::core::option::Option<::planus::alloc::string::String>,
+                ///  The code to verify.
+                pub code: u64,
+            }
+
+            #[allow(clippy::derivable_impls)]
+            impl ::core::default::Default for VerifyNumberReq {
+                fn default() -> Self {
+                    Self {
+                        number: ::core::default::Default::default(),
+                        code: 0,
+                    }
+                }
+            }
+
+            impl VerifyNumberReq {
+                /// Creates a [VerifyNumberReqBuilder] for serializing an instance of this table.
+                #[inline]
+                pub fn builder() -> VerifyNumberReqBuilder<()> {
+                    VerifyNumberReqBuilder(())
+                }
+
+                #[allow(clippy::too_many_arguments)]
+                pub fn create(
+                    builder: &mut ::planus::Builder,
+                    field_number: impl ::planus::WriteAsOptional<
+                        ::planus::Offset<::core::primitive::str>,
+                    >,
+                    field_code: impl ::planus::WriteAsDefault<u64, u64>,
+                ) -> ::planus::Offset<Self> {
+                    let prepared_number = field_number.prepare(builder);
+                    let prepared_code = field_code.prepare(builder, &0);
+
+                    let mut table_writer: ::planus::table_writer::TableWriter<8> =
+                        ::core::default::Default::default();
+                    if prepared_code.is_some() {
+                        table_writer.write_entry::<u64>(1);
+                    }
+                    if prepared_number.is_some() {
+                        table_writer.write_entry::<::planus::Offset<str>>(0);
+                    }
+
+                    unsafe {
+                        table_writer.finish(builder, |object_writer| {
+                            if let ::core::option::Option::Some(prepared_code) = prepared_code {
+                                object_writer.write::<_, _, 8>(&prepared_code);
+                            }
+                            if let ::core::option::Option::Some(prepared_number) = prepared_number {
+                                object_writer.write::<_, _, 4>(&prepared_number);
+                            }
+                        });
+                    }
+                    builder.current_offset()
+                }
+            }
+
+            impl ::planus::WriteAs<::planus::Offset<VerifyNumberReq>> for VerifyNumberReq {
+                type Prepared = ::planus::Offset<Self>;
+
+                #[inline]
+                fn prepare(
+                    &self,
+                    builder: &mut ::planus::Builder,
+                ) -> ::planus::Offset<VerifyNumberReq> {
+                    ::planus::WriteAsOffset::prepare(self, builder)
+                }
+            }
+
+            impl ::planus::WriteAsOptional<::planus::Offset<VerifyNumberReq>> for VerifyNumberReq {
+                type Prepared = ::planus::Offset<Self>;
+
+                #[inline]
+                fn prepare(
+                    &self,
+                    builder: &mut ::planus::Builder,
+                ) -> ::core::option::Option<::planus::Offset<VerifyNumberReq>> {
+                    ::core::option::Option::Some(::planus::WriteAsOffset::prepare(self, builder))
+                }
+            }
+
+            impl ::planus::WriteAsOffset<VerifyNumberReq> for VerifyNumberReq {
+                #[inline]
+                fn prepare(
+                    &self,
+                    builder: &mut ::planus::Builder,
+                ) -> ::planus::Offset<VerifyNumberReq> {
+                    VerifyNumberReq::create(builder, &self.number, self.code)
+                }
+            }
+
+            /// Builder for serializing an instance of the [VerifyNumberReq] type.
+            ///
+            /// Can be created using the [VerifyNumberReq::builder] method.
+            #[derive(Debug)]
+            #[must_use]
+            pub struct VerifyNumberReqBuilder<State>(State);
+
+            impl VerifyNumberReqBuilder<()> {
+                /// Setter for the [`number` field](VerifyNumberReq#structfield.number).
+                #[inline]
+                #[allow(clippy::type_complexity)]
+                pub fn number<T0>(self, value: T0) -> VerifyNumberReqBuilder<(T0,)>
+                where
+                    T0: ::planus::WriteAsOptional<::planus::Offset<::core::primitive::str>>,
+                {
+                    VerifyNumberReqBuilder((value,))
+                }
+
+                /// Sets the [`number` field](VerifyNumberReq#structfield.number) to null.
+                #[inline]
+                #[allow(clippy::type_complexity)]
+                pub fn number_as_null(self) -> VerifyNumberReqBuilder<((),)> {
+                    self.number(())
+                }
+            }
+
+            impl<T0> VerifyNumberReqBuilder<(T0,)> {
+                /// Setter for the [`code` field](VerifyNumberReq#structfield.code).
+                #[inline]
+                #[allow(clippy::type_complexity)]
+                pub fn code<T1>(self, value: T1) -> VerifyNumberReqBuilder<(T0, T1)>
+                where
+                    T1: ::planus::WriteAsDefault<u64, u64>,
+                {
+                    let (v0,) = self.0;
+                    VerifyNumberReqBuilder((v0, value))
+                }
+
+                /// Sets the [`code` field](VerifyNumberReq#structfield.code) to the default value.
+                #[inline]
+                #[allow(clippy::type_complexity)]
+                pub fn code_as_default(
+                    self,
+                ) -> VerifyNumberReqBuilder<(T0, ::planus::DefaultValue)> {
+                    self.code(::planus::DefaultValue)
+                }
+            }
+
+            impl<T0, T1> VerifyNumberReqBuilder<(T0, T1)> {
+                /// Finish writing the builder to get an [Offset](::planus::Offset) to a serialized [VerifyNumberReq].
+                #[inline]
+                pub fn finish(
+                    self,
+                    builder: &mut ::planus::Builder,
+                ) -> ::planus::Offset<VerifyNumberReq>
+                where
+                    Self: ::planus::WriteAsOffset<VerifyNumberReq>,
+                {
+                    ::planus::WriteAsOffset::prepare(&self, builder)
+                }
+            }
+
+            impl<
+                    T0: ::planus::WriteAsOptional<::planus::Offset<::core::primitive::str>>,
+                    T1: ::planus::WriteAsDefault<u64, u64>,
+                > ::planus::WriteAs<::planus::Offset<VerifyNumberReq>>
+                for VerifyNumberReqBuilder<(T0, T1)>
+            {
+                type Prepared = ::planus::Offset<VerifyNumberReq>;
+
+                #[inline]
+                fn prepare(
+                    &self,
+                    builder: &mut ::planus::Builder,
+                ) -> ::planus::Offset<VerifyNumberReq> {
+                    ::planus::WriteAsOffset::prepare(self, builder)
+                }
+            }
+
+            impl<
+                    T0: ::planus::WriteAsOptional<::planus::Offset<::core::primitive::str>>,
+                    T1: ::planus::WriteAsDefault<u64, u64>,
+                > ::planus::WriteAsOptional<::planus::Offset<VerifyNumberReq>>
+                for VerifyNumberReqBuilder<(T0, T1)>
+            {
+                type Prepared = ::planus::Offset<VerifyNumberReq>;
+
+                #[inline]
+                fn prepare(
+                    &self,
+                    builder: &mut ::planus::Builder,
+                ) -> ::core::option::Option<::planus::Offset<VerifyNumberReq>> {
+                    ::core::option::Option::Some(::planus::WriteAsOffset::prepare(self, builder))
+                }
+            }
+
+            impl<
+                    T0: ::planus::WriteAsOptional<::planus::Offset<::core::primitive::str>>,
+                    T1: ::planus::WriteAsDefault<u64, u64>,
+                > ::planus::WriteAsOffset<VerifyNumberReq> for VerifyNumberReqBuilder<(T0, T1)>
+            {
+                #[inline]
+                fn prepare(
+                    &self,
+                    builder: &mut ::planus::Builder,
+                ) -> ::planus::Offset<VerifyNumberReq> {
+                    let (v0, v1) = &self.0;
+                    VerifyNumberReq::create(builder, v0, v1)
+                }
+            }
+
+            /// Reference to a deserialized [VerifyNumberReq].
+            #[derive(Copy, Clone)]
+            pub struct VerifyNumberReqRef<'a>(::planus::table_reader::Table<'a>);
+
+            impl<'a> VerifyNumberReqRef<'a> {
+                /// Getter for the [`number` field](VerifyNumberReq#structfield.number).
+                #[inline]
+                pub fn number(
+                    &self,
+                ) -> ::planus::Result<::core::option::Option<&'a ::core::primitive::str>>
+                {
+                    self.0.access(0, "VerifyNumberReq", "number")
+                }
+
+                /// Getter for the [`code` field](VerifyNumberReq#structfield.code).
+                #[inline]
+                pub fn code(&self) -> ::planus::Result<u64> {
+                    ::core::result::Result::Ok(
+                        self.0.access(1, "VerifyNumberReq", "code")?.unwrap_or(0),
+                    )
+                }
+            }
+
+            impl<'a> ::core::fmt::Debug for VerifyNumberReqRef<'a> {
+                fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+                    let mut f = f.debug_struct("VerifyNumberReqRef");
+                    if let ::core::option::Option::Some(field_number) = self.number().transpose() {
+                        f.field("number", &field_number);
+                    }
+                    f.field("code", &self.code());
+                    f.finish()
+                }
+            }
+
+            impl<'a> ::core::convert::TryFrom<VerifyNumberReqRef<'a>> for VerifyNumberReq {
+                type Error = ::planus::Error;
+
+                #[allow(unreachable_code)]
+                fn try_from(value: VerifyNumberReqRef<'a>) -> ::planus::Result<Self> {
+                    ::core::result::Result::Ok(Self {
+                        number: if let ::core::option::Option::Some(number) = value.number()? {
+                            ::core::option::Option::Some(::core::convert::TryInto::try_into(
+                                number,
+                            )?)
+                        } else {
+                            ::core::option::Option::None
+                        },
+                        code: ::core::convert::TryInto::try_into(value.code()?)?,
+                    })
+                }
+            }
+
+            impl<'a> ::planus::TableRead<'a> for VerifyNumberReqRef<'a> {
+                #[inline]
+                fn from_buffer(
+                    buffer: ::planus::SliceWithStartOffset<'a>,
+                    offset: usize,
+                ) -> ::core::result::Result<Self, ::planus::errors::ErrorKind> {
+                    ::core::result::Result::Ok(Self(::planus::table_reader::Table::from_buffer(
+                        buffer, offset,
+                    )?))
+                }
+            }
+
+            impl<'a> ::planus::VectorReadInner<'a> for VerifyNumberReqRef<'a> {
+                type Error = ::planus::Error;
+                const STRIDE: usize = 4;
+
+                unsafe fn from_buffer(
+                    buffer: ::planus::SliceWithStartOffset<'a>,
+                    offset: usize,
+                ) -> ::planus::Result<Self> {
+                    ::planus::TableRead::from_buffer(buffer, offset).map_err(|error_kind| {
+                        error_kind.with_error_location(
+                            "[VerifyNumberReqRef]",
+                            "get",
+                            buffer.offset_from_start,
+                        )
+                    })
+                }
+            }
+
+            impl ::planus::VectorWrite<::planus::Offset<VerifyNumberReq>> for VerifyNumberReq {
+                type Value = ::planus::Offset<VerifyNumberReq>;
+                const STRIDE: usize = 4;
+                #[inline]
+                fn prepare(&self, builder: &mut ::planus::Builder) -> Self::Value {
+                    ::planus::WriteAs::prepare(self, builder)
+                }
+
+                #[inline]
+                unsafe fn write_values(
+                    values: &[::planus::Offset<VerifyNumberReq>],
+                    bytes: *mut ::core::mem::MaybeUninit<u8>,
+                    buffer_position: u32,
+                ) {
+                    let bytes = bytes as *mut [::core::mem::MaybeUninit<u8>; 4];
+                    for (i, v) in ::core::iter::Iterator::enumerate(values.iter()) {
+                        ::planus::WriteAsPrimitive::write(
+                            v,
+                            ::planus::Cursor::new(&mut *bytes.add(i)),
+                            buffer_position - (Self::STRIDE * i) as u32,
+                        );
+                    }
+                }
+            }
+
+            impl<'a> ::planus::ReadAsRoot<'a> for VerifyNumberReqRef<'a> {
+                fn read_as_root(slice: &'a [u8]) -> ::planus::Result<Self> {
+                    ::planus::TableRead::from_buffer(
+                        ::planus::SliceWithStartOffset {
+                            buffer: slice,
+                            offset_from_start: 0,
+                        },
+                        0,
+                    )
+                    .map_err(|error_kind| {
+                        error_kind.with_error_location("[VerifyNumberReqRef]", "read_as_root", 0)
+                    })
+                }
+            }
+
+            /// The table `VerifyNumberRes` in the namespace `Auth.API`
+            ///
+            /// Generated from these locations:
+            /// * Table `VerifyNumberRes` in the file `auth/api.fbs:28`
+            #[derive(
+                Clone,
+                Debug,
+                PartialEq,
+                PartialOrd,
+                Eq,
+                Ord,
+                Hash,
+                ::serde::Serialize,
+                ::serde::Deserialize,
+            )]
+            pub struct VerifyNumberRes {
+                ///  Options for registering a WebAuthn credential.
+                pub options: ::core::option::Option<
+                    ::planus::alloc::boxed::Box<super::web_authn::CredentialCreationOptions>,
+                >,
+            }
+
+            #[allow(clippy::derivable_impls)]
+            impl ::core::default::Default for VerifyNumberRes {
+                fn default() -> Self {
+                    Self {
+                        options: ::core::default::Default::default(),
+                    }
+                }
+            }
+
+            impl VerifyNumberRes {
+                /// Creates a [VerifyNumberResBuilder] for serializing an instance of this table.
+                #[inline]
+                pub fn builder() -> VerifyNumberResBuilder<()> {
+                    VerifyNumberResBuilder(())
+                }
+
+                #[allow(clippy::too_many_arguments)]
+                pub fn create(
+                    builder: &mut ::planus::Builder,
+                    field_options: impl ::planus::WriteAsOptional<
+                        ::planus::Offset<super::web_authn::CredentialCreationOptions>,
+                    >,
+                ) -> ::planus::Offset<Self> {
+                    let prepared_options = field_options.prepare(builder);
+
+                    let mut table_writer: ::planus::table_writer::TableWriter<6> =
+                        ::core::default::Default::default();
+                    if prepared_options.is_some() {
+                        table_writer.write_entry::<::planus::Offset<super::web_authn::CredentialCreationOptions>>(0);
+                    }
+
+                    unsafe {
+                        table_writer.finish(builder, |object_writer| {
+                            if let ::core::option::Option::Some(prepared_options) = prepared_options
+                            {
+                                object_writer.write::<_, _, 4>(&prepared_options);
+                            }
+                        });
+                    }
+                    builder.current_offset()
+                }
+            }
+
+            impl ::planus::WriteAs<::planus::Offset<VerifyNumberRes>> for VerifyNumberRes {
+                type Prepared = ::planus::Offset<Self>;
+
+                #[inline]
+                fn prepare(
+                    &self,
+                    builder: &mut ::planus::Builder,
+                ) -> ::planus::Offset<VerifyNumberRes> {
+                    ::planus::WriteAsOffset::prepare(self, builder)
+                }
+            }
+
+            impl ::planus::WriteAsOptional<::planus::Offset<VerifyNumberRes>> for VerifyNumberRes {
+                type Prepared = ::planus::Offset<Self>;
+
+                #[inline]
+                fn prepare(
+                    &self,
+                    builder: &mut ::planus::Builder,
+                ) -> ::core::option::Option<::planus::Offset<VerifyNumberRes>> {
+                    ::core::option::Option::Some(::planus::WriteAsOffset::prepare(self, builder))
+                }
+            }
+
+            impl ::planus::WriteAsOffset<VerifyNumberRes> for VerifyNumberRes {
+                #[inline]
+                fn prepare(
+                    &self,
+                    builder: &mut ::planus::Builder,
+                ) -> ::planus::Offset<VerifyNumberRes> {
+                    VerifyNumberRes::create(builder, &self.options)
+                }
+            }
+
+            /// Builder for serializing an instance of the [VerifyNumberRes] type.
+            ///
+            /// Can be created using the [VerifyNumberRes::builder] method.
+            #[derive(Debug)]
+            #[must_use]
+            pub struct VerifyNumberResBuilder<State>(State);
+
+            impl VerifyNumberResBuilder<()> {
+                /// Setter for the [`options` field](VerifyNumberRes#structfield.options).
+                #[inline]
+                #[allow(clippy::type_complexity)]
+                pub fn options<T0>(self, value: T0) -> VerifyNumberResBuilder<(T0,)>
+                where
+                    T0: ::planus::WriteAsOptional<
+                        ::planus::Offset<super::web_authn::CredentialCreationOptions>,
+                    >,
+                {
+                    VerifyNumberResBuilder((value,))
+                }
+
+                /// Sets the [`options` field](VerifyNumberRes#structfield.options) to null.
+                #[inline]
+                #[allow(clippy::type_complexity)]
+                pub fn options_as_null(self) -> VerifyNumberResBuilder<((),)> {
+                    self.options(())
+                }
+            }
+
+            impl<T0> VerifyNumberResBuilder<(T0,)> {
+                /// Finish writing the builder to get an [Offset](::planus::Offset) to a serialized [VerifyNumberRes].
+                #[inline]
+                pub fn finish(
+                    self,
+                    builder: &mut ::planus::Builder,
+                ) -> ::planus::Offset<VerifyNumberRes>
+                where
+                    Self: ::planus::WriteAsOffset<VerifyNumberRes>,
+                {
+                    ::planus::WriteAsOffset::prepare(&self, builder)
+                }
+            }
+
+            impl<
+                    T0: ::planus::WriteAsOptional<
+                        ::planus::Offset<super::web_authn::CredentialCreationOptions>,
+                    >,
+                > ::planus::WriteAs<::planus::Offset<VerifyNumberRes>>
+                for VerifyNumberResBuilder<(T0,)>
+            {
+                type Prepared = ::planus::Offset<VerifyNumberRes>;
+
+                #[inline]
+                fn prepare(
+                    &self,
+                    builder: &mut ::planus::Builder,
+                ) -> ::planus::Offset<VerifyNumberRes> {
+                    ::planus::WriteAsOffset::prepare(self, builder)
+                }
+            }
+
+            impl<
+                    T0: ::planus::WriteAsOptional<
+                        ::planus::Offset<super::web_authn::CredentialCreationOptions>,
+                    >,
+                > ::planus::WriteAsOptional<::planus::Offset<VerifyNumberRes>>
+                for VerifyNumberResBuilder<(T0,)>
+            {
+                type Prepared = ::planus::Offset<VerifyNumberRes>;
+
+                #[inline]
+                fn prepare(
+                    &self,
+                    builder: &mut ::planus::Builder,
+                ) -> ::core::option::Option<::planus::Offset<VerifyNumberRes>> {
+                    ::core::option::Option::Some(::planus::WriteAsOffset::prepare(self, builder))
+                }
+            }
+
+            impl<
+                    T0: ::planus::WriteAsOptional<
+                        ::planus::Offset<super::web_authn::CredentialCreationOptions>,
+                    >,
+                > ::planus::WriteAsOffset<VerifyNumberRes> for VerifyNumberResBuilder<(T0,)>
+            {
+                #[inline]
+                fn prepare(
+                    &self,
+                    builder: &mut ::planus::Builder,
+                ) -> ::planus::Offset<VerifyNumberRes> {
+                    let (v0,) = &self.0;
+                    VerifyNumberRes::create(builder, v0)
+                }
+            }
+
+            /// Reference to a deserialized [VerifyNumberRes].
+            #[derive(Copy, Clone)]
+            pub struct VerifyNumberResRef<'a>(::planus::table_reader::Table<'a>);
+
+            impl<'a> VerifyNumberResRef<'a> {
+                /// Getter for the [`options` field](VerifyNumberRes#structfield.options).
+                #[inline]
+                pub fn options(
+                    &self,
+                ) -> ::planus::Result<
+                    ::core::option::Option<super::web_authn::CredentialCreationOptionsRef<'a>>,
+                > {
+                    self.0.access(0, "VerifyNumberRes", "options")
+                }
+            }
+
+            impl<'a> ::core::fmt::Debug for VerifyNumberResRef<'a> {
+                fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+                    let mut f = f.debug_struct("VerifyNumberResRef");
+                    if let ::core::option::Option::Some(field_options) = self.options().transpose()
+                    {
+                        f.field("options", &field_options);
+                    }
+                    f.finish()
+                }
+            }
+
+            impl<'a> ::core::convert::TryFrom<VerifyNumberResRef<'a>> for VerifyNumberRes {
+                type Error = ::planus::Error;
+
+                #[allow(unreachable_code)]
+                fn try_from(value: VerifyNumberResRef<'a>) -> ::planus::Result<Self> {
+                    ::core::result::Result::Ok(Self {
+                        options: if let ::core::option::Option::Some(options) = value.options()? {
+                            ::core::option::Option::Some(::planus::alloc::boxed::Box::new(
+                                ::core::convert::TryInto::try_into(options)?,
+                            ))
+                        } else {
+                            ::core::option::Option::None
+                        },
+                    })
+                }
+            }
+
+            impl<'a> ::planus::TableRead<'a> for VerifyNumberResRef<'a> {
+                #[inline]
+                fn from_buffer(
+                    buffer: ::planus::SliceWithStartOffset<'a>,
+                    offset: usize,
+                ) -> ::core::result::Result<Self, ::planus::errors::ErrorKind> {
+                    ::core::result::Result::Ok(Self(::planus::table_reader::Table::from_buffer(
+                        buffer, offset,
+                    )?))
+                }
+            }
+
+            impl<'a> ::planus::VectorReadInner<'a> for VerifyNumberResRef<'a> {
+                type Error = ::planus::Error;
+                const STRIDE: usize = 4;
+
+                unsafe fn from_buffer(
+                    buffer: ::planus::SliceWithStartOffset<'a>,
+                    offset: usize,
+                ) -> ::planus::Result<Self> {
+                    ::planus::TableRead::from_buffer(buffer, offset).map_err(|error_kind| {
+                        error_kind.with_error_location(
+                            "[VerifyNumberResRef]",
+                            "get",
+                            buffer.offset_from_start,
+                        )
+                    })
+                }
+            }
+
+            impl ::planus::VectorWrite<::planus::Offset<VerifyNumberRes>> for VerifyNumberRes {
+                type Value = ::planus::Offset<VerifyNumberRes>;
+                const STRIDE: usize = 4;
+                #[inline]
+                fn prepare(&self, builder: &mut ::planus::Builder) -> Self::Value {
+                    ::planus::WriteAs::prepare(self, builder)
+                }
+
+                #[inline]
+                unsafe fn write_values(
+                    values: &[::planus::Offset<VerifyNumberRes>],
+                    bytes: *mut ::core::mem::MaybeUninit<u8>,
+                    buffer_position: u32,
+                ) {
+                    let bytes = bytes as *mut [::core::mem::MaybeUninit<u8>; 4];
+                    for (i, v) in ::core::iter::Iterator::enumerate(values.iter()) {
+                        ::planus::WriteAsPrimitive::write(
+                            v,
+                            ::planus::Cursor::new(&mut *bytes.add(i)),
+                            buffer_position - (Self::STRIDE * i) as u32,
+                        );
+                    }
+                }
+            }
+
+            impl<'a> ::planus::ReadAsRoot<'a> for VerifyNumberResRef<'a> {
+                fn read_as_root(slice: &'a [u8]) -> ::planus::Result<Self> {
+                    ::planus::TableRead::from_buffer(
+                        ::planus::SliceWithStartOffset {
+                            buffer: slice,
+                            offset_from_start: 0,
+                        },
+                        0,
+                    )
+                    .map_err(|error_kind| {
+                        error_kind.with_error_location("[VerifyNumberResRef]", "read_as_root", 0)
+                    })
+                }
+            }
+
+            /// The table `VerifyWebAuthnReq` in the namespace `Auth.API`
+            ///
+            /// Generated from these locations:
+            /// * Table `VerifyWebAuthnReq` in the file `auth/api.fbs:33`
+            #[derive(
+                Clone,
+                Debug,
+                PartialEq,
+                PartialOrd,
+                Eq,
+                Ord,
+                Hash,
+                ::serde::Serialize,
+                ::serde::Deserialize,
+            )]
+            pub struct VerifyWebAuthnReq {
+                /// The field `name` in the table `VerifyWebAuthnReq`
+                pub name: ::core::option::Option<::planus::alloc::string::String>,
+                /// The field `id` in the table `VerifyWebAuthnReq`
+                pub id: ::core::option::Option<::planus::alloc::string::String>,
+                /// The field `webauthn` in the table `VerifyWebAuthnReq`
+                pub webauthn: ::core::option::Option<
+                    ::planus::alloc::boxed::Box<super::web_authn::RegisterPublicKeyCredential>,
+                >,
+            }
+
+            #[allow(clippy::derivable_impls)]
+            impl ::core::default::Default for VerifyWebAuthnReq {
+                fn default() -> Self {
+                    Self {
+                        name: ::core::default::Default::default(),
+                        id: ::core::default::Default::default(),
+                        webauthn: ::core::default::Default::default(),
+                    }
+                }
+            }
+
+            impl VerifyWebAuthnReq {
+                /// Creates a [VerifyWebAuthnReqBuilder] for serializing an instance of this table.
+                #[inline]
+                pub fn builder() -> VerifyWebAuthnReqBuilder<()> {
+                    VerifyWebAuthnReqBuilder(())
+                }
+
+                #[allow(clippy::too_many_arguments)]
+                pub fn create(
+                    builder: &mut ::planus::Builder,
+                    field_name: impl ::planus::WriteAsOptional<::planus::Offset<::core::primitive::str>>,
+                    field_id: impl ::planus::WriteAsOptional<::planus::Offset<::core::primitive::str>>,
+                    field_webauthn: impl ::planus::WriteAsOptional<
+                        ::planus::Offset<super::web_authn::RegisterPublicKeyCredential>,
+                    >,
+                ) -> ::planus::Offset<Self> {
+                    let prepared_name = field_name.prepare(builder);
+                    let prepared_id = field_id.prepare(builder);
+                    let prepared_webauthn = field_webauthn.prepare(builder);
+
+                    let mut table_writer: ::planus::table_writer::TableWriter<10> =
+                        ::core::default::Default::default();
+                    if prepared_name.is_some() {
+                        table_writer.write_entry::<::planus::Offset<str>>(0);
+                    }
+                    if prepared_id.is_some() {
+                        table_writer.write_entry::<::planus::Offset<str>>(1);
+                    }
+                    if prepared_webauthn.is_some() {
+                        table_writer.write_entry::<::planus::Offset<super::web_authn::RegisterPublicKeyCredential>>(2);
+                    }
+
+                    unsafe {
+                        table_writer.finish(builder, |object_writer| {
+                            if let ::core::option::Option::Some(prepared_name) = prepared_name {
+                                object_writer.write::<_, _, 4>(&prepared_name);
+                            }
+                            if let ::core::option::Option::Some(prepared_id) = prepared_id {
+                                object_writer.write::<_, _, 4>(&prepared_id);
+                            }
+                            if let ::core::option::Option::Some(prepared_webauthn) =
+                                prepared_webauthn
+                            {
+                                object_writer.write::<_, _, 4>(&prepared_webauthn);
+                            }
+                        });
+                    }
+                    builder.current_offset()
+                }
+            }
+
+            impl ::planus::WriteAs<::planus::Offset<VerifyWebAuthnReq>> for VerifyWebAuthnReq {
+                type Prepared = ::planus::Offset<Self>;
+
+                #[inline]
+                fn prepare(
+                    &self,
+                    builder: &mut ::planus::Builder,
+                ) -> ::planus::Offset<VerifyWebAuthnReq> {
+                    ::planus::WriteAsOffset::prepare(self, builder)
+                }
+            }
+
+            impl ::planus::WriteAsOptional<::planus::Offset<VerifyWebAuthnReq>> for VerifyWebAuthnReq {
+                type Prepared = ::planus::Offset<Self>;
+
+                #[inline]
+                fn prepare(
+                    &self,
+                    builder: &mut ::planus::Builder,
+                ) -> ::core::option::Option<::planus::Offset<VerifyWebAuthnReq>> {
+                    ::core::option::Option::Some(::planus::WriteAsOffset::prepare(self, builder))
+                }
+            }
+
+            impl ::planus::WriteAsOffset<VerifyWebAuthnReq> for VerifyWebAuthnReq {
+                #[inline]
+                fn prepare(
+                    &self,
+                    builder: &mut ::planus::Builder,
+                ) -> ::planus::Offset<VerifyWebAuthnReq> {
+                    VerifyWebAuthnReq::create(builder, &self.name, &self.id, &self.webauthn)
+                }
+            }
+
+            /// Builder for serializing an instance of the [VerifyWebAuthnReq] type.
+            ///
+            /// Can be created using the [VerifyWebAuthnReq::builder] method.
+            #[derive(Debug)]
+            #[must_use]
+            pub struct VerifyWebAuthnReqBuilder<State>(State);
+
+            impl VerifyWebAuthnReqBuilder<()> {
+                /// Setter for the [`name` field](VerifyWebAuthnReq#structfield.name).
+                #[inline]
+                #[allow(clippy::type_complexity)]
+                pub fn name<T0>(self, value: T0) -> VerifyWebAuthnReqBuilder<(T0,)>
+                where
+                    T0: ::planus::WriteAsOptional<::planus::Offset<::core::primitive::str>>,
+                {
+                    VerifyWebAuthnReqBuilder((value,))
+                }
+
+                /// Sets the [`name` field](VerifyWebAuthnReq#structfield.name) to null.
+                #[inline]
+                #[allow(clippy::type_complexity)]
+                pub fn name_as_null(self) -> VerifyWebAuthnReqBuilder<((),)> {
+                    self.name(())
+                }
+            }
+
+            impl<T0> VerifyWebAuthnReqBuilder<(T0,)> {
+                /// Setter for the [`id` field](VerifyWebAuthnReq#structfield.id).
+                #[inline]
+                #[allow(clippy::type_complexity)]
+                pub fn id<T1>(self, value: T1) -> VerifyWebAuthnReqBuilder<(T0, T1)>
+                where
+                    T1: ::planus::WriteAsOptional<::planus::Offset<::core::primitive::str>>,
+                {
+                    let (v0,) = self.0;
+                    VerifyWebAuthnReqBuilder((v0, value))
+                }
+
+                /// Sets the [`id` field](VerifyWebAuthnReq#structfield.id) to null.
+                #[inline]
+                #[allow(clippy::type_complexity)]
+                pub fn id_as_null(self) -> VerifyWebAuthnReqBuilder<(T0, ())> {
+                    self.id(())
+                }
+            }
+
+            impl<T0, T1> VerifyWebAuthnReqBuilder<(T0, T1)> {
+                /// Setter for the [`webauthn` field](VerifyWebAuthnReq#structfield.webauthn).
+                #[inline]
+                #[allow(clippy::type_complexity)]
+                pub fn webauthn<T2>(self, value: T2) -> VerifyWebAuthnReqBuilder<(T0, T1, T2)>
+                where
+                    T2: ::planus::WriteAsOptional<
+                        ::planus::Offset<super::web_authn::RegisterPublicKeyCredential>,
+                    >,
+                {
+                    let (v0, v1) = self.0;
+                    VerifyWebAuthnReqBuilder((v0, v1, value))
+                }
+
+                /// Sets the [`webauthn` field](VerifyWebAuthnReq#structfield.webauthn) to null.
+                #[inline]
+                #[allow(clippy::type_complexity)]
+                pub fn webauthn_as_null(self) -> VerifyWebAuthnReqBuilder<(T0, T1, ())> {
+                    self.webauthn(())
+                }
+            }
+
+            impl<T0, T1, T2> VerifyWebAuthnReqBuilder<(T0, T1, T2)> {
+                /// Finish writing the builder to get an [Offset](::planus::Offset) to a serialized [VerifyWebAuthnReq].
+                #[inline]
+                pub fn finish(
+                    self,
+                    builder: &mut ::planus::Builder,
+                ) -> ::planus::Offset<VerifyWebAuthnReq>
+                where
+                    Self: ::planus::WriteAsOffset<VerifyWebAuthnReq>,
+                {
+                    ::planus::WriteAsOffset::prepare(&self, builder)
+                }
+            }
+
+            impl<
+                    T0: ::planus::WriteAsOptional<::planus::Offset<::core::primitive::str>>,
+                    T1: ::planus::WriteAsOptional<::planus::Offset<::core::primitive::str>>,
+                    T2: ::planus::WriteAsOptional<
+                        ::planus::Offset<super::web_authn::RegisterPublicKeyCredential>,
+                    >,
+                > ::planus::WriteAs<::planus::Offset<VerifyWebAuthnReq>>
+                for VerifyWebAuthnReqBuilder<(T0, T1, T2)>
+            {
+                type Prepared = ::planus::Offset<VerifyWebAuthnReq>;
+
+                #[inline]
+                fn prepare(
+                    &self,
+                    builder: &mut ::planus::Builder,
+                ) -> ::planus::Offset<VerifyWebAuthnReq> {
+                    ::planus::WriteAsOffset::prepare(self, builder)
+                }
+            }
+
+            impl<
+                    T0: ::planus::WriteAsOptional<::planus::Offset<::core::primitive::str>>,
+                    T1: ::planus::WriteAsOptional<::planus::Offset<::core::primitive::str>>,
+                    T2: ::planus::WriteAsOptional<
+                        ::planus::Offset<super::web_authn::RegisterPublicKeyCredential>,
+                    >,
+                > ::planus::WriteAsOptional<::planus::Offset<VerifyWebAuthnReq>>
+                for VerifyWebAuthnReqBuilder<(T0, T1, T2)>
+            {
+                type Prepared = ::planus::Offset<VerifyWebAuthnReq>;
+
+                #[inline]
+                fn prepare(
+                    &self,
+                    builder: &mut ::planus::Builder,
+                ) -> ::core::option::Option<::planus::Offset<VerifyWebAuthnReq>> {
+                    ::core::option::Option::Some(::planus::WriteAsOffset::prepare(self, builder))
+                }
+            }
+
+            impl<
+                    T0: ::planus::WriteAsOptional<::planus::Offset<::core::primitive::str>>,
+                    T1: ::planus::WriteAsOptional<::planus::Offset<::core::primitive::str>>,
+                    T2: ::planus::WriteAsOptional<
+                        ::planus::Offset<super::web_authn::RegisterPublicKeyCredential>,
+                    >,
+                > ::planus::WriteAsOffset<VerifyWebAuthnReq>
+                for VerifyWebAuthnReqBuilder<(T0, T1, T2)>
+            {
+                #[inline]
+                fn prepare(
+                    &self,
+                    builder: &mut ::planus::Builder,
+                ) -> ::planus::Offset<VerifyWebAuthnReq> {
+                    let (v0, v1, v2) = &self.0;
+                    VerifyWebAuthnReq::create(builder, v0, v1, v2)
+                }
+            }
+
+            /// Reference to a deserialized [VerifyWebAuthnReq].
+            #[derive(Copy, Clone)]
+            pub struct VerifyWebAuthnReqRef<'a>(::planus::table_reader::Table<'a>);
+
+            impl<'a> VerifyWebAuthnReqRef<'a> {
+                /// Getter for the [`name` field](VerifyWebAuthnReq#structfield.name).
+                #[inline]
+                pub fn name(
+                    &self,
+                ) -> ::planus::Result<::core::option::Option<&'a ::core::primitive::str>>
+                {
+                    self.0.access(0, "VerifyWebAuthnReq", "name")
+                }
+
+                /// Getter for the [`id` field](VerifyWebAuthnReq#structfield.id).
+                #[inline]
+                pub fn id(
+                    &self,
+                ) -> ::planus::Result<::core::option::Option<&'a ::core::primitive::str>>
+                {
+                    self.0.access(1, "VerifyWebAuthnReq", "id")
+                }
+
+                /// Getter for the [`webauthn` field](VerifyWebAuthnReq#structfield.webauthn).
+                #[inline]
+                pub fn webauthn(
+                    &self,
+                ) -> ::planus::Result<
+                    ::core::option::Option<super::web_authn::RegisterPublicKeyCredentialRef<'a>>,
+                > {
+                    self.0.access(2, "VerifyWebAuthnReq", "webauthn")
+                }
+            }
+
+            impl<'a> ::core::fmt::Debug for VerifyWebAuthnReqRef<'a> {
+                fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+                    let mut f = f.debug_struct("VerifyWebAuthnReqRef");
+                    if let ::core::option::Option::Some(field_name) = self.name().transpose() {
+                        f.field("name", &field_name);
+                    }
+                    if let ::core::option::Option::Some(field_id) = self.id().transpose() {
+                        f.field("id", &field_id);
+                    }
+                    if let ::core::option::Option::Some(field_webauthn) =
+                        self.webauthn().transpose()
+                    {
+                        f.field("webauthn", &field_webauthn);
+                    }
+                    f.finish()
+                }
+            }
+
+            impl<'a> ::core::convert::TryFrom<VerifyWebAuthnReqRef<'a>> for VerifyWebAuthnReq {
+                type Error = ::planus::Error;
+
+                #[allow(unreachable_code)]
+                fn try_from(value: VerifyWebAuthnReqRef<'a>) -> ::planus::Result<Self> {
+                    ::core::result::Result::Ok(Self {
+                        name: if let ::core::option::Option::Some(name) = value.name()? {
+                            ::core::option::Option::Some(::core::convert::TryInto::try_into(name)?)
+                        } else {
+                            ::core::option::Option::None
+                        },
+                        id: if let ::core::option::Option::Some(id) = value.id()? {
+                            ::core::option::Option::Some(::core::convert::TryInto::try_into(id)?)
+                        } else {
+                            ::core::option::Option::None
+                        },
+                        webauthn: if let ::core::option::Option::Some(webauthn) =
+                            value.webauthn()?
+                        {
+                            ::core::option::Option::Some(::planus::alloc::boxed::Box::new(
+                                ::core::convert::TryInto::try_into(webauthn)?,
+                            ))
+                        } else {
+                            ::core::option::Option::None
+                        },
+                    })
+                }
+            }
+
+            impl<'a> ::planus::TableRead<'a> for VerifyWebAuthnReqRef<'a> {
+                #[inline]
+                fn from_buffer(
+                    buffer: ::planus::SliceWithStartOffset<'a>,
+                    offset: usize,
+                ) -> ::core::result::Result<Self, ::planus::errors::ErrorKind> {
+                    ::core::result::Result::Ok(Self(::planus::table_reader::Table::from_buffer(
+                        buffer, offset,
+                    )?))
+                }
+            }
+
+            impl<'a> ::planus::VectorReadInner<'a> for VerifyWebAuthnReqRef<'a> {
+                type Error = ::planus::Error;
+                const STRIDE: usize = 4;
+
+                unsafe fn from_buffer(
+                    buffer: ::planus::SliceWithStartOffset<'a>,
+                    offset: usize,
+                ) -> ::planus::Result<Self> {
+                    ::planus::TableRead::from_buffer(buffer, offset).map_err(|error_kind| {
+                        error_kind.with_error_location(
+                            "[VerifyWebAuthnReqRef]",
+                            "get",
+                            buffer.offset_from_start,
+                        )
+                    })
+                }
+            }
+
+            impl ::planus::VectorWrite<::planus::Offset<VerifyWebAuthnReq>> for VerifyWebAuthnReq {
+                type Value = ::planus::Offset<VerifyWebAuthnReq>;
+                const STRIDE: usize = 4;
+                #[inline]
+                fn prepare(&self, builder: &mut ::planus::Builder) -> Self::Value {
+                    ::planus::WriteAs::prepare(self, builder)
+                }
+
+                #[inline]
+                unsafe fn write_values(
+                    values: &[::planus::Offset<VerifyWebAuthnReq>],
+                    bytes: *mut ::core::mem::MaybeUninit<u8>,
+                    buffer_position: u32,
+                ) {
+                    let bytes = bytes as *mut [::core::mem::MaybeUninit<u8>; 4];
+                    for (i, v) in ::core::iter::Iterator::enumerate(values.iter()) {
+                        ::planus::WriteAsPrimitive::write(
+                            v,
+                            ::planus::Cursor::new(&mut *bytes.add(i)),
+                            buffer_position - (Self::STRIDE * i) as u32,
+                        );
+                    }
+                }
+            }
+
+            impl<'a> ::planus::ReadAsRoot<'a> for VerifyWebAuthnReqRef<'a> {
+                fn read_as_root(slice: &'a [u8]) -> ::planus::Result<Self> {
+                    ::planus::TableRead::from_buffer(
+                        ::planus::SliceWithStartOffset {
+                            buffer: slice,
+                            offset_from_start: 0,
+                        },
+                        0,
+                    )
+                    .map_err(|error_kind| {
+                        error_kind.with_error_location("[VerifyWebAuthnReqRef]", "read_as_root", 0)
+                    })
+                }
+            }
+
+            /// The table `VerifyWebAuthnRes` in the namespace `Auth.API`
+            ///
+            /// Generated from these locations:
+            /// * Table `VerifyWebAuthnRes` in the file `auth/api.fbs:39`
+            #[derive(
+                Clone,
+                Debug,
+                PartialEq,
+                PartialOrd,
+                Eq,
+                Ord,
+                Hash,
+                ::serde::Serialize,
+                ::serde::Deserialize,
+            )]
+            pub struct VerifyWebAuthnRes {
+                /// The field `token` in the table `VerifyWebAuthnRes`
+                pub token: ::core::option::Option<::planus::alloc::string::String>,
+            }
+
+            #[allow(clippy::derivable_impls)]
+            impl ::core::default::Default for VerifyWebAuthnRes {
+                fn default() -> Self {
+                    Self {
+                        token: ::core::default::Default::default(),
+                    }
+                }
+            }
+
+            impl VerifyWebAuthnRes {
+                /// Creates a [VerifyWebAuthnResBuilder] for serializing an instance of this table.
+                #[inline]
+                pub fn builder() -> VerifyWebAuthnResBuilder<()> {
+                    VerifyWebAuthnResBuilder(())
+                }
+
+                #[allow(clippy::too_many_arguments)]
+                pub fn create(
+                    builder: &mut ::planus::Builder,
+                    field_token: impl ::planus::WriteAsOptional<
+                        ::planus::Offset<::core::primitive::str>,
+                    >,
+                ) -> ::planus::Offset<Self> {
+                    let prepared_token = field_token.prepare(builder);
+
+                    let mut table_writer: ::planus::table_writer::TableWriter<6> =
+                        ::core::default::Default::default();
+                    if prepared_token.is_some() {
+                        table_writer.write_entry::<::planus::Offset<str>>(0);
+                    }
+
+                    unsafe {
+                        table_writer.finish(builder, |object_writer| {
+                            if let ::core::option::Option::Some(prepared_token) = prepared_token {
+                                object_writer.write::<_, _, 4>(&prepared_token);
+                            }
+                        });
+                    }
+                    builder.current_offset()
+                }
+            }
+
+            impl ::planus::WriteAs<::planus::Offset<VerifyWebAuthnRes>> for VerifyWebAuthnRes {
+                type Prepared = ::planus::Offset<Self>;
+
+                #[inline]
+                fn prepare(
+                    &self,
+                    builder: &mut ::planus::Builder,
+                ) -> ::planus::Offset<VerifyWebAuthnRes> {
+                    ::planus::WriteAsOffset::prepare(self, builder)
+                }
+            }
+
+            impl ::planus::WriteAsOptional<::planus::Offset<VerifyWebAuthnRes>> for VerifyWebAuthnRes {
+                type Prepared = ::planus::Offset<Self>;
+
+                #[inline]
+                fn prepare(
+                    &self,
+                    builder: &mut ::planus::Builder,
+                ) -> ::core::option::Option<::planus::Offset<VerifyWebAuthnRes>> {
+                    ::core::option::Option::Some(::planus::WriteAsOffset::prepare(self, builder))
+                }
+            }
+
+            impl ::planus::WriteAsOffset<VerifyWebAuthnRes> for VerifyWebAuthnRes {
+                #[inline]
+                fn prepare(
+                    &self,
+                    builder: &mut ::planus::Builder,
+                ) -> ::planus::Offset<VerifyWebAuthnRes> {
+                    VerifyWebAuthnRes::create(builder, &self.token)
+                }
+            }
+
+            /// Builder for serializing an instance of the [VerifyWebAuthnRes] type.
+            ///
+            /// Can be created using the [VerifyWebAuthnRes::builder] method.
+            #[derive(Debug)]
+            #[must_use]
+            pub struct VerifyWebAuthnResBuilder<State>(State);
+
+            impl VerifyWebAuthnResBuilder<()> {
+                /// Setter for the [`token` field](VerifyWebAuthnRes#structfield.token).
+                #[inline]
+                #[allow(clippy::type_complexity)]
+                pub fn token<T0>(self, value: T0) -> VerifyWebAuthnResBuilder<(T0,)>
+                where
+                    T0: ::planus::WriteAsOptional<::planus::Offset<::core::primitive::str>>,
+                {
+                    VerifyWebAuthnResBuilder((value,))
+                }
+
+                /// Sets the [`token` field](VerifyWebAuthnRes#structfield.token) to null.
+                #[inline]
+                #[allow(clippy::type_complexity)]
+                pub fn token_as_null(self) -> VerifyWebAuthnResBuilder<((),)> {
+                    self.token(())
+                }
+            }
+
+            impl<T0> VerifyWebAuthnResBuilder<(T0,)> {
+                /// Finish writing the builder to get an [Offset](::planus::Offset) to a serialized [VerifyWebAuthnRes].
+                #[inline]
+                pub fn finish(
+                    self,
+                    builder: &mut ::planus::Builder,
+                ) -> ::planus::Offset<VerifyWebAuthnRes>
+                where
+                    Self: ::planus::WriteAsOffset<VerifyWebAuthnRes>,
+                {
+                    ::planus::WriteAsOffset::prepare(&self, builder)
+                }
+            }
+
+            impl<T0: ::planus::WriteAsOptional<::planus::Offset<::core::primitive::str>>>
+                ::planus::WriteAs<::planus::Offset<VerifyWebAuthnRes>>
+                for VerifyWebAuthnResBuilder<(T0,)>
+            {
+                type Prepared = ::planus::Offset<VerifyWebAuthnRes>;
+
+                #[inline]
+                fn prepare(
+                    &self,
+                    builder: &mut ::planus::Builder,
+                ) -> ::planus::Offset<VerifyWebAuthnRes> {
+                    ::planus::WriteAsOffset::prepare(self, builder)
+                }
+            }
+
+            impl<T0: ::planus::WriteAsOptional<::planus::Offset<::core::primitive::str>>>
+                ::planus::WriteAsOptional<::planus::Offset<VerifyWebAuthnRes>>
+                for VerifyWebAuthnResBuilder<(T0,)>
+            {
+                type Prepared = ::planus::Offset<VerifyWebAuthnRes>;
+
+                #[inline]
+                fn prepare(
+                    &self,
+                    builder: &mut ::planus::Builder,
+                ) -> ::core::option::Option<::planus::Offset<VerifyWebAuthnRes>> {
+                    ::core::option::Option::Some(::planus::WriteAsOffset::prepare(self, builder))
+                }
+            }
+
+            impl<T0: ::planus::WriteAsOptional<::planus::Offset<::core::primitive::str>>>
+                ::planus::WriteAsOffset<VerifyWebAuthnRes> for VerifyWebAuthnResBuilder<(T0,)>
+            {
+                #[inline]
+                fn prepare(
+                    &self,
+                    builder: &mut ::planus::Builder,
+                ) -> ::planus::Offset<VerifyWebAuthnRes> {
+                    let (v0,) = &self.0;
+                    VerifyWebAuthnRes::create(builder, v0)
+                }
+            }
+
+            /// Reference to a deserialized [VerifyWebAuthnRes].
+            #[derive(Copy, Clone)]
+            pub struct VerifyWebAuthnResRef<'a>(::planus::table_reader::Table<'a>);
+
+            impl<'a> VerifyWebAuthnResRef<'a> {
+                /// Getter for the [`token` field](VerifyWebAuthnRes#structfield.token).
+                #[inline]
+                pub fn token(
+                    &self,
+                ) -> ::planus::Result<::core::option::Option<&'a ::core::primitive::str>>
+                {
+                    self.0.access(0, "VerifyWebAuthnRes", "token")
+                }
+            }
+
+            impl<'a> ::core::fmt::Debug for VerifyWebAuthnResRef<'a> {
+                fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+                    let mut f = f.debug_struct("VerifyWebAuthnResRef");
+                    if let ::core::option::Option::Some(field_token) = self.token().transpose() {
+                        f.field("token", &field_token);
+                    }
+                    f.finish()
+                }
+            }
+
+            impl<'a> ::core::convert::TryFrom<VerifyWebAuthnResRef<'a>> for VerifyWebAuthnRes {
+                type Error = ::planus::Error;
+
+                #[allow(unreachable_code)]
+                fn try_from(value: VerifyWebAuthnResRef<'a>) -> ::planus::Result<Self> {
+                    ::core::result::Result::Ok(Self {
+                        token: if let ::core::option::Option::Some(token) = value.token()? {
+                            ::core::option::Option::Some(::core::convert::TryInto::try_into(token)?)
+                        } else {
+                            ::core::option::Option::None
+                        },
+                    })
+                }
+            }
+
+            impl<'a> ::planus::TableRead<'a> for VerifyWebAuthnResRef<'a> {
+                #[inline]
+                fn from_buffer(
+                    buffer: ::planus::SliceWithStartOffset<'a>,
+                    offset: usize,
+                ) -> ::core::result::Result<Self, ::planus::errors::ErrorKind> {
+                    ::core::result::Result::Ok(Self(::planus::table_reader::Table::from_buffer(
+                        buffer, offset,
+                    )?))
+                }
+            }
+
+            impl<'a> ::planus::VectorReadInner<'a> for VerifyWebAuthnResRef<'a> {
+                type Error = ::planus::Error;
+                const STRIDE: usize = 4;
+
+                unsafe fn from_buffer(
+                    buffer: ::planus::SliceWithStartOffset<'a>,
+                    offset: usize,
+                ) -> ::planus::Result<Self> {
+                    ::planus::TableRead::from_buffer(buffer, offset).map_err(|error_kind| {
+                        error_kind.with_error_location(
+                            "[VerifyWebAuthnResRef]",
+                            "get",
+                            buffer.offset_from_start,
+                        )
+                    })
+                }
+            }
+
+            impl ::planus::VectorWrite<::planus::Offset<VerifyWebAuthnRes>> for VerifyWebAuthnRes {
+                type Value = ::planus::Offset<VerifyWebAuthnRes>;
+                const STRIDE: usize = 4;
+                #[inline]
+                fn prepare(&self, builder: &mut ::planus::Builder) -> Self::Value {
+                    ::planus::WriteAs::prepare(self, builder)
+                }
+
+                #[inline]
+                unsafe fn write_values(
+                    values: &[::planus::Offset<VerifyWebAuthnRes>],
+                    bytes: *mut ::core::mem::MaybeUninit<u8>,
+                    buffer_position: u32,
+                ) {
+                    let bytes = bytes as *mut [::core::mem::MaybeUninit<u8>; 4];
+                    for (i, v) in ::core::iter::Iterator::enumerate(values.iter()) {
+                        ::planus::WriteAsPrimitive::write(
+                            v,
+                            ::planus::Cursor::new(&mut *bytes.add(i)),
+                            buffer_position - (Self::STRIDE * i) as u32,
+                        );
+                    }
+                }
+            }
+
+            impl<'a> ::planus::ReadAsRoot<'a> for VerifyWebAuthnResRef<'a> {
+                fn read_as_root(slice: &'a [u8]) -> ::planus::Result<Self> {
+                    ::planus::TableRead::from_buffer(
+                        ::planus::SliceWithStartOffset {
+                            buffer: slice,
+                            offset_from_start: 0,
+                        },
+                        0,
+                    )
+                    .map_err(|error_kind| {
+                        error_kind.with_error_location("[VerifyWebAuthnResRef]", "read_as_root", 0)
+                    })
+                }
+            }
+        }
         /// The namespace `Auth.WebAuthn`
         ///
         /// Generated from these locations:
@@ -6237,2556 +8494,749 @@ mod root {
                 }
             }
         }
-        /// The table `ErrorRes` in the namespace `Auth`
+        /// The namespace `Auth.KV`
         ///
         /// Generated from these locations:
-        /// * Table `ErrorRes` in the file `auth/auth.fbs:5`
-        #[derive(
-            Clone,
-            Debug,
-            PartialEq,
-            PartialOrd,
-            Eq,
-            Ord,
-            Hash,
-            ::serde::Serialize,
-            ::serde::Deserialize,
-        )]
-        pub struct ErrorRes {
-            /// The field `error` in the table `ErrorRes`
-            pub error: ::core::option::Option<::planus::alloc::string::String>,
-        }
+        /// * File `auth/kv.fbs`
+        pub mod kv {
+            ///  Entry that is kept temporarily for verification purposes
+            ///
+            /// Generated from these locations:
+            /// * Table `NumberRegistration` in the file `auth/kv.fbs:4`
+            #[derive(
+                Clone,
+                Debug,
+                PartialEq,
+                PartialOrd,
+                Eq,
+                Ord,
+                Hash,
+                ::serde::Serialize,
+                ::serde::Deserialize,
+            )]
+            pub struct NumberRegistration {
+                /// The field `name` in the table `NumberRegistration`
+                pub name: ::core::option::Option<::planus::alloc::string::String>,
+                /// The field `code` in the table `NumberRegistration`
+                pub code: u64,
+            }
 
-        #[allow(clippy::derivable_impls)]
-        impl ::core::default::Default for ErrorRes {
-            fn default() -> Self {
-                Self {
-                    error: ::core::default::Default::default(),
+            #[allow(clippy::derivable_impls)]
+            impl ::core::default::Default for NumberRegistration {
+                fn default() -> Self {
+                    Self {
+                        name: ::core::default::Default::default(),
+                        code: 0,
+                    }
                 }
             }
-        }
 
-        impl ErrorRes {
-            /// Creates a [ErrorResBuilder] for serializing an instance of this table.
-            #[inline]
-            pub fn builder() -> ErrorResBuilder<()> {
-                ErrorResBuilder(())
-            }
-
-            #[allow(clippy::too_many_arguments)]
-            pub fn create(
-                builder: &mut ::planus::Builder,
-                field_error: impl ::planus::WriteAsOptional<::planus::Offset<::core::primitive::str>>,
-            ) -> ::planus::Offset<Self> {
-                let prepared_error = field_error.prepare(builder);
-
-                let mut table_writer: ::planus::table_writer::TableWriter<6> =
-                    ::core::default::Default::default();
-                if prepared_error.is_some() {
-                    table_writer.write_entry::<::planus::Offset<str>>(0);
+            impl NumberRegistration {
+                /// Creates a [NumberRegistrationBuilder] for serializing an instance of this table.
+                #[inline]
+                pub fn builder() -> NumberRegistrationBuilder<()> {
+                    NumberRegistrationBuilder(())
                 }
 
-                unsafe {
-                    table_writer.finish(builder, |object_writer| {
-                        if let ::core::option::Option::Some(prepared_error) = prepared_error {
-                            object_writer.write::<_, _, 4>(&prepared_error);
-                        }
-                    });
+                #[allow(clippy::too_many_arguments)]
+                pub fn create(
+                    builder: &mut ::planus::Builder,
+                    field_name: impl ::planus::WriteAsOptional<::planus::Offset<::core::primitive::str>>,
+                    field_code: impl ::planus::WriteAsDefault<u64, u64>,
+                ) -> ::planus::Offset<Self> {
+                    let prepared_name = field_name.prepare(builder);
+                    let prepared_code = field_code.prepare(builder, &0);
+
+                    let mut table_writer: ::planus::table_writer::TableWriter<8> =
+                        ::core::default::Default::default();
+                    if prepared_code.is_some() {
+                        table_writer.write_entry::<u64>(1);
+                    }
+                    if prepared_name.is_some() {
+                        table_writer.write_entry::<::planus::Offset<str>>(0);
+                    }
+
+                    unsafe {
+                        table_writer.finish(builder, |object_writer| {
+                            if let ::core::option::Option::Some(prepared_code) = prepared_code {
+                                object_writer.write::<_, _, 8>(&prepared_code);
+                            }
+                            if let ::core::option::Option::Some(prepared_name) = prepared_name {
+                                object_writer.write::<_, _, 4>(&prepared_name);
+                            }
+                        });
+                    }
+                    builder.current_offset()
                 }
-                builder.current_offset()
             }
-        }
 
-        impl ::planus::WriteAs<::planus::Offset<ErrorRes>> for ErrorRes {
-            type Prepared = ::planus::Offset<Self>;
+            impl ::planus::WriteAs<::planus::Offset<NumberRegistration>> for NumberRegistration {
+                type Prepared = ::planus::Offset<Self>;
 
-            #[inline]
-            fn prepare(&self, builder: &mut ::planus::Builder) -> ::planus::Offset<ErrorRes> {
-                ::planus::WriteAsOffset::prepare(self, builder)
+                #[inline]
+                fn prepare(
+                    &self,
+                    builder: &mut ::planus::Builder,
+                ) -> ::planus::Offset<NumberRegistration> {
+                    ::planus::WriteAsOffset::prepare(self, builder)
+                }
             }
-        }
 
-        impl ::planus::WriteAsOptional<::planus::Offset<ErrorRes>> for ErrorRes {
-            type Prepared = ::planus::Offset<Self>;
+            impl ::planus::WriteAsOptional<::planus::Offset<NumberRegistration>> for NumberRegistration {
+                type Prepared = ::planus::Offset<Self>;
 
-            #[inline]
-            fn prepare(
-                &self,
-                builder: &mut ::planus::Builder,
-            ) -> ::core::option::Option<::planus::Offset<ErrorRes>> {
-                ::core::option::Option::Some(::planus::WriteAsOffset::prepare(self, builder))
+                #[inline]
+                fn prepare(
+                    &self,
+                    builder: &mut ::planus::Builder,
+                ) -> ::core::option::Option<::planus::Offset<NumberRegistration>> {
+                    ::core::option::Option::Some(::planus::WriteAsOffset::prepare(self, builder))
+                }
             }
-        }
 
-        impl ::planus::WriteAsOffset<ErrorRes> for ErrorRes {
-            #[inline]
-            fn prepare(&self, builder: &mut ::planus::Builder) -> ::planus::Offset<ErrorRes> {
-                ErrorRes::create(builder, &self.error)
+            impl ::planus::WriteAsOffset<NumberRegistration> for NumberRegistration {
+                #[inline]
+                fn prepare(
+                    &self,
+                    builder: &mut ::planus::Builder,
+                ) -> ::planus::Offset<NumberRegistration> {
+                    NumberRegistration::create(builder, &self.name, self.code)
+                }
             }
-        }
 
-        /// Builder for serializing an instance of the [ErrorRes] type.
-        ///
-        /// Can be created using the [ErrorRes::builder] method.
-        #[derive(Debug)]
-        #[must_use]
-        pub struct ErrorResBuilder<State>(State);
+            /// Builder for serializing an instance of the [NumberRegistration] type.
+            ///
+            /// Can be created using the [NumberRegistration::builder] method.
+            #[derive(Debug)]
+            #[must_use]
+            pub struct NumberRegistrationBuilder<State>(State);
 
-        impl ErrorResBuilder<()> {
-            /// Setter for the [`error` field](ErrorRes#structfield.error).
-            #[inline]
-            #[allow(clippy::type_complexity)]
-            pub fn error<T0>(self, value: T0) -> ErrorResBuilder<(T0,)>
-            where
-                T0: ::planus::WriteAsOptional<::planus::Offset<::core::primitive::str>>,
+            impl NumberRegistrationBuilder<()> {
+                /// Setter for the [`name` field](NumberRegistration#structfield.name).
+                #[inline]
+                #[allow(clippy::type_complexity)]
+                pub fn name<T0>(self, value: T0) -> NumberRegistrationBuilder<(T0,)>
+                where
+                    T0: ::planus::WriteAsOptional<::planus::Offset<::core::primitive::str>>,
+                {
+                    NumberRegistrationBuilder((value,))
+                }
+
+                /// Sets the [`name` field](NumberRegistration#structfield.name) to null.
+                #[inline]
+                #[allow(clippy::type_complexity)]
+                pub fn name_as_null(self) -> NumberRegistrationBuilder<((),)> {
+                    self.name(())
+                }
+            }
+
+            impl<T0> NumberRegistrationBuilder<(T0,)> {
+                /// Setter for the [`code` field](NumberRegistration#structfield.code).
+                #[inline]
+                #[allow(clippy::type_complexity)]
+                pub fn code<T1>(self, value: T1) -> NumberRegistrationBuilder<(T0, T1)>
+                where
+                    T1: ::planus::WriteAsDefault<u64, u64>,
+                {
+                    let (v0,) = self.0;
+                    NumberRegistrationBuilder((v0, value))
+                }
+
+                /// Sets the [`code` field](NumberRegistration#structfield.code) to the default value.
+                #[inline]
+                #[allow(clippy::type_complexity)]
+                pub fn code_as_default(
+                    self,
+                ) -> NumberRegistrationBuilder<(T0, ::planus::DefaultValue)> {
+                    self.code(::planus::DefaultValue)
+                }
+            }
+
+            impl<T0, T1> NumberRegistrationBuilder<(T0, T1)> {
+                /// Finish writing the builder to get an [Offset](::planus::Offset) to a serialized [NumberRegistration].
+                #[inline]
+                pub fn finish(
+                    self,
+                    builder: &mut ::planus::Builder,
+                ) -> ::planus::Offset<NumberRegistration>
+                where
+                    Self: ::planus::WriteAsOffset<NumberRegistration>,
+                {
+                    ::planus::WriteAsOffset::prepare(&self, builder)
+                }
+            }
+
+            impl<
+                    T0: ::planus::WriteAsOptional<::planus::Offset<::core::primitive::str>>,
+                    T1: ::planus::WriteAsDefault<u64, u64>,
+                > ::planus::WriteAs<::planus::Offset<NumberRegistration>>
+                for NumberRegistrationBuilder<(T0, T1)>
             {
-                ErrorResBuilder((value,))
+                type Prepared = ::planus::Offset<NumberRegistration>;
+
+                #[inline]
+                fn prepare(
+                    &self,
+                    builder: &mut ::planus::Builder,
+                ) -> ::planus::Offset<NumberRegistration> {
+                    ::planus::WriteAsOffset::prepare(self, builder)
+                }
             }
 
-            /// Sets the [`error` field](ErrorRes#structfield.error) to null.
-            #[inline]
-            #[allow(clippy::type_complexity)]
-            pub fn error_as_null(self) -> ErrorResBuilder<((),)> {
-                self.error(())
-            }
-        }
-
-        impl<T0> ErrorResBuilder<(T0,)> {
-            /// Finish writing the builder to get an [Offset](::planus::Offset) to a serialized [ErrorRes].
-            #[inline]
-            pub fn finish(self, builder: &mut ::planus::Builder) -> ::planus::Offset<ErrorRes>
-            where
-                Self: ::planus::WriteAsOffset<ErrorRes>,
+            impl<
+                    T0: ::planus::WriteAsOptional<::planus::Offset<::core::primitive::str>>,
+                    T1: ::planus::WriteAsDefault<u64, u64>,
+                > ::planus::WriteAsOptional<::planus::Offset<NumberRegistration>>
+                for NumberRegistrationBuilder<(T0, T1)>
             {
-                ::planus::WriteAsOffset::prepare(&self, builder)
-            }
-        }
+                type Prepared = ::planus::Offset<NumberRegistration>;
 
-        impl<T0: ::planus::WriteAsOptional<::planus::Offset<::core::primitive::str>>>
-            ::planus::WriteAs<::planus::Offset<ErrorRes>> for ErrorResBuilder<(T0,)>
-        {
-            type Prepared = ::planus::Offset<ErrorRes>;
-
-            #[inline]
-            fn prepare(&self, builder: &mut ::planus::Builder) -> ::planus::Offset<ErrorRes> {
-                ::planus::WriteAsOffset::prepare(self, builder)
-            }
-        }
-
-        impl<T0: ::planus::WriteAsOptional<::planus::Offset<::core::primitive::str>>>
-            ::planus::WriteAsOptional<::planus::Offset<ErrorRes>> for ErrorResBuilder<(T0,)>
-        {
-            type Prepared = ::planus::Offset<ErrorRes>;
-
-            #[inline]
-            fn prepare(
-                &self,
-                builder: &mut ::planus::Builder,
-            ) -> ::core::option::Option<::planus::Offset<ErrorRes>> {
-                ::core::option::Option::Some(::planus::WriteAsOffset::prepare(self, builder))
-            }
-        }
-
-        impl<T0: ::planus::WriteAsOptional<::planus::Offset<::core::primitive::str>>>
-            ::planus::WriteAsOffset<ErrorRes> for ErrorResBuilder<(T0,)>
-        {
-            #[inline]
-            fn prepare(&self, builder: &mut ::planus::Builder) -> ::planus::Offset<ErrorRes> {
-                let (v0,) = &self.0;
-                ErrorRes::create(builder, v0)
-            }
-        }
-
-        /// Reference to a deserialized [ErrorRes].
-        #[derive(Copy, Clone)]
-        pub struct ErrorResRef<'a>(::planus::table_reader::Table<'a>);
-
-        impl<'a> ErrorResRef<'a> {
-            /// Getter for the [`error` field](ErrorRes#structfield.error).
-            #[inline]
-            pub fn error(
-                &self,
-            ) -> ::planus::Result<::core::option::Option<&'a ::core::primitive::str>> {
-                self.0.access(0, "ErrorRes", "error")
-            }
-        }
-
-        impl<'a> ::core::fmt::Debug for ErrorResRef<'a> {
-            fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
-                let mut f = f.debug_struct("ErrorResRef");
-                if let ::core::option::Option::Some(field_error) = self.error().transpose() {
-                    f.field("error", &field_error);
-                }
-                f.finish()
-            }
-        }
-
-        impl<'a> ::core::convert::TryFrom<ErrorResRef<'a>> for ErrorRes {
-            type Error = ::planus::Error;
-
-            #[allow(unreachable_code)]
-            fn try_from(value: ErrorResRef<'a>) -> ::planus::Result<Self> {
-                ::core::result::Result::Ok(Self {
-                    error: if let ::core::option::Option::Some(error) = value.error()? {
-                        ::core::option::Option::Some(::core::convert::TryInto::try_into(error)?)
-                    } else {
-                        ::core::option::Option::None
-                    },
-                })
-            }
-        }
-
-        impl<'a> ::planus::TableRead<'a> for ErrorResRef<'a> {
-            #[inline]
-            fn from_buffer(
-                buffer: ::planus::SliceWithStartOffset<'a>,
-                offset: usize,
-            ) -> ::core::result::Result<Self, ::planus::errors::ErrorKind> {
-                ::core::result::Result::Ok(Self(::planus::table_reader::Table::from_buffer(
-                    buffer, offset,
-                )?))
-            }
-        }
-
-        impl<'a> ::planus::VectorReadInner<'a> for ErrorResRef<'a> {
-            type Error = ::planus::Error;
-            const STRIDE: usize = 4;
-
-            unsafe fn from_buffer(
-                buffer: ::planus::SliceWithStartOffset<'a>,
-                offset: usize,
-            ) -> ::planus::Result<Self> {
-                ::planus::TableRead::from_buffer(buffer, offset).map_err(|error_kind| {
-                    error_kind.with_error_location("[ErrorResRef]", "get", buffer.offset_from_start)
-                })
-            }
-        }
-
-        impl ::planus::VectorWrite<::planus::Offset<ErrorRes>> for ErrorRes {
-            type Value = ::planus::Offset<ErrorRes>;
-            const STRIDE: usize = 4;
-            #[inline]
-            fn prepare(&self, builder: &mut ::planus::Builder) -> Self::Value {
-                ::planus::WriteAs::prepare(self, builder)
-            }
-
-            #[inline]
-            unsafe fn write_values(
-                values: &[::planus::Offset<ErrorRes>],
-                bytes: *mut ::core::mem::MaybeUninit<u8>,
-                buffer_position: u32,
-            ) {
-                let bytes = bytes as *mut [::core::mem::MaybeUninit<u8>; 4];
-                for (i, v) in ::core::iter::Iterator::enumerate(values.iter()) {
-                    ::planus::WriteAsPrimitive::write(
-                        v,
-                        ::planus::Cursor::new(&mut *bytes.add(i)),
-                        buffer_position - (Self::STRIDE * i) as u32,
-                    );
+                #[inline]
+                fn prepare(
+                    &self,
+                    builder: &mut ::planus::Builder,
+                ) -> ::core::option::Option<::planus::Offset<NumberRegistration>> {
+                    ::core::option::Option::Some(::planus::WriteAsOffset::prepare(self, builder))
                 }
             }
-        }
 
-        impl<'a> ::planus::ReadAsRoot<'a> for ErrorResRef<'a> {
-            fn read_as_root(slice: &'a [u8]) -> ::planus::Result<Self> {
-                ::planus::TableRead::from_buffer(
-                    ::planus::SliceWithStartOffset {
-                        buffer: slice,
-                        offset_from_start: 0,
-                    },
-                    0,
-                )
-                .map_err(|error_kind| {
-                    error_kind.with_error_location("[ErrorResRef]", "read_as_root", 0)
-                })
-            }
-        }
-
-        /// The table `RegisterNumberReq` in the namespace `Auth`
-        ///
-        /// Generated from these locations:
-        /// * Table `RegisterNumberReq` in the file `auth/auth.fbs:9`
-        #[derive(
-            Clone,
-            Debug,
-            PartialEq,
-            PartialOrd,
-            Eq,
-            Ord,
-            Hash,
-            ::serde::Serialize,
-            ::serde::Deserialize,
-        )]
-        pub struct RegisterNumberReq {
-            ///  The name of the user to register.
-            pub name: ::core::option::Option<::planus::alloc::string::String>,
-            ///  The phone number to register.
-            pub number: ::core::option::Option<::planus::alloc::string::String>,
-        }
-
-        #[allow(clippy::derivable_impls)]
-        impl ::core::default::Default for RegisterNumberReq {
-            fn default() -> Self {
-                Self {
-                    name: ::core::default::Default::default(),
-                    number: ::core::default::Default::default(),
-                }
-            }
-        }
-
-        impl RegisterNumberReq {
-            /// Creates a [RegisterNumberReqBuilder] for serializing an instance of this table.
-            #[inline]
-            pub fn builder() -> RegisterNumberReqBuilder<()> {
-                RegisterNumberReqBuilder(())
-            }
-
-            #[allow(clippy::too_many_arguments)]
-            pub fn create(
-                builder: &mut ::planus::Builder,
-                field_name: impl ::planus::WriteAsOptional<::planus::Offset<::core::primitive::str>>,
-                field_number: impl ::planus::WriteAsOptional<::planus::Offset<::core::primitive::str>>,
-            ) -> ::planus::Offset<Self> {
-                let prepared_name = field_name.prepare(builder);
-                let prepared_number = field_number.prepare(builder);
-
-                let mut table_writer: ::planus::table_writer::TableWriter<8> =
-                    ::core::default::Default::default();
-                if prepared_name.is_some() {
-                    table_writer.write_entry::<::planus::Offset<str>>(0);
-                }
-                if prepared_number.is_some() {
-                    table_writer.write_entry::<::planus::Offset<str>>(1);
-                }
-
-                unsafe {
-                    table_writer.finish(builder, |object_writer| {
-                        if let ::core::option::Option::Some(prepared_name) = prepared_name {
-                            object_writer.write::<_, _, 4>(&prepared_name);
-                        }
-                        if let ::core::option::Option::Some(prepared_number) = prepared_number {
-                            object_writer.write::<_, _, 4>(&prepared_number);
-                        }
-                    });
-                }
-                builder.current_offset()
-            }
-        }
-
-        impl ::planus::WriteAs<::planus::Offset<RegisterNumberReq>> for RegisterNumberReq {
-            type Prepared = ::planus::Offset<Self>;
-
-            #[inline]
-            fn prepare(
-                &self,
-                builder: &mut ::planus::Builder,
-            ) -> ::planus::Offset<RegisterNumberReq> {
-                ::planus::WriteAsOffset::prepare(self, builder)
-            }
-        }
-
-        impl ::planus::WriteAsOptional<::planus::Offset<RegisterNumberReq>> for RegisterNumberReq {
-            type Prepared = ::planus::Offset<Self>;
-
-            #[inline]
-            fn prepare(
-                &self,
-                builder: &mut ::planus::Builder,
-            ) -> ::core::option::Option<::planus::Offset<RegisterNumberReq>> {
-                ::core::option::Option::Some(::planus::WriteAsOffset::prepare(self, builder))
-            }
-        }
-
-        impl ::planus::WriteAsOffset<RegisterNumberReq> for RegisterNumberReq {
-            #[inline]
-            fn prepare(
-                &self,
-                builder: &mut ::planus::Builder,
-            ) -> ::planus::Offset<RegisterNumberReq> {
-                RegisterNumberReq::create(builder, &self.name, &self.number)
-            }
-        }
-
-        /// Builder for serializing an instance of the [RegisterNumberReq] type.
-        ///
-        /// Can be created using the [RegisterNumberReq::builder] method.
-        #[derive(Debug)]
-        #[must_use]
-        pub struct RegisterNumberReqBuilder<State>(State);
-
-        impl RegisterNumberReqBuilder<()> {
-            /// Setter for the [`name` field](RegisterNumberReq#structfield.name).
-            #[inline]
-            #[allow(clippy::type_complexity)]
-            pub fn name<T0>(self, value: T0) -> RegisterNumberReqBuilder<(T0,)>
-            where
-                T0: ::planus::WriteAsOptional<::planus::Offset<::core::primitive::str>>,
+            impl<
+                    T0: ::planus::WriteAsOptional<::planus::Offset<::core::primitive::str>>,
+                    T1: ::planus::WriteAsDefault<u64, u64>,
+                > ::planus::WriteAsOffset<NumberRegistration>
+                for NumberRegistrationBuilder<(T0, T1)>
             {
-                RegisterNumberReqBuilder((value,))
-            }
-
-            /// Sets the [`name` field](RegisterNumberReq#structfield.name) to null.
-            #[inline]
-            #[allow(clippy::type_complexity)]
-            pub fn name_as_null(self) -> RegisterNumberReqBuilder<((),)> {
-                self.name(())
-            }
-        }
-
-        impl<T0> RegisterNumberReqBuilder<(T0,)> {
-            /// Setter for the [`number` field](RegisterNumberReq#structfield.number).
-            #[inline]
-            #[allow(clippy::type_complexity)]
-            pub fn number<T1>(self, value: T1) -> RegisterNumberReqBuilder<(T0, T1)>
-            where
-                T1: ::planus::WriteAsOptional<::planus::Offset<::core::primitive::str>>,
-            {
-                let (v0,) = self.0;
-                RegisterNumberReqBuilder((v0, value))
-            }
-
-            /// Sets the [`number` field](RegisterNumberReq#structfield.number) to null.
-            #[inline]
-            #[allow(clippy::type_complexity)]
-            pub fn number_as_null(self) -> RegisterNumberReqBuilder<(T0, ())> {
-                self.number(())
-            }
-        }
-
-        impl<T0, T1> RegisterNumberReqBuilder<(T0, T1)> {
-            /// Finish writing the builder to get an [Offset](::planus::Offset) to a serialized [RegisterNumberReq].
-            #[inline]
-            pub fn finish(
-                self,
-                builder: &mut ::planus::Builder,
-            ) -> ::planus::Offset<RegisterNumberReq>
-            where
-                Self: ::planus::WriteAsOffset<RegisterNumberReq>,
-            {
-                ::planus::WriteAsOffset::prepare(&self, builder)
-            }
-        }
-
-        impl<
-                T0: ::planus::WriteAsOptional<::planus::Offset<::core::primitive::str>>,
-                T1: ::planus::WriteAsOptional<::planus::Offset<::core::primitive::str>>,
-            > ::planus::WriteAs<::planus::Offset<RegisterNumberReq>>
-            for RegisterNumberReqBuilder<(T0, T1)>
-        {
-            type Prepared = ::planus::Offset<RegisterNumberReq>;
-
-            #[inline]
-            fn prepare(
-                &self,
-                builder: &mut ::planus::Builder,
-            ) -> ::planus::Offset<RegisterNumberReq> {
-                ::planus::WriteAsOffset::prepare(self, builder)
-            }
-        }
-
-        impl<
-                T0: ::planus::WriteAsOptional<::planus::Offset<::core::primitive::str>>,
-                T1: ::planus::WriteAsOptional<::planus::Offset<::core::primitive::str>>,
-            > ::planus::WriteAsOptional<::planus::Offset<RegisterNumberReq>>
-            for RegisterNumberReqBuilder<(T0, T1)>
-        {
-            type Prepared = ::planus::Offset<RegisterNumberReq>;
-
-            #[inline]
-            fn prepare(
-                &self,
-                builder: &mut ::planus::Builder,
-            ) -> ::core::option::Option<::planus::Offset<RegisterNumberReq>> {
-                ::core::option::Option::Some(::planus::WriteAsOffset::prepare(self, builder))
-            }
-        }
-
-        impl<
-                T0: ::planus::WriteAsOptional<::planus::Offset<::core::primitive::str>>,
-                T1: ::planus::WriteAsOptional<::planus::Offset<::core::primitive::str>>,
-            > ::planus::WriteAsOffset<RegisterNumberReq> for RegisterNumberReqBuilder<(T0, T1)>
-        {
-            #[inline]
-            fn prepare(
-                &self,
-                builder: &mut ::planus::Builder,
-            ) -> ::planus::Offset<RegisterNumberReq> {
-                let (v0, v1) = &self.0;
-                RegisterNumberReq::create(builder, v0, v1)
-            }
-        }
-
-        /// Reference to a deserialized [RegisterNumberReq].
-        #[derive(Copy, Clone)]
-        pub struct RegisterNumberReqRef<'a>(::planus::table_reader::Table<'a>);
-
-        impl<'a> RegisterNumberReqRef<'a> {
-            /// Getter for the [`name` field](RegisterNumberReq#structfield.name).
-            #[inline]
-            pub fn name(
-                &self,
-            ) -> ::planus::Result<::core::option::Option<&'a ::core::primitive::str>> {
-                self.0.access(0, "RegisterNumberReq", "name")
-            }
-
-            /// Getter for the [`number` field](RegisterNumberReq#structfield.number).
-            #[inline]
-            pub fn number(
-                &self,
-            ) -> ::planus::Result<::core::option::Option<&'a ::core::primitive::str>> {
-                self.0.access(1, "RegisterNumberReq", "number")
-            }
-        }
-
-        impl<'a> ::core::fmt::Debug for RegisterNumberReqRef<'a> {
-            fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
-                let mut f = f.debug_struct("RegisterNumberReqRef");
-                if let ::core::option::Option::Some(field_name) = self.name().transpose() {
-                    f.field("name", &field_name);
+                #[inline]
+                fn prepare(
+                    &self,
+                    builder: &mut ::planus::Builder,
+                ) -> ::planus::Offset<NumberRegistration> {
+                    let (v0, v1) = &self.0;
+                    NumberRegistration::create(builder, v0, v1)
                 }
-                if let ::core::option::Option::Some(field_number) = self.number().transpose() {
-                    f.field("number", &field_number);
+            }
+
+            /// Reference to a deserialized [NumberRegistration].
+            #[derive(Copy, Clone)]
+            pub struct NumberRegistrationRef<'a>(::planus::table_reader::Table<'a>);
+
+            impl<'a> NumberRegistrationRef<'a> {
+                /// Getter for the [`name` field](NumberRegistration#structfield.name).
+                #[inline]
+                pub fn name(
+                    &self,
+                ) -> ::planus::Result<::core::option::Option<&'a ::core::primitive::str>>
+                {
+                    self.0.access(0, "NumberRegistration", "name")
                 }
-                f.finish()
-            }
-        }
 
-        impl<'a> ::core::convert::TryFrom<RegisterNumberReqRef<'a>> for RegisterNumberReq {
-            type Error = ::planus::Error;
-
-            #[allow(unreachable_code)]
-            fn try_from(value: RegisterNumberReqRef<'a>) -> ::planus::Result<Self> {
-                ::core::result::Result::Ok(Self {
-                    name: if let ::core::option::Option::Some(name) = value.name()? {
-                        ::core::option::Option::Some(::core::convert::TryInto::try_into(name)?)
-                    } else {
-                        ::core::option::Option::None
-                    },
-                    number: if let ::core::option::Option::Some(number) = value.number()? {
-                        ::core::option::Option::Some(::core::convert::TryInto::try_into(number)?)
-                    } else {
-                        ::core::option::Option::None
-                    },
-                })
-            }
-        }
-
-        impl<'a> ::planus::TableRead<'a> for RegisterNumberReqRef<'a> {
-            #[inline]
-            fn from_buffer(
-                buffer: ::planus::SliceWithStartOffset<'a>,
-                offset: usize,
-            ) -> ::core::result::Result<Self, ::planus::errors::ErrorKind> {
-                ::core::result::Result::Ok(Self(::planus::table_reader::Table::from_buffer(
-                    buffer, offset,
-                )?))
-            }
-        }
-
-        impl<'a> ::planus::VectorReadInner<'a> for RegisterNumberReqRef<'a> {
-            type Error = ::planus::Error;
-            const STRIDE: usize = 4;
-
-            unsafe fn from_buffer(
-                buffer: ::planus::SliceWithStartOffset<'a>,
-                offset: usize,
-            ) -> ::planus::Result<Self> {
-                ::planus::TableRead::from_buffer(buffer, offset).map_err(|error_kind| {
-                    error_kind.with_error_location(
-                        "[RegisterNumberReqRef]",
-                        "get",
-                        buffer.offset_from_start,
+                /// Getter for the [`code` field](NumberRegistration#structfield.code).
+                #[inline]
+                pub fn code(&self) -> ::planus::Result<u64> {
+                    ::core::result::Result::Ok(
+                        self.0.access(1, "NumberRegistration", "code")?.unwrap_or(0),
                     )
-                })
-            }
-        }
-
-        impl ::planus::VectorWrite<::planus::Offset<RegisterNumberReq>> for RegisterNumberReq {
-            type Value = ::planus::Offset<RegisterNumberReq>;
-            const STRIDE: usize = 4;
-            #[inline]
-            fn prepare(&self, builder: &mut ::planus::Builder) -> Self::Value {
-                ::planus::WriteAs::prepare(self, builder)
-            }
-
-            #[inline]
-            unsafe fn write_values(
-                values: &[::planus::Offset<RegisterNumberReq>],
-                bytes: *mut ::core::mem::MaybeUninit<u8>,
-                buffer_position: u32,
-            ) {
-                let bytes = bytes as *mut [::core::mem::MaybeUninit<u8>; 4];
-                for (i, v) in ::core::iter::Iterator::enumerate(values.iter()) {
-                    ::planus::WriteAsPrimitive::write(
-                        v,
-                        ::planus::Cursor::new(&mut *bytes.add(i)),
-                        buffer_position - (Self::STRIDE * i) as u32,
-                    );
                 }
             }
-        }
 
-        impl<'a> ::planus::ReadAsRoot<'a> for RegisterNumberReqRef<'a> {
-            fn read_as_root(slice: &'a [u8]) -> ::planus::Result<Self> {
-                ::planus::TableRead::from_buffer(
-                    ::planus::SliceWithStartOffset {
-                        buffer: slice,
-                        offset_from_start: 0,
-                    },
-                    0,
-                )
-                .map_err(|error_kind| {
-                    error_kind.with_error_location("[RegisterNumberReqRef]", "read_as_root", 0)
-                })
-            }
-        }
-
-        /// The table `RegisterNumberRes` in the namespace `Auth`
-        ///
-        /// Generated from these locations:
-        /// * Table `RegisterNumberRes` in the file `auth/auth.fbs:16`
-        #[derive(
-            Clone,
-            Debug,
-            PartialEq,
-            PartialOrd,
-            Eq,
-            Ord,
-            Hash,
-            ::serde::Serialize,
-            ::serde::Deserialize,
-        )]
-        pub struct RegisterNumberRes {
-            ///  A value to multiply the code by for VerifyNumberReq
-            pub multiplier: u32,
-        }
-
-        #[allow(clippy::derivable_impls)]
-        impl ::core::default::Default for RegisterNumberRes {
-            fn default() -> Self {
-                Self { multiplier: 0 }
-            }
-        }
-
-        impl RegisterNumberRes {
-            /// Creates a [RegisterNumberResBuilder] for serializing an instance of this table.
-            #[inline]
-            pub fn builder() -> RegisterNumberResBuilder<()> {
-                RegisterNumberResBuilder(())
+            impl<'a> ::core::fmt::Debug for NumberRegistrationRef<'a> {
+                fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+                    let mut f = f.debug_struct("NumberRegistrationRef");
+                    if let ::core::option::Option::Some(field_name) = self.name().transpose() {
+                        f.field("name", &field_name);
+                    }
+                    f.field("code", &self.code());
+                    f.finish()
+                }
             }
 
-            #[allow(clippy::too_many_arguments)]
-            pub fn create(
-                builder: &mut ::planus::Builder,
-                field_multiplier: impl ::planus::WriteAsDefault<u32, u32>,
-            ) -> ::planus::Offset<Self> {
-                let prepared_multiplier = field_multiplier.prepare(builder, &0);
+            impl<'a> ::core::convert::TryFrom<NumberRegistrationRef<'a>> for NumberRegistration {
+                type Error = ::planus::Error;
 
-                let mut table_writer: ::planus::table_writer::TableWriter<6> =
-                    ::core::default::Default::default();
-                if prepared_multiplier.is_some() {
-                    table_writer.write_entry::<u32>(0);
+                #[allow(unreachable_code)]
+                fn try_from(value: NumberRegistrationRef<'a>) -> ::planus::Result<Self> {
+                    ::core::result::Result::Ok(Self {
+                        name: if let ::core::option::Option::Some(name) = value.name()? {
+                            ::core::option::Option::Some(::core::convert::TryInto::try_into(name)?)
+                        } else {
+                            ::core::option::Option::None
+                        },
+                        code: ::core::convert::TryInto::try_into(value.code()?)?,
+                    })
+                }
+            }
+
+            impl<'a> ::planus::TableRead<'a> for NumberRegistrationRef<'a> {
+                #[inline]
+                fn from_buffer(
+                    buffer: ::planus::SliceWithStartOffset<'a>,
+                    offset: usize,
+                ) -> ::core::result::Result<Self, ::planus::errors::ErrorKind> {
+                    ::core::result::Result::Ok(Self(::planus::table_reader::Table::from_buffer(
+                        buffer, offset,
+                    )?))
+                }
+            }
+
+            impl<'a> ::planus::VectorReadInner<'a> for NumberRegistrationRef<'a> {
+                type Error = ::planus::Error;
+                const STRIDE: usize = 4;
+
+                unsafe fn from_buffer(
+                    buffer: ::planus::SliceWithStartOffset<'a>,
+                    offset: usize,
+                ) -> ::planus::Result<Self> {
+                    ::planus::TableRead::from_buffer(buffer, offset).map_err(|error_kind| {
+                        error_kind.with_error_location(
+                            "[NumberRegistrationRef]",
+                            "get",
+                            buffer.offset_from_start,
+                        )
+                    })
+                }
+            }
+
+            impl ::planus::VectorWrite<::planus::Offset<NumberRegistration>> for NumberRegistration {
+                type Value = ::planus::Offset<NumberRegistration>;
+                const STRIDE: usize = 4;
+                #[inline]
+                fn prepare(&self, builder: &mut ::planus::Builder) -> Self::Value {
+                    ::planus::WriteAs::prepare(self, builder)
                 }
 
-                unsafe {
-                    table_writer.finish(builder, |object_writer| {
-                        if let ::core::option::Option::Some(prepared_multiplier) =
-                            prepared_multiplier
-                        {
-                            object_writer.write::<_, _, 4>(&prepared_multiplier);
-                        }
-                    });
+                #[inline]
+                unsafe fn write_values(
+                    values: &[::planus::Offset<NumberRegistration>],
+                    bytes: *mut ::core::mem::MaybeUninit<u8>,
+                    buffer_position: u32,
+                ) {
+                    let bytes = bytes as *mut [::core::mem::MaybeUninit<u8>; 4];
+                    for (i, v) in ::core::iter::Iterator::enumerate(values.iter()) {
+                        ::planus::WriteAsPrimitive::write(
+                            v,
+                            ::planus::Cursor::new(&mut *bytes.add(i)),
+                            buffer_position - (Self::STRIDE * i) as u32,
+                        );
+                    }
                 }
-                builder.current_offset()
-            }
-        }
-
-        impl ::planus::WriteAs<::planus::Offset<RegisterNumberRes>> for RegisterNumberRes {
-            type Prepared = ::planus::Offset<Self>;
-
-            #[inline]
-            fn prepare(
-                &self,
-                builder: &mut ::planus::Builder,
-            ) -> ::planus::Offset<RegisterNumberRes> {
-                ::planus::WriteAsOffset::prepare(self, builder)
-            }
-        }
-
-        impl ::planus::WriteAsOptional<::planus::Offset<RegisterNumberRes>> for RegisterNumberRes {
-            type Prepared = ::planus::Offset<Self>;
-
-            #[inline]
-            fn prepare(
-                &self,
-                builder: &mut ::planus::Builder,
-            ) -> ::core::option::Option<::planus::Offset<RegisterNumberRes>> {
-                ::core::option::Option::Some(::planus::WriteAsOffset::prepare(self, builder))
-            }
-        }
-
-        impl ::planus::WriteAsOffset<RegisterNumberRes> for RegisterNumberRes {
-            #[inline]
-            fn prepare(
-                &self,
-                builder: &mut ::planus::Builder,
-            ) -> ::planus::Offset<RegisterNumberRes> {
-                RegisterNumberRes::create(builder, self.multiplier)
-            }
-        }
-
-        /// Builder for serializing an instance of the [RegisterNumberRes] type.
-        ///
-        /// Can be created using the [RegisterNumberRes::builder] method.
-        #[derive(Debug)]
-        #[must_use]
-        pub struct RegisterNumberResBuilder<State>(State);
-
-        impl RegisterNumberResBuilder<()> {
-            /// Setter for the [`multiplier` field](RegisterNumberRes#structfield.multiplier).
-            #[inline]
-            #[allow(clippy::type_complexity)]
-            pub fn multiplier<T0>(self, value: T0) -> RegisterNumberResBuilder<(T0,)>
-            where
-                T0: ::planus::WriteAsDefault<u32, u32>,
-            {
-                RegisterNumberResBuilder((value,))
             }
 
-            /// Sets the [`multiplier` field](RegisterNumberRes#structfield.multiplier) to the default value.
-            #[inline]
-            #[allow(clippy::type_complexity)]
-            pub fn multiplier_as_default(
-                self,
-            ) -> RegisterNumberResBuilder<(::planus::DefaultValue,)> {
-                self.multiplier(::planus::DefaultValue)
-            }
-        }
-
-        impl<T0> RegisterNumberResBuilder<(T0,)> {
-            /// Finish writing the builder to get an [Offset](::planus::Offset) to a serialized [RegisterNumberRes].
-            #[inline]
-            pub fn finish(
-                self,
-                builder: &mut ::planus::Builder,
-            ) -> ::planus::Offset<RegisterNumberRes>
-            where
-                Self: ::planus::WriteAsOffset<RegisterNumberRes>,
-            {
-                ::planus::WriteAsOffset::prepare(&self, builder)
-            }
-        }
-
-        impl<T0: ::planus::WriteAsDefault<u32, u32>>
-            ::planus::WriteAs<::planus::Offset<RegisterNumberRes>>
-            for RegisterNumberResBuilder<(T0,)>
-        {
-            type Prepared = ::planus::Offset<RegisterNumberRes>;
-
-            #[inline]
-            fn prepare(
-                &self,
-                builder: &mut ::planus::Builder,
-            ) -> ::planus::Offset<RegisterNumberRes> {
-                ::planus::WriteAsOffset::prepare(self, builder)
-            }
-        }
-
-        impl<T0: ::planus::WriteAsDefault<u32, u32>>
-            ::planus::WriteAsOptional<::planus::Offset<RegisterNumberRes>>
-            for RegisterNumberResBuilder<(T0,)>
-        {
-            type Prepared = ::planus::Offset<RegisterNumberRes>;
-
-            #[inline]
-            fn prepare(
-                &self,
-                builder: &mut ::planus::Builder,
-            ) -> ::core::option::Option<::planus::Offset<RegisterNumberRes>> {
-                ::core::option::Option::Some(::planus::WriteAsOffset::prepare(self, builder))
-            }
-        }
-
-        impl<T0: ::planus::WriteAsDefault<u32, u32>> ::planus::WriteAsOffset<RegisterNumberRes>
-            for RegisterNumberResBuilder<(T0,)>
-        {
-            #[inline]
-            fn prepare(
-                &self,
-                builder: &mut ::planus::Builder,
-            ) -> ::planus::Offset<RegisterNumberRes> {
-                let (v0,) = &self.0;
-                RegisterNumberRes::create(builder, v0)
-            }
-        }
-
-        /// Reference to a deserialized [RegisterNumberRes].
-        #[derive(Copy, Clone)]
-        pub struct RegisterNumberResRef<'a>(::planus::table_reader::Table<'a>);
-
-        impl<'a> RegisterNumberResRef<'a> {
-            /// Getter for the [`multiplier` field](RegisterNumberRes#structfield.multiplier).
-            #[inline]
-            pub fn multiplier(&self) -> ::planus::Result<u32> {
-                ::core::result::Result::Ok(
-                    self.0
-                        .access(0, "RegisterNumberRes", "multiplier")?
-                        .unwrap_or(0),
-                )
-            }
-        }
-
-        impl<'a> ::core::fmt::Debug for RegisterNumberResRef<'a> {
-            fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
-                let mut f = f.debug_struct("RegisterNumberResRef");
-                f.field("multiplier", &self.multiplier());
-                f.finish()
-            }
-        }
-
-        impl<'a> ::core::convert::TryFrom<RegisterNumberResRef<'a>> for RegisterNumberRes {
-            type Error = ::planus::Error;
-
-            #[allow(unreachable_code)]
-            fn try_from(value: RegisterNumberResRef<'a>) -> ::planus::Result<Self> {
-                ::core::result::Result::Ok(Self {
-                    multiplier: ::core::convert::TryInto::try_into(value.multiplier()?)?,
-                })
-            }
-        }
-
-        impl<'a> ::planus::TableRead<'a> for RegisterNumberResRef<'a> {
-            #[inline]
-            fn from_buffer(
-                buffer: ::planus::SliceWithStartOffset<'a>,
-                offset: usize,
-            ) -> ::core::result::Result<Self, ::planus::errors::ErrorKind> {
-                ::core::result::Result::Ok(Self(::planus::table_reader::Table::from_buffer(
-                    buffer, offset,
-                )?))
-            }
-        }
-
-        impl<'a> ::planus::VectorReadInner<'a> for RegisterNumberResRef<'a> {
-            type Error = ::planus::Error;
-            const STRIDE: usize = 4;
-
-            unsafe fn from_buffer(
-                buffer: ::planus::SliceWithStartOffset<'a>,
-                offset: usize,
-            ) -> ::planus::Result<Self> {
-                ::planus::TableRead::from_buffer(buffer, offset).map_err(|error_kind| {
-                    error_kind.with_error_location(
-                        "[RegisterNumberResRef]",
-                        "get",
-                        buffer.offset_from_start,
+            impl<'a> ::planus::ReadAsRoot<'a> for NumberRegistrationRef<'a> {
+                fn read_as_root(slice: &'a [u8]) -> ::planus::Result<Self> {
+                    ::planus::TableRead::from_buffer(
+                        ::planus::SliceWithStartOffset {
+                            buffer: slice,
+                            offset_from_start: 0,
+                        },
+                        0,
                     )
-                })
-            }
-        }
-
-        impl ::planus::VectorWrite<::planus::Offset<RegisterNumberRes>> for RegisterNumberRes {
-            type Value = ::planus::Offset<RegisterNumberRes>;
-            const STRIDE: usize = 4;
-            #[inline]
-            fn prepare(&self, builder: &mut ::planus::Builder) -> Self::Value {
-                ::planus::WriteAs::prepare(self, builder)
-            }
-
-            #[inline]
-            unsafe fn write_values(
-                values: &[::planus::Offset<RegisterNumberRes>],
-                bytes: *mut ::core::mem::MaybeUninit<u8>,
-                buffer_position: u32,
-            ) {
-                let bytes = bytes as *mut [::core::mem::MaybeUninit<u8>; 4];
-                for (i, v) in ::core::iter::Iterator::enumerate(values.iter()) {
-                    ::planus::WriteAsPrimitive::write(
-                        v,
-                        ::planus::Cursor::new(&mut *bytes.add(i)),
-                        buffer_position - (Self::STRIDE * i) as u32,
-                    );
+                    .map_err(|error_kind| {
+                        error_kind.with_error_location("[NumberRegistrationRef]", "read_as_root", 0)
+                    })
                 }
             }
-        }
 
-        impl<'a> ::planus::ReadAsRoot<'a> for RegisterNumberResRef<'a> {
-            fn read_as_root(slice: &'a [u8]) -> ::planus::Result<Self> {
-                ::planus::TableRead::from_buffer(
-                    ::planus::SliceWithStartOffset {
-                        buffer: slice,
-                        offset_from_start: 0,
-                    },
-                    0,
-                )
-                .map_err(|error_kind| {
-                    error_kind.with_error_location("[RegisterNumberResRef]", "read_as_root", 0)
-                })
+            ///  Kept permanently to look up a number. The number is hashed, peppered and
+            ///  then hashed again. To lookup the number, the client hashes the number and
+            ///  sends it to the server. The server peppers the hash and hashes it again.
+            ///  We could work out the original phone number if we really wanted to, but
+            ///  this is more for protecting against breaches of the database. The pepper is
+            ///  a secret that's encrypted and only available to the server, even in the case
+            ///  of a breach.
+            ///
+            /// Generated from these locations:
+            /// * Table `VerifiedNumber` in the file `auth/kv.fbs:16`
+            #[derive(
+                Clone,
+                Debug,
+                PartialEq,
+                PartialOrd,
+                Eq,
+                Ord,
+                Hash,
+                ::serde::Serialize,
+                ::serde::Deserialize,
+            )]
+            pub struct VerifiedNumber {
+                ///  Display name of the user
+                pub name: ::core::option::Option<::planus::alloc::string::String>,
+                ///  A link to the user's avatar image
+                pub avatar: ::core::option::Option<::planus::alloc::string::String>,
+                ///  The account the number is registered to. 32 bytes, encoded with base58
+                ///  This is used to contact the user's durable object
+                pub id: ::core::option::Option<::planus::alloc::string::String>,
             }
-        }
 
-        /// The table `VerifyNumberReq` in the namespace `Auth`
-        ///
-        /// Generated from these locations:
-        /// * Table `VerifyNumberReq` in the file `auth/auth.fbs:21`
-        #[derive(
-            Clone,
-            Debug,
-            PartialEq,
-            PartialOrd,
-            Eq,
-            Ord,
-            Hash,
-            ::serde::Serialize,
-            ::serde::Deserialize,
-        )]
-        pub struct VerifyNumberReq {
-            ///  The user's number.
-            pub number: ::core::option::Option<::planus::alloc::string::String>,
-            ///  The code to verify.
-            pub code: u64,
-        }
-
-        #[allow(clippy::derivable_impls)]
-        impl ::core::default::Default for VerifyNumberReq {
-            fn default() -> Self {
-                Self {
-                    number: ::core::default::Default::default(),
-                    code: 0,
+            #[allow(clippy::derivable_impls)]
+            impl ::core::default::Default for VerifiedNumber {
+                fn default() -> Self {
+                    Self {
+                        name: ::core::default::Default::default(),
+                        avatar: ::core::default::Default::default(),
+                        id: ::core::default::Default::default(),
+                    }
                 }
             }
-        }
 
-        impl VerifyNumberReq {
-            /// Creates a [VerifyNumberReqBuilder] for serializing an instance of this table.
-            #[inline]
-            pub fn builder() -> VerifyNumberReqBuilder<()> {
-                VerifyNumberReqBuilder(())
-            }
-
-            #[allow(clippy::too_many_arguments)]
-            pub fn create(
-                builder: &mut ::planus::Builder,
-                field_number: impl ::planus::WriteAsOptional<::planus::Offset<::core::primitive::str>>,
-                field_code: impl ::planus::WriteAsDefault<u64, u64>,
-            ) -> ::planus::Offset<Self> {
-                let prepared_number = field_number.prepare(builder);
-                let prepared_code = field_code.prepare(builder, &0);
-
-                let mut table_writer: ::planus::table_writer::TableWriter<8> =
-                    ::core::default::Default::default();
-                if prepared_code.is_some() {
-                    table_writer.write_entry::<u64>(1);
-                }
-                if prepared_number.is_some() {
-                    table_writer.write_entry::<::planus::Offset<str>>(0);
+            impl VerifiedNumber {
+                /// Creates a [VerifiedNumberBuilder] for serializing an instance of this table.
+                #[inline]
+                pub fn builder() -> VerifiedNumberBuilder<()> {
+                    VerifiedNumberBuilder(())
                 }
 
-                unsafe {
-                    table_writer.finish(builder, |object_writer| {
-                        if let ::core::option::Option::Some(prepared_code) = prepared_code {
-                            object_writer.write::<_, _, 8>(&prepared_code);
-                        }
-                        if let ::core::option::Option::Some(prepared_number) = prepared_number {
-                            object_writer.write::<_, _, 4>(&prepared_number);
-                        }
-                    });
+                #[allow(clippy::too_many_arguments)]
+                pub fn create(
+                    builder: &mut ::planus::Builder,
+                    field_name: impl ::planus::WriteAsOptional<::planus::Offset<::core::primitive::str>>,
+                    field_avatar: impl ::planus::WriteAsOptional<
+                        ::planus::Offset<::core::primitive::str>,
+                    >,
+                    field_id: impl ::planus::WriteAsOptional<::planus::Offset<::core::primitive::str>>,
+                ) -> ::planus::Offset<Self> {
+                    let prepared_name = field_name.prepare(builder);
+                    let prepared_avatar = field_avatar.prepare(builder);
+                    let prepared_id = field_id.prepare(builder);
+
+                    let mut table_writer: ::planus::table_writer::TableWriter<10> =
+                        ::core::default::Default::default();
+                    if prepared_name.is_some() {
+                        table_writer.write_entry::<::planus::Offset<str>>(0);
+                    }
+                    if prepared_avatar.is_some() {
+                        table_writer.write_entry::<::planus::Offset<str>>(1);
+                    }
+                    if prepared_id.is_some() {
+                        table_writer.write_entry::<::planus::Offset<str>>(2);
+                    }
+
+                    unsafe {
+                        table_writer.finish(builder, |object_writer| {
+                            if let ::core::option::Option::Some(prepared_name) = prepared_name {
+                                object_writer.write::<_, _, 4>(&prepared_name);
+                            }
+                            if let ::core::option::Option::Some(prepared_avatar) = prepared_avatar {
+                                object_writer.write::<_, _, 4>(&prepared_avatar);
+                            }
+                            if let ::core::option::Option::Some(prepared_id) = prepared_id {
+                                object_writer.write::<_, _, 4>(&prepared_id);
+                            }
+                        });
+                    }
+                    builder.current_offset()
                 }
-                builder.current_offset()
             }
-        }
 
-        impl ::planus::WriteAs<::planus::Offset<VerifyNumberReq>> for VerifyNumberReq {
-            type Prepared = ::planus::Offset<Self>;
+            impl ::planus::WriteAs<::planus::Offset<VerifiedNumber>> for VerifiedNumber {
+                type Prepared = ::planus::Offset<Self>;
 
-            #[inline]
-            fn prepare(
-                &self,
-                builder: &mut ::planus::Builder,
-            ) -> ::planus::Offset<VerifyNumberReq> {
-                ::planus::WriteAsOffset::prepare(self, builder)
+                #[inline]
+                fn prepare(
+                    &self,
+                    builder: &mut ::planus::Builder,
+                ) -> ::planus::Offset<VerifiedNumber> {
+                    ::planus::WriteAsOffset::prepare(self, builder)
+                }
             }
-        }
 
-        impl ::planus::WriteAsOptional<::planus::Offset<VerifyNumberReq>> for VerifyNumberReq {
-            type Prepared = ::planus::Offset<Self>;
+            impl ::planus::WriteAsOptional<::planus::Offset<VerifiedNumber>> for VerifiedNumber {
+                type Prepared = ::planus::Offset<Self>;
 
-            #[inline]
-            fn prepare(
-                &self,
-                builder: &mut ::planus::Builder,
-            ) -> ::core::option::Option<::planus::Offset<VerifyNumberReq>> {
-                ::core::option::Option::Some(::planus::WriteAsOffset::prepare(self, builder))
+                #[inline]
+                fn prepare(
+                    &self,
+                    builder: &mut ::planus::Builder,
+                ) -> ::core::option::Option<::planus::Offset<VerifiedNumber>> {
+                    ::core::option::Option::Some(::planus::WriteAsOffset::prepare(self, builder))
+                }
             }
-        }
 
-        impl ::planus::WriteAsOffset<VerifyNumberReq> for VerifyNumberReq {
-            #[inline]
-            fn prepare(
-                &self,
-                builder: &mut ::planus::Builder,
-            ) -> ::planus::Offset<VerifyNumberReq> {
-                VerifyNumberReq::create(builder, &self.number, self.code)
+            impl ::planus::WriteAsOffset<VerifiedNumber> for VerifiedNumber {
+                #[inline]
+                fn prepare(
+                    &self,
+                    builder: &mut ::planus::Builder,
+                ) -> ::planus::Offset<VerifiedNumber> {
+                    VerifiedNumber::create(builder, &self.name, &self.avatar, &self.id)
+                }
             }
-        }
 
-        /// Builder for serializing an instance of the [VerifyNumberReq] type.
-        ///
-        /// Can be created using the [VerifyNumberReq::builder] method.
-        #[derive(Debug)]
-        #[must_use]
-        pub struct VerifyNumberReqBuilder<State>(State);
+            /// Builder for serializing an instance of the [VerifiedNumber] type.
+            ///
+            /// Can be created using the [VerifiedNumber::builder] method.
+            #[derive(Debug)]
+            #[must_use]
+            pub struct VerifiedNumberBuilder<State>(State);
 
-        impl VerifyNumberReqBuilder<()> {
-            /// Setter for the [`number` field](VerifyNumberReq#structfield.number).
-            #[inline]
-            #[allow(clippy::type_complexity)]
-            pub fn number<T0>(self, value: T0) -> VerifyNumberReqBuilder<(T0,)>
-            where
-                T0: ::planus::WriteAsOptional<::planus::Offset<::core::primitive::str>>,
+            impl VerifiedNumberBuilder<()> {
+                /// Setter for the [`name` field](VerifiedNumber#structfield.name).
+                #[inline]
+                #[allow(clippy::type_complexity)]
+                pub fn name<T0>(self, value: T0) -> VerifiedNumberBuilder<(T0,)>
+                where
+                    T0: ::planus::WriteAsOptional<::planus::Offset<::core::primitive::str>>,
+                {
+                    VerifiedNumberBuilder((value,))
+                }
+
+                /// Sets the [`name` field](VerifiedNumber#structfield.name) to null.
+                #[inline]
+                #[allow(clippy::type_complexity)]
+                pub fn name_as_null(self) -> VerifiedNumberBuilder<((),)> {
+                    self.name(())
+                }
+            }
+
+            impl<T0> VerifiedNumberBuilder<(T0,)> {
+                /// Setter for the [`avatar` field](VerifiedNumber#structfield.avatar).
+                #[inline]
+                #[allow(clippy::type_complexity)]
+                pub fn avatar<T1>(self, value: T1) -> VerifiedNumberBuilder<(T0, T1)>
+                where
+                    T1: ::planus::WriteAsOptional<::planus::Offset<::core::primitive::str>>,
+                {
+                    let (v0,) = self.0;
+                    VerifiedNumberBuilder((v0, value))
+                }
+
+                /// Sets the [`avatar` field](VerifiedNumber#structfield.avatar) to null.
+                #[inline]
+                #[allow(clippy::type_complexity)]
+                pub fn avatar_as_null(self) -> VerifiedNumberBuilder<(T0, ())> {
+                    self.avatar(())
+                }
+            }
+
+            impl<T0, T1> VerifiedNumberBuilder<(T0, T1)> {
+                /// Setter for the [`id` field](VerifiedNumber#structfield.id).
+                #[inline]
+                #[allow(clippy::type_complexity)]
+                pub fn id<T2>(self, value: T2) -> VerifiedNumberBuilder<(T0, T1, T2)>
+                where
+                    T2: ::planus::WriteAsOptional<::planus::Offset<::core::primitive::str>>,
+                {
+                    let (v0, v1) = self.0;
+                    VerifiedNumberBuilder((v0, v1, value))
+                }
+
+                /// Sets the [`id` field](VerifiedNumber#structfield.id) to null.
+                #[inline]
+                #[allow(clippy::type_complexity)]
+                pub fn id_as_null(self) -> VerifiedNumberBuilder<(T0, T1, ())> {
+                    self.id(())
+                }
+            }
+
+            impl<T0, T1, T2> VerifiedNumberBuilder<(T0, T1, T2)> {
+                /// Finish writing the builder to get an [Offset](::planus::Offset) to a serialized [VerifiedNumber].
+                #[inline]
+                pub fn finish(
+                    self,
+                    builder: &mut ::planus::Builder,
+                ) -> ::planus::Offset<VerifiedNumber>
+                where
+                    Self: ::planus::WriteAsOffset<VerifiedNumber>,
+                {
+                    ::planus::WriteAsOffset::prepare(&self, builder)
+                }
+            }
+
+            impl<
+                    T0: ::planus::WriteAsOptional<::planus::Offset<::core::primitive::str>>,
+                    T1: ::planus::WriteAsOptional<::planus::Offset<::core::primitive::str>>,
+                    T2: ::planus::WriteAsOptional<::planus::Offset<::core::primitive::str>>,
+                > ::planus::WriteAs<::planus::Offset<VerifiedNumber>>
+                for VerifiedNumberBuilder<(T0, T1, T2)>
             {
-                VerifyNumberReqBuilder((value,))
-            }
+                type Prepared = ::planus::Offset<VerifiedNumber>;
 
-            /// Sets the [`number` field](VerifyNumberReq#structfield.number) to null.
-            #[inline]
-            #[allow(clippy::type_complexity)]
-            pub fn number_as_null(self) -> VerifyNumberReqBuilder<((),)> {
-                self.number(())
-            }
-        }
-
-        impl<T0> VerifyNumberReqBuilder<(T0,)> {
-            /// Setter for the [`code` field](VerifyNumberReq#structfield.code).
-            #[inline]
-            #[allow(clippy::type_complexity)]
-            pub fn code<T1>(self, value: T1) -> VerifyNumberReqBuilder<(T0, T1)>
-            where
-                T1: ::planus::WriteAsDefault<u64, u64>,
-            {
-                let (v0,) = self.0;
-                VerifyNumberReqBuilder((v0, value))
-            }
-
-            /// Sets the [`code` field](VerifyNumberReq#structfield.code) to the default value.
-            #[inline]
-            #[allow(clippy::type_complexity)]
-            pub fn code_as_default(self) -> VerifyNumberReqBuilder<(T0, ::planus::DefaultValue)> {
-                self.code(::planus::DefaultValue)
-            }
-        }
-
-        impl<T0, T1> VerifyNumberReqBuilder<(T0, T1)> {
-            /// Finish writing the builder to get an [Offset](::planus::Offset) to a serialized [VerifyNumberReq].
-            #[inline]
-            pub fn finish(
-                self,
-                builder: &mut ::planus::Builder,
-            ) -> ::planus::Offset<VerifyNumberReq>
-            where
-                Self: ::planus::WriteAsOffset<VerifyNumberReq>,
-            {
-                ::planus::WriteAsOffset::prepare(&self, builder)
-            }
-        }
-
-        impl<
-                T0: ::planus::WriteAsOptional<::planus::Offset<::core::primitive::str>>,
-                T1: ::planus::WriteAsDefault<u64, u64>,
-            > ::planus::WriteAs<::planus::Offset<VerifyNumberReq>>
-            for VerifyNumberReqBuilder<(T0, T1)>
-        {
-            type Prepared = ::planus::Offset<VerifyNumberReq>;
-
-            #[inline]
-            fn prepare(
-                &self,
-                builder: &mut ::planus::Builder,
-            ) -> ::planus::Offset<VerifyNumberReq> {
-                ::planus::WriteAsOffset::prepare(self, builder)
-            }
-        }
-
-        impl<
-                T0: ::planus::WriteAsOptional<::planus::Offset<::core::primitive::str>>,
-                T1: ::planus::WriteAsDefault<u64, u64>,
-            > ::planus::WriteAsOptional<::planus::Offset<VerifyNumberReq>>
-            for VerifyNumberReqBuilder<(T0, T1)>
-        {
-            type Prepared = ::planus::Offset<VerifyNumberReq>;
-
-            #[inline]
-            fn prepare(
-                &self,
-                builder: &mut ::planus::Builder,
-            ) -> ::core::option::Option<::planus::Offset<VerifyNumberReq>> {
-                ::core::option::Option::Some(::planus::WriteAsOffset::prepare(self, builder))
-            }
-        }
-
-        impl<
-                T0: ::planus::WriteAsOptional<::planus::Offset<::core::primitive::str>>,
-                T1: ::planus::WriteAsDefault<u64, u64>,
-            > ::planus::WriteAsOffset<VerifyNumberReq> for VerifyNumberReqBuilder<(T0, T1)>
-        {
-            #[inline]
-            fn prepare(
-                &self,
-                builder: &mut ::planus::Builder,
-            ) -> ::planus::Offset<VerifyNumberReq> {
-                let (v0, v1) = &self.0;
-                VerifyNumberReq::create(builder, v0, v1)
-            }
-        }
-
-        /// Reference to a deserialized [VerifyNumberReq].
-        #[derive(Copy, Clone)]
-        pub struct VerifyNumberReqRef<'a>(::planus::table_reader::Table<'a>);
-
-        impl<'a> VerifyNumberReqRef<'a> {
-            /// Getter for the [`number` field](VerifyNumberReq#structfield.number).
-            #[inline]
-            pub fn number(
-                &self,
-            ) -> ::planus::Result<::core::option::Option<&'a ::core::primitive::str>> {
-                self.0.access(0, "VerifyNumberReq", "number")
-            }
-
-            /// Getter for the [`code` field](VerifyNumberReq#structfield.code).
-            #[inline]
-            pub fn code(&self) -> ::planus::Result<u64> {
-                ::core::result::Result::Ok(
-                    self.0.access(1, "VerifyNumberReq", "code")?.unwrap_or(0),
-                )
-            }
-        }
-
-        impl<'a> ::core::fmt::Debug for VerifyNumberReqRef<'a> {
-            fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
-                let mut f = f.debug_struct("VerifyNumberReqRef");
-                if let ::core::option::Option::Some(field_number) = self.number().transpose() {
-                    f.field("number", &field_number);
+                #[inline]
+                fn prepare(
+                    &self,
+                    builder: &mut ::planus::Builder,
+                ) -> ::planus::Offset<VerifiedNumber> {
+                    ::planus::WriteAsOffset::prepare(self, builder)
                 }
-                f.field("code", &self.code());
-                f.finish()
             }
-        }
 
-        impl<'a> ::core::convert::TryFrom<VerifyNumberReqRef<'a>> for VerifyNumberReq {
-            type Error = ::planus::Error;
+            impl<
+                    T0: ::planus::WriteAsOptional<::planus::Offset<::core::primitive::str>>,
+                    T1: ::planus::WriteAsOptional<::planus::Offset<::core::primitive::str>>,
+                    T2: ::planus::WriteAsOptional<::planus::Offset<::core::primitive::str>>,
+                > ::planus::WriteAsOptional<::planus::Offset<VerifiedNumber>>
+                for VerifiedNumberBuilder<(T0, T1, T2)>
+            {
+                type Prepared = ::planus::Offset<VerifiedNumber>;
 
-            #[allow(unreachable_code)]
-            fn try_from(value: VerifyNumberReqRef<'a>) -> ::planus::Result<Self> {
-                ::core::result::Result::Ok(Self {
-                    number: if let ::core::option::Option::Some(number) = value.number()? {
-                        ::core::option::Option::Some(::core::convert::TryInto::try_into(number)?)
-                    } else {
-                        ::core::option::Option::None
-                    },
-                    code: ::core::convert::TryInto::try_into(value.code()?)?,
-                })
+                #[inline]
+                fn prepare(
+                    &self,
+                    builder: &mut ::planus::Builder,
+                ) -> ::core::option::Option<::planus::Offset<VerifiedNumber>> {
+                    ::core::option::Option::Some(::planus::WriteAsOffset::prepare(self, builder))
+                }
             }
-        }
 
-        impl<'a> ::planus::TableRead<'a> for VerifyNumberReqRef<'a> {
-            #[inline]
-            fn from_buffer(
-                buffer: ::planus::SliceWithStartOffset<'a>,
-                offset: usize,
-            ) -> ::core::result::Result<Self, ::planus::errors::ErrorKind> {
-                ::core::result::Result::Ok(Self(::planus::table_reader::Table::from_buffer(
-                    buffer, offset,
-                )?))
+            impl<
+                    T0: ::planus::WriteAsOptional<::planus::Offset<::core::primitive::str>>,
+                    T1: ::planus::WriteAsOptional<::planus::Offset<::core::primitive::str>>,
+                    T2: ::planus::WriteAsOptional<::planus::Offset<::core::primitive::str>>,
+                > ::planus::WriteAsOffset<VerifiedNumber> for VerifiedNumberBuilder<(T0, T1, T2)>
+            {
+                #[inline]
+                fn prepare(
+                    &self,
+                    builder: &mut ::planus::Builder,
+                ) -> ::planus::Offset<VerifiedNumber> {
+                    let (v0, v1, v2) = &self.0;
+                    VerifiedNumber::create(builder, v0, v1, v2)
+                }
             }
-        }
 
-        impl<'a> ::planus::VectorReadInner<'a> for VerifyNumberReqRef<'a> {
-            type Error = ::planus::Error;
-            const STRIDE: usize = 4;
+            /// Reference to a deserialized [VerifiedNumber].
+            #[derive(Copy, Clone)]
+            pub struct VerifiedNumberRef<'a>(::planus::table_reader::Table<'a>);
 
-            unsafe fn from_buffer(
-                buffer: ::planus::SliceWithStartOffset<'a>,
-                offset: usize,
-            ) -> ::planus::Result<Self> {
-                ::planus::TableRead::from_buffer(buffer, offset).map_err(|error_kind| {
-                    error_kind.with_error_location(
-                        "[VerifyNumberReqRef]",
-                        "get",
-                        buffer.offset_from_start,
+            impl<'a> VerifiedNumberRef<'a> {
+                /// Getter for the [`name` field](VerifiedNumber#structfield.name).
+                #[inline]
+                pub fn name(
+                    &self,
+                ) -> ::planus::Result<::core::option::Option<&'a ::core::primitive::str>>
+                {
+                    self.0.access(0, "VerifiedNumber", "name")
+                }
+
+                /// Getter for the [`avatar` field](VerifiedNumber#structfield.avatar).
+                #[inline]
+                pub fn avatar(
+                    &self,
+                ) -> ::planus::Result<::core::option::Option<&'a ::core::primitive::str>>
+                {
+                    self.0.access(1, "VerifiedNumber", "avatar")
+                }
+
+                /// Getter for the [`id` field](VerifiedNumber#structfield.id).
+                #[inline]
+                pub fn id(
+                    &self,
+                ) -> ::planus::Result<::core::option::Option<&'a ::core::primitive::str>>
+                {
+                    self.0.access(2, "VerifiedNumber", "id")
+                }
+            }
+
+            impl<'a> ::core::fmt::Debug for VerifiedNumberRef<'a> {
+                fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+                    let mut f = f.debug_struct("VerifiedNumberRef");
+                    if let ::core::option::Option::Some(field_name) = self.name().transpose() {
+                        f.field("name", &field_name);
+                    }
+                    if let ::core::option::Option::Some(field_avatar) = self.avatar().transpose() {
+                        f.field("avatar", &field_avatar);
+                    }
+                    if let ::core::option::Option::Some(field_id) = self.id().transpose() {
+                        f.field("id", &field_id);
+                    }
+                    f.finish()
+                }
+            }
+
+            impl<'a> ::core::convert::TryFrom<VerifiedNumberRef<'a>> for VerifiedNumber {
+                type Error = ::planus::Error;
+
+                #[allow(unreachable_code)]
+                fn try_from(value: VerifiedNumberRef<'a>) -> ::planus::Result<Self> {
+                    ::core::result::Result::Ok(Self {
+                        name: if let ::core::option::Option::Some(name) = value.name()? {
+                            ::core::option::Option::Some(::core::convert::TryInto::try_into(name)?)
+                        } else {
+                            ::core::option::Option::None
+                        },
+                        avatar: if let ::core::option::Option::Some(avatar) = value.avatar()? {
+                            ::core::option::Option::Some(::core::convert::TryInto::try_into(
+                                avatar,
+                            )?)
+                        } else {
+                            ::core::option::Option::None
+                        },
+                        id: if let ::core::option::Option::Some(id) = value.id()? {
+                            ::core::option::Option::Some(::core::convert::TryInto::try_into(id)?)
+                        } else {
+                            ::core::option::Option::None
+                        },
+                    })
+                }
+            }
+
+            impl<'a> ::planus::TableRead<'a> for VerifiedNumberRef<'a> {
+                #[inline]
+                fn from_buffer(
+                    buffer: ::planus::SliceWithStartOffset<'a>,
+                    offset: usize,
+                ) -> ::core::result::Result<Self, ::planus::errors::ErrorKind> {
+                    ::core::result::Result::Ok(Self(::planus::table_reader::Table::from_buffer(
+                        buffer, offset,
+                    )?))
+                }
+            }
+
+            impl<'a> ::planus::VectorReadInner<'a> for VerifiedNumberRef<'a> {
+                type Error = ::planus::Error;
+                const STRIDE: usize = 4;
+
+                unsafe fn from_buffer(
+                    buffer: ::planus::SliceWithStartOffset<'a>,
+                    offset: usize,
+                ) -> ::planus::Result<Self> {
+                    ::planus::TableRead::from_buffer(buffer, offset).map_err(|error_kind| {
+                        error_kind.with_error_location(
+                            "[VerifiedNumberRef]",
+                            "get",
+                            buffer.offset_from_start,
+                        )
+                    })
+                }
+            }
+
+            impl ::planus::VectorWrite<::planus::Offset<VerifiedNumber>> for VerifiedNumber {
+                type Value = ::planus::Offset<VerifiedNumber>;
+                const STRIDE: usize = 4;
+                #[inline]
+                fn prepare(&self, builder: &mut ::planus::Builder) -> Self::Value {
+                    ::planus::WriteAs::prepare(self, builder)
+                }
+
+                #[inline]
+                unsafe fn write_values(
+                    values: &[::planus::Offset<VerifiedNumber>],
+                    bytes: *mut ::core::mem::MaybeUninit<u8>,
+                    buffer_position: u32,
+                ) {
+                    let bytes = bytes as *mut [::core::mem::MaybeUninit<u8>; 4];
+                    for (i, v) in ::core::iter::Iterator::enumerate(values.iter()) {
+                        ::planus::WriteAsPrimitive::write(
+                            v,
+                            ::planus::Cursor::new(&mut *bytes.add(i)),
+                            buffer_position - (Self::STRIDE * i) as u32,
+                        );
+                    }
+                }
+            }
+
+            impl<'a> ::planus::ReadAsRoot<'a> for VerifiedNumberRef<'a> {
+                fn read_as_root(slice: &'a [u8]) -> ::planus::Result<Self> {
+                    ::planus::TableRead::from_buffer(
+                        ::planus::SliceWithStartOffset {
+                            buffer: slice,
+                            offset_from_start: 0,
+                        },
+                        0,
                     )
-                })
-            }
-        }
-
-        impl ::planus::VectorWrite<::planus::Offset<VerifyNumberReq>> for VerifyNumberReq {
-            type Value = ::planus::Offset<VerifyNumberReq>;
-            const STRIDE: usize = 4;
-            #[inline]
-            fn prepare(&self, builder: &mut ::planus::Builder) -> Self::Value {
-                ::planus::WriteAs::prepare(self, builder)
-            }
-
-            #[inline]
-            unsafe fn write_values(
-                values: &[::planus::Offset<VerifyNumberReq>],
-                bytes: *mut ::core::mem::MaybeUninit<u8>,
-                buffer_position: u32,
-            ) {
-                let bytes = bytes as *mut [::core::mem::MaybeUninit<u8>; 4];
-                for (i, v) in ::core::iter::Iterator::enumerate(values.iter()) {
-                    ::planus::WriteAsPrimitive::write(
-                        v,
-                        ::planus::Cursor::new(&mut *bytes.add(i)),
-                        buffer_position - (Self::STRIDE * i) as u32,
-                    );
+                    .map_err(|error_kind| {
+                        error_kind.with_error_location("[VerifiedNumberRef]", "read_as_root", 0)
+                    })
                 }
-            }
-        }
-
-        impl<'a> ::planus::ReadAsRoot<'a> for VerifyNumberReqRef<'a> {
-            fn read_as_root(slice: &'a [u8]) -> ::planus::Result<Self> {
-                ::planus::TableRead::from_buffer(
-                    ::planus::SliceWithStartOffset {
-                        buffer: slice,
-                        offset_from_start: 0,
-                    },
-                    0,
-                )
-                .map_err(|error_kind| {
-                    error_kind.with_error_location("[VerifyNumberReqRef]", "read_as_root", 0)
-                })
-            }
-        }
-
-        /// The table `VerifyNumberRes` in the namespace `Auth`
-        ///
-        /// Generated from these locations:
-        /// * Table `VerifyNumberRes` in the file `auth/auth.fbs:28`
-        #[derive(
-            Clone,
-            Debug,
-            PartialEq,
-            PartialOrd,
-            Eq,
-            Ord,
-            Hash,
-            ::serde::Serialize,
-            ::serde::Deserialize,
-        )]
-        pub struct VerifyNumberRes {
-            ///  Options for registering a WebAuthn credential.
-            pub options: ::core::option::Option<
-                ::planus::alloc::boxed::Box<self::web_authn::CredentialCreationOptions>,
-            >,
-        }
-
-        #[allow(clippy::derivable_impls)]
-        impl ::core::default::Default for VerifyNumberRes {
-            fn default() -> Self {
-                Self {
-                    options: ::core::default::Default::default(),
-                }
-            }
-        }
-
-        impl VerifyNumberRes {
-            /// Creates a [VerifyNumberResBuilder] for serializing an instance of this table.
-            #[inline]
-            pub fn builder() -> VerifyNumberResBuilder<()> {
-                VerifyNumberResBuilder(())
-            }
-
-            #[allow(clippy::too_many_arguments)]
-            pub fn create(
-                builder: &mut ::planus::Builder,
-                field_options: impl ::planus::WriteAsOptional<
-                    ::planus::Offset<self::web_authn::CredentialCreationOptions>,
-                >,
-            ) -> ::planus::Offset<Self> {
-                let prepared_options = field_options.prepare(builder);
-
-                let mut table_writer: ::planus::table_writer::TableWriter<6> =
-                    ::core::default::Default::default();
-                if prepared_options.is_some() {
-                    table_writer.write_entry::<::planus::Offset<self::web_authn::CredentialCreationOptions>>(0);
-                }
-
-                unsafe {
-                    table_writer.finish(builder, |object_writer| {
-                        if let ::core::option::Option::Some(prepared_options) = prepared_options {
-                            object_writer.write::<_, _, 4>(&prepared_options);
-                        }
-                    });
-                }
-                builder.current_offset()
-            }
-        }
-
-        impl ::planus::WriteAs<::planus::Offset<VerifyNumberRes>> for VerifyNumberRes {
-            type Prepared = ::planus::Offset<Self>;
-
-            #[inline]
-            fn prepare(
-                &self,
-                builder: &mut ::planus::Builder,
-            ) -> ::planus::Offset<VerifyNumberRes> {
-                ::planus::WriteAsOffset::prepare(self, builder)
-            }
-        }
-
-        impl ::planus::WriteAsOptional<::planus::Offset<VerifyNumberRes>> for VerifyNumberRes {
-            type Prepared = ::planus::Offset<Self>;
-
-            #[inline]
-            fn prepare(
-                &self,
-                builder: &mut ::planus::Builder,
-            ) -> ::core::option::Option<::planus::Offset<VerifyNumberRes>> {
-                ::core::option::Option::Some(::planus::WriteAsOffset::prepare(self, builder))
-            }
-        }
-
-        impl ::planus::WriteAsOffset<VerifyNumberRes> for VerifyNumberRes {
-            #[inline]
-            fn prepare(
-                &self,
-                builder: &mut ::planus::Builder,
-            ) -> ::planus::Offset<VerifyNumberRes> {
-                VerifyNumberRes::create(builder, &self.options)
-            }
-        }
-
-        /// Builder for serializing an instance of the [VerifyNumberRes] type.
-        ///
-        /// Can be created using the [VerifyNumberRes::builder] method.
-        #[derive(Debug)]
-        #[must_use]
-        pub struct VerifyNumberResBuilder<State>(State);
-
-        impl VerifyNumberResBuilder<()> {
-            /// Setter for the [`options` field](VerifyNumberRes#structfield.options).
-            #[inline]
-            #[allow(clippy::type_complexity)]
-            pub fn options<T0>(self, value: T0) -> VerifyNumberResBuilder<(T0,)>
-            where
-                T0: ::planus::WriteAsOptional<
-                    ::planus::Offset<self::web_authn::CredentialCreationOptions>,
-                >,
-            {
-                VerifyNumberResBuilder((value,))
-            }
-
-            /// Sets the [`options` field](VerifyNumberRes#structfield.options) to null.
-            #[inline]
-            #[allow(clippy::type_complexity)]
-            pub fn options_as_null(self) -> VerifyNumberResBuilder<((),)> {
-                self.options(())
-            }
-        }
-
-        impl<T0> VerifyNumberResBuilder<(T0,)> {
-            /// Finish writing the builder to get an [Offset](::planus::Offset) to a serialized [VerifyNumberRes].
-            #[inline]
-            pub fn finish(
-                self,
-                builder: &mut ::planus::Builder,
-            ) -> ::planus::Offset<VerifyNumberRes>
-            where
-                Self: ::planus::WriteAsOffset<VerifyNumberRes>,
-            {
-                ::planus::WriteAsOffset::prepare(&self, builder)
-            }
-        }
-
-        impl<
-                T0: ::planus::WriteAsOptional<
-                    ::planus::Offset<self::web_authn::CredentialCreationOptions>,
-                >,
-            > ::planus::WriteAs<::planus::Offset<VerifyNumberRes>>
-            for VerifyNumberResBuilder<(T0,)>
-        {
-            type Prepared = ::planus::Offset<VerifyNumberRes>;
-
-            #[inline]
-            fn prepare(
-                &self,
-                builder: &mut ::planus::Builder,
-            ) -> ::planus::Offset<VerifyNumberRes> {
-                ::planus::WriteAsOffset::prepare(self, builder)
-            }
-        }
-
-        impl<
-                T0: ::planus::WriteAsOptional<
-                    ::planus::Offset<self::web_authn::CredentialCreationOptions>,
-                >,
-            > ::planus::WriteAsOptional<::planus::Offset<VerifyNumberRes>>
-            for VerifyNumberResBuilder<(T0,)>
-        {
-            type Prepared = ::planus::Offset<VerifyNumberRes>;
-
-            #[inline]
-            fn prepare(
-                &self,
-                builder: &mut ::planus::Builder,
-            ) -> ::core::option::Option<::planus::Offset<VerifyNumberRes>> {
-                ::core::option::Option::Some(::planus::WriteAsOffset::prepare(self, builder))
-            }
-        }
-
-        impl<
-                T0: ::planus::WriteAsOptional<
-                    ::planus::Offset<self::web_authn::CredentialCreationOptions>,
-                >,
-            > ::planus::WriteAsOffset<VerifyNumberRes> for VerifyNumberResBuilder<(T0,)>
-        {
-            #[inline]
-            fn prepare(
-                &self,
-                builder: &mut ::planus::Builder,
-            ) -> ::planus::Offset<VerifyNumberRes> {
-                let (v0,) = &self.0;
-                VerifyNumberRes::create(builder, v0)
-            }
-        }
-
-        /// Reference to a deserialized [VerifyNumberRes].
-        #[derive(Copy, Clone)]
-        pub struct VerifyNumberResRef<'a>(::planus::table_reader::Table<'a>);
-
-        impl<'a> VerifyNumberResRef<'a> {
-            /// Getter for the [`options` field](VerifyNumberRes#structfield.options).
-            #[inline]
-            pub fn options(
-                &self,
-            ) -> ::planus::Result<
-                ::core::option::Option<self::web_authn::CredentialCreationOptionsRef<'a>>,
-            > {
-                self.0.access(0, "VerifyNumberRes", "options")
-            }
-        }
-
-        impl<'a> ::core::fmt::Debug for VerifyNumberResRef<'a> {
-            fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
-                let mut f = f.debug_struct("VerifyNumberResRef");
-                if let ::core::option::Option::Some(field_options) = self.options().transpose() {
-                    f.field("options", &field_options);
-                }
-                f.finish()
-            }
-        }
-
-        impl<'a> ::core::convert::TryFrom<VerifyNumberResRef<'a>> for VerifyNumberRes {
-            type Error = ::planus::Error;
-
-            #[allow(unreachable_code)]
-            fn try_from(value: VerifyNumberResRef<'a>) -> ::planus::Result<Self> {
-                ::core::result::Result::Ok(Self {
-                    options: if let ::core::option::Option::Some(options) = value.options()? {
-                        ::core::option::Option::Some(::planus::alloc::boxed::Box::new(
-                            ::core::convert::TryInto::try_into(options)?,
-                        ))
-                    } else {
-                        ::core::option::Option::None
-                    },
-                })
-            }
-        }
-
-        impl<'a> ::planus::TableRead<'a> for VerifyNumberResRef<'a> {
-            #[inline]
-            fn from_buffer(
-                buffer: ::planus::SliceWithStartOffset<'a>,
-                offset: usize,
-            ) -> ::core::result::Result<Self, ::planus::errors::ErrorKind> {
-                ::core::result::Result::Ok(Self(::planus::table_reader::Table::from_buffer(
-                    buffer, offset,
-                )?))
-            }
-        }
-
-        impl<'a> ::planus::VectorReadInner<'a> for VerifyNumberResRef<'a> {
-            type Error = ::planus::Error;
-            const STRIDE: usize = 4;
-
-            unsafe fn from_buffer(
-                buffer: ::planus::SliceWithStartOffset<'a>,
-                offset: usize,
-            ) -> ::planus::Result<Self> {
-                ::planus::TableRead::from_buffer(buffer, offset).map_err(|error_kind| {
-                    error_kind.with_error_location(
-                        "[VerifyNumberResRef]",
-                        "get",
-                        buffer.offset_from_start,
-                    )
-                })
-            }
-        }
-
-        impl ::planus::VectorWrite<::planus::Offset<VerifyNumberRes>> for VerifyNumberRes {
-            type Value = ::planus::Offset<VerifyNumberRes>;
-            const STRIDE: usize = 4;
-            #[inline]
-            fn prepare(&self, builder: &mut ::planus::Builder) -> Self::Value {
-                ::planus::WriteAs::prepare(self, builder)
-            }
-
-            #[inline]
-            unsafe fn write_values(
-                values: &[::planus::Offset<VerifyNumberRes>],
-                bytes: *mut ::core::mem::MaybeUninit<u8>,
-                buffer_position: u32,
-            ) {
-                let bytes = bytes as *mut [::core::mem::MaybeUninit<u8>; 4];
-                for (i, v) in ::core::iter::Iterator::enumerate(values.iter()) {
-                    ::planus::WriteAsPrimitive::write(
-                        v,
-                        ::planus::Cursor::new(&mut *bytes.add(i)),
-                        buffer_position - (Self::STRIDE * i) as u32,
-                    );
-                }
-            }
-        }
-
-        impl<'a> ::planus::ReadAsRoot<'a> for VerifyNumberResRef<'a> {
-            fn read_as_root(slice: &'a [u8]) -> ::planus::Result<Self> {
-                ::planus::TableRead::from_buffer(
-                    ::planus::SliceWithStartOffset {
-                        buffer: slice,
-                        offset_from_start: 0,
-                    },
-                    0,
-                )
-                .map_err(|error_kind| {
-                    error_kind.with_error_location("[VerifyNumberResRef]", "read_as_root", 0)
-                })
-            }
-        }
-
-        /// The table `VerifyWebAuthnReq` in the namespace `Auth`
-        ///
-        /// Generated from these locations:
-        /// * Table `VerifyWebAuthnReq` in the file `auth/auth.fbs:33`
-        #[derive(
-            Clone,
-            Debug,
-            PartialEq,
-            PartialOrd,
-            Eq,
-            Ord,
-            Hash,
-            ::serde::Serialize,
-            ::serde::Deserialize,
-        )]
-        pub struct VerifyWebAuthnReq {
-            /// The field `name` in the table `VerifyWebAuthnReq`
-            pub name: ::core::option::Option<::planus::alloc::string::String>,
-            /// The field `id` in the table `VerifyWebAuthnReq`
-            pub id: ::core::option::Option<::planus::alloc::string::String>,
-            /// The field `webauthn` in the table `VerifyWebAuthnReq`
-            pub webauthn: ::core::option::Option<
-                ::planus::alloc::boxed::Box<self::web_authn::RegisterPublicKeyCredential>,
-            >,
-        }
-
-        #[allow(clippy::derivable_impls)]
-        impl ::core::default::Default for VerifyWebAuthnReq {
-            fn default() -> Self {
-                Self {
-                    name: ::core::default::Default::default(),
-                    id: ::core::default::Default::default(),
-                    webauthn: ::core::default::Default::default(),
-                }
-            }
-        }
-
-        impl VerifyWebAuthnReq {
-            /// Creates a [VerifyWebAuthnReqBuilder] for serializing an instance of this table.
-            #[inline]
-            pub fn builder() -> VerifyWebAuthnReqBuilder<()> {
-                VerifyWebAuthnReqBuilder(())
-            }
-
-            #[allow(clippy::too_many_arguments)]
-            pub fn create(
-                builder: &mut ::planus::Builder,
-                field_name: impl ::planus::WriteAsOptional<::planus::Offset<::core::primitive::str>>,
-                field_id: impl ::planus::WriteAsOptional<::planus::Offset<::core::primitive::str>>,
-                field_webauthn: impl ::planus::WriteAsOptional<
-                    ::planus::Offset<self::web_authn::RegisterPublicKeyCredential>,
-                >,
-            ) -> ::planus::Offset<Self> {
-                let prepared_name = field_name.prepare(builder);
-                let prepared_id = field_id.prepare(builder);
-                let prepared_webauthn = field_webauthn.prepare(builder);
-
-                let mut table_writer: ::planus::table_writer::TableWriter<10> =
-                    ::core::default::Default::default();
-                if prepared_name.is_some() {
-                    table_writer.write_entry::<::planus::Offset<str>>(0);
-                }
-                if prepared_id.is_some() {
-                    table_writer.write_entry::<::planus::Offset<str>>(1);
-                }
-                if prepared_webauthn.is_some() {
-                    table_writer.write_entry::<::planus::Offset<self::web_authn::RegisterPublicKeyCredential>>(2);
-                }
-
-                unsafe {
-                    table_writer.finish(builder, |object_writer| {
-                        if let ::core::option::Option::Some(prepared_name) = prepared_name {
-                            object_writer.write::<_, _, 4>(&prepared_name);
-                        }
-                        if let ::core::option::Option::Some(prepared_id) = prepared_id {
-                            object_writer.write::<_, _, 4>(&prepared_id);
-                        }
-                        if let ::core::option::Option::Some(prepared_webauthn) = prepared_webauthn {
-                            object_writer.write::<_, _, 4>(&prepared_webauthn);
-                        }
-                    });
-                }
-                builder.current_offset()
-            }
-        }
-
-        impl ::planus::WriteAs<::planus::Offset<VerifyWebAuthnReq>> for VerifyWebAuthnReq {
-            type Prepared = ::planus::Offset<Self>;
-
-            #[inline]
-            fn prepare(
-                &self,
-                builder: &mut ::planus::Builder,
-            ) -> ::planus::Offset<VerifyWebAuthnReq> {
-                ::planus::WriteAsOffset::prepare(self, builder)
-            }
-        }
-
-        impl ::planus::WriteAsOptional<::planus::Offset<VerifyWebAuthnReq>> for VerifyWebAuthnReq {
-            type Prepared = ::planus::Offset<Self>;
-
-            #[inline]
-            fn prepare(
-                &self,
-                builder: &mut ::planus::Builder,
-            ) -> ::core::option::Option<::planus::Offset<VerifyWebAuthnReq>> {
-                ::core::option::Option::Some(::planus::WriteAsOffset::prepare(self, builder))
-            }
-        }
-
-        impl ::planus::WriteAsOffset<VerifyWebAuthnReq> for VerifyWebAuthnReq {
-            #[inline]
-            fn prepare(
-                &self,
-                builder: &mut ::planus::Builder,
-            ) -> ::planus::Offset<VerifyWebAuthnReq> {
-                VerifyWebAuthnReq::create(builder, &self.name, &self.id, &self.webauthn)
-            }
-        }
-
-        /// Builder for serializing an instance of the [VerifyWebAuthnReq] type.
-        ///
-        /// Can be created using the [VerifyWebAuthnReq::builder] method.
-        #[derive(Debug)]
-        #[must_use]
-        pub struct VerifyWebAuthnReqBuilder<State>(State);
-
-        impl VerifyWebAuthnReqBuilder<()> {
-            /// Setter for the [`name` field](VerifyWebAuthnReq#structfield.name).
-            #[inline]
-            #[allow(clippy::type_complexity)]
-            pub fn name<T0>(self, value: T0) -> VerifyWebAuthnReqBuilder<(T0,)>
-            where
-                T0: ::planus::WriteAsOptional<::planus::Offset<::core::primitive::str>>,
-            {
-                VerifyWebAuthnReqBuilder((value,))
-            }
-
-            /// Sets the [`name` field](VerifyWebAuthnReq#structfield.name) to null.
-            #[inline]
-            #[allow(clippy::type_complexity)]
-            pub fn name_as_null(self) -> VerifyWebAuthnReqBuilder<((),)> {
-                self.name(())
-            }
-        }
-
-        impl<T0> VerifyWebAuthnReqBuilder<(T0,)> {
-            /// Setter for the [`id` field](VerifyWebAuthnReq#structfield.id).
-            #[inline]
-            #[allow(clippy::type_complexity)]
-            pub fn id<T1>(self, value: T1) -> VerifyWebAuthnReqBuilder<(T0, T1)>
-            where
-                T1: ::planus::WriteAsOptional<::planus::Offset<::core::primitive::str>>,
-            {
-                let (v0,) = self.0;
-                VerifyWebAuthnReqBuilder((v0, value))
-            }
-
-            /// Sets the [`id` field](VerifyWebAuthnReq#structfield.id) to null.
-            #[inline]
-            #[allow(clippy::type_complexity)]
-            pub fn id_as_null(self) -> VerifyWebAuthnReqBuilder<(T0, ())> {
-                self.id(())
-            }
-        }
-
-        impl<T0, T1> VerifyWebAuthnReqBuilder<(T0, T1)> {
-            /// Setter for the [`webauthn` field](VerifyWebAuthnReq#structfield.webauthn).
-            #[inline]
-            #[allow(clippy::type_complexity)]
-            pub fn webauthn<T2>(self, value: T2) -> VerifyWebAuthnReqBuilder<(T0, T1, T2)>
-            where
-                T2: ::planus::WriteAsOptional<
-                    ::planus::Offset<self::web_authn::RegisterPublicKeyCredential>,
-                >,
-            {
-                let (v0, v1) = self.0;
-                VerifyWebAuthnReqBuilder((v0, v1, value))
-            }
-
-            /// Sets the [`webauthn` field](VerifyWebAuthnReq#structfield.webauthn) to null.
-            #[inline]
-            #[allow(clippy::type_complexity)]
-            pub fn webauthn_as_null(self) -> VerifyWebAuthnReqBuilder<(T0, T1, ())> {
-                self.webauthn(())
-            }
-        }
-
-        impl<T0, T1, T2> VerifyWebAuthnReqBuilder<(T0, T1, T2)> {
-            /// Finish writing the builder to get an [Offset](::planus::Offset) to a serialized [VerifyWebAuthnReq].
-            #[inline]
-            pub fn finish(
-                self,
-                builder: &mut ::planus::Builder,
-            ) -> ::planus::Offset<VerifyWebAuthnReq>
-            where
-                Self: ::planus::WriteAsOffset<VerifyWebAuthnReq>,
-            {
-                ::planus::WriteAsOffset::prepare(&self, builder)
-            }
-        }
-
-        impl<
-                T0: ::planus::WriteAsOptional<::planus::Offset<::core::primitive::str>>,
-                T1: ::planus::WriteAsOptional<::planus::Offset<::core::primitive::str>>,
-                T2: ::planus::WriteAsOptional<
-                    ::planus::Offset<self::web_authn::RegisterPublicKeyCredential>,
-                >,
-            > ::planus::WriteAs<::planus::Offset<VerifyWebAuthnReq>>
-            for VerifyWebAuthnReqBuilder<(T0, T1, T2)>
-        {
-            type Prepared = ::planus::Offset<VerifyWebAuthnReq>;
-
-            #[inline]
-            fn prepare(
-                &self,
-                builder: &mut ::planus::Builder,
-            ) -> ::planus::Offset<VerifyWebAuthnReq> {
-                ::planus::WriteAsOffset::prepare(self, builder)
-            }
-        }
-
-        impl<
-                T0: ::planus::WriteAsOptional<::planus::Offset<::core::primitive::str>>,
-                T1: ::planus::WriteAsOptional<::planus::Offset<::core::primitive::str>>,
-                T2: ::planus::WriteAsOptional<
-                    ::planus::Offset<self::web_authn::RegisterPublicKeyCredential>,
-                >,
-            > ::planus::WriteAsOptional<::planus::Offset<VerifyWebAuthnReq>>
-            for VerifyWebAuthnReqBuilder<(T0, T1, T2)>
-        {
-            type Prepared = ::planus::Offset<VerifyWebAuthnReq>;
-
-            #[inline]
-            fn prepare(
-                &self,
-                builder: &mut ::planus::Builder,
-            ) -> ::core::option::Option<::planus::Offset<VerifyWebAuthnReq>> {
-                ::core::option::Option::Some(::planus::WriteAsOffset::prepare(self, builder))
-            }
-        }
-
-        impl<
-                T0: ::planus::WriteAsOptional<::planus::Offset<::core::primitive::str>>,
-                T1: ::planus::WriteAsOptional<::planus::Offset<::core::primitive::str>>,
-                T2: ::planus::WriteAsOptional<
-                    ::planus::Offset<self::web_authn::RegisterPublicKeyCredential>,
-                >,
-            > ::planus::WriteAsOffset<VerifyWebAuthnReq>
-            for VerifyWebAuthnReqBuilder<(T0, T1, T2)>
-        {
-            #[inline]
-            fn prepare(
-                &self,
-                builder: &mut ::planus::Builder,
-            ) -> ::planus::Offset<VerifyWebAuthnReq> {
-                let (v0, v1, v2) = &self.0;
-                VerifyWebAuthnReq::create(builder, v0, v1, v2)
-            }
-        }
-
-        /// Reference to a deserialized [VerifyWebAuthnReq].
-        #[derive(Copy, Clone)]
-        pub struct VerifyWebAuthnReqRef<'a>(::planus::table_reader::Table<'a>);
-
-        impl<'a> VerifyWebAuthnReqRef<'a> {
-            /// Getter for the [`name` field](VerifyWebAuthnReq#structfield.name).
-            #[inline]
-            pub fn name(
-                &self,
-            ) -> ::planus::Result<::core::option::Option<&'a ::core::primitive::str>> {
-                self.0.access(0, "VerifyWebAuthnReq", "name")
-            }
-
-            /// Getter for the [`id` field](VerifyWebAuthnReq#structfield.id).
-            #[inline]
-            pub fn id(
-                &self,
-            ) -> ::planus::Result<::core::option::Option<&'a ::core::primitive::str>> {
-                self.0.access(1, "VerifyWebAuthnReq", "id")
-            }
-
-            /// Getter for the [`webauthn` field](VerifyWebAuthnReq#structfield.webauthn).
-            #[inline]
-            pub fn webauthn(
-                &self,
-            ) -> ::planus::Result<
-                ::core::option::Option<self::web_authn::RegisterPublicKeyCredentialRef<'a>>,
-            > {
-                self.0.access(2, "VerifyWebAuthnReq", "webauthn")
-            }
-        }
-
-        impl<'a> ::core::fmt::Debug for VerifyWebAuthnReqRef<'a> {
-            fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
-                let mut f = f.debug_struct("VerifyWebAuthnReqRef");
-                if let ::core::option::Option::Some(field_name) = self.name().transpose() {
-                    f.field("name", &field_name);
-                }
-                if let ::core::option::Option::Some(field_id) = self.id().transpose() {
-                    f.field("id", &field_id);
-                }
-                if let ::core::option::Option::Some(field_webauthn) = self.webauthn().transpose() {
-                    f.field("webauthn", &field_webauthn);
-                }
-                f.finish()
-            }
-        }
-
-        impl<'a> ::core::convert::TryFrom<VerifyWebAuthnReqRef<'a>> for VerifyWebAuthnReq {
-            type Error = ::planus::Error;
-
-            #[allow(unreachable_code)]
-            fn try_from(value: VerifyWebAuthnReqRef<'a>) -> ::planus::Result<Self> {
-                ::core::result::Result::Ok(Self {
-                    name: if let ::core::option::Option::Some(name) = value.name()? {
-                        ::core::option::Option::Some(::core::convert::TryInto::try_into(name)?)
-                    } else {
-                        ::core::option::Option::None
-                    },
-                    id: if let ::core::option::Option::Some(id) = value.id()? {
-                        ::core::option::Option::Some(::core::convert::TryInto::try_into(id)?)
-                    } else {
-                        ::core::option::Option::None
-                    },
-                    webauthn: if let ::core::option::Option::Some(webauthn) = value.webauthn()? {
-                        ::core::option::Option::Some(::planus::alloc::boxed::Box::new(
-                            ::core::convert::TryInto::try_into(webauthn)?,
-                        ))
-                    } else {
-                        ::core::option::Option::None
-                    },
-                })
-            }
-        }
-
-        impl<'a> ::planus::TableRead<'a> for VerifyWebAuthnReqRef<'a> {
-            #[inline]
-            fn from_buffer(
-                buffer: ::planus::SliceWithStartOffset<'a>,
-                offset: usize,
-            ) -> ::core::result::Result<Self, ::planus::errors::ErrorKind> {
-                ::core::result::Result::Ok(Self(::planus::table_reader::Table::from_buffer(
-                    buffer, offset,
-                )?))
-            }
-        }
-
-        impl<'a> ::planus::VectorReadInner<'a> for VerifyWebAuthnReqRef<'a> {
-            type Error = ::planus::Error;
-            const STRIDE: usize = 4;
-
-            unsafe fn from_buffer(
-                buffer: ::planus::SliceWithStartOffset<'a>,
-                offset: usize,
-            ) -> ::planus::Result<Self> {
-                ::planus::TableRead::from_buffer(buffer, offset).map_err(|error_kind| {
-                    error_kind.with_error_location(
-                        "[VerifyWebAuthnReqRef]",
-                        "get",
-                        buffer.offset_from_start,
-                    )
-                })
-            }
-        }
-
-        impl ::planus::VectorWrite<::planus::Offset<VerifyWebAuthnReq>> for VerifyWebAuthnReq {
-            type Value = ::planus::Offset<VerifyWebAuthnReq>;
-            const STRIDE: usize = 4;
-            #[inline]
-            fn prepare(&self, builder: &mut ::planus::Builder) -> Self::Value {
-                ::planus::WriteAs::prepare(self, builder)
-            }
-
-            #[inline]
-            unsafe fn write_values(
-                values: &[::planus::Offset<VerifyWebAuthnReq>],
-                bytes: *mut ::core::mem::MaybeUninit<u8>,
-                buffer_position: u32,
-            ) {
-                let bytes = bytes as *mut [::core::mem::MaybeUninit<u8>; 4];
-                for (i, v) in ::core::iter::Iterator::enumerate(values.iter()) {
-                    ::planus::WriteAsPrimitive::write(
-                        v,
-                        ::planus::Cursor::new(&mut *bytes.add(i)),
-                        buffer_position - (Self::STRIDE * i) as u32,
-                    );
-                }
-            }
-        }
-
-        impl<'a> ::planus::ReadAsRoot<'a> for VerifyWebAuthnReqRef<'a> {
-            fn read_as_root(slice: &'a [u8]) -> ::planus::Result<Self> {
-                ::planus::TableRead::from_buffer(
-                    ::planus::SliceWithStartOffset {
-                        buffer: slice,
-                        offset_from_start: 0,
-                    },
-                    0,
-                )
-                .map_err(|error_kind| {
-                    error_kind.with_error_location("[VerifyWebAuthnReqRef]", "read_as_root", 0)
-                })
-            }
-        }
-
-        /// The table `VerifyWebAuthnRes` in the namespace `Auth`
-        ///
-        /// Generated from these locations:
-        /// * Table `VerifyWebAuthnRes` in the file `auth/auth.fbs:39`
-        #[derive(
-            Clone,
-            Debug,
-            PartialEq,
-            PartialOrd,
-            Eq,
-            Ord,
-            Hash,
-            ::serde::Serialize,
-            ::serde::Deserialize,
-        )]
-        pub struct VerifyWebAuthnRes {
-            /// The field `token` in the table `VerifyWebAuthnRes`
-            pub token: ::core::option::Option<::planus::alloc::string::String>,
-        }
-
-        #[allow(clippy::derivable_impls)]
-        impl ::core::default::Default for VerifyWebAuthnRes {
-            fn default() -> Self {
-                Self {
-                    token: ::core::default::Default::default(),
-                }
-            }
-        }
-
-        impl VerifyWebAuthnRes {
-            /// Creates a [VerifyWebAuthnResBuilder] for serializing an instance of this table.
-            #[inline]
-            pub fn builder() -> VerifyWebAuthnResBuilder<()> {
-                VerifyWebAuthnResBuilder(())
-            }
-
-            #[allow(clippy::too_many_arguments)]
-            pub fn create(
-                builder: &mut ::planus::Builder,
-                field_token: impl ::planus::WriteAsOptional<::planus::Offset<::core::primitive::str>>,
-            ) -> ::planus::Offset<Self> {
-                let prepared_token = field_token.prepare(builder);
-
-                let mut table_writer: ::planus::table_writer::TableWriter<6> =
-                    ::core::default::Default::default();
-                if prepared_token.is_some() {
-                    table_writer.write_entry::<::planus::Offset<str>>(0);
-                }
-
-                unsafe {
-                    table_writer.finish(builder, |object_writer| {
-                        if let ::core::option::Option::Some(prepared_token) = prepared_token {
-                            object_writer.write::<_, _, 4>(&prepared_token);
-                        }
-                    });
-                }
-                builder.current_offset()
-            }
-        }
-
-        impl ::planus::WriteAs<::planus::Offset<VerifyWebAuthnRes>> for VerifyWebAuthnRes {
-            type Prepared = ::planus::Offset<Self>;
-
-            #[inline]
-            fn prepare(
-                &self,
-                builder: &mut ::planus::Builder,
-            ) -> ::planus::Offset<VerifyWebAuthnRes> {
-                ::planus::WriteAsOffset::prepare(self, builder)
-            }
-        }
-
-        impl ::planus::WriteAsOptional<::planus::Offset<VerifyWebAuthnRes>> for VerifyWebAuthnRes {
-            type Prepared = ::planus::Offset<Self>;
-
-            #[inline]
-            fn prepare(
-                &self,
-                builder: &mut ::planus::Builder,
-            ) -> ::core::option::Option<::planus::Offset<VerifyWebAuthnRes>> {
-                ::core::option::Option::Some(::planus::WriteAsOffset::prepare(self, builder))
-            }
-        }
-
-        impl ::planus::WriteAsOffset<VerifyWebAuthnRes> for VerifyWebAuthnRes {
-            #[inline]
-            fn prepare(
-                &self,
-                builder: &mut ::planus::Builder,
-            ) -> ::planus::Offset<VerifyWebAuthnRes> {
-                VerifyWebAuthnRes::create(builder, &self.token)
-            }
-        }
-
-        /// Builder for serializing an instance of the [VerifyWebAuthnRes] type.
-        ///
-        /// Can be created using the [VerifyWebAuthnRes::builder] method.
-        #[derive(Debug)]
-        #[must_use]
-        pub struct VerifyWebAuthnResBuilder<State>(State);
-
-        impl VerifyWebAuthnResBuilder<()> {
-            /// Setter for the [`token` field](VerifyWebAuthnRes#structfield.token).
-            #[inline]
-            #[allow(clippy::type_complexity)]
-            pub fn token<T0>(self, value: T0) -> VerifyWebAuthnResBuilder<(T0,)>
-            where
-                T0: ::planus::WriteAsOptional<::planus::Offset<::core::primitive::str>>,
-            {
-                VerifyWebAuthnResBuilder((value,))
-            }
-
-            /// Sets the [`token` field](VerifyWebAuthnRes#structfield.token) to null.
-            #[inline]
-            #[allow(clippy::type_complexity)]
-            pub fn token_as_null(self) -> VerifyWebAuthnResBuilder<((),)> {
-                self.token(())
-            }
-        }
-
-        impl<T0> VerifyWebAuthnResBuilder<(T0,)> {
-            /// Finish writing the builder to get an [Offset](::planus::Offset) to a serialized [VerifyWebAuthnRes].
-            #[inline]
-            pub fn finish(
-                self,
-                builder: &mut ::planus::Builder,
-            ) -> ::planus::Offset<VerifyWebAuthnRes>
-            where
-                Self: ::planus::WriteAsOffset<VerifyWebAuthnRes>,
-            {
-                ::planus::WriteAsOffset::prepare(&self, builder)
-            }
-        }
-
-        impl<T0: ::planus::WriteAsOptional<::planus::Offset<::core::primitive::str>>>
-            ::planus::WriteAs<::planus::Offset<VerifyWebAuthnRes>>
-            for VerifyWebAuthnResBuilder<(T0,)>
-        {
-            type Prepared = ::planus::Offset<VerifyWebAuthnRes>;
-
-            #[inline]
-            fn prepare(
-                &self,
-                builder: &mut ::planus::Builder,
-            ) -> ::planus::Offset<VerifyWebAuthnRes> {
-                ::planus::WriteAsOffset::prepare(self, builder)
-            }
-        }
-
-        impl<T0: ::planus::WriteAsOptional<::planus::Offset<::core::primitive::str>>>
-            ::planus::WriteAsOptional<::planus::Offset<VerifyWebAuthnRes>>
-            for VerifyWebAuthnResBuilder<(T0,)>
-        {
-            type Prepared = ::planus::Offset<VerifyWebAuthnRes>;
-
-            #[inline]
-            fn prepare(
-                &self,
-                builder: &mut ::planus::Builder,
-            ) -> ::core::option::Option<::planus::Offset<VerifyWebAuthnRes>> {
-                ::core::option::Option::Some(::planus::WriteAsOffset::prepare(self, builder))
-            }
-        }
-
-        impl<T0: ::planus::WriteAsOptional<::planus::Offset<::core::primitive::str>>>
-            ::planus::WriteAsOffset<VerifyWebAuthnRes> for VerifyWebAuthnResBuilder<(T0,)>
-        {
-            #[inline]
-            fn prepare(
-                &self,
-                builder: &mut ::planus::Builder,
-            ) -> ::planus::Offset<VerifyWebAuthnRes> {
-                let (v0,) = &self.0;
-                VerifyWebAuthnRes::create(builder, v0)
-            }
-        }
-
-        /// Reference to a deserialized [VerifyWebAuthnRes].
-        #[derive(Copy, Clone)]
-        pub struct VerifyWebAuthnResRef<'a>(::planus::table_reader::Table<'a>);
-
-        impl<'a> VerifyWebAuthnResRef<'a> {
-            /// Getter for the [`token` field](VerifyWebAuthnRes#structfield.token).
-            #[inline]
-            pub fn token(
-                &self,
-            ) -> ::planus::Result<::core::option::Option<&'a ::core::primitive::str>> {
-                self.0.access(0, "VerifyWebAuthnRes", "token")
-            }
-        }
-
-        impl<'a> ::core::fmt::Debug for VerifyWebAuthnResRef<'a> {
-            fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
-                let mut f = f.debug_struct("VerifyWebAuthnResRef");
-                if let ::core::option::Option::Some(field_token) = self.token().transpose() {
-                    f.field("token", &field_token);
-                }
-                f.finish()
-            }
-        }
-
-        impl<'a> ::core::convert::TryFrom<VerifyWebAuthnResRef<'a>> for VerifyWebAuthnRes {
-            type Error = ::planus::Error;
-
-            #[allow(unreachable_code)]
-            fn try_from(value: VerifyWebAuthnResRef<'a>) -> ::planus::Result<Self> {
-                ::core::result::Result::Ok(Self {
-                    token: if let ::core::option::Option::Some(token) = value.token()? {
-                        ::core::option::Option::Some(::core::convert::TryInto::try_into(token)?)
-                    } else {
-                        ::core::option::Option::None
-                    },
-                })
-            }
-        }
-
-        impl<'a> ::planus::TableRead<'a> for VerifyWebAuthnResRef<'a> {
-            #[inline]
-            fn from_buffer(
-                buffer: ::planus::SliceWithStartOffset<'a>,
-                offset: usize,
-            ) -> ::core::result::Result<Self, ::planus::errors::ErrorKind> {
-                ::core::result::Result::Ok(Self(::planus::table_reader::Table::from_buffer(
-                    buffer, offset,
-                )?))
-            }
-        }
-
-        impl<'a> ::planus::VectorReadInner<'a> for VerifyWebAuthnResRef<'a> {
-            type Error = ::planus::Error;
-            const STRIDE: usize = 4;
-
-            unsafe fn from_buffer(
-                buffer: ::planus::SliceWithStartOffset<'a>,
-                offset: usize,
-            ) -> ::planus::Result<Self> {
-                ::planus::TableRead::from_buffer(buffer, offset).map_err(|error_kind| {
-                    error_kind.with_error_location(
-                        "[VerifyWebAuthnResRef]",
-                        "get",
-                        buffer.offset_from_start,
-                    )
-                })
-            }
-        }
-
-        impl ::planus::VectorWrite<::planus::Offset<VerifyWebAuthnRes>> for VerifyWebAuthnRes {
-            type Value = ::planus::Offset<VerifyWebAuthnRes>;
-            const STRIDE: usize = 4;
-            #[inline]
-            fn prepare(&self, builder: &mut ::planus::Builder) -> Self::Value {
-                ::planus::WriteAs::prepare(self, builder)
-            }
-
-            #[inline]
-            unsafe fn write_values(
-                values: &[::planus::Offset<VerifyWebAuthnRes>],
-                bytes: *mut ::core::mem::MaybeUninit<u8>,
-                buffer_position: u32,
-            ) {
-                let bytes = bytes as *mut [::core::mem::MaybeUninit<u8>; 4];
-                for (i, v) in ::core::iter::Iterator::enumerate(values.iter()) {
-                    ::planus::WriteAsPrimitive::write(
-                        v,
-                        ::planus::Cursor::new(&mut *bytes.add(i)),
-                        buffer_position - (Self::STRIDE * i) as u32,
-                    );
-                }
-            }
-        }
-
-        impl<'a> ::planus::ReadAsRoot<'a> for VerifyWebAuthnResRef<'a> {
-            fn read_as_root(slice: &'a [u8]) -> ::planus::Result<Self> {
-                ::planus::TableRead::from_buffer(
-                    ::planus::SliceWithStartOffset {
-                        buffer: slice,
-                        offset_from_start: 0,
-                    },
-                    0,
-                )
-                .map_err(|error_kind| {
-                    error_kind.with_error_location("[VerifyWebAuthnResRef]", "read_as_root", 0)
-                })
-            }
-        }
-
-        /// The table `NumberRegistration` in the namespace `Auth`
-        ///
-        /// Generated from these locations:
-        /// * Table `NumberRegistration` in the file `auth/auth.fbs:43`
-        #[derive(
-            Clone,
-            Debug,
-            PartialEq,
-            PartialOrd,
-            Eq,
-            Ord,
-            Hash,
-            ::serde::Serialize,
-            ::serde::Deserialize,
-        )]
-        pub struct NumberRegistration {
-            /// The field `name` in the table `NumberRegistration`
-            pub name: ::core::option::Option<::planus::alloc::string::String>,
-            /// The field `code` in the table `NumberRegistration`
-            pub code: u64,
-        }
-
-        #[allow(clippy::derivable_impls)]
-        impl ::core::default::Default for NumberRegistration {
-            fn default() -> Self {
-                Self {
-                    name: ::core::default::Default::default(),
-                    code: 0,
-                }
-            }
-        }
-
-        impl NumberRegistration {
-            /// Creates a [NumberRegistrationBuilder] for serializing an instance of this table.
-            #[inline]
-            pub fn builder() -> NumberRegistrationBuilder<()> {
-                NumberRegistrationBuilder(())
-            }
-
-            #[allow(clippy::too_many_arguments)]
-            pub fn create(
-                builder: &mut ::planus::Builder,
-                field_name: impl ::planus::WriteAsOptional<::planus::Offset<::core::primitive::str>>,
-                field_code: impl ::planus::WriteAsDefault<u64, u64>,
-            ) -> ::planus::Offset<Self> {
-                let prepared_name = field_name.prepare(builder);
-                let prepared_code = field_code.prepare(builder, &0);
-
-                let mut table_writer: ::planus::table_writer::TableWriter<8> =
-                    ::core::default::Default::default();
-                if prepared_code.is_some() {
-                    table_writer.write_entry::<u64>(1);
-                }
-                if prepared_name.is_some() {
-                    table_writer.write_entry::<::planus::Offset<str>>(0);
-                }
-
-                unsafe {
-                    table_writer.finish(builder, |object_writer| {
-                        if let ::core::option::Option::Some(prepared_code) = prepared_code {
-                            object_writer.write::<_, _, 8>(&prepared_code);
-                        }
-                        if let ::core::option::Option::Some(prepared_name) = prepared_name {
-                            object_writer.write::<_, _, 4>(&prepared_name);
-                        }
-                    });
-                }
-                builder.current_offset()
-            }
-        }
-
-        impl ::planus::WriteAs<::planus::Offset<NumberRegistration>> for NumberRegistration {
-            type Prepared = ::planus::Offset<Self>;
-
-            #[inline]
-            fn prepare(
-                &self,
-                builder: &mut ::planus::Builder,
-            ) -> ::planus::Offset<NumberRegistration> {
-                ::planus::WriteAsOffset::prepare(self, builder)
-            }
-        }
-
-        impl ::planus::WriteAsOptional<::planus::Offset<NumberRegistration>> for NumberRegistration {
-            type Prepared = ::planus::Offset<Self>;
-
-            #[inline]
-            fn prepare(
-                &self,
-                builder: &mut ::planus::Builder,
-            ) -> ::core::option::Option<::planus::Offset<NumberRegistration>> {
-                ::core::option::Option::Some(::planus::WriteAsOffset::prepare(self, builder))
-            }
-        }
-
-        impl ::planus::WriteAsOffset<NumberRegistration> for NumberRegistration {
-            #[inline]
-            fn prepare(
-                &self,
-                builder: &mut ::planus::Builder,
-            ) -> ::planus::Offset<NumberRegistration> {
-                NumberRegistration::create(builder, &self.name, self.code)
-            }
-        }
-
-        /// Builder for serializing an instance of the [NumberRegistration] type.
-        ///
-        /// Can be created using the [NumberRegistration::builder] method.
-        #[derive(Debug)]
-        #[must_use]
-        pub struct NumberRegistrationBuilder<State>(State);
-
-        impl NumberRegistrationBuilder<()> {
-            /// Setter for the [`name` field](NumberRegistration#structfield.name).
-            #[inline]
-            #[allow(clippy::type_complexity)]
-            pub fn name<T0>(self, value: T0) -> NumberRegistrationBuilder<(T0,)>
-            where
-                T0: ::planus::WriteAsOptional<::planus::Offset<::core::primitive::str>>,
-            {
-                NumberRegistrationBuilder((value,))
-            }
-
-            /// Sets the [`name` field](NumberRegistration#structfield.name) to null.
-            #[inline]
-            #[allow(clippy::type_complexity)]
-            pub fn name_as_null(self) -> NumberRegistrationBuilder<((),)> {
-                self.name(())
-            }
-        }
-
-        impl<T0> NumberRegistrationBuilder<(T0,)> {
-            /// Setter for the [`code` field](NumberRegistration#structfield.code).
-            #[inline]
-            #[allow(clippy::type_complexity)]
-            pub fn code<T1>(self, value: T1) -> NumberRegistrationBuilder<(T0, T1)>
-            where
-                T1: ::planus::WriteAsDefault<u64, u64>,
-            {
-                let (v0,) = self.0;
-                NumberRegistrationBuilder((v0, value))
-            }
-
-            /// Sets the [`code` field](NumberRegistration#structfield.code) to the default value.
-            #[inline]
-            #[allow(clippy::type_complexity)]
-            pub fn code_as_default(
-                self,
-            ) -> NumberRegistrationBuilder<(T0, ::planus::DefaultValue)> {
-                self.code(::planus::DefaultValue)
-            }
-        }
-
-        impl<T0, T1> NumberRegistrationBuilder<(T0, T1)> {
-            /// Finish writing the builder to get an [Offset](::planus::Offset) to a serialized [NumberRegistration].
-            #[inline]
-            pub fn finish(
-                self,
-                builder: &mut ::planus::Builder,
-            ) -> ::planus::Offset<NumberRegistration>
-            where
-                Self: ::planus::WriteAsOffset<NumberRegistration>,
-            {
-                ::planus::WriteAsOffset::prepare(&self, builder)
-            }
-        }
-
-        impl<
-                T0: ::planus::WriteAsOptional<::planus::Offset<::core::primitive::str>>,
-                T1: ::planus::WriteAsDefault<u64, u64>,
-            > ::planus::WriteAs<::planus::Offset<NumberRegistration>>
-            for NumberRegistrationBuilder<(T0, T1)>
-        {
-            type Prepared = ::planus::Offset<NumberRegistration>;
-
-            #[inline]
-            fn prepare(
-                &self,
-                builder: &mut ::planus::Builder,
-            ) -> ::planus::Offset<NumberRegistration> {
-                ::planus::WriteAsOffset::prepare(self, builder)
-            }
-        }
-
-        impl<
-                T0: ::planus::WriteAsOptional<::planus::Offset<::core::primitive::str>>,
-                T1: ::planus::WriteAsDefault<u64, u64>,
-            > ::planus::WriteAsOptional<::planus::Offset<NumberRegistration>>
-            for NumberRegistrationBuilder<(T0, T1)>
-        {
-            type Prepared = ::planus::Offset<NumberRegistration>;
-
-            #[inline]
-            fn prepare(
-                &self,
-                builder: &mut ::planus::Builder,
-            ) -> ::core::option::Option<::planus::Offset<NumberRegistration>> {
-                ::core::option::Option::Some(::planus::WriteAsOffset::prepare(self, builder))
-            }
-        }
-
-        impl<
-                T0: ::planus::WriteAsOptional<::planus::Offset<::core::primitive::str>>,
-                T1: ::planus::WriteAsDefault<u64, u64>,
-            > ::planus::WriteAsOffset<NumberRegistration> for NumberRegistrationBuilder<(T0, T1)>
-        {
-            #[inline]
-            fn prepare(
-                &self,
-                builder: &mut ::planus::Builder,
-            ) -> ::planus::Offset<NumberRegistration> {
-                let (v0, v1) = &self.0;
-                NumberRegistration::create(builder, v0, v1)
-            }
-        }
-
-        /// Reference to a deserialized [NumberRegistration].
-        #[derive(Copy, Clone)]
-        pub struct NumberRegistrationRef<'a>(::planus::table_reader::Table<'a>);
-
-        impl<'a> NumberRegistrationRef<'a> {
-            /// Getter for the [`name` field](NumberRegistration#structfield.name).
-            #[inline]
-            pub fn name(
-                &self,
-            ) -> ::planus::Result<::core::option::Option<&'a ::core::primitive::str>> {
-                self.0.access(0, "NumberRegistration", "name")
-            }
-
-            /// Getter for the [`code` field](NumberRegistration#structfield.code).
-            #[inline]
-            pub fn code(&self) -> ::planus::Result<u64> {
-                ::core::result::Result::Ok(
-                    self.0.access(1, "NumberRegistration", "code")?.unwrap_or(0),
-                )
-            }
-        }
-
-        impl<'a> ::core::fmt::Debug for NumberRegistrationRef<'a> {
-            fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
-                let mut f = f.debug_struct("NumberRegistrationRef");
-                if let ::core::option::Option::Some(field_name) = self.name().transpose() {
-                    f.field("name", &field_name);
-                }
-                f.field("code", &self.code());
-                f.finish()
-            }
-        }
-
-        impl<'a> ::core::convert::TryFrom<NumberRegistrationRef<'a>> for NumberRegistration {
-            type Error = ::planus::Error;
-
-            #[allow(unreachable_code)]
-            fn try_from(value: NumberRegistrationRef<'a>) -> ::planus::Result<Self> {
-                ::core::result::Result::Ok(Self {
-                    name: if let ::core::option::Option::Some(name) = value.name()? {
-                        ::core::option::Option::Some(::core::convert::TryInto::try_into(name)?)
-                    } else {
-                        ::core::option::Option::None
-                    },
-                    code: ::core::convert::TryInto::try_into(value.code()?)?,
-                })
-            }
-        }
-
-        impl<'a> ::planus::TableRead<'a> for NumberRegistrationRef<'a> {
-            #[inline]
-            fn from_buffer(
-                buffer: ::planus::SliceWithStartOffset<'a>,
-                offset: usize,
-            ) -> ::core::result::Result<Self, ::planus::errors::ErrorKind> {
-                ::core::result::Result::Ok(Self(::planus::table_reader::Table::from_buffer(
-                    buffer, offset,
-                )?))
-            }
-        }
-
-        impl<'a> ::planus::VectorReadInner<'a> for NumberRegistrationRef<'a> {
-            type Error = ::planus::Error;
-            const STRIDE: usize = 4;
-
-            unsafe fn from_buffer(
-                buffer: ::planus::SliceWithStartOffset<'a>,
-                offset: usize,
-            ) -> ::planus::Result<Self> {
-                ::planus::TableRead::from_buffer(buffer, offset).map_err(|error_kind| {
-                    error_kind.with_error_location(
-                        "[NumberRegistrationRef]",
-                        "get",
-                        buffer.offset_from_start,
-                    )
-                })
-            }
-        }
-
-        impl ::planus::VectorWrite<::planus::Offset<NumberRegistration>> for NumberRegistration {
-            type Value = ::planus::Offset<NumberRegistration>;
-            const STRIDE: usize = 4;
-            #[inline]
-            fn prepare(&self, builder: &mut ::planus::Builder) -> Self::Value {
-                ::planus::WriteAs::prepare(self, builder)
-            }
-
-            #[inline]
-            unsafe fn write_values(
-                values: &[::planus::Offset<NumberRegistration>],
-                bytes: *mut ::core::mem::MaybeUninit<u8>,
-                buffer_position: u32,
-            ) {
-                let bytes = bytes as *mut [::core::mem::MaybeUninit<u8>; 4];
-                for (i, v) in ::core::iter::Iterator::enumerate(values.iter()) {
-                    ::planus::WriteAsPrimitive::write(
-                        v,
-                        ::planus::Cursor::new(&mut *bytes.add(i)),
-                        buffer_position - (Self::STRIDE * i) as u32,
-                    );
-                }
-            }
-        }
-
-        impl<'a> ::planus::ReadAsRoot<'a> for NumberRegistrationRef<'a> {
-            fn read_as_root(slice: &'a [u8]) -> ::planus::Result<Self> {
-                ::planus::TableRead::from_buffer(
-                    ::planus::SliceWithStartOffset {
-                        buffer: slice,
-                        offset_from_start: 0,
-                    },
-                    0,
-                )
-                .map_err(|error_kind| {
-                    error_kind.with_error_location("[NumberRegistrationRef]", "read_as_root", 0)
-                })
             }
         }
     }

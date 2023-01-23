@@ -1,12 +1,14 @@
 use std::io::Write;
 
 use interface::{
-    auth::*,
-    planus::{Builder, ReadAsRoot},
+    auth::api::{
+        ErrorRes, ErrorResRef, RegisterNumberReq, RegisterNumberRes, RegisterNumberResRef,
+        VerifyNumberReq, VerifyNumberRes, VerifyNumberResRef,
+    }, Builder, ReadAsRoot,
 };
-use reqwest::{StatusCode};
+use reqwest::StatusCode;
 
-use crate::inputs::{HOST, NAME, NUMBER}; 
+use crate::inputs::{HOST, NAME, NUMBER};
 
 mod inputs;
 
@@ -20,7 +22,7 @@ async fn main() {
         Ok(res) => {
             println!("Success: {:?}", res);
             res
-        },
+        }
         Err(err) => panic!(
             "Error: {:?}",
             err.error.unwrap_or("No error provided".to_string())
@@ -31,7 +33,10 @@ async fn main() {
     // wait for user to enter code
     let code = read_line("Enter code: ").parse::<u64>().unwrap();
     let start = std::time::Instant::now();
-    match client.verify_number(NUMBER, code * reg.multiplier as u64).await {
+    match client
+        .verify_number(NUMBER, code * reg.multiplier as u64)
+        .await
+    {
         Ok(res) => println!("Success: {:?}", res),
         Err(err) => panic!(
             "Error: {:?}",
@@ -50,35 +55,35 @@ impl Client {
         let client = reqwest::Client::new();
         // get a TLS connection
         client.head(HOST).send().await.unwrap();
-        Self {
-            client,
-        }
+        Self { client }
     }
 
     async fn register_number(
         &self,
-        name: &str, number: &str
+        name: &str,
+        number: &str,
     ) -> Result<RegisterNumberRes, ErrorRes> {
         let mut builder = Builder::new();
-    
+
         println!("building body");
         let body = RegisterNumberReq::builder()
             .name(name)
             .number(number)
             .finish(&mut builder);
-    
+
         println!("sending request");
-        let res = self.client
+        let res = self
+            .client
             .post(format!("{HOST}/auth/register-number"))
             .body(builder.finish(body, None).to_vec())
             .send()
             .await
             .unwrap();
-    
+
         let status = res.status();
         let bytes = res.bytes().await.unwrap();
         println!("got bytes with length {:?}", bytes.len());
-    
+
         match status {
             StatusCode::OK => Ok(RegisterNumberResRef::read_as_root(&bytes)
                 .unwrap()
@@ -90,7 +95,7 @@ impl Client {
                 .unwrap()),
         }
     }
-    
+
     async fn verify_number(&self, number: &str, code: u64) -> Result<VerifyNumberRes, ErrorRes> {
         let mut builder = Builder::new();
         println!("building body");
@@ -98,20 +103,21 @@ impl Client {
             .number(number)
             .code(code)
             .finish(&mut builder);
-    
+
         println!("sending request");
-        let res = self.client
+        let res = self
+            .client
             .post(format!("{HOST}/auth/verify-number"))
             .body(builder.finish(body, None).to_vec())
             .send()
             .await
             .unwrap();
         println!("got response");
-    
+
         let status = res.status();
         let bytes = res.bytes().await.unwrap();
         println!("got bytes with length {:?}", bytes.len());
-    
+
         match status {
             StatusCode::OK => Ok(VerifyNumberResRef::read_as_root(&bytes)
                 .unwrap()
@@ -123,9 +129,7 @@ impl Client {
                 .unwrap()),
         }
     }
-    
 }
-
 
 fn read_line(prompt: &str) -> String {
     print!("{}", prompt);
