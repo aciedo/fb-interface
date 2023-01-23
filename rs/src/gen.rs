@@ -48,7 +48,8 @@ mod root {
             }
 
             impl ErrorRes {
-                /// Creates a [ErrorResBuilder] for serializing an instance of this table.
+                /// Creates a [ErrorResBuilder] for serializing an instance of
+                /// this table.
                 #[inline]
                 pub fn builder() -> ErrorResBuilder<()> {
                     ErrorResBuilder(())
@@ -126,7 +127,8 @@ mod root {
                     ErrorResBuilder((value,))
                 }
 
-                /// Sets the [`error` field](ErrorRes#structfield.error) to null.
+                /// Sets the [`error` field](ErrorRes#structfield.error) to
+                /// null.
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn error_as_null(self) -> ErrorResBuilder<((),)> {
@@ -135,7 +137,8 @@ mod root {
             }
 
             impl<T0> ErrorResBuilder<(T0,)> {
-                /// Finish writing the builder to get an [Offset](::planus::Offset) to a serialized [ErrorRes].
+                /// Finish writing the builder to get an
+                /// [Offset](::planus::Offset) to a serialized [ErrorRes].
                 #[inline]
                 pub fn finish(self, builder: &mut ::planus::Builder) -> ::planus::Offset<ErrorRes>
                 where
@@ -323,7 +326,8 @@ mod root {
             }
 
             impl RegisterNumberReq {
-                /// Creates a [RegisterNumberReqBuilder] for serializing an instance of this table.
+                /// Creates a [RegisterNumberReqBuilder] for serializing an
+                /// instance of this table.
                 #[inline]
                 pub fn builder() -> RegisterNumberReqBuilder<()> {
                     RegisterNumberReqBuilder(())
@@ -397,7 +401,8 @@ mod root {
                 }
             }
 
-            /// Builder for serializing an instance of the [RegisterNumberReq] type.
+            /// Builder for serializing an instance of the [RegisterNumberReq]
+            /// type.
             ///
             /// Can be created using the [RegisterNumberReq::builder] method.
             #[derive(Debug)]
@@ -405,7 +410,8 @@ mod root {
             pub struct RegisterNumberReqBuilder<State>(State);
 
             impl RegisterNumberReqBuilder<()> {
-                /// Setter for the [`name` field](RegisterNumberReq#structfield.name).
+                /// Setter for the [`name`
+                /// field](RegisterNumberReq#structfield.name).
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn name<T0>(self, value: T0) -> RegisterNumberReqBuilder<(T0,)>
@@ -415,7 +421,8 @@ mod root {
                     RegisterNumberReqBuilder((value,))
                 }
 
-                /// Sets the [`name` field](RegisterNumberReq#structfield.name) to null.
+                /// Sets the [`name` field](RegisterNumberReq#structfield.name)
+                /// to null.
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn name_as_null(self) -> RegisterNumberReqBuilder<((),)> {
@@ -424,7 +431,8 @@ mod root {
             }
 
             impl<T0> RegisterNumberReqBuilder<(T0,)> {
-                /// Setter for the [`number` field](RegisterNumberReq#structfield.number).
+                /// Setter for the [`number`
+                /// field](RegisterNumberReq#structfield.number).
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn number<T1>(self, value: T1) -> RegisterNumberReqBuilder<(T0, T1)>
@@ -435,7 +443,8 @@ mod root {
                     RegisterNumberReqBuilder((v0, value))
                 }
 
-                /// Sets the [`number` field](RegisterNumberReq#structfield.number) to null.
+                /// Sets the [`number`
+                /// field](RegisterNumberReq#structfield.number) to null.
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn number_as_null(self) -> RegisterNumberReqBuilder<(T0, ())> {
@@ -444,7 +453,9 @@ mod root {
             }
 
             impl<T0, T1> RegisterNumberReqBuilder<(T0, T1)> {
-                /// Finish writing the builder to get an [Offset](::planus::Offset) to a serialized [RegisterNumberReq].
+                /// Finish writing the builder to get an
+                /// [Offset](::planus::Offset) to a serialized
+                /// [RegisterNumberReq].
                 #[inline]
                 pub fn finish(
                     self,
@@ -512,7 +523,8 @@ mod root {
             pub struct RegisterNumberReqRef<'a>(::planus::table_reader::Table<'a>);
 
             impl<'a> RegisterNumberReqRef<'a> {
-                /// Getter for the [`name` field](RegisterNumberReq#structfield.name).
+                /// Getter for the [`name`
+                /// field](RegisterNumberReq#structfield.name).
                 #[inline]
                 pub fn name(
                     &self,
@@ -521,7 +533,8 @@ mod root {
                     self.0.access(0, "RegisterNumberReq", "name")
                 }
 
-                /// Getter for the [`number` field](RegisterNumberReq#structfield.number).
+                /// Getter for the [`number`
+                /// field](RegisterNumberReq#structfield.number).
                 #[inline]
                 pub fn number(
                     &self,
@@ -664,7 +677,8 @@ mod root {
             }
 
             impl RegisterNumberRes {
-                /// Creates a [RegisterNumberResBuilder] for serializing an instance of this table.
+                /// Creates a [RegisterNumberResBuilder] for serializing an
+                /// instance of this table.
                 #[inline]
                 pub fn builder() -> RegisterNumberResBuilder<()> {
                     RegisterNumberResBuilder(())
@@ -730,7 +744,8 @@ mod root {
                 }
             }
 
-            /// Builder for serializing an instance of the [RegisterNumberRes] type.
+            /// Builder for serializing an instance of the [RegisterNumberRes]
+            /// type.
             ///
             /// Can be created using the [RegisterNumberRes::builder] method.
             #[derive(Debug)]
@@ -738,7 +753,8 @@ mod root {
             pub struct RegisterNumberResBuilder<State>(State);
 
             impl RegisterNumberResBuilder<()> {
-                /// Setter for the [`multiplier` field](RegisterNumberRes#structfield.multiplier).
+                /// Setter for the [`multiplier`
+                /// field](RegisterNumberRes#structfield.multiplier).
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn multiplier<T0>(self, value: T0) -> RegisterNumberResBuilder<(T0,)>
@@ -748,7 +764,9 @@ mod root {
                     RegisterNumberResBuilder((value,))
                 }
 
-                /// Sets the [`multiplier` field](RegisterNumberRes#structfield.multiplier) to the default value.
+                /// Sets the [`multiplier`
+                /// field](RegisterNumberRes#structfield.multiplier) to the
+                /// default value.
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn multiplier_as_default(
@@ -759,7 +777,9 @@ mod root {
             }
 
             impl<T0> RegisterNumberResBuilder<(T0,)> {
-                /// Finish writing the builder to get an [Offset](::planus::Offset) to a serialized [RegisterNumberRes].
+                /// Finish writing the builder to get an
+                /// [Offset](::planus::Offset) to a serialized
+                /// [RegisterNumberRes].
                 #[inline]
                 pub fn finish(
                     self,
@@ -820,7 +840,8 @@ mod root {
             pub struct RegisterNumberResRef<'a>(::planus::table_reader::Table<'a>);
 
             impl<'a> RegisterNumberResRef<'a> {
-                /// Getter for the [`multiplier` field](RegisterNumberRes#structfield.multiplier).
+                /// Getter for the [`multiplier`
+                /// field](RegisterNumberRes#structfield.multiplier).
                 #[inline]
                 pub fn multiplier(&self) -> ::planus::Result<u32> {
                     ::core::result::Result::Ok(
@@ -953,7 +974,8 @@ mod root {
             }
 
             impl VerifyNumberReq {
-                /// Creates a [VerifyNumberReqBuilder] for serializing an instance of this table.
+                /// Creates a [VerifyNumberReqBuilder] for serializing an
+                /// instance of this table.
                 #[inline]
                 pub fn builder() -> VerifyNumberReqBuilder<()> {
                     VerifyNumberReqBuilder(())
@@ -1027,7 +1049,8 @@ mod root {
                 }
             }
 
-            /// Builder for serializing an instance of the [VerifyNumberReq] type.
+            /// Builder for serializing an instance of the [VerifyNumberReq]
+            /// type.
             ///
             /// Can be created using the [VerifyNumberReq::builder] method.
             #[derive(Debug)]
@@ -1035,7 +1058,8 @@ mod root {
             pub struct VerifyNumberReqBuilder<State>(State);
 
             impl VerifyNumberReqBuilder<()> {
-                /// Setter for the [`number` field](VerifyNumberReq#structfield.number).
+                /// Setter for the [`number`
+                /// field](VerifyNumberReq#structfield.number).
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn number<T0>(self, value: T0) -> VerifyNumberReqBuilder<(T0,)>
@@ -1045,7 +1069,8 @@ mod root {
                     VerifyNumberReqBuilder((value,))
                 }
 
-                /// Sets the [`number` field](VerifyNumberReq#structfield.number) to null.
+                /// Sets the [`number`
+                /// field](VerifyNumberReq#structfield.number) to null.
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn number_as_null(self) -> VerifyNumberReqBuilder<((),)> {
@@ -1054,7 +1079,8 @@ mod root {
             }
 
             impl<T0> VerifyNumberReqBuilder<(T0,)> {
-                /// Setter for the [`code` field](VerifyNumberReq#structfield.code).
+                /// Setter for the [`code`
+                /// field](VerifyNumberReq#structfield.code).
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn code<T1>(self, value: T1) -> VerifyNumberReqBuilder<(T0, T1)>
@@ -1065,7 +1091,8 @@ mod root {
                     VerifyNumberReqBuilder((v0, value))
                 }
 
-                /// Sets the [`code` field](VerifyNumberReq#structfield.code) to the default value.
+                /// Sets the [`code` field](VerifyNumberReq#structfield.code) to
+                /// the default value.
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn code_as_default(
@@ -1076,7 +1103,9 @@ mod root {
             }
 
             impl<T0, T1> VerifyNumberReqBuilder<(T0, T1)> {
-                /// Finish writing the builder to get an [Offset](::planus::Offset) to a serialized [VerifyNumberReq].
+                /// Finish writing the builder to get an
+                /// [Offset](::planus::Offset) to a serialized
+                /// [VerifyNumberReq].
                 #[inline]
                 pub fn finish(
                     self,
@@ -1143,7 +1172,8 @@ mod root {
             pub struct VerifyNumberReqRef<'a>(::planus::table_reader::Table<'a>);
 
             impl<'a> VerifyNumberReqRef<'a> {
-                /// Getter for the [`number` field](VerifyNumberReq#structfield.number).
+                /// Getter for the [`number`
+                /// field](VerifyNumberReq#structfield.number).
                 #[inline]
                 pub fn number(
                     &self,
@@ -1152,7 +1182,8 @@ mod root {
                     self.0.access(0, "VerifyNumberReq", "number")
                 }
 
-                /// Getter for the [`code` field](VerifyNumberReq#structfield.code).
+                /// Getter for the [`code`
+                /// field](VerifyNumberReq#structfield.code).
                 #[inline]
                 pub fn code(&self) -> ::planus::Result<u64> {
                     ::core::result::Result::Ok(
@@ -1292,7 +1323,8 @@ mod root {
             }
 
             impl VerifyNumberRes {
-                /// Creates a [VerifyNumberResBuilder] for serializing an instance of this table.
+                /// Creates a [VerifyNumberResBuilder] for serializing an
+                /// instance of this table.
                 #[inline]
                 pub fn builder() -> VerifyNumberResBuilder<()> {
                     VerifyNumberResBuilder(())
@@ -1359,7 +1391,8 @@ mod root {
                 }
             }
 
-            /// Builder for serializing an instance of the [VerifyNumberRes] type.
+            /// Builder for serializing an instance of the [VerifyNumberRes]
+            /// type.
             ///
             /// Can be created using the [VerifyNumberRes::builder] method.
             #[derive(Debug)]
@@ -1367,7 +1400,8 @@ mod root {
             pub struct VerifyNumberResBuilder<State>(State);
 
             impl VerifyNumberResBuilder<()> {
-                /// Setter for the [`options` field](VerifyNumberRes#structfield.options).
+                /// Setter for the [`options`
+                /// field](VerifyNumberRes#structfield.options).
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn options<T0>(self, value: T0) -> VerifyNumberResBuilder<(T0,)>
@@ -1379,7 +1413,8 @@ mod root {
                     VerifyNumberResBuilder((value,))
                 }
 
-                /// Sets the [`options` field](VerifyNumberRes#structfield.options) to null.
+                /// Sets the [`options`
+                /// field](VerifyNumberRes#structfield.options) to null.
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn options_as_null(self) -> VerifyNumberResBuilder<((),)> {
@@ -1388,7 +1423,9 @@ mod root {
             }
 
             impl<T0> VerifyNumberResBuilder<(T0,)> {
-                /// Finish writing the builder to get an [Offset](::planus::Offset) to a serialized [VerifyNumberRes].
+                /// Finish writing the builder to get an
+                /// [Offset](::planus::Offset) to a serialized
+                /// [VerifyNumberRes].
                 #[inline]
                 pub fn finish(
                     self,
@@ -1458,7 +1495,8 @@ mod root {
             pub struct VerifyNumberResRef<'a>(::planus::table_reader::Table<'a>);
 
             impl<'a> VerifyNumberResRef<'a> {
-                /// Getter for the [`options` field](VerifyNumberRes#structfield.options).
+                /// Getter for the [`options`
+                /// field](VerifyNumberRes#structfield.options).
                 #[inline]
                 pub fn options(
                     &self,
@@ -1605,7 +1643,8 @@ mod root {
             }
 
             impl VerifyWebAuthnReq {
-                /// Creates a [VerifyWebAuthnReqBuilder] for serializing an instance of this table.
+                /// Creates a [VerifyWebAuthnReqBuilder] for serializing an
+                /// instance of this table.
                 #[inline]
                 pub fn builder() -> VerifyWebAuthnReqBuilder<()> {
                     VerifyWebAuthnReqBuilder(())
@@ -1689,7 +1728,8 @@ mod root {
                 }
             }
 
-            /// Builder for serializing an instance of the [VerifyWebAuthnReq] type.
+            /// Builder for serializing an instance of the [VerifyWebAuthnReq]
+            /// type.
             ///
             /// Can be created using the [VerifyWebAuthnReq::builder] method.
             #[derive(Debug)]
@@ -1697,7 +1737,8 @@ mod root {
             pub struct VerifyWebAuthnReqBuilder<State>(State);
 
             impl VerifyWebAuthnReqBuilder<()> {
-                /// Setter for the [`name` field](VerifyWebAuthnReq#structfield.name).
+                /// Setter for the [`name`
+                /// field](VerifyWebAuthnReq#structfield.name).
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn name<T0>(self, value: T0) -> VerifyWebAuthnReqBuilder<(T0,)>
@@ -1707,7 +1748,8 @@ mod root {
                     VerifyWebAuthnReqBuilder((value,))
                 }
 
-                /// Sets the [`name` field](VerifyWebAuthnReq#structfield.name) to null.
+                /// Sets the [`name` field](VerifyWebAuthnReq#structfield.name)
+                /// to null.
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn name_as_null(self) -> VerifyWebAuthnReqBuilder<((),)> {
@@ -1716,7 +1758,8 @@ mod root {
             }
 
             impl<T0> VerifyWebAuthnReqBuilder<(T0,)> {
-                /// Setter for the [`id` field](VerifyWebAuthnReq#structfield.id).
+                /// Setter for the [`id`
+                /// field](VerifyWebAuthnReq#structfield.id).
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn id<T1>(self, value: T1) -> VerifyWebAuthnReqBuilder<(T0, T1)>
@@ -1727,7 +1770,8 @@ mod root {
                     VerifyWebAuthnReqBuilder((v0, value))
                 }
 
-                /// Sets the [`id` field](VerifyWebAuthnReq#structfield.id) to null.
+                /// Sets the [`id` field](VerifyWebAuthnReq#structfield.id) to
+                /// null.
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn id_as_null(self) -> VerifyWebAuthnReqBuilder<(T0, ())> {
@@ -1736,7 +1780,8 @@ mod root {
             }
 
             impl<T0, T1> VerifyWebAuthnReqBuilder<(T0, T1)> {
-                /// Setter for the [`webauthn` field](VerifyWebAuthnReq#structfield.webauthn).
+                /// Setter for the [`webauthn`
+                /// field](VerifyWebAuthnReq#structfield.webauthn).
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn webauthn<T2>(self, value: T2) -> VerifyWebAuthnReqBuilder<(T0, T1, T2)>
@@ -1749,7 +1794,8 @@ mod root {
                     VerifyWebAuthnReqBuilder((v0, v1, value))
                 }
 
-                /// Sets the [`webauthn` field](VerifyWebAuthnReq#structfield.webauthn) to null.
+                /// Sets the [`webauthn`
+                /// field](VerifyWebAuthnReq#structfield.webauthn) to null.
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn webauthn_as_null(self) -> VerifyWebAuthnReqBuilder<(T0, T1, ())> {
@@ -1758,7 +1804,9 @@ mod root {
             }
 
             impl<T0, T1, T2> VerifyWebAuthnReqBuilder<(T0, T1, T2)> {
-                /// Finish writing the builder to get an [Offset](::planus::Offset) to a serialized [VerifyWebAuthnReq].
+                /// Finish writing the builder to get an
+                /// [Offset](::planus::Offset) to a serialized
+                /// [VerifyWebAuthnReq].
                 #[inline]
                 pub fn finish(
                     self,
@@ -1835,7 +1883,8 @@ mod root {
             pub struct VerifyWebAuthnReqRef<'a>(::planus::table_reader::Table<'a>);
 
             impl<'a> VerifyWebAuthnReqRef<'a> {
-                /// Getter for the [`name` field](VerifyWebAuthnReq#structfield.name).
+                /// Getter for the [`name`
+                /// field](VerifyWebAuthnReq#structfield.name).
                 #[inline]
                 pub fn name(
                     &self,
@@ -1844,7 +1893,8 @@ mod root {
                     self.0.access(0, "VerifyWebAuthnReq", "name")
                 }
 
-                /// Getter for the [`id` field](VerifyWebAuthnReq#structfield.id).
+                /// Getter for the [`id`
+                /// field](VerifyWebAuthnReq#structfield.id).
                 #[inline]
                 pub fn id(
                     &self,
@@ -1853,7 +1903,8 @@ mod root {
                     self.0.access(1, "VerifyWebAuthnReq", "id")
                 }
 
-                /// Getter for the [`webauthn` field](VerifyWebAuthnReq#structfield.webauthn).
+                /// Getter for the [`webauthn`
+                /// field](VerifyWebAuthnReq#structfield.webauthn).
                 #[inline]
                 pub fn webauthn(
                     &self,
@@ -2011,7 +2062,8 @@ mod root {
             }
 
             impl VerifyWebAuthnRes {
-                /// Creates a [VerifyWebAuthnResBuilder] for serializing an instance of this table.
+                /// Creates a [VerifyWebAuthnResBuilder] for serializing an
+                /// instance of this table.
                 #[inline]
                 pub fn builder() -> VerifyWebAuthnResBuilder<()> {
                     VerifyWebAuthnResBuilder(())
@@ -2077,7 +2129,8 @@ mod root {
                 }
             }
 
-            /// Builder for serializing an instance of the [VerifyWebAuthnRes] type.
+            /// Builder for serializing an instance of the [VerifyWebAuthnRes]
+            /// type.
             ///
             /// Can be created using the [VerifyWebAuthnRes::builder] method.
             #[derive(Debug)]
@@ -2085,7 +2138,8 @@ mod root {
             pub struct VerifyWebAuthnResBuilder<State>(State);
 
             impl VerifyWebAuthnResBuilder<()> {
-                /// Setter for the [`token` field](VerifyWebAuthnRes#structfield.token).
+                /// Setter for the [`token`
+                /// field](VerifyWebAuthnRes#structfield.token).
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn token<T0>(self, value: T0) -> VerifyWebAuthnResBuilder<(T0,)>
@@ -2095,7 +2149,8 @@ mod root {
                     VerifyWebAuthnResBuilder((value,))
                 }
 
-                /// Sets the [`token` field](VerifyWebAuthnRes#structfield.token) to null.
+                /// Sets the [`token`
+                /// field](VerifyWebAuthnRes#structfield.token) to null.
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn token_as_null(self) -> VerifyWebAuthnResBuilder<((),)> {
@@ -2104,7 +2159,9 @@ mod root {
             }
 
             impl<T0> VerifyWebAuthnResBuilder<(T0,)> {
-                /// Finish writing the builder to get an [Offset](::planus::Offset) to a serialized [VerifyWebAuthnRes].
+                /// Finish writing the builder to get an
+                /// [Offset](::planus::Offset) to a serialized
+                /// [VerifyWebAuthnRes].
                 #[inline]
                 pub fn finish(
                     self,
@@ -2165,7 +2222,8 @@ mod root {
             pub struct VerifyWebAuthnResRef<'a>(::planus::table_reader::Table<'a>);
 
             impl<'a> VerifyWebAuthnResRef<'a> {
-                /// Getter for the [`token` field](VerifyWebAuthnRes#structfield.token).
+                /// Getter for the [`token`
+                /// field](VerifyWebAuthnRes#structfield.token).
                 #[inline]
                 pub fn token(
                     &self,
@@ -2275,10 +2333,12 @@ mod root {
         /// Generated from these locations:
         /// * File `auth/webauthn.fbs`
         pub mod web_authn {
-            /// The enum `AttestationConveyancePreference` in the namespace `Auth.WebAuthn`
+            /// The enum `AttestationConveyancePreference` in the namespace
+            /// `Auth.WebAuthn`
             ///
             /// Generated from these locations:
-            /// * Enum `AttestationConveyancePreference` in the file `auth/webauthn.fbs:3`
+            /// * Enum `AttestationConveyancePreference` in the file
+            ///   `auth/webauthn.fbs:3`
             #[derive(
                 Copy,
                 Clone,
@@ -2307,7 +2367,8 @@ mod root {
             }
 
             impl AttestationConveyancePreference {
-                /// Array containing all valid variants of AttestationConveyancePreference
+                /// Array containing all valid variants of
+                /// AttestationConveyancePreference
                 pub const ENUM_VALUES: [Self; 3] = [Self::None, Self::Indirect, Self::Direct];
             }
 
@@ -2464,10 +2525,12 @@ mod root {
                 }
             }
 
-            /// The table `CredentialCreationOptions` in the namespace `Auth.WebAuthn`
+            /// The table `CredentialCreationOptions` in the namespace
+            /// `Auth.WebAuthn`
             ///
             /// Generated from these locations:
-            /// * Table `CredentialCreationOptions` in the file `auth/webauthn.fbs:17`
+            /// * Table `CredentialCreationOptions` in the file
+            ///   `auth/webauthn.fbs:17`
             #[derive(
                 Clone,
                 Debug,
@@ -2489,15 +2552,18 @@ mod root {
                 ///  The set of cryptographic types allowed by this server.
                 pub pub_key_cred_params:
                     ::core::option::Option<::planus::alloc::vec::Vec<self::PubKeyCredParams>>,
-                ///  The timeout for the authenticator to stop accepting the operation
+                ///  The timeout for the authenticator to stop accepting the
+                /// operation
                 pub timeout: u32,
                 ///  The requested attestation level from the device.
                 pub attestation: self::AttestationConveyancePreference,
-                ///  The list of credentials that are excluded from this operation.
+                ///  The list of credentials that are excluded from this
+                /// operation.
                 pub exclude_credentials: ::core::option::Option<
                     ::planus::alloc::vec::Vec<self::PublicKeyCredentialDescriptor>,
                 >,
-                ///  The list of authenticators that are allowed for this operation.
+                ///  The list of authenticators that are allowed for this
+                /// operation.
                 pub authenticator_selection: ::core::option::Option<
                     ::planus::alloc::boxed::Box<self::AuthenticatorSelectionCriteria>,
                 >,
@@ -2525,7 +2591,8 @@ mod root {
             }
 
             impl CredentialCreationOptions {
-                /// Creates a [CredentialCreationOptionsBuilder] for serializing an instance of this table.
+                /// Creates a [CredentialCreationOptionsBuilder] for serializing
+                /// an instance of this table.
                 #[inline]
                 pub fn builder() -> CredentialCreationOptionsBuilder<()> {
                     CredentialCreationOptionsBuilder(())
@@ -2703,15 +2770,18 @@ mod root {
                 }
             }
 
-            /// Builder for serializing an instance of the [CredentialCreationOptions] type.
+            /// Builder for serializing an instance of the
+            /// [CredentialCreationOptions] type.
             ///
-            /// Can be created using the [CredentialCreationOptions::builder] method.
+            /// Can be created using the [CredentialCreationOptions::builder]
+            /// method.
             #[derive(Debug)]
             #[must_use]
             pub struct CredentialCreationOptionsBuilder<State>(State);
 
             impl CredentialCreationOptionsBuilder<()> {
-                /// Setter for the [`rp` field](CredentialCreationOptions#structfield.rp).
+                /// Setter for the [`rp`
+                /// field](CredentialCreationOptions#structfield.rp).
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn rp<T0>(self, value: T0) -> CredentialCreationOptionsBuilder<(T0,)>
@@ -2721,7 +2791,8 @@ mod root {
                     CredentialCreationOptionsBuilder((value,))
                 }
 
-                /// Sets the [`rp` field](CredentialCreationOptions#structfield.rp) to null.
+                /// Sets the [`rp`
+                /// field](CredentialCreationOptions#structfield.rp) to null.
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn rp_as_null(self) -> CredentialCreationOptionsBuilder<((),)> {
@@ -2730,7 +2801,8 @@ mod root {
             }
 
             impl<T0> CredentialCreationOptionsBuilder<(T0,)> {
-                /// Setter for the [`user` field](CredentialCreationOptions#structfield.user).
+                /// Setter for the [`user`
+                /// field](CredentialCreationOptions#structfield.user).
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn user<T1>(self, value: T1) -> CredentialCreationOptionsBuilder<(T0, T1)>
@@ -2741,7 +2813,8 @@ mod root {
                     CredentialCreationOptionsBuilder((v0, value))
                 }
 
-                /// Sets the [`user` field](CredentialCreationOptions#structfield.user) to null.
+                /// Sets the [`user`
+                /// field](CredentialCreationOptions#structfield.user) to null.
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn user_as_null(self) -> CredentialCreationOptionsBuilder<(T0, ())> {
@@ -2750,7 +2823,8 @@ mod root {
             }
 
             impl<T0, T1> CredentialCreationOptionsBuilder<(T0, T1)> {
-                /// Setter for the [`challenge` field](CredentialCreationOptions#structfield.challenge).
+                /// Setter for the [`challenge`
+                /// field](CredentialCreationOptions#structfield.challenge).
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn challenge<T2>(
@@ -2764,7 +2838,9 @@ mod root {
                     CredentialCreationOptionsBuilder((v0, v1, value))
                 }
 
-                /// Sets the [`challenge` field](CredentialCreationOptions#structfield.challenge) to null.
+                /// Sets the [`challenge`
+                /// field](CredentialCreationOptions#structfield.challenge) to
+                /// null.
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn challenge_as_null(self) -> CredentialCreationOptionsBuilder<(T0, T1, ())> {
@@ -2773,7 +2849,9 @@ mod root {
             }
 
             impl<T0, T1, T2> CredentialCreationOptionsBuilder<(T0, T1, T2)> {
-                /// Setter for the [`pub_key_cred_params` field](CredentialCreationOptions#structfield.pub_key_cred_params).
+                /// Setter for the [`pub_key_cred_params`
+                /// field](CredentialCreationOptions#structfield.
+                /// pub_key_cred_params).
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn pub_key_cred_params<T3>(
@@ -2789,7 +2867,9 @@ mod root {
                     CredentialCreationOptionsBuilder((v0, v1, v2, value))
                 }
 
-                /// Sets the [`pub_key_cred_params` field](CredentialCreationOptions#structfield.pub_key_cred_params) to null.
+                /// Sets the [`pub_key_cred_params`
+                /// field](CredentialCreationOptions#structfield.
+                /// pub_key_cred_params) to null.
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn pub_key_cred_params_as_null(
@@ -2800,7 +2880,8 @@ mod root {
             }
 
             impl<T0, T1, T2, T3> CredentialCreationOptionsBuilder<(T0, T1, T2, T3)> {
-                /// Setter for the [`timeout` field](CredentialCreationOptions#structfield.timeout).
+                /// Setter for the [`timeout`
+                /// field](CredentialCreationOptions#structfield.timeout).
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn timeout<T4>(
@@ -2814,7 +2895,9 @@ mod root {
                     CredentialCreationOptionsBuilder((v0, v1, v2, v3, value))
                 }
 
-                /// Sets the [`timeout` field](CredentialCreationOptions#structfield.timeout) to the default value.
+                /// Sets the [`timeout`
+                /// field](CredentialCreationOptions#structfield.timeout) to the
+                /// default value.
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn timeout_as_default(
@@ -2826,7 +2909,8 @@ mod root {
             }
 
             impl<T0, T1, T2, T3, T4> CredentialCreationOptionsBuilder<(T0, T1, T2, T3, T4)> {
-                /// Setter for the [`attestation` field](CredentialCreationOptions#structfield.attestation).
+                /// Setter for the [`attestation`
+                /// field](CredentialCreationOptions#structfield.attestation).
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn attestation<T5>(
@@ -2843,7 +2927,9 @@ mod root {
                     CredentialCreationOptionsBuilder((v0, v1, v2, v3, v4, value))
                 }
 
-                /// Sets the [`attestation` field](CredentialCreationOptions#structfield.attestation) to the default value.
+                /// Sets the [`attestation`
+                /// field](CredentialCreationOptions#structfield.attestation) to
+                /// the default value.
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn attestation_as_default(
@@ -2855,7 +2941,9 @@ mod root {
             }
 
             impl<T0, T1, T2, T3, T4, T5> CredentialCreationOptionsBuilder<(T0, T1, T2, T3, T4, T5)> {
-                /// Setter for the [`exclude_credentials` field](CredentialCreationOptions#structfield.exclude_credentials).
+                /// Setter for the [`exclude_credentials`
+                /// field](CredentialCreationOptions#structfield.
+                /// exclude_credentials).
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn exclude_credentials<T6>(
@@ -2871,7 +2959,9 @@ mod root {
                     CredentialCreationOptionsBuilder((v0, v1, v2, v3, v4, v5, value))
                 }
 
-                /// Sets the [`exclude_credentials` field](CredentialCreationOptions#structfield.exclude_credentials) to null.
+                /// Sets the [`exclude_credentials`
+                /// field](CredentialCreationOptions#structfield.
+                /// exclude_credentials) to null.
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn exclude_credentials_as_null(
@@ -2883,7 +2973,9 @@ mod root {
             }
 
             impl<T0, T1, T2, T3, T4, T5, T6> CredentialCreationOptionsBuilder<(T0, T1, T2, T3, T4, T5, T6)> {
-                /// Setter for the [`authenticator_selection` field](CredentialCreationOptions#structfield.authenticator_selection).
+                /// Setter for the [`authenticator_selection`
+                /// field](CredentialCreationOptions#structfield.
+                /// authenticator_selection).
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn authenticator_selection<T7>(
@@ -2899,7 +2991,9 @@ mod root {
                     CredentialCreationOptionsBuilder((v0, v1, v2, v3, v4, v5, v6, value))
                 }
 
-                /// Sets the [`authenticator_selection` field](CredentialCreationOptions#structfield.authenticator_selection) to null.
+                /// Sets the [`authenticator_selection`
+                /// field](CredentialCreationOptions#structfield.
+                /// authenticator_selection) to null.
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn authenticator_selection_as_null(
@@ -2913,7 +3007,8 @@ mod root {
             impl<T0, T1, T2, T3, T4, T5, T6, T7>
                 CredentialCreationOptionsBuilder<(T0, T1, T2, T3, T4, T5, T6, T7)>
             {
-                /// Setter for the [`extensions` field](CredentialCreationOptions#structfield.extensions).
+                /// Setter for the [`extensions`
+                /// field](CredentialCreationOptions#structfield.extensions).
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn extensions<T8>(
@@ -2929,7 +3024,9 @@ mod root {
                     CredentialCreationOptionsBuilder((v0, v1, v2, v3, v4, v5, v6, v7, value))
                 }
 
-                /// Sets the [`extensions` field](CredentialCreationOptions#structfield.extensions) to null.
+                /// Sets the [`extensions`
+                /// field](CredentialCreationOptions#structfield.extensions) to
+                /// null.
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn extensions_as_null(
@@ -2943,7 +3040,9 @@ mod root {
             impl<T0, T1, T2, T3, T4, T5, T6, T7, T8>
                 CredentialCreationOptionsBuilder<(T0, T1, T2, T3, T4, T5, T6, T7, T8)>
             {
-                /// Finish writing the builder to get an [Offset](::planus::Offset) to a serialized [CredentialCreationOptions].
+                /// Finish writing the builder to get an
+                /// [Offset](::planus::Offset) to a serialized
+                /// [CredentialCreationOptions].
                 #[inline]
                 pub fn finish(
                     self,
@@ -3066,7 +3165,8 @@ mod root {
             pub struct CredentialCreationOptionsRef<'a>(::planus::table_reader::Table<'a>);
 
             impl<'a> CredentialCreationOptionsRef<'a> {
-                /// Getter for the [`rp` field](CredentialCreationOptions#structfield.rp).
+                /// Getter for the [`rp`
+                /// field](CredentialCreationOptions#structfield.rp).
                 #[inline]
                 pub fn rp(
                     &self,
@@ -3075,13 +3175,15 @@ mod root {
                     self.0.access(0, "CredentialCreationOptions", "rp")
                 }
 
-                /// Getter for the [`user` field](CredentialCreationOptions#structfield.user).
+                /// Getter for the [`user`
+                /// field](CredentialCreationOptions#structfield.user).
                 #[inline]
                 pub fn user(&self) -> ::planus::Result<::core::option::Option<self::UserRef<'a>>> {
                     self.0.access(1, "CredentialCreationOptions", "user")
                 }
 
-                /// Getter for the [`challenge` field](CredentialCreationOptions#structfield.challenge).
+                /// Getter for the [`challenge`
+                /// field](CredentialCreationOptions#structfield.challenge).
                 #[inline]
                 pub fn challenge(
                     &self,
@@ -3090,7 +3192,9 @@ mod root {
                     self.0.access(2, "CredentialCreationOptions", "challenge")
                 }
 
-                /// Getter for the [`pub_key_cred_params` field](CredentialCreationOptions#structfield.pub_key_cred_params).
+                /// Getter for the [`pub_key_cred_params`
+                /// field](CredentialCreationOptions#structfield.
+                /// pub_key_cred_params).
                 #[inline]
                 pub fn pub_key_cred_params(
                     &self,
@@ -3103,7 +3207,8 @@ mod root {
                         .access(3, "CredentialCreationOptions", "pub_key_cred_params")
                 }
 
-                /// Getter for the [`timeout` field](CredentialCreationOptions#structfield.timeout).
+                /// Getter for the [`timeout`
+                /// field](CredentialCreationOptions#structfield.timeout).
                 #[inline]
                 pub fn timeout(&self) -> ::planus::Result<u32> {
                     ::core::result::Result::Ok(
@@ -3113,7 +3218,8 @@ mod root {
                     )
                 }
 
-                /// Getter for the [`attestation` field](CredentialCreationOptions#structfield.attestation).
+                /// Getter for the [`attestation`
+                /// field](CredentialCreationOptions#structfield.attestation).
                 #[inline]
                 pub fn attestation(
                     &self,
@@ -3125,7 +3231,9 @@ mod root {
                     )
                 }
 
-                /// Getter for the [`exclude_credentials` field](CredentialCreationOptions#structfield.exclude_credentials).
+                /// Getter for the [`exclude_credentials`
+                /// field](CredentialCreationOptions#structfield.
+                /// exclude_credentials).
                 #[inline]
                 pub fn exclude_credentials(
                     &self,
@@ -3141,7 +3249,9 @@ mod root {
                         .access(6, "CredentialCreationOptions", "exclude_credentials")
                 }
 
-                /// Getter for the [`authenticator_selection` field](CredentialCreationOptions#structfield.authenticator_selection).
+                /// Getter for the [`authenticator_selection`
+                /// field](CredentialCreationOptions#structfield.
+                /// authenticator_selection).
                 #[inline]
                 pub fn authenticator_selection(
                     &self,
@@ -3152,7 +3262,8 @@ mod root {
                         .access(7, "CredentialCreationOptions", "authenticator_selection")
                 }
 
-                /// Getter for the [`extensions` field](CredentialCreationOptions#structfield.extensions).
+                /// Getter for the [`extensions`
+                /// field](CredentialCreationOptions#structfield.extensions).
                 #[inline]
                 pub fn extensions(
                     &self,
@@ -3349,10 +3460,12 @@ mod root {
                 }
             }
 
-            /// The enum `AuthenticatorTransport` in the namespace `Auth.WebAuthn`
+            /// The enum `AuthenticatorTransport` in the namespace
+            /// `Auth.WebAuthn`
             ///
             /// Generated from these locations:
-            /// * Enum `AuthenticatorTransport` in the file `auth/webauthn.fbs:38`
+            /// * Enum `AuthenticatorTransport` in the file
+            ///   `auth/webauthn.fbs:38`
             #[derive(
                 Copy,
                 Clone,
@@ -3379,8 +3492,8 @@ mod root {
                 ///  <https://www.w3.org/TR/webauthn/#dom-authenticatortransport-internal>
                 Internal = 3,
 
-                ///  Hybrid transport, formerly caBLE. Part of the level 3 draft specification.
-                ///  <https://w3c.github.io/webauthn/#dom-authenticatortransport-hybrid>
+                ///  Hybrid transport, formerly caBLE. Part of the level 3 draft
+                /// specification.  <https://w3c.github.io/webauthn/#dom-authenticatortransport-hybrid>
                 Hybrid = 4,
 
                 ///  Test transport; used for Windows 10.
@@ -3388,7 +3501,8 @@ mod root {
             }
 
             impl AuthenticatorTransport {
-                /// Array containing all valid variants of AuthenticatorTransport
+                /// Array containing all valid variants of
+                /// AuthenticatorTransport
                 pub const ENUM_VALUES: [Self; 6] = [
                     Self::Usb,
                     Self::Nfc,
@@ -3545,10 +3659,12 @@ mod root {
                 }
             }
 
-            /// The table `AuthenticatorAttestationResponse` in the namespace `Auth.WebAuthn`
+            /// The table `AuthenticatorAttestationResponse` in the namespace
+            /// `Auth.WebAuthn`
             ///
             /// Generated from these locations:
-            /// * Table `AuthenticatorAttestationResponse` in the file `auth/webauthn.fbs:54`
+            /// * Table `AuthenticatorAttestationResponse` in the file
+            ///   `auth/webauthn.fbs:54`
             #[derive(
                 Clone,
                 Debug,
@@ -3561,11 +3677,14 @@ mod root {
                 ::serde::Deserialize,
             )]
             pub struct AuthenticatorAttestationResponse {
-                /// The field `client_data` in the table `AuthenticatorAttestationResponse`
+                /// The field `client_data` in the table
+                /// `AuthenticatorAttestationResponse`
                 pub client_data: ::core::option::Option<::planus::alloc::vec::Vec<u8>>,
-                /// The field `attestation_object` in the table `AuthenticatorAttestationResponse`
+                /// The field `attestation_object` in the table
+                /// `AuthenticatorAttestationResponse`
                 pub attestation_object: ::core::option::Option<::planus::alloc::vec::Vec<u8>>,
-                /// The field `transports` in the table `AuthenticatorAttestationResponse`
+                /// The field `transports` in the table
+                /// `AuthenticatorAttestationResponse`
                 pub transports:
                     ::core::option::Option<::planus::alloc::vec::Vec<self::AuthenticatorTransport>>,
             }
@@ -3582,7 +3701,8 @@ mod root {
             }
 
             impl AuthenticatorAttestationResponse {
-                /// Creates a [AuthenticatorAttestationResponseBuilder] for serializing an instance of this table.
+                /// Creates a [AuthenticatorAttestationResponseBuilder] for
+                /// serializing an instance of this table.
                 #[inline]
                 pub fn builder() -> AuthenticatorAttestationResponseBuilder<()> {
                     AuthenticatorAttestationResponseBuilder(())
@@ -3683,15 +3803,19 @@ mod root {
                 }
             }
 
-            /// Builder for serializing an instance of the [AuthenticatorAttestationResponse] type.
+            /// Builder for serializing an instance of the
+            /// [AuthenticatorAttestationResponse] type.
             ///
-            /// Can be created using the [AuthenticatorAttestationResponse::builder] method.
+            /// Can be created using the
+            /// [AuthenticatorAttestationResponse::builder] method.
             #[derive(Debug)]
             #[must_use]
             pub struct AuthenticatorAttestationResponseBuilder<State>(State);
 
             impl AuthenticatorAttestationResponseBuilder<()> {
-                /// Setter for the [`client_data` field](AuthenticatorAttestationResponse#structfield.client_data).
+                /// Setter for the [`client_data`
+                /// field](AuthenticatorAttestationResponse#structfield.
+                /// client_data).
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn client_data<T0>(
@@ -3704,7 +3828,9 @@ mod root {
                     AuthenticatorAttestationResponseBuilder((value,))
                 }
 
-                /// Sets the [`client_data` field](AuthenticatorAttestationResponse#structfield.client_data) to null.
+                /// Sets the [`client_data`
+                /// field](AuthenticatorAttestationResponse#structfield.
+                /// client_data) to null.
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn client_data_as_null(self) -> AuthenticatorAttestationResponseBuilder<((),)> {
@@ -3713,7 +3839,9 @@ mod root {
             }
 
             impl<T0> AuthenticatorAttestationResponseBuilder<(T0,)> {
-                /// Setter for the [`attestation_object` field](AuthenticatorAttestationResponse#structfield.attestation_object).
+                /// Setter for the [`attestation_object`
+                /// field](AuthenticatorAttestationResponse#structfield.
+                /// attestation_object).
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn attestation_object<T1>(
@@ -3727,7 +3855,9 @@ mod root {
                     AuthenticatorAttestationResponseBuilder((v0, value))
                 }
 
-                /// Sets the [`attestation_object` field](AuthenticatorAttestationResponse#structfield.attestation_object) to null.
+                /// Sets the [`attestation_object`
+                /// field](AuthenticatorAttestationResponse#structfield.
+                /// attestation_object) to null.
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn attestation_object_as_null(
@@ -3738,7 +3868,9 @@ mod root {
             }
 
             impl<T0, T1> AuthenticatorAttestationResponseBuilder<(T0, T1)> {
-                /// Setter for the [`transports` field](AuthenticatorAttestationResponse#structfield.transports).
+                /// Setter for the [`transports`
+                /// field](AuthenticatorAttestationResponse#structfield.
+                /// transports).
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn transports<T2>(
@@ -3752,7 +3884,9 @@ mod root {
                     AuthenticatorAttestationResponseBuilder((v0, v1, value))
                 }
 
-                /// Sets the [`transports` field](AuthenticatorAttestationResponse#structfield.transports) to null.
+                /// Sets the [`transports`
+                /// field](AuthenticatorAttestationResponse#structfield.
+                /// transports) to null.
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn transports_as_null(
@@ -3763,7 +3897,9 @@ mod root {
             }
 
             impl<T0, T1, T2> AuthenticatorAttestationResponseBuilder<(T0, T1, T2)> {
-                /// Finish writing the builder to get an [Offset](::planus::Offset) to a serialized [AuthenticatorAttestationResponse].
+                /// Finish writing the builder to get an
+                /// [Offset](::planus::Offset) to a serialized
+                /// [AuthenticatorAttestationResponse].
                 #[inline]
                 pub fn finish(
                     self,
@@ -3836,14 +3972,18 @@ mod root {
             pub struct AuthenticatorAttestationResponseRef<'a>(::planus::table_reader::Table<'a>);
 
             impl<'a> AuthenticatorAttestationResponseRef<'a> {
-                /// Getter for the [`client_data` field](AuthenticatorAttestationResponse#structfield.client_data).
+                /// Getter for the [`client_data`
+                /// field](AuthenticatorAttestationResponse#structfield.
+                /// client_data).
                 #[inline]
                 pub fn client_data(&self) -> ::planus::Result<::core::option::Option<&'a [u8]>> {
                     self.0
                         .access(0, "AuthenticatorAttestationResponse", "client_data")
                 }
 
-                /// Getter for the [`attestation_object` field](AuthenticatorAttestationResponse#structfield.attestation_object).
+                /// Getter for the [`attestation_object`
+                /// field](AuthenticatorAttestationResponse#structfield.
+                /// attestation_object).
                 #[inline]
                 pub fn attestation_object(
                     &self,
@@ -3852,7 +3992,9 @@ mod root {
                         .access(1, "AuthenticatorAttestationResponse", "attestation_object")
                 }
 
-                /// Getter for the [`transports` field](AuthenticatorAttestationResponse#structfield.transports).
+                /// Getter for the [`transports`
+                /// field](AuthenticatorAttestationResponse#structfield.
+                /// transports).
                 #[inline]
                 pub fn transports(
                     &self,
@@ -3993,10 +4135,12 @@ mod root {
                 }
             }
 
-            /// The enum `CredentialProtectionPolicy` in the namespace `Auth.WebAuthn`
+            /// The enum `CredentialProtectionPolicy` in the namespace
+            /// `Auth.WebAuthn`
             ///
             /// Generated from these locations:
-            /// * Enum `CredentialProtectionPolicy` in the file `auth/webauthn.fbs:60`
+            /// * Enum `CredentialProtectionPolicy` in the file
+            ///   `auth/webauthn.fbs:60`
             #[derive(
                 Copy,
                 Clone,
@@ -4011,24 +4155,28 @@ mod root {
             )]
             #[repr(i8)]
             pub enum CredentialProtectionPolicy {
-                ///  This reflects "FIDO_2_0" semantics. In this configuration, performing
-                ///  some form of user verification is optional with or without credentialID
-                ///  list. This is the default state of the credential if the extension is
-                ///  not specified.
+                ///  This reflects "FIDO_2_0" semantics. In this configuration,
+                /// performing  some form of user verification
+                /// is optional with or without credentialID
+                ///  list. This is the default state of the credential if the
+                /// extension is  not specified.
                 UserVerificationOptional = 0,
 
-                ///  In this configuration, credential is discovered only when its
-                ///  credentialID is provided by the platform or when some form of user
+                ///  In this configuration, credential is discovered only when
+                /// its  credentialID is provided by the
+                /// platform or when some form of user
                 ///  verification is performed.
                 UserVerificationOptionalWithCredentialIdList = 1,
 
-                ///  This reflects that discovery and usage of the credential MUST be
-                ///  preceded by some form of user verification.
+                ///  This reflects that discovery and usage of the credential
+                /// MUST be  preceded by some form of user
+                /// verification.
                 UserVerificationRequired = 2,
             }
 
             impl CredentialProtectionPolicy {
-                /// Array containing all valid variants of CredentialProtectionPolicy
+                /// Array containing all valid variants of
+                /// CredentialProtectionPolicy
                 pub const ENUM_VALUES: [Self; 3] = [
                     Self::UserVerificationOptional,
                     Self::UserVerificationOptionalWithCredentialIdList,
@@ -4177,10 +4325,12 @@ mod root {
                 }
             }
 
-            /// The table `RegistrationExtensionsClientOutputs` in the namespace `Auth.WebAuthn`
+            /// The table `RegistrationExtensionsClientOutputs` in the namespace
+            /// `Auth.WebAuthn`
             ///
             /// Generated from these locations:
-            /// * Table `RegistrationExtensionsClientOutputs` in the file `auth/webauthn.fbs:75`
+            /// * Table `RegistrationExtensionsClientOutputs` in the file
+            ///   `auth/webauthn.fbs:75`
             #[derive(
                 Clone,
                 Debug,
@@ -4193,15 +4343,20 @@ mod root {
                 ::serde::Deserialize,
             )]
             pub struct RegistrationExtensionsClientOutputs {
-                /// The field `app_id` in the table `RegistrationExtensionsClientOutputs`
+                /// The field `app_id` in the table
+                /// `RegistrationExtensionsClientOutputs`
                 pub app_id: bool,
-                /// The field `cred_props` in the table `RegistrationExtensionsClientOutputs`
+                /// The field `cred_props` in the table
+                /// `RegistrationExtensionsClientOutputs`
                 pub cred_props: bool,
-                /// The field `hmac_secret` in the table `RegistrationExtensionsClientOutputs`
+                /// The field `hmac_secret` in the table
+                /// `RegistrationExtensionsClientOutputs`
                 pub hmac_secret: bool,
-                /// The field `cred_protect` in the table `RegistrationExtensionsClientOutputs`
+                /// The field `cred_protect` in the table
+                /// `RegistrationExtensionsClientOutputs`
                 pub cred_protect: self::CredentialProtectionPolicy,
-                /// The field `min_pin_length` in the table `RegistrationExtensionsClientOutputs`
+                /// The field `min_pin_length` in the table
+                /// `RegistrationExtensionsClientOutputs`
                 pub min_pin_length: u32,
             }
 
@@ -4219,7 +4374,8 @@ mod root {
             }
 
             impl RegistrationExtensionsClientOutputs {
-                /// Creates a [RegistrationExtensionsClientOutputsBuilder] for serializing an instance of this table.
+                /// Creates a [RegistrationExtensionsClientOutputsBuilder] for
+                /// serializing an instance of this table.
                 #[inline]
                 pub fn builder() -> RegistrationExtensionsClientOutputsBuilder<()> {
                     RegistrationExtensionsClientOutputsBuilder(())
@@ -4343,15 +4499,19 @@ mod root {
                 }
             }
 
-            /// Builder for serializing an instance of the [RegistrationExtensionsClientOutputs] type.
+            /// Builder for serializing an instance of the
+            /// [RegistrationExtensionsClientOutputs] type.
             ///
-            /// Can be created using the [RegistrationExtensionsClientOutputs::builder] method.
+            /// Can be created using the
+            /// [RegistrationExtensionsClientOutputs::builder] method.
             #[derive(Debug)]
             #[must_use]
             pub struct RegistrationExtensionsClientOutputsBuilder<State>(State);
 
             impl RegistrationExtensionsClientOutputsBuilder<()> {
-                /// Setter for the [`app_id` field](RegistrationExtensionsClientOutputs#structfield.app_id).
+                /// Setter for the [`app_id`
+                /// field](RegistrationExtensionsClientOutputs#structfield.
+                /// app_id).
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn app_id<T0>(
@@ -4364,7 +4524,9 @@ mod root {
                     RegistrationExtensionsClientOutputsBuilder((value,))
                 }
 
-                /// Sets the [`app_id` field](RegistrationExtensionsClientOutputs#structfield.app_id) to the default value.
+                /// Sets the [`app_id`
+                /// field](RegistrationExtensionsClientOutputs#structfield.
+                /// app_id) to the default value.
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn app_id_as_default(
@@ -4376,7 +4538,9 @@ mod root {
             }
 
             impl<T0> RegistrationExtensionsClientOutputsBuilder<(T0,)> {
-                /// Setter for the [`cred_props` field](RegistrationExtensionsClientOutputs#structfield.cred_props).
+                /// Setter for the [`cred_props`
+                /// field](RegistrationExtensionsClientOutputs#structfield.
+                /// cred_props).
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn cred_props<T1>(
@@ -4390,7 +4554,9 @@ mod root {
                     RegistrationExtensionsClientOutputsBuilder((v0, value))
                 }
 
-                /// Sets the [`cred_props` field](RegistrationExtensionsClientOutputs#structfield.cred_props) to the default value.
+                /// Sets the [`cred_props`
+                /// field](RegistrationExtensionsClientOutputs#structfield.
+                /// cred_props) to the default value.
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn cred_props_as_default(
@@ -4402,7 +4568,9 @@ mod root {
             }
 
             impl<T0, T1> RegistrationExtensionsClientOutputsBuilder<(T0, T1)> {
-                /// Setter for the [`hmac_secret` field](RegistrationExtensionsClientOutputs#structfield.hmac_secret).
+                /// Setter for the [`hmac_secret`
+                /// field](RegistrationExtensionsClientOutputs#structfield.
+                /// hmac_secret).
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn hmac_secret<T2>(
@@ -4416,7 +4584,9 @@ mod root {
                     RegistrationExtensionsClientOutputsBuilder((v0, v1, value))
                 }
 
-                /// Sets the [`hmac_secret` field](RegistrationExtensionsClientOutputs#structfield.hmac_secret) to the default value.
+                /// Sets the [`hmac_secret`
+                /// field](RegistrationExtensionsClientOutputs#structfield.
+                /// hmac_secret) to the default value.
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn hmac_secret_as_default(
@@ -4428,7 +4598,9 @@ mod root {
             }
 
             impl<T0, T1, T2> RegistrationExtensionsClientOutputsBuilder<(T0, T1, T2)> {
-                /// Setter for the [`cred_protect` field](RegistrationExtensionsClientOutputs#structfield.cred_protect).
+                /// Setter for the [`cred_protect`
+                /// field](RegistrationExtensionsClientOutputs#structfield.
+                /// cred_protect).
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn cred_protect<T3>(
@@ -4445,7 +4617,9 @@ mod root {
                     RegistrationExtensionsClientOutputsBuilder((v0, v1, v2, value))
                 }
 
-                /// Sets the [`cred_protect` field](RegistrationExtensionsClientOutputs#structfield.cred_protect) to the default value.
+                /// Sets the [`cred_protect`
+                /// field](RegistrationExtensionsClientOutputs#structfield.
+                /// cred_protect) to the default value.
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn cred_protect_as_default(
@@ -4457,7 +4631,9 @@ mod root {
             }
 
             impl<T0, T1, T2, T3> RegistrationExtensionsClientOutputsBuilder<(T0, T1, T2, T3)> {
-                /// Setter for the [`min_pin_length` field](RegistrationExtensionsClientOutputs#structfield.min_pin_length).
+                /// Setter for the [`min_pin_length`
+                /// field](RegistrationExtensionsClientOutputs#structfield.
+                /// min_pin_length).
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn min_pin_length<T4>(
@@ -4471,7 +4647,9 @@ mod root {
                     RegistrationExtensionsClientOutputsBuilder((v0, v1, v2, v3, value))
                 }
 
-                /// Sets the [`min_pin_length` field](RegistrationExtensionsClientOutputs#structfield.min_pin_length) to the default value.
+                /// Sets the [`min_pin_length`
+                /// field](RegistrationExtensionsClientOutputs#structfield.
+                /// min_pin_length) to the default value.
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn min_pin_length_as_default(
@@ -4488,7 +4666,9 @@ mod root {
             }
 
             impl<T0, T1, T2, T3, T4> RegistrationExtensionsClientOutputsBuilder<(T0, T1, T2, T3, T4)> {
-                /// Finish writing the builder to get an [Offset](::planus::Offset) to a serialized [RegistrationExtensionsClientOutputs].
+                /// Finish writing the builder to get an
+                /// [Offset](::planus::Offset) to a serialized
+                /// [RegistrationExtensionsClientOutputs].
                 #[inline]
                 pub fn finish(
                     self,
@@ -4572,14 +4752,17 @@ mod root {
                 }
             }
 
-            /// Reference to a deserialized [RegistrationExtensionsClientOutputs].
+            /// Reference to a deserialized
+            /// [RegistrationExtensionsClientOutputs].
             #[derive(Copy, Clone)]
             pub struct RegistrationExtensionsClientOutputsRef<'a>(
                 ::planus::table_reader::Table<'a>,
             );
 
             impl<'a> RegistrationExtensionsClientOutputsRef<'a> {
-                /// Getter for the [`app_id` field](RegistrationExtensionsClientOutputs#structfield.app_id).
+                /// Getter for the [`app_id`
+                /// field](RegistrationExtensionsClientOutputs#structfield.
+                /// app_id).
                 #[inline]
                 pub fn app_id(&self) -> ::planus::Result<bool> {
                     ::core::result::Result::Ok(
@@ -4589,7 +4772,9 @@ mod root {
                     )
                 }
 
-                /// Getter for the [`cred_props` field](RegistrationExtensionsClientOutputs#structfield.cred_props).
+                /// Getter for the [`cred_props`
+                /// field](RegistrationExtensionsClientOutputs#structfield.
+                /// cred_props).
                 #[inline]
                 pub fn cred_props(&self) -> ::planus::Result<bool> {
                     ::core::result::Result::Ok(
@@ -4599,7 +4784,9 @@ mod root {
                     )
                 }
 
-                /// Getter for the [`hmac_secret` field](RegistrationExtensionsClientOutputs#structfield.hmac_secret).
+                /// Getter for the [`hmac_secret`
+                /// field](RegistrationExtensionsClientOutputs#structfield.
+                /// hmac_secret).
                 #[inline]
                 pub fn hmac_secret(&self) -> ::planus::Result<bool> {
                     ::core::result::Result::Ok(
@@ -4609,7 +4796,9 @@ mod root {
                     )
                 }
 
-                /// Getter for the [`cred_protect` field](RegistrationExtensionsClientOutputs#structfield.cred_protect).
+                /// Getter for the [`cred_protect`
+                /// field](RegistrationExtensionsClientOutputs#structfield.
+                /// cred_protect).
                 #[inline]
                 pub fn cred_protect(&self) -> ::planus::Result<self::CredentialProtectionPolicy> {
                     ::core::result::Result::Ok(
@@ -4619,7 +4808,9 @@ mod root {
                     )
                 }
 
-                /// Getter for the [`min_pin_length` field](RegistrationExtensionsClientOutputs#structfield.min_pin_length).
+                /// Getter for the [`min_pin_length`
+                /// field](RegistrationExtensionsClientOutputs#structfield.
+                /// min_pin_length).
                 #[inline]
                 pub fn min_pin_length(&self) -> ::planus::Result<u32> {
                     ::core::result::Result::Ok(
@@ -4739,10 +4930,12 @@ mod root {
                 }
             }
 
-            /// The table `RegisterPublicKeyCredential` in the namespace `Auth.WebAuthn`
+            /// The table `RegisterPublicKeyCredential` in the namespace
+            /// `Auth.WebAuthn`
             ///
             /// Generated from these locations:
-            /// * Table `RegisterPublicKeyCredential` in the file `auth/webauthn.fbs:83`
+            /// * Table `RegisterPublicKeyCredential` in the file
+            ///   `auth/webauthn.fbs:83`
             #[derive(
                 Clone,
                 Debug,
@@ -4757,13 +4950,16 @@ mod root {
             pub struct RegisterPublicKeyCredential {
                 /// The field `id` in the table `RegisterPublicKeyCredential`
                 pub id: ::core::option::Option<::planus::alloc::vec::Vec<u8>>,
-                /// The field `raw_id` in the table `RegisterPublicKeyCredential`
+                /// The field `raw_id` in the table
+                /// `RegisterPublicKeyCredential`
                 pub raw_id: ::core::option::Option<::planus::alloc::vec::Vec<u8>>,
-                /// The field `response` in the table `RegisterPublicKeyCredential`
+                /// The field `response` in the table
+                /// `RegisterPublicKeyCredential`
                 pub response: ::core::option::Option<
                     ::planus::alloc::boxed::Box<self::AuthenticatorAttestationResponse>,
                 >,
-                /// The field `client_extension_results` in the table `RegisterPublicKeyCredential`
+                /// The field `client_extension_results` in the table
+                /// `RegisterPublicKeyCredential`
                 pub client_extension_results: ::core::option::Option<
                     ::planus::alloc::boxed::Box<self::RegistrationExtensionsClientOutputs>,
                 >,
@@ -4782,7 +4978,8 @@ mod root {
             }
 
             impl RegisterPublicKeyCredential {
-                /// Creates a [RegisterPublicKeyCredentialBuilder] for serializing an instance of this table.
+                /// Creates a [RegisterPublicKeyCredentialBuilder] for
+                /// serializing an instance of this table.
                 #[inline]
                 pub fn builder() -> RegisterPublicKeyCredentialBuilder<()> {
                     RegisterPublicKeyCredentialBuilder(())
@@ -4890,15 +5087,18 @@ mod root {
                 }
             }
 
-            /// Builder for serializing an instance of the [RegisterPublicKeyCredential] type.
+            /// Builder for serializing an instance of the
+            /// [RegisterPublicKeyCredential] type.
             ///
-            /// Can be created using the [RegisterPublicKeyCredential::builder] method.
+            /// Can be created using the [RegisterPublicKeyCredential::builder]
+            /// method.
             #[derive(Debug)]
             #[must_use]
             pub struct RegisterPublicKeyCredentialBuilder<State>(State);
 
             impl RegisterPublicKeyCredentialBuilder<()> {
-                /// Setter for the [`id` field](RegisterPublicKeyCredential#structfield.id).
+                /// Setter for the [`id`
+                /// field](RegisterPublicKeyCredential#structfield.id).
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn id<T0>(self, value: T0) -> RegisterPublicKeyCredentialBuilder<(T0,)>
@@ -4908,7 +5108,8 @@ mod root {
                     RegisterPublicKeyCredentialBuilder((value,))
                 }
 
-                /// Sets the [`id` field](RegisterPublicKeyCredential#structfield.id) to null.
+                /// Sets the [`id`
+                /// field](RegisterPublicKeyCredential#structfield.id) to null.
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn id_as_null(self) -> RegisterPublicKeyCredentialBuilder<((),)> {
@@ -4917,7 +5118,8 @@ mod root {
             }
 
             impl<T0> RegisterPublicKeyCredentialBuilder<(T0,)> {
-                /// Setter for the [`raw_id` field](RegisterPublicKeyCredential#structfield.raw_id).
+                /// Setter for the [`raw_id`
+                /// field](RegisterPublicKeyCredential#structfield.raw_id).
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn raw_id<T1>(self, value: T1) -> RegisterPublicKeyCredentialBuilder<(T0, T1)>
@@ -4928,7 +5130,9 @@ mod root {
                     RegisterPublicKeyCredentialBuilder((v0, value))
                 }
 
-                /// Sets the [`raw_id` field](RegisterPublicKeyCredential#structfield.raw_id) to null.
+                /// Sets the [`raw_id`
+                /// field](RegisterPublicKeyCredential#structfield.raw_id) to
+                /// null.
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn raw_id_as_null(self) -> RegisterPublicKeyCredentialBuilder<(T0, ())> {
@@ -4937,7 +5141,8 @@ mod root {
             }
 
             impl<T0, T1> RegisterPublicKeyCredentialBuilder<(T0, T1)> {
-                /// Setter for the [`response` field](RegisterPublicKeyCredential#structfield.response).
+                /// Setter for the [`response`
+                /// field](RegisterPublicKeyCredential#structfield.response).
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn response<T2>(
@@ -4953,7 +5158,9 @@ mod root {
                     RegisterPublicKeyCredentialBuilder((v0, v1, value))
                 }
 
-                /// Sets the [`response` field](RegisterPublicKeyCredential#structfield.response) to null.
+                /// Sets the [`response`
+                /// field](RegisterPublicKeyCredential#structfield.response) to
+                /// null.
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn response_as_null(self) -> RegisterPublicKeyCredentialBuilder<(T0, T1, ())> {
@@ -4962,7 +5169,9 @@ mod root {
             }
 
             impl<T0, T1, T2> RegisterPublicKeyCredentialBuilder<(T0, T1, T2)> {
-                /// Setter for the [`client_extension_results` field](RegisterPublicKeyCredential#structfield.client_extension_results).
+                /// Setter for the [`client_extension_results`
+                /// field](RegisterPublicKeyCredential#structfield.
+                /// client_extension_results).
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn client_extension_results<T3>(
@@ -4978,7 +5187,9 @@ mod root {
                     RegisterPublicKeyCredentialBuilder((v0, v1, v2, value))
                 }
 
-                /// Sets the [`client_extension_results` field](RegisterPublicKeyCredential#structfield.client_extension_results) to null.
+                /// Sets the [`client_extension_results`
+                /// field](RegisterPublicKeyCredential#structfield.
+                /// client_extension_results) to null.
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn client_extension_results_as_null(
@@ -4989,7 +5200,9 @@ mod root {
             }
 
             impl<T0, T1, T2, T3> RegisterPublicKeyCredentialBuilder<(T0, T1, T2, T3)> {
-                /// Finish writing the builder to get an [Offset](::planus::Offset) to a serialized [RegisterPublicKeyCredential].
+                /// Finish writing the builder to get an
+                /// [Offset](::planus::Offset) to a serialized
+                /// [RegisterPublicKeyCredential].
                 #[inline]
                 pub fn finish(
                     self,
@@ -5077,19 +5290,22 @@ mod root {
             pub struct RegisterPublicKeyCredentialRef<'a>(::planus::table_reader::Table<'a>);
 
             impl<'a> RegisterPublicKeyCredentialRef<'a> {
-                /// Getter for the [`id` field](RegisterPublicKeyCredential#structfield.id).
+                /// Getter for the [`id`
+                /// field](RegisterPublicKeyCredential#structfield.id).
                 #[inline]
                 pub fn id(&self) -> ::planus::Result<::core::option::Option<&'a [u8]>> {
                     self.0.access(0, "RegisterPublicKeyCredential", "id")
                 }
 
-                /// Getter for the [`raw_id` field](RegisterPublicKeyCredential#structfield.raw_id).
+                /// Getter for the [`raw_id`
+                /// field](RegisterPublicKeyCredential#structfield.raw_id).
                 #[inline]
                 pub fn raw_id(&self) -> ::planus::Result<::core::option::Option<&'a [u8]>> {
                     self.0.access(1, "RegisterPublicKeyCredential", "raw_id")
                 }
 
-                /// Getter for the [`response` field](RegisterPublicKeyCredential#structfield.response).
+                /// Getter for the [`response`
+                /// field](RegisterPublicKeyCredential#structfield.response).
                 #[inline]
                 pub fn response(
                     &self,
@@ -5099,7 +5315,9 @@ mod root {
                     self.0.access(2, "RegisterPublicKeyCredential", "response")
                 }
 
-                /// Getter for the [`client_extension_results` field](RegisterPublicKeyCredential#structfield.client_extension_results).
+                /// Getter for the [`client_extension_results`
+                /// field](RegisterPublicKeyCredential#structfield.
+                /// client_extension_results).
                 #[inline]
                 pub fn client_extension_results(
                     &self,
@@ -5261,8 +5479,9 @@ mod root {
             pub struct CredProtect {
                 ///  The credential policy to enact
                 pub credential_protection_policy: self::CredentialProtectionPolicy,
-                ///  Whether it is better for the authenticator to fail to create a
-                ///  credential rather than ignore the protection policy
+                ///  Whether it is better for the authenticator to fail to
+                /// create a  credential rather than ignore the
+                /// protection policy
                 pub enforce_credential_protection_policy: bool,
             }
 
@@ -5278,7 +5497,8 @@ mod root {
             }
 
             impl CredProtect {
-                /// Creates a [CredProtectBuilder] for serializing an instance of this table.
+                /// Creates a [CredProtectBuilder] for serializing an instance
+                /// of this table.
                 #[inline]
                 pub fn builder() -> CredProtectBuilder<()> {
                     CredProtectBuilder(())
@@ -5382,7 +5602,9 @@ mod root {
             pub struct CredProtectBuilder<State>(State);
 
             impl CredProtectBuilder<()> {
-                /// Setter for the [`credential_protection_policy` field](CredProtect#structfield.credential_protection_policy).
+                /// Setter for the [`credential_protection_policy`
+                /// field](CredProtect#structfield.
+                /// credential_protection_policy).
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn credential_protection_policy<T0>(
@@ -5398,7 +5620,9 @@ mod root {
                     CredProtectBuilder((value,))
                 }
 
-                /// Sets the [`credential_protection_policy` field](CredProtect#structfield.credential_protection_policy) to the default value.
+                /// Sets the [`credential_protection_policy`
+                /// field](CredProtect#structfield.credential_protection_policy)
+                /// to the default value.
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn credential_protection_policy_as_default(
@@ -5409,7 +5633,9 @@ mod root {
             }
 
             impl<T0> CredProtectBuilder<(T0,)> {
-                /// Setter for the [`enforce_credential_protection_policy` field](CredProtect#structfield.enforce_credential_protection_policy).
+                /// Setter for the [`enforce_credential_protection_policy`
+                /// field](CredProtect#structfield.
+                /// enforce_credential_protection_policy).
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn enforce_credential_protection_policy<T1>(
@@ -5423,7 +5649,9 @@ mod root {
                     CredProtectBuilder((v0, value))
                 }
 
-                /// Sets the [`enforce_credential_protection_policy` field](CredProtect#structfield.enforce_credential_protection_policy) to the default value.
+                /// Sets the [`enforce_credential_protection_policy`
+                /// field](CredProtect#structfield.
+                /// enforce_credential_protection_policy) to the default value.
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn enforce_credential_protection_policy_as_default(
@@ -5434,7 +5662,8 @@ mod root {
             }
 
             impl<T0, T1> CredProtectBuilder<(T0, T1)> {
-                /// Finish writing the builder to get an [Offset](::planus::Offset) to a serialized [CredProtect].
+                /// Finish writing the builder to get an
+                /// [Offset](::planus::Offset) to a serialized [CredProtect].
                 #[inline]
                 pub fn finish(
                     self,
@@ -5510,7 +5739,9 @@ mod root {
             pub struct CredProtectRef<'a>(::planus::table_reader::Table<'a>);
 
             impl<'a> CredProtectRef<'a> {
-                /// Getter for the [`credential_protection_policy` field](CredProtect#structfield.credential_protection_policy).
+                /// Getter for the [`credential_protection_policy`
+                /// field](CredProtect#structfield.
+                /// credential_protection_policy).
                 #[inline]
                 pub fn credential_protection_policy(
                     &self,
@@ -5522,7 +5753,9 @@ mod root {
                     )
                 }
 
-                /// Getter for the [`enforce_credential_protection_policy` field](CredProtect#structfield.enforce_credential_protection_policy).
+                /// Getter for the [`enforce_credential_protection_policy`
+                /// field](CredProtect#structfield.
+                /// enforce_credential_protection_policy).
                 #[inline]
                 pub fn enforce_credential_protection_policy(&self) -> ::planus::Result<bool> {
                     ::core::result::Result::Ok(
@@ -5634,10 +5867,12 @@ mod root {
                 }
             }
 
-            /// The table `RequestRegistrationExtensions` in the namespace `Auth.WebAuthn`
+            /// The table `RequestRegistrationExtensions` in the namespace
+            /// `Auth.WebAuthn`
             ///
             /// Generated from these locations:
-            /// * Table `RequestRegistrationExtensions` in the file `auth/webauthn.fbs:98`
+            /// * Table `RequestRegistrationExtensions` in the file
+            ///   `auth/webauthn.fbs:98`
             #[derive(
                 Clone,
                 Debug,
@@ -5655,14 +5890,16 @@ mod root {
                     ::core::option::Option<::planus::alloc::boxed::Box<self::CredProtect>>,
                 ///  ⚠️  - Browsers do not support this!
                 pub uvm: bool,
-                ///  ⚠️  - This extension result is always unsigned, and only indicates if the
-                ///  browser *requests* a residentKey to be created. It has no bearing on the
+                ///  ⚠️  - This extension result is always unsigned, and only
+                /// indicates if the  browser *requests* a
+                /// residentKey to be created. It has no bearing on the
                 ///  true rk state of the credential.
                 pub cred_props: bool,
                 ///  CTAP2.1 Minumum pin length
                 pub min_pin_length: bool,
-                ///  ⚠️  - Browsers support the *creation* of the secret, but not the retrieval of it.
-                ///  CTAP2.1 create hmac secret
+                ///  ⚠️  - Browsers support the *creation* of the secret, but not
+                /// the retrieval of it.  CTAP2.1 create hmac
+                /// secret
                 pub hmac_create_secret: bool,
             }
 
@@ -5680,7 +5917,8 @@ mod root {
             }
 
             impl RequestRegistrationExtensions {
-                /// Creates a [RequestRegistrationExtensionsBuilder] for serializing an instance of this table.
+                /// Creates a [RequestRegistrationExtensionsBuilder] for
+                /// serializing an instance of this table.
                 #[inline]
                 pub fn builder() -> RequestRegistrationExtensionsBuilder<()> {
                     RequestRegistrationExtensionsBuilder(())
@@ -5799,15 +6037,19 @@ mod root {
                 }
             }
 
-            /// Builder for serializing an instance of the [RequestRegistrationExtensions] type.
+            /// Builder for serializing an instance of the
+            /// [RequestRegistrationExtensions] type.
             ///
-            /// Can be created using the [RequestRegistrationExtensions::builder] method.
+            /// Can be created using the
+            /// [RequestRegistrationExtensions::builder] method.
             #[derive(Debug)]
             #[must_use]
             pub struct RequestRegistrationExtensionsBuilder<State>(State);
 
             impl RequestRegistrationExtensionsBuilder<()> {
-                /// Setter for the [`cred_protect` field](RequestRegistrationExtensions#structfield.cred_protect).
+                /// Setter for the [`cred_protect`
+                /// field](RequestRegistrationExtensions#structfield.
+                /// cred_protect).
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn cred_protect<T0>(
@@ -5820,7 +6062,9 @@ mod root {
                     RequestRegistrationExtensionsBuilder((value,))
                 }
 
-                /// Sets the [`cred_protect` field](RequestRegistrationExtensions#structfield.cred_protect) to null.
+                /// Sets the [`cred_protect`
+                /// field](RequestRegistrationExtensions#structfield.
+                /// cred_protect) to null.
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn cred_protect_as_null(self) -> RequestRegistrationExtensionsBuilder<((),)> {
@@ -5829,7 +6073,8 @@ mod root {
             }
 
             impl<T0> RequestRegistrationExtensionsBuilder<(T0,)> {
-                /// Setter for the [`uvm` field](RequestRegistrationExtensions#structfield.uvm).
+                /// Setter for the [`uvm`
+                /// field](RequestRegistrationExtensions#structfield.uvm).
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn uvm<T1>(self, value: T1) -> RequestRegistrationExtensionsBuilder<(T0, T1)>
@@ -5840,7 +6085,9 @@ mod root {
                     RequestRegistrationExtensionsBuilder((v0, value))
                 }
 
-                /// Sets the [`uvm` field](RequestRegistrationExtensions#structfield.uvm) to the default value.
+                /// Sets the [`uvm`
+                /// field](RequestRegistrationExtensions#structfield.uvm) to the
+                /// default value.
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn uvm_as_default(
@@ -5852,7 +6099,9 @@ mod root {
             }
 
             impl<T0, T1> RequestRegistrationExtensionsBuilder<(T0, T1)> {
-                /// Setter for the [`cred_props` field](RequestRegistrationExtensions#structfield.cred_props).
+                /// Setter for the [`cred_props`
+                /// field](RequestRegistrationExtensions#structfield.
+                /// cred_props).
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn cred_props<T2>(
@@ -5866,7 +6115,9 @@ mod root {
                     RequestRegistrationExtensionsBuilder((v0, v1, value))
                 }
 
-                /// Sets the [`cred_props` field](RequestRegistrationExtensions#structfield.cred_props) to the default value.
+                /// Sets the [`cred_props`
+                /// field](RequestRegistrationExtensions#structfield.cred_props)
+                /// to the default value.
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn cred_props_as_default(
@@ -5878,7 +6129,9 @@ mod root {
             }
 
             impl<T0, T1, T2> RequestRegistrationExtensionsBuilder<(T0, T1, T2)> {
-                /// Setter for the [`min_pin_length` field](RequestRegistrationExtensions#structfield.min_pin_length).
+                /// Setter for the [`min_pin_length`
+                /// field](RequestRegistrationExtensions#structfield.
+                /// min_pin_length).
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn min_pin_length<T3>(
@@ -5892,7 +6145,9 @@ mod root {
                     RequestRegistrationExtensionsBuilder((v0, v1, v2, value))
                 }
 
-                /// Sets the [`min_pin_length` field](RequestRegistrationExtensions#structfield.min_pin_length) to the default value.
+                /// Sets the [`min_pin_length`
+                /// field](RequestRegistrationExtensions#structfield.
+                /// min_pin_length) to the default value.
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn min_pin_length_as_default(
@@ -5904,7 +6159,9 @@ mod root {
             }
 
             impl<T0, T1, T2, T3> RequestRegistrationExtensionsBuilder<(T0, T1, T2, T3)> {
-                /// Setter for the [`hmac_create_secret` field](RequestRegistrationExtensions#structfield.hmac_create_secret).
+                /// Setter for the [`hmac_create_secret`
+                /// field](RequestRegistrationExtensions#structfield.
+                /// hmac_create_secret).
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn hmac_create_secret<T4>(
@@ -5918,7 +6175,9 @@ mod root {
                     RequestRegistrationExtensionsBuilder((v0, v1, v2, v3, value))
                 }
 
-                /// Sets the [`hmac_create_secret` field](RequestRegistrationExtensions#structfield.hmac_create_secret) to the default value.
+                /// Sets the [`hmac_create_secret`
+                /// field](RequestRegistrationExtensions#structfield.
+                /// hmac_create_secret) to the default value.
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn hmac_create_secret_as_default(
@@ -5930,7 +6189,9 @@ mod root {
             }
 
             impl<T0, T1, T2, T3, T4> RequestRegistrationExtensionsBuilder<(T0, T1, T2, T3, T4)> {
-                /// Finish writing the builder to get an [Offset](::planus::Offset) to a serialized [RequestRegistrationExtensions].
+                /// Finish writing the builder to get an
+                /// [Offset](::planus::Offset) to a serialized
+                /// [RequestRegistrationExtensions].
                 #[inline]
                 pub fn finish(
                     self,
@@ -6009,7 +6270,9 @@ mod root {
             pub struct RequestRegistrationExtensionsRef<'a>(::planus::table_reader::Table<'a>);
 
             impl<'a> RequestRegistrationExtensionsRef<'a> {
-                /// Getter for the [`cred_protect` field](RequestRegistrationExtensions#structfield.cred_protect).
+                /// Getter for the [`cred_protect`
+                /// field](RequestRegistrationExtensions#structfield.
+                /// cred_protect).
                 #[inline]
                 pub fn cred_protect(
                     &self,
@@ -6019,7 +6282,8 @@ mod root {
                         .access(0, "RequestRegistrationExtensions", "cred_protect")
                 }
 
-                /// Getter for the [`uvm` field](RequestRegistrationExtensions#structfield.uvm).
+                /// Getter for the [`uvm`
+                /// field](RequestRegistrationExtensions#structfield.uvm).
                 #[inline]
                 pub fn uvm(&self) -> ::planus::Result<bool> {
                     ::core::result::Result::Ok(
@@ -6029,7 +6293,9 @@ mod root {
                     )
                 }
 
-                /// Getter for the [`cred_props` field](RequestRegistrationExtensions#structfield.cred_props).
+                /// Getter for the [`cred_props`
+                /// field](RequestRegistrationExtensions#structfield.
+                /// cred_props).
                 #[inline]
                 pub fn cred_props(&self) -> ::planus::Result<bool> {
                     ::core::result::Result::Ok(
@@ -6039,7 +6305,9 @@ mod root {
                     )
                 }
 
-                /// Getter for the [`min_pin_length` field](RequestRegistrationExtensions#structfield.min_pin_length).
+                /// Getter for the [`min_pin_length`
+                /// field](RequestRegistrationExtensions#structfield.
+                /// min_pin_length).
                 #[inline]
                 pub fn min_pin_length(&self) -> ::planus::Result<bool> {
                     ::core::result::Result::Ok(
@@ -6049,7 +6317,9 @@ mod root {
                     )
                 }
 
-                /// Getter for the [`hmac_create_secret` field](RequestRegistrationExtensions#structfield.hmac_create_secret).
+                /// Getter for the [`hmac_create_secret`
+                /// field](RequestRegistrationExtensions#structfield.
+                /// hmac_create_secret).
                 #[inline]
                 pub fn hmac_create_secret(&self) -> ::planus::Result<bool> {
                     ::core::result::Result::Ok(
@@ -6181,10 +6451,12 @@ mod root {
                 }
             }
 
-            /// The table `PublicKeyCredentialDescriptor` in the namespace `Auth.WebAuthn`
+            /// The table `PublicKeyCredentialDescriptor` in the namespace
+            /// `Auth.WebAuthn`
             ///
             /// Generated from these locations:
-            /// * Table `PublicKeyCredentialDescriptor` in the file `auth/webauthn.fbs:114`
+            /// * Table `PublicKeyCredentialDescriptor` in the file
+            ///   `auth/webauthn.fbs:114`
             #[derive(
                 Clone,
                 Debug,
@@ -6218,7 +6490,8 @@ mod root {
             }
 
             impl PublicKeyCredentialDescriptor {
-                /// Creates a [PublicKeyCredentialDescriptorBuilder] for serializing an instance of this table.
+                /// Creates a [PublicKeyCredentialDescriptorBuilder] for
+                /// serializing an instance of this table.
                 #[inline]
                 pub fn builder() -> PublicKeyCredentialDescriptorBuilder<()> {
                     PublicKeyCredentialDescriptorBuilder(())
@@ -6315,15 +6588,18 @@ mod root {
                 }
             }
 
-            /// Builder for serializing an instance of the [PublicKeyCredentialDescriptor] type.
+            /// Builder for serializing an instance of the
+            /// [PublicKeyCredentialDescriptor] type.
             ///
-            /// Can be created using the [PublicKeyCredentialDescriptor::builder] method.
+            /// Can be created using the
+            /// [PublicKeyCredentialDescriptor::builder] method.
             #[derive(Debug)]
             #[must_use]
             pub struct PublicKeyCredentialDescriptorBuilder<State>(State);
 
             impl PublicKeyCredentialDescriptorBuilder<()> {
-                /// Setter for the [`type` field](PublicKeyCredentialDescriptor#structfield.type_).
+                /// Setter for the [`type`
+                /// field](PublicKeyCredentialDescriptor#structfield.type_).
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn type_<T0>(self, value: T0) -> PublicKeyCredentialDescriptorBuilder<(T0,)>
@@ -6333,7 +6609,9 @@ mod root {
                     PublicKeyCredentialDescriptorBuilder((value,))
                 }
 
-                /// Sets the [`type` field](PublicKeyCredentialDescriptor#structfield.type_) to null.
+                /// Sets the [`type`
+                /// field](PublicKeyCredentialDescriptor#structfield.type_) to
+                /// null.
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn type_as_null(self) -> PublicKeyCredentialDescriptorBuilder<((),)> {
@@ -6342,7 +6620,8 @@ mod root {
             }
 
             impl<T0> PublicKeyCredentialDescriptorBuilder<(T0,)> {
-                /// Setter for the [`id` field](PublicKeyCredentialDescriptor#structfield.id).
+                /// Setter for the [`id`
+                /// field](PublicKeyCredentialDescriptor#structfield.id).
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn id<T1>(self, value: T1) -> PublicKeyCredentialDescriptorBuilder<(T0, T1)>
@@ -6353,7 +6632,9 @@ mod root {
                     PublicKeyCredentialDescriptorBuilder((v0, value))
                 }
 
-                /// Sets the [`id` field](PublicKeyCredentialDescriptor#structfield.id) to null.
+                /// Sets the [`id`
+                /// field](PublicKeyCredentialDescriptor#structfield.id) to
+                /// null.
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn id_as_null(self) -> PublicKeyCredentialDescriptorBuilder<(T0, ())> {
@@ -6362,7 +6643,9 @@ mod root {
             }
 
             impl<T0, T1> PublicKeyCredentialDescriptorBuilder<(T0, T1)> {
-                /// Setter for the [`transports` field](PublicKeyCredentialDescriptor#structfield.transports).
+                /// Setter for the [`transports`
+                /// field](PublicKeyCredentialDescriptor#structfield.
+                /// transports).
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn transports<T2>(
@@ -6376,7 +6659,9 @@ mod root {
                     PublicKeyCredentialDescriptorBuilder((v0, v1, value))
                 }
 
-                /// Sets the [`transports` field](PublicKeyCredentialDescriptor#structfield.transports) to null.
+                /// Sets the [`transports`
+                /// field](PublicKeyCredentialDescriptor#structfield.transports)
+                /// to null.
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn transports_as_null(
@@ -6387,7 +6672,9 @@ mod root {
             }
 
             impl<T0, T1, T2> PublicKeyCredentialDescriptorBuilder<(T0, T1, T2)> {
-                /// Finish writing the builder to get an [Offset](::planus::Offset) to a serialized [PublicKeyCredentialDescriptor].
+                /// Finish writing the builder to get an
+                /// [Offset](::planus::Offset) to a serialized
+                /// [PublicKeyCredentialDescriptor].
                 #[inline]
                 pub fn finish(
                     self,
@@ -6460,7 +6747,8 @@ mod root {
             pub struct PublicKeyCredentialDescriptorRef<'a>(::planus::table_reader::Table<'a>);
 
             impl<'a> PublicKeyCredentialDescriptorRef<'a> {
-                /// Getter for the [`type` field](PublicKeyCredentialDescriptor#structfield.type_).
+                /// Getter for the [`type`
+                /// field](PublicKeyCredentialDescriptor#structfield.type_).
                 #[inline]
                 pub fn type_(
                     &self,
@@ -6469,13 +6757,16 @@ mod root {
                     self.0.access(0, "PublicKeyCredentialDescriptor", "type_")
                 }
 
-                /// Getter for the [`id` field](PublicKeyCredentialDescriptor#structfield.id).
+                /// Getter for the [`id`
+                /// field](PublicKeyCredentialDescriptor#structfield.id).
                 #[inline]
                 pub fn id(&self) -> ::planus::Result<::core::option::Option<&'a [u8]>> {
                     self.0.access(1, "PublicKeyCredentialDescriptor", "id")
                 }
 
-                /// Getter for the [`transports` field](PublicKeyCredentialDescriptor#structfield.transports).
+                /// Getter for the [`transports`
+                /// field](PublicKeyCredentialDescriptor#structfield.
+                /// transports).
                 #[inline]
                 pub fn transports(
                     &self,
@@ -6614,10 +6905,12 @@ mod root {
                 }
             }
 
-            /// The enum `AuthenticatorAttachment` in the namespace `Auth.WebAuthn`
+            /// The enum `AuthenticatorAttachment` in the namespace
+            /// `Auth.WebAuthn`
             ///
             /// Generated from these locations:
-            /// * Enum `AuthenticatorAttachment` in the file `auth/webauthn.fbs:123`
+            /// * Enum `AuthenticatorAttachment` in the file
+            ///   `auth/webauthn.fbs:123`
             #[derive(
                 Copy,
                 Clone,
@@ -6632,17 +6925,18 @@ mod root {
             )]
             #[repr(i8)]
             pub enum AuthenticatorAttachment {
-                ///  Request a device that is part of the machine aka inseperable.
-                ///  <https://www.w3.org/TR/webauthn/#attachment>
+                ///  Request a device that is part of the machine aka
+                /// inseperable.  <https://www.w3.org/TR/webauthn/#attachment>
                 Platform = 0,
 
-                ///  Request a device that can be seperated from the machine aka an external token.
-                ///  <https://www.w3.org/TR/webauthn/#attachment>
+                ///  Request a device that can be seperated from the machine aka
+                /// an external token.  <https://www.w3.org/TR/webauthn/#attachment>
                 CrossPlatform = 1,
             }
 
             impl AuthenticatorAttachment {
-                /// Array containing all valid variants of AuthenticatorAttachment
+                /// Array containing all valid variants of
+                /// AuthenticatorAttachment
                 pub const ENUM_VALUES: [Self; 2] = [Self::Platform, Self::CrossPlatform];
             }
 
@@ -6788,10 +7082,12 @@ mod root {
                 }
             }
 
-            /// The enum `UserVerificationPolicy` in the namespace `Auth.WebAuthn`
+            /// The enum `UserVerificationPolicy` in the namespace
+            /// `Auth.WebAuthn`
             ///
             /// Generated from these locations:
-            /// * Enum `UserVerificationPolicy` in the file `auth/webauthn.fbs:132`
+            /// * Enum `UserVerificationPolicy` in the file
+            ///   `auth/webauthn.fbs:132`
             #[derive(
                 Copy,
                 Clone,
@@ -6817,7 +7113,8 @@ mod root {
             }
 
             impl UserVerificationPolicy {
-                /// Array containing all valid variants of UserVerificationPolicy
+                /// Array containing all valid variants of
+                /// UserVerificationPolicy
                 pub const ENUM_VALUES: [Self; 3] =
                     [Self::Preferred, Self::Required, Self::Discouraged];
             }
@@ -6965,10 +7262,12 @@ mod root {
                 }
             }
 
-            /// The table `AuthenticatorSelectionCriteria` in the namespace `Auth.WebAuthn`
+            /// The table `AuthenticatorSelectionCriteria` in the namespace
+            /// `Auth.WebAuthn`
             ///
             /// Generated from these locations:
-            /// * Table `AuthenticatorSelectionCriteria` in the file `auth/webauthn.fbs:141`
+            /// * Table `AuthenticatorSelectionCriteria` in the file
+            ///   `auth/webauthn.fbs:141`
             #[derive(
                 Clone,
                 Debug,
@@ -7001,7 +7300,8 @@ mod root {
             }
 
             impl AuthenticatorSelectionCriteria {
-                /// Creates a [AuthenticatorSelectionCriteriaBuilder] for serializing an instance of this table.
+                /// Creates a [AuthenticatorSelectionCriteriaBuilder] for
+                /// serializing an instance of this table.
                 #[inline]
                 pub fn builder() -> AuthenticatorSelectionCriteriaBuilder<()> {
                     AuthenticatorSelectionCriteriaBuilder(())
@@ -7106,15 +7406,19 @@ mod root {
                 }
             }
 
-            /// Builder for serializing an instance of the [AuthenticatorSelectionCriteria] type.
+            /// Builder for serializing an instance of the
+            /// [AuthenticatorSelectionCriteria] type.
             ///
-            /// Can be created using the [AuthenticatorSelectionCriteria::builder] method.
+            /// Can be created using the
+            /// [AuthenticatorSelectionCriteria::builder] method.
             #[derive(Debug)]
             #[must_use]
             pub struct AuthenticatorSelectionCriteriaBuilder<State>(State);
 
             impl AuthenticatorSelectionCriteriaBuilder<()> {
-                /// Setter for the [`authenticator_attachment` field](AuthenticatorSelectionCriteria#structfield.authenticator_attachment).
+                /// Setter for the [`authenticator_attachment`
+                /// field](AuthenticatorSelectionCriteria#structfield.
+                /// authenticator_attachment).
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn authenticator_attachment<T0>(
@@ -7130,7 +7434,9 @@ mod root {
                     AuthenticatorSelectionCriteriaBuilder((value,))
                 }
 
-                /// Sets the [`authenticator_attachment` field](AuthenticatorSelectionCriteria#structfield.authenticator_attachment) to the default value.
+                /// Sets the [`authenticator_attachment`
+                /// field](AuthenticatorSelectionCriteria#structfield.
+                /// authenticator_attachment) to the default value.
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn authenticator_attachment_as_default(
@@ -7142,7 +7448,9 @@ mod root {
             }
 
             impl<T0> AuthenticatorSelectionCriteriaBuilder<(T0,)> {
-                /// Setter for the [`require_resident_key` field](AuthenticatorSelectionCriteria#structfield.require_resident_key).
+                /// Setter for the [`require_resident_key`
+                /// field](AuthenticatorSelectionCriteria#structfield.
+                /// require_resident_key).
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn require_resident_key<T1>(
@@ -7156,7 +7464,9 @@ mod root {
                     AuthenticatorSelectionCriteriaBuilder((v0, value))
                 }
 
-                /// Sets the [`require_resident_key` field](AuthenticatorSelectionCriteria#structfield.require_resident_key) to the default value.
+                /// Sets the [`require_resident_key`
+                /// field](AuthenticatorSelectionCriteria#structfield.
+                /// require_resident_key) to the default value.
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn require_resident_key_as_default(
@@ -7168,7 +7478,9 @@ mod root {
             }
 
             impl<T0, T1> AuthenticatorSelectionCriteriaBuilder<(T0, T1)> {
-                /// Setter for the [`user_verification` field](AuthenticatorSelectionCriteria#structfield.user_verification).
+                /// Setter for the [`user_verification`
+                /// field](AuthenticatorSelectionCriteria#structfield.
+                /// user_verification).
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn user_verification<T2>(
@@ -7185,7 +7497,9 @@ mod root {
                     AuthenticatorSelectionCriteriaBuilder((v0, v1, value))
                 }
 
-                /// Sets the [`user_verification` field](AuthenticatorSelectionCriteria#structfield.user_verification) to the default value.
+                /// Sets the [`user_verification`
+                /// field](AuthenticatorSelectionCriteria#structfield.
+                /// user_verification) to the default value.
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn user_verification_as_default(
@@ -7197,7 +7511,9 @@ mod root {
             }
 
             impl<T0, T1, T2> AuthenticatorSelectionCriteriaBuilder<(T0, T1, T2)> {
-                /// Finish writing the builder to get an [Offset](::planus::Offset) to a serialized [AuthenticatorSelectionCriteria].
+                /// Finish writing the builder to get an
+                /// [Offset](::planus::Offset) to a serialized
+                /// [AuthenticatorSelectionCriteria].
                 #[inline]
                 pub fn finish(
                     self,
@@ -7288,7 +7604,9 @@ mod root {
             pub struct AuthenticatorSelectionCriteriaRef<'a>(::planus::table_reader::Table<'a>);
 
             impl<'a> AuthenticatorSelectionCriteriaRef<'a> {
-                /// Getter for the [`authenticator_attachment` field](AuthenticatorSelectionCriteria#structfield.authenticator_attachment).
+                /// Getter for the [`authenticator_attachment`
+                /// field](AuthenticatorSelectionCriteria#structfield.
+                /// authenticator_attachment).
                 #[inline]
                 pub fn authenticator_attachment(
                     &self,
@@ -7304,7 +7622,9 @@ mod root {
                     )
                 }
 
-                /// Getter for the [`require_resident_key` field](AuthenticatorSelectionCriteria#structfield.require_resident_key).
+                /// Getter for the [`require_resident_key`
+                /// field](AuthenticatorSelectionCriteria#structfield.
+                /// require_resident_key).
                 #[inline]
                 pub fn require_resident_key(&self) -> ::planus::Result<bool> {
                     ::core::result::Result::Ok(
@@ -7314,7 +7634,9 @@ mod root {
                     )
                 }
 
-                /// Getter for the [`user_verification` field](AuthenticatorSelectionCriteria#structfield.user_verification).
+                /// Getter for the [`user_verification`
+                /// field](AuthenticatorSelectionCriteria#structfield.
+                /// user_verification).
                 #[inline]
                 pub fn user_verification(&self) -> ::planus::Result<self::UserVerificationPolicy> {
                     ::core::result::Result::Ok(
@@ -7467,7 +7789,8 @@ mod root {
             }
 
             impl PubKeyCredParams {
-                /// Creates a [PubKeyCredParamsBuilder] for serializing an instance of this table.
+                /// Creates a [PubKeyCredParamsBuilder] for serializing an
+                /// instance of this table.
                 #[inline]
                 pub fn builder() -> PubKeyCredParamsBuilder<()> {
                     PubKeyCredParamsBuilder(())
@@ -7541,7 +7864,8 @@ mod root {
                 }
             }
 
-            /// Builder for serializing an instance of the [PubKeyCredParams] type.
+            /// Builder for serializing an instance of the [PubKeyCredParams]
+            /// type.
             ///
             /// Can be created using the [PubKeyCredParams::builder] method.
             #[derive(Debug)]
@@ -7549,7 +7873,8 @@ mod root {
             pub struct PubKeyCredParamsBuilder<State>(State);
 
             impl PubKeyCredParamsBuilder<()> {
-                /// Setter for the [`type` field](PubKeyCredParams#structfield.type_).
+                /// Setter for the [`type`
+                /// field](PubKeyCredParams#structfield.type_).
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn type_<T0>(self, value: T0) -> PubKeyCredParamsBuilder<(T0,)>
@@ -7559,7 +7884,8 @@ mod root {
                     PubKeyCredParamsBuilder((value,))
                 }
 
-                /// Sets the [`type` field](PubKeyCredParams#structfield.type_) to null.
+                /// Sets the [`type` field](PubKeyCredParams#structfield.type_)
+                /// to null.
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn type_as_null(self) -> PubKeyCredParamsBuilder<((),)> {
@@ -7568,7 +7894,8 @@ mod root {
             }
 
             impl<T0> PubKeyCredParamsBuilder<(T0,)> {
-                /// Setter for the [`alg` field](PubKeyCredParams#structfield.alg).
+                /// Setter for the [`alg`
+                /// field](PubKeyCredParams#structfield.alg).
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn alg<T1>(self, value: T1) -> PubKeyCredParamsBuilder<(T0, T1)>
@@ -7579,7 +7906,8 @@ mod root {
                     PubKeyCredParamsBuilder((v0, value))
                 }
 
-                /// Sets the [`alg` field](PubKeyCredParams#structfield.alg) to the default value.
+                /// Sets the [`alg` field](PubKeyCredParams#structfield.alg) to
+                /// the default value.
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn alg_as_default(
@@ -7590,7 +7918,9 @@ mod root {
             }
 
             impl<T0, T1> PubKeyCredParamsBuilder<(T0, T1)> {
-                /// Finish writing the builder to get an [Offset](::planus::Offset) to a serialized [PubKeyCredParams].
+                /// Finish writing the builder to get an
+                /// [Offset](::planus::Offset) to a serialized
+                /// [PubKeyCredParams].
                 #[inline]
                 pub fn finish(
                     self,
@@ -7657,7 +7987,8 @@ mod root {
             pub struct PubKeyCredParamsRef<'a>(::planus::table_reader::Table<'a>);
 
             impl<'a> PubKeyCredParamsRef<'a> {
-                /// Getter for the [`type` field](PubKeyCredParams#structfield.type_).
+                /// Getter for the [`type`
+                /// field](PubKeyCredParams#structfield.type_).
                 #[inline]
                 pub fn type_(
                     &self,
@@ -7666,7 +7997,8 @@ mod root {
                     self.0.access(0, "PubKeyCredParams", "type_")
                 }
 
-                /// Getter for the [`alg` field](PubKeyCredParams#structfield.alg).
+                /// Getter for the [`alg`
+                /// field](PubKeyCredParams#structfield.alg).
                 #[inline]
                 pub fn alg(&self) -> ::planus::Result<i32> {
                     ::core::result::Result::Ok(
@@ -7805,7 +8137,8 @@ mod root {
             }
 
             impl RelyingParty {
-                /// Creates a [RelyingPartyBuilder] for serializing an instance of this table.
+                /// Creates a [RelyingPartyBuilder] for serializing an instance
+                /// of this table.
                 #[inline]
                 pub fn builder() -> RelyingPartyBuilder<()> {
                     RelyingPartyBuilder(())
@@ -7904,7 +8237,8 @@ mod root {
             }
 
             impl<T0> RelyingPartyBuilder<(T0,)> {
-                /// Setter for the [`name` field](RelyingParty#structfield.name).
+                /// Setter for the [`name`
+                /// field](RelyingParty#structfield.name).
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn name<T1>(self, value: T1) -> RelyingPartyBuilder<(T0, T1)>
@@ -7915,7 +8249,8 @@ mod root {
                     RelyingPartyBuilder((v0, value))
                 }
 
-                /// Sets the [`name` field](RelyingParty#structfield.name) to null.
+                /// Sets the [`name` field](RelyingParty#structfield.name) to
+                /// null.
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn name_as_null(self) -> RelyingPartyBuilder<(T0, ())> {
@@ -7924,7 +8259,8 @@ mod root {
             }
 
             impl<T0, T1> RelyingPartyBuilder<(T0, T1)> {
-                /// Finish writing the builder to get an [Offset](::planus::Offset) to a serialized [RelyingParty].
+                /// Finish writing the builder to get an
+                /// [Offset](::planus::Offset) to a serialized [RelyingParty].
                 #[inline]
                 pub fn finish(
                     self,
@@ -8000,7 +8336,8 @@ mod root {
                     self.0.access(0, "RelyingParty", "id")
                 }
 
-                /// Getter for the [`name` field](RelyingParty#structfield.name).
+                /// Getter for the [`name`
+                /// field](RelyingParty#structfield.name).
                 #[inline]
                 pub fn name(
                     &self,
@@ -8149,7 +8486,8 @@ mod root {
             }
 
             impl User {
-                /// Creates a [UserBuilder] for serializing an instance of this table.
+                /// Creates a [UserBuilder] for serializing an instance of this
+                /// table.
                 #[inline]
                 pub fn builder() -> UserBuilder<()> {
                     UserBuilder(())
@@ -8274,7 +8612,8 @@ mod root {
             }
 
             impl<T0, T1> UserBuilder<(T0, T1)> {
-                /// Setter for the [`display_name` field](User#structfield.display_name).
+                /// Setter for the [`display_name`
+                /// field](User#structfield.display_name).
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn display_name<T2>(self, value: T2) -> UserBuilder<(T0, T1, T2)>
@@ -8285,7 +8624,8 @@ mod root {
                     UserBuilder((v0, v1, value))
                 }
 
-                /// Sets the [`display_name` field](User#structfield.display_name) to null.
+                /// Sets the [`display_name`
+                /// field](User#structfield.display_name) to null.
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn display_name_as_null(self) -> UserBuilder<(T0, T1, ())> {
@@ -8294,7 +8634,8 @@ mod root {
             }
 
             impl<T0, T1, T2> UserBuilder<(T0, T1, T2)> {
-                /// Finish writing the builder to get an [Offset](::planus::Offset) to a serialized [User].
+                /// Finish writing the builder to get an
+                /// [Offset](::planus::Offset) to a serialized [User].
                 #[inline]
                 pub fn finish(self, builder: &mut ::planus::Builder) -> ::planus::Offset<User>
                 where
@@ -8371,7 +8712,8 @@ mod root {
                     self.0.access(1, "User", "name")
                 }
 
-                /// Getter for the [`display_name` field](User#structfield.display_name).
+                /// Getter for the [`display_name`
+                /// field](User#structfield.display_name).
                 #[inline]
                 pub fn display_name(
                     &self,
@@ -8532,7 +8874,8 @@ mod root {
             }
 
             impl NumberRegistration {
-                /// Creates a [NumberRegistrationBuilder] for serializing an instance of this table.
+                /// Creates a [NumberRegistrationBuilder] for serializing an
+                /// instance of this table.
                 #[inline]
                 pub fn builder() -> NumberRegistrationBuilder<()> {
                     NumberRegistrationBuilder(())
@@ -8604,7 +8947,8 @@ mod root {
                 }
             }
 
-            /// Builder for serializing an instance of the [NumberRegistration] type.
+            /// Builder for serializing an instance of the [NumberRegistration]
+            /// type.
             ///
             /// Can be created using the [NumberRegistration::builder] method.
             #[derive(Debug)]
@@ -8612,7 +8956,8 @@ mod root {
             pub struct NumberRegistrationBuilder<State>(State);
 
             impl NumberRegistrationBuilder<()> {
-                /// Setter for the [`name` field](NumberRegistration#structfield.name).
+                /// Setter for the [`name`
+                /// field](NumberRegistration#structfield.name).
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn name<T0>(self, value: T0) -> NumberRegistrationBuilder<(T0,)>
@@ -8622,7 +8967,8 @@ mod root {
                     NumberRegistrationBuilder((value,))
                 }
 
-                /// Sets the [`name` field](NumberRegistration#structfield.name) to null.
+                /// Sets the [`name` field](NumberRegistration#structfield.name)
+                /// to null.
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn name_as_null(self) -> NumberRegistrationBuilder<((),)> {
@@ -8631,7 +8977,8 @@ mod root {
             }
 
             impl<T0> NumberRegistrationBuilder<(T0,)> {
-                /// Setter for the [`code` field](NumberRegistration#structfield.code).
+                /// Setter for the [`code`
+                /// field](NumberRegistration#structfield.code).
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn code<T1>(self, value: T1) -> NumberRegistrationBuilder<(T0, T1)>
@@ -8642,7 +8989,8 @@ mod root {
                     NumberRegistrationBuilder((v0, value))
                 }
 
-                /// Sets the [`code` field](NumberRegistration#structfield.code) to the default value.
+                /// Sets the [`code` field](NumberRegistration#structfield.code)
+                /// to the default value.
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn code_as_default(
@@ -8653,7 +9001,9 @@ mod root {
             }
 
             impl<T0, T1> NumberRegistrationBuilder<(T0, T1)> {
-                /// Finish writing the builder to get an [Offset](::planus::Offset) to a serialized [NumberRegistration].
+                /// Finish writing the builder to get an
+                /// [Offset](::planus::Offset) to a serialized
+                /// [NumberRegistration].
                 #[inline]
                 pub fn finish(
                     self,
@@ -8721,7 +9071,8 @@ mod root {
             pub struct NumberRegistrationRef<'a>(::planus::table_reader::Table<'a>);
 
             impl<'a> NumberRegistrationRef<'a> {
-                /// Getter for the [`name` field](NumberRegistration#structfield.name).
+                /// Getter for the [`name`
+                /// field](NumberRegistration#structfield.name).
                 #[inline]
                 pub fn name(
                     &self,
@@ -8730,7 +9081,8 @@ mod root {
                     self.0.access(0, "NumberRegistration", "name")
                 }
 
-                /// Getter for the [`code` field](NumberRegistration#structfield.code).
+                /// Getter for the [`code`
+                /// field](NumberRegistration#structfield.code).
                 #[inline]
                 pub fn code(&self) -> ::planus::Result<u64> {
                     ::core::result::Result::Ok(
@@ -8836,13 +9188,15 @@ mod root {
                 }
             }
 
-            ///  Kept permanently to look up a number. The number is hashed, peppered and
-            ///  then hashed again. To lookup the number, the client hashes the number and
-            ///  sends it to the server. The server peppers the hash and hashes it again.
-            ///  We could work out the original phone number if we really wanted to, but
-            ///  this is more for protecting against breaches of the database. The pepper is
-            ///  a secret that's encrypted and only available to the server, even in the case
-            ///  of a breach.
+            ///  Kept permanently to look up a number. The number is hashed,
+            /// peppered and  then hashed again. To lookup the
+            /// number, the client hashes the number and
+            ///  sends it to the server. The server peppers the hash and hashes
+            /// it again.  We could work out the original phone
+            /// number if we really wanted to, but  this is more for
+            /// protecting against breaches of the database. The pepper is
+            ///  a secret that's encrypted and only available to the server,
+            /// even in the case  of a breach.
             ///
             /// Generated from these locations:
             /// * Table `VerifiedNumber` in the file `auth/kv.fbs:16`
@@ -8862,8 +9216,9 @@ mod root {
                 pub name: ::core::option::Option<::planus::alloc::string::String>,
                 ///  A link to the user's avatar image
                 pub avatar: ::core::option::Option<::planus::alloc::string::String>,
-                ///  The account the number is registered to. 32 bytes, encoded with base58
-                ///  This is used to contact the user's durable object
+                ///  The account the number is registered to. 32 bytes, encoded
+                /// with base58  This is used to contact the
+                /// user's durable object
                 pub id: ::core::option::Option<::planus::alloc::string::String>,
             }
 
@@ -8879,7 +9234,8 @@ mod root {
             }
 
             impl VerifiedNumber {
-                /// Creates a [VerifiedNumberBuilder] for serializing an instance of this table.
+                /// Creates a [VerifiedNumberBuilder] for serializing an
+                /// instance of this table.
                 #[inline]
                 pub fn builder() -> VerifiedNumberBuilder<()> {
                     VerifiedNumberBuilder(())
@@ -8961,7 +9317,8 @@ mod root {
                 }
             }
 
-            /// Builder for serializing an instance of the [VerifiedNumber] type.
+            /// Builder for serializing an instance of the [VerifiedNumber]
+            /// type.
             ///
             /// Can be created using the [VerifiedNumber::builder] method.
             #[derive(Debug)]
@@ -8969,7 +9326,8 @@ mod root {
             pub struct VerifiedNumberBuilder<State>(State);
 
             impl VerifiedNumberBuilder<()> {
-                /// Setter for the [`name` field](VerifiedNumber#structfield.name).
+                /// Setter for the [`name`
+                /// field](VerifiedNumber#structfield.name).
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn name<T0>(self, value: T0) -> VerifiedNumberBuilder<(T0,)>
@@ -8979,7 +9337,8 @@ mod root {
                     VerifiedNumberBuilder((value,))
                 }
 
-                /// Sets the [`name` field](VerifiedNumber#structfield.name) to null.
+                /// Sets the [`name` field](VerifiedNumber#structfield.name) to
+                /// null.
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn name_as_null(self) -> VerifiedNumberBuilder<((),)> {
@@ -8988,7 +9347,8 @@ mod root {
             }
 
             impl<T0> VerifiedNumberBuilder<(T0,)> {
-                /// Setter for the [`avatar` field](VerifiedNumber#structfield.avatar).
+                /// Setter for the [`avatar`
+                /// field](VerifiedNumber#structfield.avatar).
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn avatar<T1>(self, value: T1) -> VerifiedNumberBuilder<(T0, T1)>
@@ -8999,7 +9359,8 @@ mod root {
                     VerifiedNumberBuilder((v0, value))
                 }
 
-                /// Sets the [`avatar` field](VerifiedNumber#structfield.avatar) to null.
+                /// Sets the [`avatar` field](VerifiedNumber#structfield.avatar)
+                /// to null.
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn avatar_as_null(self) -> VerifiedNumberBuilder<(T0, ())> {
@@ -9019,7 +9380,8 @@ mod root {
                     VerifiedNumberBuilder((v0, v1, value))
                 }
 
-                /// Sets the [`id` field](VerifiedNumber#structfield.id) to null.
+                /// Sets the [`id` field](VerifiedNumber#structfield.id) to
+                /// null.
                 #[inline]
                 #[allow(clippy::type_complexity)]
                 pub fn id_as_null(self) -> VerifiedNumberBuilder<(T0, T1, ())> {
@@ -9028,7 +9390,8 @@ mod root {
             }
 
             impl<T0, T1, T2> VerifiedNumberBuilder<(T0, T1, T2)> {
-                /// Finish writing the builder to get an [Offset](::planus::Offset) to a serialized [VerifiedNumber].
+                /// Finish writing the builder to get an
+                /// [Offset](::planus::Offset) to a serialized [VerifiedNumber].
                 #[inline]
                 pub fn finish(
                     self,
@@ -9098,7 +9461,8 @@ mod root {
             pub struct VerifiedNumberRef<'a>(::planus::table_reader::Table<'a>);
 
             impl<'a> VerifiedNumberRef<'a> {
-                /// Getter for the [`name` field](VerifiedNumber#structfield.name).
+                /// Getter for the [`name`
+                /// field](VerifiedNumber#structfield.name).
                 #[inline]
                 pub fn name(
                     &self,
@@ -9107,7 +9471,8 @@ mod root {
                     self.0.access(0, "VerifiedNumber", "name")
                 }
 
-                /// Getter for the [`avatar` field](VerifiedNumber#structfield.avatar).
+                /// Getter for the [`avatar`
+                /// field](VerifiedNumber#structfield.avatar).
                 #[inline]
                 pub fn avatar(
                     &self,
