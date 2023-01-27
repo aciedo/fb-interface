@@ -1,0 +1,16 @@
+[package]
+name = "examples"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+fs = "0.0.5"
+interface = { path = "../dist/rs" }
+reqwest = "0.11.13"
+tokio = { version = "1.24.2", features = ["full"] }
+
+[[example]]
+name = "auth"
+path = "src/auth.rs"
