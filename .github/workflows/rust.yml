@@ -16,6 +16,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+    - name: Enable globstar
+      run: shopt -s globstar
     - name: Use nightly
       run: rustup default nightly
     - name: Install planus
