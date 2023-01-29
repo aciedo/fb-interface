@@ -22,7 +22,7 @@ jobs:
       env:
         cache-name: cache-planus
       with:
-        path: ~/.cargo/bin
+        path: ~/.cargo
         key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('Cargo.lock') }}
         restore-keys: |
           ${{ runner.os }}-build-${{ env.cache-name }}-
@@ -40,7 +40,5 @@ jobs:
       run: cargo install --git https://github.com/planus-org/planus planus-cli
     - name: Run checks
       run: planus check ${{ steps.glob.outputs.paths }}
-      shell: zsh {0}
     - name: Build files
       run: planus rust -o rs/src/gen.rs ${{ steps.glob.outputs.paths }}
-      shell: zsh {0}
