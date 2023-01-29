@@ -28,13 +28,19 @@ jobs:
           ${{ runner.os }}-build-${{ env.cache-name }}-
           ${{ runner.os }}-build-
           ${{ runner.os }}-
+    - name: Glob match schemas
+      uses: tj-actions/glob@v16
+      id: glob
+      with:
+        files: |
+          **/*.fbs
     - name: Use nightly
       run: rustup default nightly
     - name: Install planus
       run: cargo install --git https://github.com/planus-org/planus planus-cli
     - name: Run checks
-      run: planus check **/*.fbs
+      run: planus check ${{ steps.glob.outputs.paths }}
       shell: zsh {0}
     - name: Build files
-      run: planus rust -o rs/src/gen.rs **/*.fbs
+      run: planus rust -o rs/src/gen.rs ${{ steps.glob.outputs.paths }}
       shell: zsh {0}
