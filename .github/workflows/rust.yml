@@ -28,13 +28,13 @@ jobs:
           ${{ runner.os }}-build-${{ env.cache-name }}-
           ${{ runner.os }}-build-
           ${{ runner.os }}-
-    - name: Enable globstar
-      run: shopt -s globstar
     - name: Use nightly
       run: rustup default nightly
     - name: Install planus
       run: cargo install --git https://github.com/planus-org/planus planus-cli
     - name: Run checks
       run: planus check **/*.fbs
+      shell: zsh {0}
     - name: Build files
       run: planus rust -o rs/src/gen.rs **/*.fbs
+      shell: zsh {0}
