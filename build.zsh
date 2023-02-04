@@ -1,4 +1,4 @@
-planus rust -o dist/rs/src/gen.rs **/*.fbs
-flatc -o dist/ts --ts --gen-object-api **/*.fbs 
-flatc -o dist/swift --swift --gen-mutable **/*.fbs 
-flatc -o dist/kt --kotlin --gen-mutable **/*.fbs 
+planus rust -o bindings/rs/src/gen.rs **/*.fbs
+flatc -o bindings/ts --ts --gen-object-api **/*.fbs 
+flatc -o bindings/swift --swift --gen-mutable **/*.fbs 
+flatc -o bindings/kt --kotlin --gen-mutable **/*.fbs 

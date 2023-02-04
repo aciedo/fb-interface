@@ -1,2 +1,2 @@
 [workspace]
-members = ["dist/rs", "examples"]
+members = ["bindings/rs", "examples"]

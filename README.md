@@ -19,16 +19,16 @@ is a different scope, such as the [auth](schema/auth) directory which contains:
 
 The schema is then compiled into the languages Valera supports. These are:
 
-- **[Rust](dist/rs)** - most of the platform is Rust, and our hardware runs Rust
-- **[TypeScript](dist/ts)** - for our web client
-- **[Swift](dist/swift)** - for our iOS apps
-- **[Kotlin](dist/kt)** - for our Android apps
+- **[Rust](bindings/rs)** - most of the platform is Rust, and our hardware runs Rust
+- **[TypeScript](bindings/ts)** - for our web client
+- **[Swift](bindings/swift)** - for our iOS apps
+- **[Kotlin](bindings/kt)** - for our Android apps
 
 It _is_ possible to use interfacing for other languages, but we don't use them
 ourselves. You are welcome to try other languages that FlatBuffer supports, such
 as C++, C#, Go, Java, Python, and more. To do this, run `flatc` with the language
 you want to use, using the input file pattern `**/*.fbs` and the output directory
-`dist/<lang>`.
+`bindings/<lang>`.
 
 ### Compiling the interfaces
 
