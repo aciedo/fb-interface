@@ -1,0 +1,68 @@
+name: Rust
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+env:
+  CARGO_TERM_COLOR: always
+  RUST_BACKTRACE: 1
+
+jobs:
+  rust:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Cache Cargo bins
+        id: cache-cargo
+        uses: actions/cache@v3
+        env:
+          cache-name: cache-planus
+        with:
+          path: ~/.cargo
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('Cargo.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
+      - name: Glob match schemas
+        uses: tj-actions/glob@v16
+        id: glob
+        with:
+          files: |
+            **/*.fbs
+      - name: Use nightly
+        run: rustup default nightly
+      - name: Install rustfmt
+        run: rustup component add rustfmt --toolchain nightly
+      - name: Install planus
+        run: cargo install --git https://github.com/planus-org/planus planus-cli
+      - name: Check schema
+        run: planus check ${{ steps.glob.outputs.paths }}
+      - name: Build files
+        run: planus rust -o bindings/rs/src/gen.rs ${{ steps.glob.outputs.paths }}
+  flatc:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install flatc
+        run: |
+          wget https://github.com/google/flatbuffers/releases/download/v23.1.21/Linux.flatc.binary.g++-10.zip
+          unzip Linux.flatc.binary.g++-10.zip
+          sudo mv flatc /usr/local/bin
+      - name: Glob match schemas
+        uses: tj-actions/glob@v16
+        id: glob
+        with:
+          files: |
+            **/*.fbs
+      - name: Build TypeScript files
+        run: flatc -o bindings/ts --ts --gen-object-api ${{ steps.glob.outputs.paths }}
+      - name: Build Swift files
+        run: flatc -o bindings/swift --swift --gen-mutable ${{ steps.glob.outputs.paths }}
+      - name: Build Kotlin
+        run: flatc -o bindings/kt --kotlin --gen-mutable ${{ steps.glob.outputs.paths }}
