@@ -1,5 +1,7 @@
 # Interface
 
+[![Build bindings](https://github.com/valeralabs/interface/actions/workflows/build.yml/badge.svg)](https://github.com/valeralabs/interface/actions/workflows/build.yml)
+
 Valera's data interfacing between all services and languages. It uses the
 [FlatBuffer](https://github.com/google/flatbuffers) data codec which is more
 efficient than JSON and more flexible than protobuf. It requires a bit more
