@@ -4,7 +4,8 @@ use interface::{
     auth::api::{
         ErrorRes, ErrorResRef, RegisterNumberReq, RegisterNumberRes, RegisterNumberResRef,
         VerifyNumberReq, VerifyNumberRes, VerifyNumberResRef,
-    }, Builder, ReadAsRoot,
+    },
+    Builder, ReadAsRoot,
 };
 use reqwest::StatusCode;
 
@@ -74,7 +75,7 @@ impl Client {
         println!("sending request");
         let res = self
             .client
-            .post(format!("{HOST}/auth/register-number"))
+            .post(format!("{HOST}/v1/auth/register_number"))
             .body(builder.finish(body, None).to_vec())
             .send()
             .await
@@ -107,7 +108,7 @@ impl Client {
         println!("sending request");
         let res = self
             .client
-            .post(format!("{HOST}/auth/verify-number"))
+            .post(format!("{HOST}/v1/auth/verify_number"))
             .body(builder.finish(body, None).to_vec())
             .send()
             .await
